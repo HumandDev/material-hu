@@ -1,1 +1,1 @@
-export * from '@mui/lab';
+export * from '@mui/icons-material';
