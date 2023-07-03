@@ -1,1 +1,1 @@
-export { default as Button, LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
+export { default as Button, type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
