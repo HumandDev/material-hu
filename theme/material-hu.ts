@@ -1,7 +1,7 @@
 import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '../src';
 import { createOptions } from './base/create-options';
 
-declare module '../src' {
+declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
     50: string;
     100: string;
