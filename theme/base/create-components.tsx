@@ -1,4 +1,3 @@
-import React from 'react';
 import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '../../src';
 
 // Used only to create transitions
