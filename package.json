@@ -19,6 +19,11 @@
   "devDependencies": {
     "typescript": "^5.1.6"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
