@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.134",
     "@mui/material": "^5.13.6",
-    "@mui/x-date-pickers": "^6.9.1"
+    "@mui/x-date-pickers": "^6.9.1",
+    "date-fns": "^2.30.0"
   }
 }
