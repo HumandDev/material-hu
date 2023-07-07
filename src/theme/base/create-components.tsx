@@ -1,4 +1,4 @@
-import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '../../src';
+import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '../..';
 
 // Used only to create transitions
 const muiTheme = createTheme();

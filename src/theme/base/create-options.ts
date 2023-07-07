@@ -1,4 +1,4 @@
-import { ThemeOptions, colors } from '../../src';
+import { ThemeOptions, colors } from '../..';
 import type { Direction } from '../material-hu';
 import { createTypography } from './create-typography';
 import { createComponents } from './create-components';

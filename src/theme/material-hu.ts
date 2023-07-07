@@ -1,7 +1,7 @@
-import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '../src';
+import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '..';
 import { createOptions } from './base/create-options';
 
-/* declare module '@mui/material/styles' {
+declare module '@mui/material/styles' {
   interface ColorRange {
     50: string;
     100: string;
@@ -37,7 +37,7 @@ import { createOptions } from './base/create-options';
     paper: string;
     default: string;
   }
-} */
+}
 
 export type ColorPreset = 'blue' | 'green' | 'indigo' | 'purple';
 
