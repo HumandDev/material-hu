@@ -1,7 +1,6 @@
-import { ThemeOptions, colors } from '../..';
-import type { Direction } from '../material-hu';
-import { createTypography } from './create-typography';
-import { createComponents } from './create-components';
+import { ThemeOptions, colors, type Direction } from '@mui/material';
+import createTypography from './create-typography';
+import createComponents from './create-components';
 
 interface Config {
   direction?: Direction;
@@ -54,3 +53,5 @@ export const createOptions = (config: Config): ThemeOptions => {
     },
   };
 };
+
+export default createOptions;

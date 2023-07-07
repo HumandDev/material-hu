@@ -76,3 +76,5 @@ export const createTypography = (): TypographyOptions => {
     }
   };
 };
+
+export default createTypography;

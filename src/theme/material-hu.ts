@@ -1,5 +1,5 @@
-import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '..';
-import { createOptions } from './base/create-options';
+import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '@mui/material';
+import createOptions from './base/create-options';
 
 declare module '@mui/material/styles' {
   interface ColorRange {

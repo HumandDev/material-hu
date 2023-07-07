@@ -1,4 +1,4 @@
-import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '../..';
+import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '@mui/material';
 
 // Used only to create transitions
 const muiTheme = createTheme();
@@ -355,3 +355,5 @@ export const createComponents = (): Components => {
     }
   };
 };
+
+export default createComponents;
