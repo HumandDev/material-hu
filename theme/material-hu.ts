@@ -55,7 +55,7 @@ interface ThemeConfig {
   paletteMode?: PaletteMode;
 }
 
-export const createTheme = (config: ThemeConfig = {}): Theme => {
+export const createNewTheme = (config: ThemeConfig = {}): Theme => {
   
   let theme = createMuiTheme(
     // Base options available for both dark and light palette modes
