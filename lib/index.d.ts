@@ -4,3 +4,4 @@ export * from '@mui/x-date-pickers/AdapterDateFns';
 export * from '@mui/x-date-pickers/internals/hooks/useDesktopPicker';
 export { default as Button } from '@mui/lab/LoadingButton';
 export { createNewTheme } from './theme/material-hu';
+export { type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
