@@ -47,6 +47,13 @@ export type Direction = 'ltr' | 'rtl';
 
 export type PaletteMode = 'dark' | 'light';
 
+declare module '@mui/material/TableCell' {
+  interface TableCellPropsVariantOverrides {
+    titleField: true;
+    shortField: true;
+    userField: true;
+  }
+}
 interface ThemeConfig {
   responsiveFontSizes?: boolean;
   colorPreset?: string,
