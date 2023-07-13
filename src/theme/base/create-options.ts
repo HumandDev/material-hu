@@ -64,6 +64,7 @@ export const createOptions = (config: Config): ThemeOptions => {
       secondary: {
         main: colors.grey[600]
       },
+      divider: '#f2f4f7',
       success: {
         contrastText: '#ffffff',
         main: '#4caf50'
