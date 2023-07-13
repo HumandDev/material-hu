@@ -33,18 +33,17 @@ export const createOptions = (config: Config): ThemeOptions => {
       primary: {
         contrastText: '#ffffff',
         main: config?.color || 'blue',
-        // lighter: '#DFEDFF'
       },
       secondary: {
-        main: colors.grey[600]// '#757575',
+        main: colors.grey[600]
       },
       success: {
         contrastText: '#ffffff',
         main: '#4caf50'
       },
       text: {
-        primary: '#172b4d',
-        secondary: '#6b778c'
+        primary: '#111927',
+        secondary: '#6C737F'
       },
       warning: {
         contrastText: '#ffffff',
