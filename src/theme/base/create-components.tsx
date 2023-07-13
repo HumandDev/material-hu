@@ -45,6 +45,9 @@ export const createComponents = (): Components => {
         root: {
           borderRadius: 20
         }
+      },
+      defaultProps:{
+        elevation: 24
       }
     },
     MuiCardContent: {

@@ -28,6 +28,33 @@ export const createOptions = (config: Config): ThemeOptions => {
     shape: {
       borderRadius: 8
     },
+    shadows:[
+      'none',
+      '0px 1px 2px 0px rgba(0, 0, 0, 0.08);',
+      '0px 1px 5px 0px rgba(0, 0, 0, 0.08);',
+      '0px 1px 8px 0px rgba(0, 0, 0, 0.08);',
+      '0px 1px 10px 0px rgba(0, 0, 0, 0.08);',
+      '0px 1px 14px 0px rgba(0, 0, 0, 0.08);',
+      '0px 1px 18px 0px rgba(0, 0, 0, 0.08);',
+      '0px 2px 16px 0px rgba(0, 0, 0, 0.08);',
+      '0px 3px 14px 0px rgba(0, 0, 0, 0.08);',
+      '0px 3px 16px 0px rgba(0, 0, 0, 0.08);',
+      '0px 4px 18px 0px rgba(0, 0, 0, 0.08);',
+      '0px 4px 20px 0px rgba(0, 0, 0, 0.08);',
+      '0px 5px 22px 0px rgba(0, 0, 0, 0.04);',
+      '0px 5px 24px 0px rgba(0, 0, 0, 0.08);',
+      '0px 5px 26px 0px rgba(0, 0, 0, 0.08);',
+      '0px 6px 28px 0px rgba(0, 0, 0, 0.08);',
+      '0px 6px 30px 0px rgba(0, 0, 0, 0.08);',
+      '0px 6px 32px 0px rgba(0, 0, 0, 0.08);',
+      '0px 7px 34px 0px rgba(0, 0, 0, 0.08);',
+      '0px 7px 36px 0px rgba(0, 0, 0, 0.08);',
+      '0px 8px 38px 0px rgba(0, 0, 0, 0.08);',
+      '0px 8px 40px 0px rgba(0, 0, 0, 0.08);',
+      '0px 8px 42px 0px rgba(0, 0, 0, 0.08);',
+      '0px 9px 44px 0px rgba(0, 0, 0, 0.08);',
+      '0px 5px 22px 0px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03);'
+    ],
     typography: createTypography(),
     palette: {
       primary: {
