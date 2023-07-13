@@ -187,11 +187,12 @@ export const createComponents = (): Components<Theme> => {
     },
     MuiInputBase: {
       styleOverrides: {
-        input: {
+        input: ({theme})=>({
           '&::placeholder': {
-            opacity: 1
+            opacity: 1,
+            color: theme.palette.text.disabled
           }
-        }
+        })
       }
     },
     MuiInput: {
@@ -383,11 +384,6 @@ export const createComponents = (): Components<Theme> => {
           },
           backgroundColor: '#F8F9FA'
         }
-      }
-    },
-    MuiTextField: {
-      defaultProps: {
-        variant: 'filled'
       }
     }
   };
