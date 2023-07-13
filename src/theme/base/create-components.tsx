@@ -1,9 +1,9 @@
-import { inputLabelClasses, tableCellClasses, type Components, createTheme } from '@mui/material';
+import { inputLabelClasses, tableCellClasses, type Components, createTheme, Theme } from '@mui/material';
 
 // Used only to create transitions
 const muiTheme = createTheme();
 
-export const createComponents = (): Components => {
+export const createComponents = (): Components<Theme> => {
   return {
     MuiAvatar: {
       styleOverrides: {
@@ -351,7 +351,7 @@ export const createComponents = (): Components => {
         }
       ],
       styleOverrides: {
-        root: {
+        root: ({theme})=>({
           padding: '15px 16px',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
@@ -360,8 +360,9 @@ export const createComponents = (): Components => {
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
-          }
-        }
+          },
+          borderBottom: `1px solid ${theme.palette.divider}`
+        })
       }
     },
     MuiTableHead: {
