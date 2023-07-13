@@ -376,7 +376,8 @@ export const createComponents = (): Components => {
           [`& .${tableCellClasses.paddingCheckbox}`]: {
             paddingTop: 4,
             paddingBottom: 4
-          }
+          },
+          backgroundColor: '#F8F9FA'
         }
       }
     },
