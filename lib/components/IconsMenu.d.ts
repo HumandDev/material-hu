@@ -1,10 +1,9 @@
+import * as React from 'react';
 type Props = {
     options: {
         onClick: (e?: any) => void;
         label: string;
-        icon?: any;
-        iconIsImage?: boolean;
-        show?: boolean;
+        icon?: React.ReactNode;
         divider?: boolean;
     }[];
 };
