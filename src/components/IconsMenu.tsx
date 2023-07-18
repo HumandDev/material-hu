@@ -6,9 +6,7 @@ type Props = {
   options: {
     onClick: (e?:any)=>void
     label: string
-    icon?: any
-    iconIsImage?: boolean
-    show?: boolean
+    icon?: React.ReactNode
     divider?: boolean
   }[]
 };
@@ -55,23 +53,20 @@ const IconsMenu = ({ options }:Props) => {
           horizontal: 'right',
         }}
       >
-        {options.map((option) => {
-          if (option.show === false) return null;
-          return (
+        {options.map((option) => (
             <div key={option.label}>
               <MenuItem onClick={option.onClick}>
                 {option.icon && (
                   <ListItemIcon>
-                    {!option.iconIsImage && <option.icon size="small" />}
-                    {option.iconIsImage && option.icon}
+                    {option.icon}
                   </ListItemIcon>
                 )}
                 <ListItemText>{option.label}</ListItemText>
               </MenuItem>
               {option.divider && (<Divider />)}
             </div>
-          );
-        })}
+          )
+        )}
       </Menu>
     </>
   );
