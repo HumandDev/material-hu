@@ -60,10 +60,12 @@ const IconsMenu = ({ options }:Props) => {
           return (
             <div key={option.label}>
               <MenuItem onClick={option.onClick}>
-                <ListItemIcon>
-                  {!option.iconIsImage && <option.icon size="small" />}
-                  {option.iconIsImage && option.icon}
-                </ListItemIcon>
+                {option.icon && (
+                  <ListItemIcon>
+                    {!option.iconIsImage && <option.icon size="small" />}
+                    {option.iconIsImage && option.icon}
+                  </ListItemIcon>
+                )}
                 <ListItemText>{option.label}</ListItemText>
               </MenuItem>
               {option.divider && (<Divider />)}
