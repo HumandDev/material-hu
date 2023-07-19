@@ -4,7 +4,7 @@ import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 
 type Props = {
   options: {
-    onClick: (e?:any)=>void
+    onClick: ()=>void
     label: string
     icon?: React.ReactNode
     divider?: boolean
