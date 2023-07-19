@@ -40,7 +40,6 @@ const IconsMenu = ({ options }:Props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        onMouseUp={handleClose}
         MenuListProps={{
           'aria-labelledby': 'button-menu',
         }}
@@ -55,7 +54,7 @@ const IconsMenu = ({ options }:Props) => {
       >
         {options.map((option) => (
             <div key={option.label}>
-              <MenuItem onClick={option.onClick}>
+              <MenuItem onClick={(e) => { e.stopPropagation(); handleClose(e); option.onClick(); }}>
                 {option.icon && (
                   <ListItemIcon>
                     {option.icon}
