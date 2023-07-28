@@ -1,13 +1,11 @@
 import {
-  Avatar,
   Box,
   DialogContentText,
   Paper,
   Typography,
-  Button,
-  alpha,
-  ButtonProps
+  Button
 } from '@mui/material';
+import { type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
 import { ReactNode } from 'react';
 
 type Props = {
@@ -15,7 +13,6 @@ type Props = {
   body?: ReactNode
   primaryButtonProps?: ButtonProps
   secondaryButtonProps?: ButtonProps
-  avatarColor?: string
   Icon?: JSX.Element
 };
 
@@ -23,8 +20,7 @@ const NewModal = ({
   title,
   body,
   primaryButtonProps,
-  secondaryButtonProps,
-  avatarColor = 'error'
+  secondaryButtonProps
 }: Props) => (
   <Paper elevation={12}>
     <Box
