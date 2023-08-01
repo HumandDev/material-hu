@@ -19,3 +19,5 @@ export const useSnackbarUtils = () => {
 
   return { showSnackbar };
 };
+
+export default useSnackbarUtils;
