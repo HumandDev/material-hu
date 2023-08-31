@@ -8,7 +8,7 @@ type Props = {
     label: string
     icon?: React.ReactNode
     divider?: boolean
-    sx?: SxProps
+    textProps?: SxProps
   }[]
 };
 
@@ -61,7 +61,7 @@ const IconsMenu = ({ options }:Props) => {
                     {option.icon}
                   </ListItemIcon>
                 )}
-                <ListItemText sx={{...option.sx}}>{option.label}</ListItemText>
+                <ListItemText sx={{...option.textProps}}>{option.label}</ListItemText>
               </MenuItem>
               {option.divider && (<Divider />)}
             </div>
