@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from '@mui/material';
+import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, SxProps } from '@mui/material';
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
     label: string
     icon?: React.ReactNode
     divider?: boolean
+    sx?: SxProps
   }[]
 };
 
@@ -60,7 +61,7 @@ const IconsMenu = ({ options }:Props) => {
                     {option.icon}
                   </ListItemIcon>
                 )}
-                <ListItemText>{option.label}</ListItemText>
+                <ListItemText sx={{...option.sx}}>{option.label}</ListItemText>
               </MenuItem>
               {option.divider && (<Divider />)}
             </div>
