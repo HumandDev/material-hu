@@ -12,5 +12,5 @@ type Props = UseControllerProps & {
     language: string;
     fontsUrl: string;
 };
-declare function FormRichHU({ editorProps, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, language, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props): import("react/jsx-runtime").JSX.Element;
-export default FormRichHU;
+declare function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, language, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props): import("react/jsx-runtime").JSX.Element;
+export default FormRichEditor;

@@ -37,7 +37,7 @@ const transformPaste = (elem:any) => {
   }
 };
 
-function FormRichHU({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, language, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props) {
+function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, language, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props) {
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
@@ -95,4 +95,4 @@ function FormRichHU({ editorProps, handleBlur, hideModalButtons, simplifyEditor 
   );
 }
 
-export default FormRichHU;
+export default FormRichEditor;
