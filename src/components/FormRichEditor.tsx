@@ -11,7 +11,7 @@ type Props = UseControllerProps & {
   placeholder?: string
   imagesUploadHandler: any
   addVideoEditorPlugin: Function
-  fontsUrl: string
+  tinyKey: string
 };
 
 const transformPaste = (elem:any) => {
@@ -36,7 +36,7 @@ const transformPaste = (elem:any) => {
   }
 };
 
-function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props) {
+function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, imagesUploadHandler, addVideoEditorPlugin, tinyKey, ...props }: Props) {
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
@@ -54,7 +54,7 @@ function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEdi
       toolbar: simplifyEditor ? 'bold italic underline strikethrough | bullist numlist' : `undo redo | bold italic underline forecolor backcolor removeformat | fontfamily fontsize styles | alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent | charmap emoticons${hideModalButtons ? '' : '| anchor link media image videoupload'}| table`,
       font_family_formats: simplifyEditor ? '' : 'Andale Mono=andale mono; Arial=arial; Arial Black=arial black; Book Antiqua=book antiqua; Comic Sans MS=comic sans ms; Courier New=courier new; Georgia=georgia; Helvetica=helvetica; Impact=impact; Ogi Sans=ogilvy sans web; Ogi Serif=ogilvy serif web; Tahoma=tahoma; Terminal=terminal; Times New Roman=times new roman; Trebuchet MS=trebuchet ms; Verdana=verdana; Darker Grotesque=darker grotesque; Work Sans=work sans; Montserrat=montserrat; Abril Fatface=abril fatface; Satisfy=satisfy; Lato=lato; Poppins=poppins; Ludicrous=ludicrous; Nunito=nunito', // custom fonts
       content_style: `
-      @import url(${fontsUrl});
+      @import url(${tinyKey});
       body { font-family: arial; overflow-x: hidden; }
       `,
       toolbar_mode: 'wrap',
@@ -84,7 +84,7 @@ function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEdi
           {...field}
           onEditorChange={onChange}
           {...allEditorProps}
-          apiKey={fontsUrl}
+          apiKey={tinyKey}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
         />

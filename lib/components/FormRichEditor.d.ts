@@ -9,7 +9,7 @@ type Props = UseControllerProps & {
     placeholder?: string;
     imagesUploadHandler: any;
     addVideoEditorPlugin: Function;
-    fontsUrl: string;
+    tinyKey: string;
 };
-declare function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props): import("react/jsx-runtime").JSX.Element;
+declare function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, imagesUploadHandler, addVideoEditorPlugin, tinyKey, ...props }: Props): import("react/jsx-runtime").JSX.Element;
 export default FormRichEditor;
