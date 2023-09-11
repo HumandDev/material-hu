@@ -11,7 +11,6 @@ type Props = UseControllerProps & {
   placeholder?: string
   imagesUploadHandler: any
   addVideoEditorPlugin: Function
-  language: string
   fontsUrl: string
 };
 
@@ -37,7 +36,7 @@ const transformPaste = (elem:any) => {
   }
 };
 
-function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, language, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props) {
+function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, imagesUploadHandler, addVideoEditorPlugin, fontsUrl, ...props }: Props) {
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
