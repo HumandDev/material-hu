@@ -1,5 +1,5 @@
 import { Controller, UseControllerProps } from 'react-hook-form';
-// import i18next from 'i18next';
+import i18next from 'i18next';
 import { Editor, IAllProps } from '@tinymce/tinymce-react';
 
 type Props = UseControllerProps & {
@@ -41,7 +41,7 @@ function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEdi
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
-      language,
+      language: i18next.language,
       menubar: false,
       height: 500,
       elementpath: false,
