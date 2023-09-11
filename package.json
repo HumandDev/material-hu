@@ -37,6 +37,6 @@
     "date-fns": "^2.30.0",
     "i18next": "^21.10.0",
     "notistack": "^2.0.8",
-    "react-hook-form": "^7.46.1"
+    "react-hook-form": "^7.31.3"
   }
 }
