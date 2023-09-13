@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Box, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
 
-type Props = {
+export type CustomStepperProps = {
   steps: {
     label: string
     content?: ReactNode
@@ -26,7 +26,7 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps }:Props) => (
+const CustomStepper = ({ steps, stepperProps }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     {...stepperProps}
