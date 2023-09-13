@@ -29,6 +29,7 @@ const CustomStepConnector = () => (
 const CustomStepper = ({ steps, stepperProps }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
+    orientation='vertical'
     {...stepperProps}
   >
     {steps.map((step) => (
