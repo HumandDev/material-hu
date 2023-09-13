@@ -10,3 +10,4 @@ export { default as NewModal } from './components/NewModal';
 export { default as useSnackbarUtils } from './components/Snackbar';
 export { default as RoundedTabs } from './components/RoundedTabs';
 export { default as FormRichEditor } from './components/FormRichEditor';
+export { default as CustomStepper } from './components/CustomStepper';
