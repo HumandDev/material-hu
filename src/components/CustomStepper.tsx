@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Box, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
+import { Check } from '@mui/icons-material';
 
 export type CustomStepperProps = {
   steps: {
@@ -10,16 +11,18 @@ export type CustomStepperProps = {
 };
 
 const CUSTOM_STEP_ICON_SIZE = 24;
-const CustomStepIcon = ({ active }:StepIconProps) => (
+const CustomStepIcon = ({ active, completed }:StepIconProps) => (
   <Box sx={{
     borderRadius: 3,
     width: CUSTOM_STEP_ICON_SIZE,
     height: CUSTOM_STEP_ICON_SIZE,
     border: '2px solid',
     borderColor: active ? 'primary.main' : 'text.disabled',
+    backgroundColor: completed ? 'primary.main' : 'transparent',
     mr: 3
-  }}
-  />
+  }}>
+    {completed && <Check/>}
+    </Box>
 );
 
 const CustomStepConnector = () => (
