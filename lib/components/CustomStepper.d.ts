@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { StepperProps } from '@mui/material';
-type Props = {
+export type CustomStepperProps = {
     steps: {
         label: string;
         content?: ReactNode;
     }[];
     stepperProps?: StepperProps;
 };
-declare const CustomStepper: ({ steps, stepperProps }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const CustomStepper: ({ steps, stepperProps }: CustomStepperProps) => import("react/jsx-runtime").JSX.Element;
 export default CustomStepper;
