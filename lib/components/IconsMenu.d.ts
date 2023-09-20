@@ -7,6 +7,7 @@ type Props = {
         icon?: React.ReactNode;
         divider?: boolean;
         textProps?: SxProps;
+        color?: string;
     }[];
 };
 declare const IconsMenu: ({ options }: Props) => import("react/jsx-runtime").JSX.Element;
