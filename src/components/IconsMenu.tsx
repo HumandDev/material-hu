@@ -9,6 +9,7 @@ type Props = {
     icon?: React.ReactNode
     divider?: boolean
     textProps?: SxProps
+    color?: string
   }[]
 };
 
@@ -54,18 +55,18 @@ const IconsMenu = ({ options }:Props) => {
         }}
       >
         {options.map((option) => (
-            <div key={option.label}>
-              <MenuItem onClick={(e) => { e.stopPropagation(); handleClose(e); option.onClick(); }}>
-                {option.icon && (
-                  <ListItemIcon>
+          <div key={option.label}>
+            <MenuItem onClick={(e) => { e.stopPropagation(); handleClose(e); option.onClick(); }}>
+              {option.icon && (
+                  <ListItemIcon sx={{ '&>*': { color: option.color } }}>
                     {option.icon}
                   </ListItemIcon>
-                )}
-                <ListItemText sx={{...option.textProps}}>{option.label}</ListItemText>
-              </MenuItem>
-              {option.divider && (<Divider />)}
-            </div>
-          )
+              )}
+              <ListItemText sx={{...option.textProps, color: option.color}}>{option.label}</ListItemText>
+            </MenuItem>
+            {option.divider && (<Divider />)}
+          </div>
+        )
         )}
       </Menu>
     </>
