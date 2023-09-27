@@ -50,5 +50,18 @@ interface ThemeConfig {
     direction?: Direction;
     paletteMode?: PaletteMode;
 }
+declare module '@mui/material/styles' {
+    interface Palette {
+        humand: Palette['primary'];
+    }
+    interface PaletteOptions {
+        humand?: PaletteOptions['primary'];
+    }
+}
+declare module '@mui/material/Button' {
+    interface ButtonPropsColorOverrides {
+        humand: true;
+    }
+}
 export declare const createNewTheme: (config?: ThemeConfig) => Theme;
 export {};

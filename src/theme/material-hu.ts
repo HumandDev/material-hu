@@ -62,6 +62,22 @@ interface ThemeConfig {
   paletteMode?: PaletteMode;
 }
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    humand: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    humand?: PaletteOptions['primary'];
+  }
+}
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    humand: true;
+  }
+}
+
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {
   
   let theme = createMuiTheme(
@@ -71,6 +87,19 @@ export const createNewTheme = (config: ThemeConfig = {}): Theme => {
       color: config.colorPreset
     })
   );
+
+  theme = createMuiTheme(theme, {
+    // Custom colors created with augmentColor go here
+    palette: {
+      humand: theme.palette.augmentColor({
+        color: {
+          main: '#1976D2',
+        },
+        name: 'humand',
+      }),
+    },
+  });
+
 
 
   if (config.responsiveFontSizes) {
