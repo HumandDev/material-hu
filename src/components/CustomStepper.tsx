@@ -44,17 +44,11 @@ const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
   >
     {steps.map((step, index) => (
       <Stack 
-        onClick={() => {
-          if(setStep){
-          setStep(index);
-          console.log(index);
-        }else{
-          console.log('no')
-        }
-      }} 
+        onClick={() => setStep ? setStep(index) : null} 
         sx={{ cursor : setStep ? 'pointer' : 'default' }}
+        key={step.label}
       >
-        <Step key={step.label}>
+        <Step>
           <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
           {step.content && <StepContent>{step.content}</StepContent>}
         </Step>
