@@ -6,7 +6,7 @@ export type CustomStepperProps = {
         content?: ReactNode;
     }[];
     stepperProps?: StepperProps;
-    onClick?: () => void;
+    setStep?: Function;
 };
-declare const CustomStepper: ({ steps, stepperProps, onClick }: CustomStepperProps) => import("react/jsx-runtime").JSX.Element;
+declare const CustomStepper: ({ steps, stepperProps, setStep }: CustomStepperProps) => import("react/jsx-runtime").JSX.Element;
 export default CustomStepper;

@@ -8,7 +8,7 @@ export type CustomStepperProps = {
     content?: ReactNode
   }[]
   stepperProps?: StepperProps
-  onClick?: ()=>void
+  setStep?: Function
 };
 
 const CUSTOM_STEP_ICON_SIZE = 24;
@@ -36,14 +36,14 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps, onClick }:CustomStepperProps) => (
+const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     orientation='vertical'
     {...stepperProps}
   >
-    {steps.map((step) => (
-      <Stack onClick={onClick}>
+    {steps.map((step, index) => (
+      <Stack onClick={() => setStep ? setStep(index) : null}>
         <Step key={step.label}>
           <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
           {step.content && <StepContent>{step.content}</StepContent>}
