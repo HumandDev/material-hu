@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
+import { Box, Stack, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
 import { Check as CheckIcon } from '@mui/icons-material';
 
 export type CustomStepperProps = {
@@ -8,6 +8,7 @@ export type CustomStepperProps = {
     content?: ReactNode
   }[]
   stepperProps?: StepperProps
+  onClick?: ()=>void
 };
 
 const CUSTOM_STEP_ICON_SIZE = 24;
@@ -35,17 +36,19 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps }:CustomStepperProps) => (
+const CustomStepper = ({ steps, stepperProps, onClick }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     orientation='vertical'
     {...stepperProps}
   >
     {steps.map((step) => (
-      <Step key={step.label}>
-        <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
-        {step.content && <StepContent>{step.content}</StepContent>}
-      </Step>
+      <Stack onClick={onClick}>
+        <Step key={step.label}>
+          <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
+          {step.content && <StepContent>{step.content}</StepContent>}
+        </Step>
+      </Stack>
     ))}
   </Stepper>
 );
