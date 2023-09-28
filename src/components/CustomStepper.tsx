@@ -18,7 +18,7 @@ const CustomStepIcon = ({ active, completed }:StepIconProps) => (
     width: CUSTOM_STEP_ICON_SIZE,
     height: CUSTOM_STEP_ICON_SIZE,
     border: '2px solid',
-    borderColor: active ? 'primary.main' : 'text.disabled',
+    borderColor: active || completed ? 'primary.main' : 'text.disabled',
     backgroundColor: completed ? 'primary.main' : 'none',
     mr: 3
   }}
