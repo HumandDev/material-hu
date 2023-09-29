@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Stack, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
+import { Box, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
 import { Check as CheckIcon } from '@mui/icons-material';
 
 export type CustomStepperProps = {
@@ -20,8 +20,7 @@ const CustomStepIcon = ({ active, completed }:StepIconProps) => (
     border: '2px solid',
     borderColor: active || completed ? 'primary.main' : 'text.disabled',
     backgroundColor: completed ? 'primary.main' : 'none',
-    mr: 3,
-    cursor: 'pointer'
+    mr: 3
   }}
   >
     {completed && (
@@ -41,11 +40,13 @@ const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     orientation="vertical"
+    nonLinear
     {...stepperProps}
   >
     {steps.map((step, index) => (
       <Step
         key={step.label}
+        completed={stepperProps?.activeStep ? stepperProps.activeStep > index : false}
         onClick={() => (setStep ? setStep(index) : null)}
         sx={{ cursor: setStep ? 'pointer' : 'default' }}
       >
