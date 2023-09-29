@@ -20,7 +20,8 @@ const CustomStepIcon = ({ active, completed }:StepIconProps) => (
     border: '2px solid',
     borderColor: active || completed ? 'primary.main' : 'text.disabled',
     backgroundColor: completed ? 'primary.main' : 'none',
-    mr: 3
+    mr: 3,
+    cursor: 'pointer'
   }}
   >
     {completed && (
@@ -39,18 +40,17 @@ const CustomStepConnector = () => (
 const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
-    orientation='vertical'
+    orientation="vertical"
     {...stepperProps}
   >
     {steps.map((step, index) => (
-      <Step key={step.label}>
-        <Stack 
-          onClick={() => setStep ? setStep(index) : null} 
-          sx={{ cursor : setStep ? 'pointer' : 'default' }}
-        >
-            <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
-            {step.content && <StepContent>{step.content}</StepContent>}
-        </Stack>
+      <Step
+        key={step.label}
+        onClick={() => (setStep ? setStep(index) : null)}
+        sx={{ cursor: setStep ? 'pointer' : 'default' }}
+      >
+        <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
+        {step.content && <StepContent>{step.content}</StepContent>}
       </Step>
     ))}
   </Stepper>
