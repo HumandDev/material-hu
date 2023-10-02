@@ -40,7 +40,7 @@ const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) 
   <Stepper
     connector={<CustomStepConnector />}
     orientation="vertical"
-    nonLinear
+    nonLinear={!!onStepClick}
     {...stepperProps}
   >
     {steps.map((step, index) => (
