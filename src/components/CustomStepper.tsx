@@ -8,7 +8,7 @@ export type CustomStepperProps = {
     content?: ReactNode
   }[]
   stepperProps?: StepperProps
-  setStep?: Function
+  onStepClick?: Function
 };
 
 const CUSTOM_STEP_ICON_SIZE = 24;
@@ -36,7 +36,7 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
+const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     orientation="vertical"
@@ -47,8 +47,8 @@ const CustomStepper = ({ steps, stepperProps, setStep }:CustomStepperProps) => (
       <Step
         key={step.label}
         completed={stepperProps?.activeStep ? stepperProps.activeStep > index : false}
-        onClick={() => (setStep ? setStep(index) : null)}
-        sx={{ cursor: setStep ? 'pointer' : 'default' }}
+        onClick={() => (onStepClick ? onStepClick(index) : null)} // Using onClick in Step instead of StepButton by style: button implies an unwanted effect
+        sx={{ cursor: onStepClick ? 'pointer' : 'default' }}
       >
         <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
         {step.content && <StepContent>{step.content}</StepContent>}
