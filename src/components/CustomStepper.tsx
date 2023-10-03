@@ -8,6 +8,7 @@ export type CustomStepperProps = {
     content?: ReactNode
   }[]
   stepperProps?: StepperProps
+  onStepClick?: Function
 };
 
 const CUSTOM_STEP_ICON_SIZE = 24;
@@ -17,7 +18,7 @@ const CustomStepIcon = ({ active, completed }:StepIconProps) => (
     width: CUSTOM_STEP_ICON_SIZE,
     height: CUSTOM_STEP_ICON_SIZE,
     border: '2px solid',
-    borderColor: active ? 'primary.main' : 'text.disabled',
+    borderColor: active || completed ? 'primary.main' : 'text.disabled',
     backgroundColor: completed ? 'primary.main' : 'none',
     mr: 3
   }}
@@ -35,14 +36,20 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps }:CustomStepperProps) => (
+const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
-    orientation='vertical'
+    orientation="vertical"
+    nonLinear={!!onStepClick}
     {...stepperProps}
   >
-    {steps.map((step) => (
-      <Step key={step.label}>
+    {steps.map((step, index) => (
+      <Step
+        key={step.label}
+        completed={stepperProps?.activeStep ? stepperProps.activeStep > index : false}
+        onClick={() => (onStepClick ? onStepClick(index) : null)} // Using onClick in Step instead of StepButton by style: button implies an unwanted effect
+        sx={{ cursor: onStepClick ? 'pointer' : 'default' }}
+      >
         <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
         {step.content && <StepContent>{step.content}</StepContent>}
       </Step>
