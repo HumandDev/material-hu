@@ -76,9 +76,6 @@ export const createOptions = (config: Config): ThemeOptions => {
       warning: {
         contrastText: '#ffffff',
         main: '#ff9800'
-      },
-      background: {
-        paper: '#F8F9FA'
       }
     },
   };
