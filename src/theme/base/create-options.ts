@@ -78,7 +78,7 @@ export const createOptions = (config: Config): ThemeOptions => {
         main: '#ff9800'
       },
       background: {
-        default: '#F8F9FA'
+        paper: '#F8F9FA'
       }
     },
   };
