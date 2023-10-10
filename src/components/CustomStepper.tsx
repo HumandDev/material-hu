@@ -47,8 +47,7 @@ const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) 
     {steps.map((step, index) => (
       <Step
         key={step.label}
-        // completed={stepperProps?.activeStep ? stepperProps.activeStep > index : false}
-        completed={step.completed}
+        completed={step.completed} // Setting manually completed when nonLinear
         onClick={() => (onStepClick ? onStepClick(index) : null)} // Using onClick in Step instead of StepButton by style: button implies an unwanted effect
         sx={{ cursor: onStepClick ? 'pointer' : 'default' }}
       >
