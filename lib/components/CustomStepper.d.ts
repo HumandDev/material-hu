@@ -4,6 +4,7 @@ export type CustomStepperProps = {
     steps: {
         label: string;
         content?: ReactNode;
+        completed?: boolean;
     }[];
     stepperProps?: StepperProps;
     onStepClick?: Function;
