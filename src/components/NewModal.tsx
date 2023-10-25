@@ -5,26 +5,28 @@ import {
   DialogTitle,
   IconButton,
   DialogContent,
-  DialogActions
+  DialogActions,
+  DialogContentText
 } from '@mui/material';
 import { type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
-import { CloseOutlined as CloseOutlinedIcon } from '@mui/icons-material';
+import { CloseOutlined as CloseOutlinedIcon, SvgIconComponent } from '@mui/icons-material';
 import { ReactNode } from 'react';
 
 type Props = {
   title: ReactNode
   body?: ReactNode
+  bodyText?: string
   primaryButtonProps?: ButtonProps
   secondaryButtonProps?: ButtonProps
-  Icon?: JSX.Element
   onClose?: ()=>void
-  titleIcon?: JSX.Element
+  TitleIcon?: SvgIconComponent
 };
 
 const NewModal = ({
   title,
   body,
-  titleIcon,
+  bodyText,
+  TitleIcon,
   primaryButtonProps,
   secondaryButtonProps,
   onClose
@@ -35,7 +37,7 @@ const NewModal = ({
       sx={{ alignItems: 'center' }}
       gap={1}
     >
-      {titleIcon}
+      {TitleIcon && <TitleIcon color='humand' />}
       <DialogTitle
         variant="h5"
         sx={{ p: 0, mr: 'auto' }}
@@ -45,12 +47,17 @@ const NewModal = ({
       <IconButton
         aria-label="close"
         onClick={onClose}
-        sx={{ p: 0 }}
+        sx={{ p: 0, alignSelf: 'start' }}
       >
         <CloseOutlinedIcon />
       </IconButton>
     </Stack>
-    <DialogContent>
+    <DialogContent sx={{ px: 0 }}>
+      {bodyText && (
+      <DialogContentText>
+        {bodyText}
+      </DialogContentText>
+      )}
       {body}
     </DialogContent>
     <DialogActions sx={{ p: 0 }}>

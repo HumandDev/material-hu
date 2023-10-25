@@ -78,6 +78,12 @@ declare module '@mui/material/Button' {
   }
 }
 
+declare module '@mui/material/SvgIcon' {
+  interface SvgIconPropsColorOverrides {
+    humand: true;
+  }
+}
+
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {
   
   let theme = createMuiTheme(
