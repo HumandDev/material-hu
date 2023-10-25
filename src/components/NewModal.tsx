@@ -40,7 +40,7 @@ const NewModal = ({
       {TitleIcon && <TitleIcon color='humand' />}
       <DialogTitle
         variant="h5"
-        sx={{ p: 0, mr: 'auto' }}
+        sx={{ p: 0, mr: 'auto', flexShrink: 1 }}
       >
         {title}
       </DialogTitle>
