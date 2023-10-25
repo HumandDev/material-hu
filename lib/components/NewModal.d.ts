@@ -6,6 +6,8 @@ type Props = {
     primaryButtonProps?: ButtonProps;
     secondaryButtonProps?: ButtonProps;
     Icon?: JSX.Element;
+    onClose?: () => void;
+    titleIcon?: JSX.Element;
 };
-declare const NewModal: ({ title, body, primaryButtonProps, secondaryButtonProps }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const NewModal: ({ title, body, titleIcon, primaryButtonProps, secondaryButtonProps, onClose }: Props) => import("react/jsx-runtime").JSX.Element;
 export default NewModal;
