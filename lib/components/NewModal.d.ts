@@ -4,11 +4,11 @@ import { ReactNode } from 'react';
 type Props = {
     title: ReactNode;
     body?: ReactNode;
-    bodyText?: string;
+    textBody?: string;
     primaryButtonProps?: ButtonProps;
     secondaryButtonProps?: ButtonProps;
     onClose?: () => void;
     TitleIcon?: SvgIconComponent;
 };
-declare const NewModal: ({ title, body, bodyText, TitleIcon, primaryButtonProps, secondaryButtonProps, onClose }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const NewModal: ({ title, body, textBody, TitleIcon, primaryButtonProps, secondaryButtonProps, onClose }: Props) => import("react/jsx-runtime").JSX.Element;
 export default NewModal;

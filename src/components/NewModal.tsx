@@ -15,7 +15,7 @@ import { ReactNode } from 'react';
 type Props = {
   title: ReactNode
   body?: ReactNode
-  bodyText?: string
+  textBody?: string
   primaryButtonProps?: ButtonProps
   secondaryButtonProps?: ButtonProps
   onClose?: ()=>void
@@ -25,37 +25,42 @@ type Props = {
 const NewModal = ({
   title,
   body,
-  bodyText,
+  textBody,
   TitleIcon,
   primaryButtonProps,
   secondaryButtonProps,
   onClose
 }: Props) => (
-  <Box sx={{ px: 3, py: 2 }}>
+  <Box sx={{ px: 4, pb: 4, pt: 3 }}>
     <Stack
       direction="row"
-      sx={{ alignItems: 'center' }}
+      sx={{ alignItems: 'start' }}
       gap={1}
     >
-      {TitleIcon && <TitleIcon color='humand' />}
+      {TitleIcon && (
+      <TitleIcon
+        sx={{ mt: '2px' }}
+        color="humand"
+      />
+      )}
       <DialogTitle
         variant="h5"
-        sx={{ p: 0, mr: 'auto', flexShrink: 1 }}
+        sx={{ p: 0, mr: 'auto', flexShrink: 1, alignSelf: 'center' }}
       >
         {title}
       </DialogTitle>
       <IconButton
         aria-label="close"
         onClick={onClose}
-        sx={{ p: 0, alignSelf: 'start' }}
+        sx={{ p: 0 }}
       >
         <CloseOutlinedIcon />
       </IconButton>
     </Stack>
     <DialogContent sx={{ px: 0 }}>
-      {bodyText && (
+      {textBody && (
       <DialogContentText>
-        {bodyText}
+        {textBody}
       </DialogContentText>
       )}
       {body}

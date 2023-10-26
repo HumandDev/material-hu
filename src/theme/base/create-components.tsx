@@ -295,6 +295,13 @@ export const createComponents = (): Components<Theme> => {
         }
       }
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: '20px'
+        }
+      }
+    },
     MuiPopover: {
       defaultProps: {
         elevation: 16
