@@ -4,6 +4,26 @@ import { inputLabelClasses, tableCellClasses, type Components, createTheme, Them
 const muiTheme = createTheme();
 
 export const createComponents = (): Components<Theme> => {
+
+  const alertColors = {
+    success: {
+      icon: '#14B89E',
+      background: '#E8F8F5',
+    },
+    error: {
+      icon: '#FF0000',
+      background: '#FFCCCC',
+    },
+    info: {
+      icon: '#0000FF',
+      background: '#CCDDFF',
+    },
+    warning: {
+      icon: '#FFA500',
+      background: '#FFE5CC',
+    },
+  };
+
   return {
     MuiAvatar: {
       styleOverrides: {
@@ -392,7 +412,26 @@ export const createComponents = (): Components<Theme> => {
           backgroundColor: '#F8F9FA'
         }
       }
-    }
+    },
+    MuiAlert: {
+      styleOverrides: {
+        icon: {
+          color: alertColors.success.icon,
+        },
+        standardSuccess: {
+          backgroundColor: alertColors.success.background,
+        },
+        standardError: {
+          backgroundColor: alertColors.error.background,
+        },
+        standardInfo: {
+          backgroundColor: alertColors.info.background,
+        },
+        standardWarning: {
+          backgroundColor: alertColors.warning.background,
+        }
+      },
+    },
   };
 };
 
