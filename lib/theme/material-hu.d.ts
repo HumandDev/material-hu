@@ -68,5 +68,10 @@ declare module '@mui/material/SvgIcon' {
         humand: true;
     }
 }
+declare module '@mui/material/IconButton' {
+    interface IconButtonPropsColorOverrides {
+        humand: true;
+    }
+}
 export declare const createNewTheme: (config?: ThemeConfig) => Theme;
 export {};
