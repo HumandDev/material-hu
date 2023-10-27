@@ -417,18 +417,27 @@ export const createComponents = (): Components<Theme> => {
       styleOverrides: {
         standardSuccess: {
           backgroundColor: alertColors.success.background,
-          [`& .${alertClasses.icon}`]: {
+          '& .MuiAlert-icon': {
             color: alertColors.success.icon
           }
         },
         standardError: {
           backgroundColor: alertColors.error.background,
+          '& .MuiAlert-icon': {
+            color: alertColors.error.icon
+          }
         },
         standardInfo: {
           backgroundColor: alertColors.info.background,
+          '& .MuiAlert-icon': {
+            color: alertColors.info.icon
+          }
         },
         standardWarning: {
           backgroundColor: alertColors.warning.background,
+          '& .MuiAlert-icon': {
+            color: alertColors.warning.icon
+          }
         }
       },
     },
