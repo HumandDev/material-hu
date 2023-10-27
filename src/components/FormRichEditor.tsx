@@ -12,6 +12,7 @@ type Props = UseControllerProps & {
   imagesUploadHandler: any
   addVideoEditorPlugin: Function
   tinyKey: string
+  fontsURL: string
 };
 
 const transformPaste = (elem:any) => {
@@ -36,7 +37,7 @@ const transformPaste = (elem:any) => {
   }
 };
 
-function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, imagesUploadHandler, addVideoEditorPlugin, tinyKey, ...props }: Props) {
+function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEditor = false, placeholder, disabled = false, imagesUploadHandler, addVideoEditorPlugin, tinyKey, fontsURL, ...props }: Props) {
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
@@ -52,9 +53,9 @@ function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEdi
       max_height: simplifyEditor ? 180 : undefined,
       plugins: simplifyEditor ? 'lists' : 'image media lists link charmap emoticons table anchor videoupload',
       toolbar: simplifyEditor ? 'bold italic underline strikethrough | bullist numlist' : `undo redo | bold italic underline forecolor backcolor removeformat | fontfamily fontsize styles | alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent | charmap emoticons${hideModalButtons ? '' : '| anchor link media image videoupload'}| table`,
-      font_family_formats: simplifyEditor ? '' : 'Andale Mono=andale mono; Arial=arial; Arial Black=arial black; Book Antiqua=book antiqua; Comic Sans MS=comic sans ms; Courier New=courier new; Georgia=georgia; Helvetica=helvetica; Impact=impact; Ogi Sans=ogilvy sans web; Ogi Serif=ogilvy serif web; Tahoma=tahoma; Terminal=terminal; Times New Roman=times new roman; Trebuchet MS=trebuchet ms; Verdana=verdana; Darker Grotesque=darker grotesque; Work Sans=work sans; Montserrat=montserrat; Abril Fatface=abril fatface; Satisfy=satisfy; Lato=lato; Poppins=poppins; Ludicrous=ludicrous; Nunito=nunito', // custom fonts
+      font_family_formats: simplifyEditor ? '' : 'Andale Mono=andale mono; Arial=arial; Arial Black=arial black; Book Antiqua=book antiqua; Comic Sans MS=comic sans ms; Courier New=courier new; Georgia=georgia; Helvetica=helvetica; Impact=impact; Ogi Sans=ogilvy sans web; Ogi Serif=ogilvy serif web; Tahoma=tahoma; Terminal=terminal; Times New Roman=times new roman; Trebuchet MS=trebuchet ms; Verdana=verdana; Darker Grotesque=darker grotesque; Work Sans=work sans; Montserrat=montserrat; Abril Fatface=abril fatface; Satisfy=satisfy; Lato=lato; Poppins=poppins; Ludicrous=ludicrous; Nunito=nunito; MavenPro=maven pro', // custom fonts
       content_style: `
-      @import url(${tinyKey});
+      @import url(${fontsURL});
       body { font-family: arial; overflow-x: hidden; }
       `,
       toolbar_mode: 'wrap',
