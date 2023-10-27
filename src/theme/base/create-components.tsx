@@ -1,4 +1,4 @@
-import { inputLabelClasses, tableCellClasses, type Components, createTheme, Theme } from '@mui/material';
+import { inputLabelClasses, tableCellClasses, alertClasses, type Components, createTheme, Theme } from '@mui/material';
 
 // Used only to create transitions
 const muiTheme = createTheme();
@@ -415,11 +415,11 @@ export const createComponents = (): Components<Theme> => {
     },
     MuiAlert: {
       styleOverrides: {
-        icon: {
-          color: alertColors.success.icon,
-        },
         standardSuccess: {
           backgroundColor: alertColors.success.background,
+          [`& .${alertClasses.icon}`]: {
+            color: alertColors.success.icon
+          }
         },
         standardError: {
           backgroundColor: alertColors.error.background,
