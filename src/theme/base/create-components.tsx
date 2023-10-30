@@ -1,9 +1,29 @@
-import { inputLabelClasses, tableCellClasses, type Components, createTheme, Theme } from '@mui/material';
+import { inputLabelClasses, tableCellClasses, alertClasses, type Components, createTheme, Theme } from '@mui/material';
 
 // Used only to create transitions
 const muiTheme = createTheme();
 
 export const createComponents = (): Components<Theme> => {
+
+  const alertColors = {
+    success: {
+      icon: '#14B89E',
+      background: '#E8F8F5',
+    },
+    error: {
+      icon: '#F04339',
+      background: '#FEE4E2',
+    },
+    info: {
+      icon: '#01AED4',
+      background: '#D0F9FE',
+    },
+    warning: {
+      icon: '#F79007',
+      background: '#FDEAD7',
+    },
+  };
+
   return {
     MuiAvatar: {
       styleOverrides: {
@@ -392,7 +412,35 @@ export const createComponents = (): Components<Theme> => {
           backgroundColor: '#F8F9FA'
         }
       }
-    }
+    },
+    MuiAlert: {
+      styleOverrides: {
+        standardSuccess: {
+          backgroundColor: alertColors.success.background,
+          [`& .${alertClasses.icon}`]: {
+            color: alertColors.success.icon
+          }
+        },
+        standardError: {
+          backgroundColor: alertColors.error.background,
+          [`& .${alertClasses.icon}`]: {
+            color: alertColors.error.icon
+          }
+        },
+        standardInfo: {
+          backgroundColor: alertColors.info.background,
+          [`& .${alertClasses.icon}`]: {
+            color: alertColors.info.icon
+          }
+        },
+        standardWarning: {
+          backgroundColor: alertColors.warning.background,
+          [`& .${alertClasses.icon}`]: {
+            color: alertColors.warning.icon
+          }
+        }
+      },
+    },
   };
 };
 
