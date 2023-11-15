@@ -13,16 +13,26 @@ export type StepType = {
 export type HorizontalStepperProps = StepperProps & {
     steps: StepType[];
     disabled?: boolean;
-    onNext?: () => void;
-    disabledNext?: boolean;
-    onBack?: () => void;
-    disabledBack?: boolean;
-    onFinish?: () => void;
-    disabledFinish?: boolean;
-    getStepStateLabel?: (step: number) => string | null;
-    getBackLabel?: (step: StepType) => string | null;
-    getNextLabel?: (step: StepType) => string | null;
-    finishLabel?: string;
+    backButton?: {
+        onClick?: () => void;
+        getLabel?: (step: StepType) => string | null;
+        disabled?: boolean;
+    };
+    nextButton?: {
+        onClick?: () => void;
+        getLabel?: (step: StepType) => string | null;
+        disabled?: boolean;
+    };
+    finishButton?: {
+        onClick?: () => void;
+        label?: string;
+        disabled?: boolean;
+    };
+    stateLabels?: {
+        active?: string;
+        completed?: string;
+        pending?: string;
+    };
 };
 export declare const HorizontalStepper: FC<HorizontalStepperProps>;
 export default HorizontalStepper;
