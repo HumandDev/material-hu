@@ -206,7 +206,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
             onClick={backButton.onClick}
             disabled={disabled || backButton.disabled}
           >
-            {backButton.getLabel && backButton.getLabel(prevStep)}
+            {backButton.getLabel?.(prevStep)}
           </Button>
         )}
         {!!nextStep && !!nextButton && (
@@ -217,7 +217,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
             disabled={disabled || nextButton.disabled}
             sx={{ ml: 'auto' }}
           >
-            {nextButton.getLabel && nextButton.getLabel(nextStep)}
+            {nextButton.getLabel?.(nextStep)}
           </Button>
         )}
         {!nextStep && !!finishButton && (
