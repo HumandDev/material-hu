@@ -35,10 +35,12 @@
     "@mui/x-date-pickers": "^6.9.1",
     "@tinymce/tinymce-react": "^4.3.0",
     "date-fns": "^2.30.0",
-    "notistack": "^3.0.1"
+    "notistack": "^3.0.1",
+    "react-dropzone": "^14.2.3"
   },
   "peerDependencies": {
     "i18next": "^21.3.1",
+    "react-i18next": "^11.13.0",
     "react-hook-form": "^7.31.3"
   }
 }
