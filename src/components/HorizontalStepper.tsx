@@ -28,16 +28,26 @@ export type StepType = {
 export type HorizontalStepperProps = StepperProps & {
   steps: StepType[];
   disabled?: boolean;
-  onNext?: () => void;
-  disabledNext?: boolean;
-  onBack?: () => void;
-  disabledBack?: boolean;
-  onFinish?: () => void;
-  disabledFinish?: boolean;
-  getStepStateLabel?: (step: number) => string | null;
-  getBackLabel?: (step: StepType) => string | null;
-  getNextLabel?: (step: StepType) => string | null;
-  finishLabel?: string;
+  backButton?: {
+    onClick?: () => void;
+    getLabel?: (step: StepType) => string | null;
+    disabled?: boolean;
+  };
+  nextButton?: {
+    onClick?: () => void;
+    getLabel?: (step: StepType) => string | null;
+    disabled?: boolean;
+  };
+  finishButton?: {
+    onClick?: () => void;
+    label?: string;
+    disabled?: boolean;
+  };
+  stateLabels?: {
+    active?: string;
+    completed?: string;
+    pending?: string;
+  };
 };
 
 export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
@@ -45,16 +55,14 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
     steps,
     activeStep = 0,
     disabled = false,
-    onNext = () => null,
-    disabledNext = false,
-    onBack = () => null,
-    disabledBack = false,
-    onFinish = () => null,
-    disabledFinish = false,
-    getStepStateLabel = () => null,
-    getBackLabel = () => null,
-    getNextLabel = () => null,
-    finishLabel = null,
+    finishButton,
+    backButton,
+    nextButton,
+    stateLabels = {
+      active: '',
+      completed: '',
+      pending: '',
+    },
     ...stepperProps
   } = props;
 
@@ -64,7 +72,10 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
 
   const getStepState = (step: number) => {
     if (!validStep(step)) return null;
-    return getStepStateLabel(step);
+
+    if (step === activeStep) return stateLabels.active;
+    if (step < activeStep) return stateLabels.completed;
+    return stateLabels.pending;
   };
 
   const getStepIcon = (step: number) => {
@@ -187,37 +198,37 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
         maxWidth="md"
         flexDirection="row"
         py={2}
-        sx={{ backgroundColod: 'background.default' }}
+        sx={{ backgroundColor: 'background.default' }}
       >
-        {!!prevStep && (
+        {!!prevStep && !!backButton && (
           <Button
             id="horizontal-stepper-back-button"
-            onClick={onBack}
-            disabled={disabled || disabledBack}
+            onClick={backButton.onClick}
+            disabled={disabled || backButton.disabled}
           >
-            {getBackLabel(prevStep)}
+            {backButton.getLabel && backButton.getLabel(prevStep)}
           </Button>
         )}
-        {!!nextStep && (
+        {!!nextStep && !!nextButton && (
           <Button
             id="horizontal-stepper-next-button"
             variant="contained"
-            onClick={onNext}
-            disabled={disabled || disabledNext}
+            onClick={nextButton.onClick}
+            disabled={disabled || nextButton.disabled}
             sx={{ ml: 'auto' }}
           >
-            {getNextLabel(nextStep)}
+            {nextButton.getLabel && nextButton.getLabel(nextStep)}
           </Button>
         )}
-        {!nextStep && (
+        {!nextStep && !!finishButton && (
           <Button
             id="horizontal-stepper-finish-button"
             variant="contained"
-            onClick={onFinish}
-            disabled={disabled || disabledFinish}
+            onClick={finishButton.onClick}
+            disabled={disabled || finishButton.disabled}
             sx={{ ml: 'auto' }}
           >
-            {finishLabel}
+            {finishButton.label}
           </Button>
         )}
       </Stack>
