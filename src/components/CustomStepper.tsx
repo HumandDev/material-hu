@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Box, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps } from '@mui/material';
+import { Box, ListItemButton, Step, StepConnector, StepContent, StepIconProps, StepLabel, Stepper, StepperProps, Typography } from '@mui/material';
 import { Check as CheckIcon } from '@mui/icons-material';
 
 export type CustomStepperProps = {
@@ -7,7 +7,9 @@ export type CustomStepperProps = {
     label: string
     content?: ReactNode
     completed?: boolean
+    substeps?: { label:string }[]
   }[]
+  activeSubstep?: number
   stepperProps?: StepperProps
   onStepClick?: Function
 };
@@ -37,7 +39,7 @@ const CustomStepConnector = () => (
   <StepConnector sx={{ '.MuiStepConnector-line': { borderColor: 'transparent' } }} />
 );
 
-const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) => (
+const CustomStepper = ({ steps, stepperProps, onStepClick, activeSubstep }:CustomStepperProps) => (
   <Stepper
     connector={<CustomStepConnector />}
     orientation="vertical"
@@ -53,6 +55,22 @@ const CustomStepper = ({ steps, stepperProps, onStepClick }:CustomStepperProps) 
       >
         <StepLabel StepIconComponent={CustomStepIcon}>{step.label}</StepLabel>
         {step.content && <StepContent>{step.content}</StepContent>}
+        {step.substeps && (stepperProps?.activeStep === index) && step.substeps.map((sub, i) => (
+          <ListItemButton
+            key={sub.label}
+            sx={{ pl: 1 }}
+          >
+            <p style={{ visibility: activeSubstep === i ? 'inherit' : 'hidden', fontSize: '16px', marginRight: '42px', color: 'primary' }}>
+              •
+            </p>
+            <Typography
+              variant="body2"
+              color={activeSubstep === i ? 'text.primary' : 'text.secondary'}
+            >
+              {sub.label}
+            </Typography>
+          </ListItemButton>
+        ))}
       </Step>
     ))}
   </Stepper>
