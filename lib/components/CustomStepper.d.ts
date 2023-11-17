@@ -5,9 +5,13 @@ export type CustomStepperProps = {
         label: string;
         content?: ReactNode;
         completed?: boolean;
+        substeps?: {
+            label: string;
+        }[];
     }[];
+    activeSubstep?: number;
     stepperProps?: StepperProps;
     onStepClick?: Function;
 };
-declare const CustomStepper: ({ steps, stepperProps, onStepClick }: CustomStepperProps) => import("react/jsx-runtime").JSX.Element;
+declare const CustomStepper: ({ steps, stepperProps, onStepClick, activeSubstep }: CustomStepperProps) => import("react/jsx-runtime").JSX.Element;
 export default CustomStepper;
