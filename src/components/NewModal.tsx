@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Stack,
   DialogTitle,
   IconButton,
@@ -8,7 +7,7 @@ import {
   DialogActions,
   DialogContentText
 } from '@mui/material';
-import { type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
+import { default as Button, type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
 import { CloseOutlined as CloseOutlinedIcon, SvgIconComponent } from '@mui/icons-material';
 import { ReactNode } from 'react';
 
