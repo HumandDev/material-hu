@@ -7,6 +7,7 @@ export type CustomStepperProps = {
     label: string
     content?: ReactNode
     completed?: boolean
+    expanded?: boolean
     substeps?: { label:string }[]
   }[]
   activeSubstep?: number
@@ -50,6 +51,7 @@ const CustomStepper = ({ steps, stepperProps, onStepClick, activeSubstep }:Custo
       <Step
         key={step.label}
         completed={step.completed} // Setting manually completed when nonLinear
+        expanded={step.expanded}
         onClick={() => (onStepClick ? onStepClick(index) : null)} // Using onClick in Step instead of StepButton by style: button implies an unwanted effect
         sx={{ cursor: onStepClick ? 'pointer' : 'default' }}
       >
