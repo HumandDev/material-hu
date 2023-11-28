@@ -5,6 +5,7 @@ export type CustomStepperProps = {
         label: string;
         content?: ReactNode;
         completed?: boolean;
+        expanded?: boolean;
         substeps?: {
             label: string;
         }[];
