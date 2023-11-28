@@ -57,6 +57,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
         <RadioGroup
           {...other}
           {...field}
+          color="humand"
           sx={{
             flexDirection: column ? 'column' : 'row',
             width: fullWidth ? '100%' : undefined,
@@ -76,7 +77,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                 borderWidth: '1px',
                 borderStyle: 'solid',
                 borderColor: option.value === field.value
-                  ? theme.palette.primary.dark
+                  ? theme.palette.humand.dark
                   : 'rgba(0, 0, 0, 0.12)',
                 backgroundColor: option.value === field.value
                   ? '#F5F7FF'
@@ -126,7 +127,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                         <Typography
                           variant="body2"
                           component="span"
-                          color={theme.palette.text.primary}
+                          color={theme.palette.text.secondary}
                         >
                           {option.helperText}
                         </Typography>
