@@ -57,7 +57,6 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
         <RadioGroup
           {...other}
           {...field}
-          color="humand"
           sx={{
             flexDirection: column ? 'column' : 'row',
             width: fullWidth ? '100%' : undefined,
@@ -100,6 +99,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                 }
                 control={(
                   <Radio
+                    color="humand"
                     {...radioProps}
                     sx={{
                       ml: 1,
