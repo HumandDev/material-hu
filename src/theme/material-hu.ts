@@ -90,6 +90,12 @@ declare module '@mui/material/IconButton' {
   }
 }
 
+declare module '@mui/material/Radio' {
+  interface RadioPropsColorOverrides {
+    humand: true;
+  }
+}
+
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {
   
   let theme = createMuiTheme(

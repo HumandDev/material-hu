@@ -21,3 +21,7 @@ export {
   default as FormDropPicture,
   FormDropPictureProps,
 } from './components/FormDropPicture';
+export {
+  default as FormRadioCustomGroup,
+  FormRadioCustomGroupProps,
+} from './components/FormRadioCustomGroup';
