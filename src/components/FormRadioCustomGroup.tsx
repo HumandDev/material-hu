@@ -68,7 +68,8 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
               key={option.value}
               {...optionContainerProps}
               sx={{
-                p: 0,
+                px: 0,
+                py: 0.5,
                 mb: index === options.length - 1 ? 0 : 2,
                 width: fullWidth ? '100%' : undefined,
                 boxShadow: theme.shadows[2],
@@ -102,17 +103,13 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                     color="humand"
                     {...radioProps}
                     sx={{
-                      ml: 1,
+                      mx: 1,
                       ...radioProps?.sx
                     }}
                   />
                 )}
                 label={(
-                  <Stack
-                    sx={{
-                      mt: '10px',
-                    }}
-                  >
+                  <Stack>
                     <Typography
                       variant="subtitle2"
                       fontSize="1rem"
