@@ -54,8 +54,8 @@ const useServerTableSorting = (form: Form) => {
 };
 
 const useServerPagination = (
-    placeholder: string,
-    labelRowsPerPage: string,
+    placeholder = '',
+    labelRowsPerPage = '',
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
