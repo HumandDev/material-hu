@@ -9,10 +9,11 @@ export type PaginationControllerProps<T extends FieldValues> = {
   setPage: (param: number) => void;
   setLimit: (param: number) => void;
   limitOptions: number[];
+  labelRowsPerPage?: React.ReactNode;
 };
 
 const PaginationController: FC<PaginationControllerProps<FormValues>> = (props) => {
-  const { control, total, setPage, setLimit, limitOptions } = props;
+  const { control, total, setPage, setLimit, limitOptions, labelRowsPerPage } = props;
 
   return (
     <Controller
@@ -25,6 +26,7 @@ const PaginationController: FC<PaginationControllerProps<FormValues>> = (props) 
           count={total}
           onPageChange={(event, page) => setPage(page)}
           onRowsPerPageChange={(event) => setLimit(parseInt(event.target.value, 10))}
+          labelRowsPerPage={labelRowsPerPage}
           page={field.value.page}
           rowsPerPage={field.value.limit}
           rowsPerPageOptions={limitOptions}

@@ -54,7 +54,8 @@ const useServerTableSorting = (form: Form) => {
 };
 
 const useServerPagination = (
-    placeholder = '',
+    placeholder: string,
+    labelRowsPerPage: React.ReactNode,
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
@@ -100,6 +101,7 @@ const useServerPagination = (
       setPage={setPage}
       setLimit={setLimit}
       limitOptions={limitOptions}
+      labelRowsPerPage={labelRowsPerPage}
     />
   );
 
