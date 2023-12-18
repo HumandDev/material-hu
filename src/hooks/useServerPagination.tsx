@@ -55,7 +55,7 @@ const useServerTableSorting = (form: Form) => {
 
 const useServerPagination = (
     placeholder: string,
-    labelRowsPerPage: React.ReactNode,
+    labelRowsPerPage: string,
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
@@ -77,11 +77,11 @@ const useServerPagination = (
 
   const { query, pagination, order, orderBy } = watch();
 
-  const setPage = (page: number) => setValue('pagination.page', page);
-  const setLimit = (limit: number) => setValue('pagination.limit', limit);
-  const setOrderBy = (newOrderBy: string) => setValue('orderBy', newOrderBy);
-  const setOrder = (newOrder: string) => setValue('order', newOrder);
-  const setQuery = (newQuery: string) => setValue('query', newQuery);
+  const setPage = useCallback((page: number) => setValue('pagination.page', page), [setValue]);
+  const setLimit = useCallback((limit: number) => setValue('pagination.limit', limit), [setValue]);
+  const setOrderBy = useCallback((newOrderBy: string) => setValue('orderBy', newOrderBy), [setValue]);
+  const setOrder = useCallback((newOrder: string) => setValue('order', newOrder), [setValue]);
+  const setQuery = useCallback((newQuery: string) => setValue('query', newQuery), [setValue]);
 
   const TableSortingHeader = useServerTableSorting(form);
 
