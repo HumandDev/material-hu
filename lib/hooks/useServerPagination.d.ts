@@ -27,6 +27,6 @@ declare const useServerPagination: (placeholder?: string, defaultOrderBy?: strin
     setQuery: (newQuery: string) => void;
     setPage: (page: number) => void;
     setOrderBy: (newOrderBy: string) => void;
-    setOrder: () => void;
+    setOrder: (newOrder: string) => void;
 };
 export { useServerPagination };

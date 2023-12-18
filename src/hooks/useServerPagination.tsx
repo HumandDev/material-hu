@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useCallback } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
@@ -80,7 +80,7 @@ const useServerPagination = (
   const setPage = (page: number) => setValue('pagination.page', page);
   const setLimit = (limit: number) => setValue('pagination.limit', limit);
   const setOrderBy = (newOrderBy: string) => setValue('orderBy', newOrderBy);
-  const setOrder = () => setValue('order', order === 'DESC' ? 'ASC' : 'DESC');
+  const setOrder = (newOrder: string) => setValue('order', newOrder);
   const setQuery = (newQuery: string) => setValue('query', newQuery);
 
   const TableSortingHeader = useServerTableSorting(form);
