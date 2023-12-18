@@ -73,6 +73,8 @@ const useServerPagination = (
     }
   });
 
+  console.log("form:", form, "placeholder",placeholder, "labelRowsPerPage", labelRowsPerPage, "defaultOrderBy", defaultOrderBy, "defaultOrder", defaultOrder,"limitOptions", limitOptions, "isSurveys", isSurveys)
+
   const { watch, setValue, control } = form;
 
   const { query, pagination, order, orderBy } = watch();
