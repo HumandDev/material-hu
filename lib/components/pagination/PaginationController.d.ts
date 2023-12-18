@@ -7,7 +7,6 @@ export type PaginationControllerProps<T extends FieldValues> = {
     setPage: (param: number) => void;
     setLimit: (param: number) => void;
     limitOptions: number[];
-    labelRowsPerPage: string;
 };
 declare const PaginationController: FC<PaginationControllerProps<FormValues>>;
 export default PaginationController;

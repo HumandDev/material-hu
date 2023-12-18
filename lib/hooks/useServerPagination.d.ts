@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TableCellProps } from '@mui/material';
-export type TableSortingHeaderType = FC<TableCellProps & {
+type TableSortingHeaderProps = FC<TableCellProps & {
     id: string;
     disabled?: boolean;
 }>;
@@ -13,7 +13,7 @@ export type FormValues = {
     order: string;
     orderBy: string;
 };
-declare const useServerPagination: (placeholder?: string, defaultOrderBy?: string, defaultOrder?: string, limitOptions?: number[], isSurveys?: boolean, labelRowsPerPage?: string) => {
+declare const useServerPagination: (placeholder?: string, defaultOrderBy?: string, defaultOrder?: string, limitOptions?: number[], isSurveys?: boolean) => {
     query: string;
     pagination: {
         page: number;
@@ -23,10 +23,10 @@ declare const useServerPagination: (placeholder?: string, defaultOrderBy?: strin
     paginationController: (total: number) => import("react/jsx-runtime").JSX.Element;
     orderBy: string;
     order: string;
-    TableSortingHeader: TableSortingHeaderType;
+    TableSortingHeader: TableSortingHeaderProps;
     setQuery: (newQuery: string) => void;
     setPage: (page: number) => void;
     setOrderBy: (newOrderBy: string) => void;
     setOrder: (newOrder: string) => void;
 };
-export { useServerPagination };
+export { useServerPagination, TableSortingHeaderProps };

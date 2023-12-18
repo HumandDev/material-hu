@@ -7,7 +7,7 @@ import useDebounce from './useDebounce';
 import SearchBar from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
 
-export type TableSortingHeaderType = FC<TableCellProps & { id: string, disabled?: boolean }>;
+type TableSortingHeaderProps = FC<TableCellProps & { id: string, disabled?: boolean }>;
 
 export type FormValues = {
   query: string;
@@ -32,7 +32,7 @@ const useServerTableSorting = (form: Form) => {
   };
 
   // this component replaces the TableCell inside TableHeader
-  const TableSortingHeader: TableSortingHeaderType = ({ children, id, disabled, ...rest }) => (
+  const TableSortingHeader: TableSortingHeaderProps = ({ children, id, disabled, ...rest }) => (
     <TableCell
       {...rest}
       sortDirection={orderBy === id && order === 'ASC' ? 'asc' : 'desc'}
@@ -59,7 +59,6 @@ const useServerPagination = (
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
     isSurveys = false,
-    labelRowsPerPage = ''
   ) => {
   const form = useForm<FormValues>({ 
     defaultValues: {
@@ -101,7 +100,6 @@ const useServerPagination = (
       setPage={setPage}
       setLimit={setLimit}
       limitOptions={limitOptions}
-      labelRowsPerPage={labelRowsPerPage}
     />
   );
 
@@ -127,4 +125,4 @@ const useServerPagination = (
   };
 };
 
-export { useServerPagination };
+export { useServerPagination, TableSortingHeaderProps };
