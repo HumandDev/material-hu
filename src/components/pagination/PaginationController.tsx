@@ -13,7 +13,7 @@ export type PaginationControllerProps<T extends FieldValues> = {
 };
 
 const PaginationController: FC<PaginationControllerProps<FormValues>> = (props) => {
-  const { control, total, setPage, setLimit, limitOptions, labelRowsPerPage } = props;
+  const { control, total, setPage, setLimit, limitOptions, labelRowsPerPage = "" } = props;
 
   return (
     <Controller
