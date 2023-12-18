@@ -54,14 +54,13 @@ const useServerTableSorting = (form: Form) => {
 };
 
 const useServerPagination = (
-    placeholder = 'PLACEHOLDER',
-    labelRowsPerPage = 'LABEL_ROWS_PER_PAGE',
+    placeholder = '',
+    labelRowsPerPage: '',
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
     isSurveys = false,
   ) => {
-    console.log("placeholder",placeholder, "labelRowsPerPage", labelRowsPerPage, "defaultOrderBy", defaultOrderBy, "defaultOrder", defaultOrder,"limitOptions", limitOptions, "isSurveys", isSurveys);
     const form = useForm<FormValues>({ 
     defaultValues: {
       query: '',
