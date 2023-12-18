@@ -58,8 +58,8 @@ const useServerPagination = (
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
-    surveys = false,
-    labelRowsPerPage: string
+    isSurveys = false,
+    labelRowsPerPage = ''
   ) => {
   const form = useForm<FormValues>({ 
     defaultValues: {
@@ -89,7 +89,7 @@ const useServerPagination = (
     <SearchBar
       control={control}
       setValue={setValue}
-      isSurveys={surveys}
+      isSurveys={isSurveys}
       placeholder={placeholder}
     />
   );
