@@ -3,8 +3,8 @@ import { Control, FieldValues } from 'react-hook-form';
 import { FormValues } from '../../hooks/useServerPagination';
 export type SearchBarControllerProps<T extends FieldValues> = {
     control: Control<T>;
-    placeholder?: string;
     setValue: (name: keyof T, value: T[keyof T]) => void;
+    placeholder?: string;
     isSurveys?: boolean;
 };
 declare const SearchBarController: FC<SearchBarControllerProps<FormValues>>;
