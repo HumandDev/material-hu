@@ -54,8 +54,8 @@ const useServerTableSorting = (form: Form) => {
 };
 
 const useServerPagination = (
-    placeholder = '',
-    labelRowsPerPage: '',
+    placeholder = '', // Depends if the searchBar is used
+    labelRowsPerPage: '', // Depends if paginationController is used
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
