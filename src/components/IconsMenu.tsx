@@ -21,8 +21,8 @@ export type Option = {
 
 export type IconsMenuProps = {
   options: Option[];
-  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-  onClose: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClose?: (event: MouseEvent) => void;
 };
 
 export const IconsMenu: FC<IconsMenuProps> = (props) => {

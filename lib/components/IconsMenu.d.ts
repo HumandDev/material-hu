@@ -10,8 +10,8 @@ export type Option = {
 };
 export type IconsMenuProps = {
     options: Option[];
-    onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-    onClose: (event: MouseEvent) => void;
+    onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+    onClose?: (event: MouseEvent) => void;
 };
 export declare const IconsMenu: FC<IconsMenuProps>;
 export default IconsMenu;
