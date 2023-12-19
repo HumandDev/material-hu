@@ -27,6 +27,6 @@ declare const useServerPagination: (placeholder?: string, labelRowsPerPage?: str
     setQuery: (newQuery: string) => void;
     setPage: (page: number) => void;
     setOrderBy: (newOrderBy: string) => void;
-    setOrder: (newOrder: string) => void;
+    setOrder: (newOrder?: string) => void;
 };
 export { useServerPagination, TableSortingHeaderProps };
