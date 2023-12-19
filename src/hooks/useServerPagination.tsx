@@ -80,7 +80,7 @@ const useServerPagination = (
   const setPage = useCallback((page: number) => setValue('pagination.page', page), [setValue]);
   const setLimit = useCallback((limit: number) => setValue('pagination.limit', limit), [setValue]);
   const setOrderBy = useCallback((newOrderBy: string) => setValue('orderBy', newOrderBy), [setValue]);
-  const setOrder = useCallback((newOrder: string) => setValue('order', newOrder), [setValue]);
+  const setOrder = useCallback((newOrder?: string) => setValue('order', newOrder || order === 'DESC' ? 'ASC' : 'DESC'), [setValue]);
   const setQuery = useCallback((newQuery: string) => setValue('query', newQuery), [setValue]);
 
   const TableSortingHeader = useServerTableSorting(form);
