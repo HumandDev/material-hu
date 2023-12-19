@@ -1,28 +1,56 @@
-import * as React from 'react';
-import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, SxProps } from '@mui/material';
+import { FC, ReactNode, MouseEvent, useState } from 'react';
+import {
+  Divider,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  SxProps,
+} from '@mui/material';
 import { MoreVert as MoreVertIcon } from '@mui/icons-material';
 
-type Props = {
-  options: {
-    onClick: ()=>void
-    label: string
-    icon?: React.ReactNode
-    divider?: boolean
-    textProps?: SxProps
-    color?: string
-  }[]
+export type Option = {
+  onClick: () => void;
+  label: string;
+  icon?: React.ReactNode;
+  divider?: boolean;
+  textProps?: SxProps;
+  color?: string;
 };
 
-const IconsMenu = ({ options }:Props) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+export type IconsMenuProps = {
+  options: Option[];
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClose: (event: MouseEvent) => void;
+};
+
+export const IconsMenu: FC<IconsMenuProps> = (props) => {
+  const {
+    options,
+    onClick = () => null,
+    onClose = () => null,
+  } = props;
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
+    onClick(event);
   };
-  const handleClose = (event: React.MouseEvent) => {
+
+  const handleClose = (event: MouseEvent) => {
     event.stopPropagation();
     setAnchorEl(null);
+    onClose(event);
+  };
+
+  const handleOptionClick = (callback: Option['onClick']) => (event: MouseEvent) => {
+    event.stopPropagation();
+    handleClose(event);
+    callback();
   };
 
   return (
@@ -56,18 +84,32 @@ const IconsMenu = ({ options }:Props) => {
       >
         {options.map((option) => (
           <div key={option.label}>
-            <MenuItem onClick={(e) => { e.stopPropagation(); handleClose(e); option.onClick(); }}>
+            <MenuItem
+              onClick={handleOptionClick(option.onClick)}
+            >
               {option.icon && (
-                  <ListItemIcon sx={{ '&>*': { color: option.color } }}>
-                    {option.icon}
-                  </ListItemIcon>
+                <ListItemIcon
+                  sx={{
+                    '&>*': {
+                      color: option.color,
+                    },
+                  }}
+                >
+                  {option.icon}
+                </ListItemIcon>
               )}
-              <ListItemText sx={{...option.textProps, color: option.color}}>{option.label}</ListItemText>
+              <ListItemText
+                sx={{
+                  ...option.textProps,
+                  color: option.color,
+                }}
+              >
+                {option.label}
+              </ListItemText>
             </MenuItem>
             {option.divider && (<Divider />)}
           </div>
-        )
-        )}
+        ))}
       </Menu>
     </>
   );
