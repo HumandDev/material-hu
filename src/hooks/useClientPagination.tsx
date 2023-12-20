@@ -7,7 +7,7 @@ import SearchBarController from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
 import { FormValues } from './useServerPagination';
 
-function applyFilters<T extends object>(
+function applyFilters<T extends Record<string, any>>(
   items: T[],
   query: string,
   queriedKeys: (keyof T)[]
@@ -18,13 +18,7 @@ function applyFilters<T extends object>(
       let matches = true;
 
       if (query) {
-        matches = queriedKeys.some((key) => {
-          const itemValue = item[key];
-          if (itemValue && typeof itemValue === 'string') {
-            return itemValue.toLowerCase().includes(lowerCaseQuery);
-          }
-          return false;
-        });
+        matches = queriedKeys.some((key) => item[key]?.toLowerCase().includes(lowerCaseQuery));
       }
 
       return matches;
