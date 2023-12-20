@@ -81,7 +81,15 @@ const useTableSorting = <T extends unknown>(defaultOrderBy: string, defaultOrder
     };
   };
 
-const useClientPagination = <T extends object>(items: T[], queriedKeys: (keyof T)[], placeholder: string, defaultOrderBy = 'position', defaultOrder: TableSortLabelProps['direction'] = 'asc', limitOptions = [10, 20, 30]) => {
+const useClientPagination = <T extends object>(
+  items: T[],
+  queriedKeys: (keyof T)[],
+  placeholder: string,
+  labelRowsPerPage: string,
+  defaultOrderBy = 'position',
+  defaultOrder: TableSortLabelProps['direction'] = 'asc',
+  limitOptions = [10, 20, 30]
+) => {
     const { watch, control, setValue, reset } = useForm<FormValues>({ defaultValues: {
       query: '',
       pagination: {
@@ -121,6 +129,7 @@ const useClientPagination = <T extends object>(items: T[], queriedKeys: (keyof T
         setPage={setPage}
         setLimit={setLimit}
         limitOptions={limitOptions}
+        labelRowsPerPage={labelRowsPerPage}
       />
     );
   

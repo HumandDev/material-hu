@@ -1,6 +1,6 @@
 import { TableCellProps, TableSortLabelProps } from '@mui/material';
 import { FormValues } from './useServerPagination';
-declare const useClientPagination: <T extends object>(items: T[], queriedKeys: (keyof T)[], placeholder: string, defaultOrderBy?: string, defaultOrder?: TableSortLabelProps['direction'], limitOptions?: number[]) => {
+declare const useClientPagination: <T extends object>(items: T[], queriedKeys: (keyof T)[], placeholder: string, labelRowsPerPage: string, defaultOrderBy?: string, defaultOrder?: TableSortLabelProps['direction'], limitOptions?: number[]) => {
     paginatedItems: T[];
     searchBar: import("react/jsx-runtime").JSX.Element;
     resetForm: import("react-hook-form").UseFormReset<FormValues>;
