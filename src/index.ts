@@ -27,3 +27,4 @@ export {
 } from './components/FormRadioCustomGroup';
 export { default as useDebounce } from './hooks/useDebounce';
 export { useServerPagination, TableSortingHeaderProps } from './hooks/useServerPagination';
+export { useClientPagination } from './hooks/useClientPagination';

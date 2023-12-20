@@ -4,7 +4,7 @@ import { Controller, Control, FieldValues } from 'react-hook-form';
 import { Close as CloseIcon, ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
 import { Box, InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '../../svg-icons/Search';
-import { FormValues } from '../../hooks/useServerPagination';
+import { FormValues as ServerPaginationFormValues } from '../../hooks/useServerPagination';
 
 export type SearchBarControllerProps<T extends FieldValues> = {
   control: Control<T>;
@@ -13,7 +13,7 @@ export type SearchBarControllerProps<T extends FieldValues> = {
   isSurveys?: boolean;
 };
 
-const SearchBarController: FC<SearchBarControllerProps<FormValues>> = (props) => {
+const SearchBarController: FC<SearchBarControllerProps<ServerPaginationFormValues>> = (props) => {
   const { control, placeholder = "", setValue, isSurveys = false } = props;
 
   return (
