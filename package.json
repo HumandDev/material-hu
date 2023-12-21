@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/HumandDev/material-hu#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "typescript": "^5.1.6"
   },
   "browserslist": [
@@ -35,12 +36,13 @@
     "@mui/x-date-pickers": "^6.9.1",
     "@tinymce/tinymce-react": "^4.3.0",
     "date-fns": "^2.30.0",
+    "lodash": "^4.17.21",
     "notistack": "^3.0.1",
     "react-dropzone": "^14.2.3"
   },
   "peerDependencies": {
     "i18next": "^21.3.1",
-    "react-i18next": "^11.13.0",
-    "react-hook-form": "^7.31.3"
+    "react-hook-form": "^7.31.3",
+    "react-i18next": "^11.13.0"
   }
 }

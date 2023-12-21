@@ -4,7 +4,7 @@ import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
 
 import useDebounce from './useDebounce';
-import SearchBar from '../components/pagination/SearchBarController';
+import SearchBarController from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
 
 type TableSortingHeaderProps = FC<TableCellProps & { id: string, disabled?: boolean }>;
@@ -86,7 +86,7 @@ const useServerPagination = (
   const TableSortingHeader = useServerTableSorting(form);
 
   const searchBar = (
-    <SearchBar
+    <SearchBarController
       control={control}
       setValue={setValue}
       isSurveys={isSurveys}
