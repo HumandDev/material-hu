@@ -6,6 +6,7 @@ export type SearchBarControllerProps<T extends FieldValues> = {
     setValue: (name: keyof T, value: T[keyof T]) => void;
     placeholder?: string;
     isSurveys?: boolean;
+    isPeopleExperience?: boolean;
 };
 declare const SearchBarController: FC<SearchBarControllerProps<ServerPaginationFormValues>>;
 export default SearchBarController;
