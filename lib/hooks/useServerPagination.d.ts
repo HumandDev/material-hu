@@ -13,7 +13,7 @@ export type FormValues = {
     order: string;
     orderBy: string;
 };
-declare const useServerPagination: (placeholder?: string, labelRowsPerPage?: string, defaultOrderBy?: string, defaultOrder?: string, limitOptions?: number[], isSurveys?: boolean) => {
+declare const useServerPagination: (placeholder?: string, labelRowsPerPage?: string, defaultOrderBy?: string, defaultOrder?: string, limitOptions?: number[], isSurveys?: boolean, isPeopleExperience?: boolean) => {
     query: string;
     pagination: {
         page: number;

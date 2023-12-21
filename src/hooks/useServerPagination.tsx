@@ -60,6 +60,7 @@ const useServerPagination = (
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
     isSurveys = false,
+    isPeopleExperience = false
   ) => {
     const form = useForm<FormValues>({ 
     defaultValues: {
@@ -89,8 +90,9 @@ const useServerPagination = (
     <SearchBarController
       control={control}
       setValue={setValue}
-      isSurveys={isSurveys}
       placeholder={placeholder}
+      isSurveys={isSurveys}
+      isPeopleExperience={isPeopleExperience}
     />
   );
 

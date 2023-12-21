@@ -11,13 +11,14 @@ export type SearchBarControllerProps<T extends FieldValues> = {
   setValue: (name: keyof T, value: T[keyof T]) => void;
   placeholder?: string;
   isSurveys?: boolean;
+  isPeopleExperience?: boolean;
 };
 
 const SearchBarController: FC<SearchBarControllerProps<ServerPaginationFormValues>> = (props) => {
-  const { control, placeholder = "", setValue, isSurveys = false } = props;
+  const { control, placeholder = "", setValue, isSurveys, isPeopleExperience } = props;
 
   return (
-    <Box sx={{ m: isSurveys ? 0 : 1 }}>
+    <Box sx={{ m: isSurveys ? 0 : 1, ...(isPeopleExperience && { flex: 1 }) }}>
       <Controller
         control={control}
         name="query"
