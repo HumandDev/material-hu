@@ -10,7 +10,7 @@ const useDebounce = <T>(value: T, delay: number = 500) => {
     return () => {
       clearTimeout(handler);
     };
-  }, [JSON.stringify(value), delay]);
+  }, [value, delay]);
 
   return debouncedValue;
 };
