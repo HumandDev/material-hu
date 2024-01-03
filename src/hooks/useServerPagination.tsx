@@ -3,7 +3,7 @@ import { UseFormReturn, useForm } from 'react-hook-form';
 import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
 
-import useDebounce from './useDebounce';
+import { useDebounce } from './useDebounce';
 import SearchBarController from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
 
