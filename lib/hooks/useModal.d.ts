@@ -5,4 +5,4 @@ declare function useModal<T>(ModalContentComponent: FC<T>, dialogProps?: Partial
     closeModal: () => void;
     showModal: (props?: Partial<T>) => void;
 };
-export default useModal;
+export { useModal };

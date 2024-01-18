@@ -28,4 +28,4 @@ function useModal<T>(ModalContentComponent: FC<T>, dialogProps?: Partial<DialogP
   };
 }
 
-export default useModal;
+export { useModal };

@@ -12,7 +12,6 @@ export { default as RoundedTabs } from './components/RoundedTabs';
 export { default as FormRichEditor } from './components/FormRichEditor';
 export { default as CustomStepper, CustomStepperProps } from './components/CustomStepper';
 export { default as SideStepper } from './components/SideStepper';
-export { default as useModal } from './hooks/useModal';
 export {
   default as HorizontalStepper,
   HorizontalStepperProps,
@@ -29,3 +28,4 @@ export {
 export { useDebounce } from './hooks/useDebounce';
 export { useServerPagination, TableSortingHeaderProps } from './hooks/useServerPagination';
 export { useClientPagination } from './hooks/useClientPagination';
+export { useModal } from './hooks/useModal';
