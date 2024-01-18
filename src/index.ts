@@ -12,6 +12,7 @@ export { default as RoundedTabs } from './components/RoundedTabs';
 export { default as FormRichEditor } from './components/FormRichEditor';
 export { default as CustomStepper, CustomStepperProps } from './components/CustomStepper';
 export { default as SideStepper } from './components/SideStepper';
+export { default as useModal } from './hooks/useModal';
 export {
   default as HorizontalStepper,
   HorizontalStepperProps,
