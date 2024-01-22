@@ -32,7 +32,7 @@ if (!isSupported(browser)) {
   console.info('Deberias actualizar tu navegador');
 } else {
   alert('Ups! 😵‍💫 Parece que tu navegador es algo viejo para usar Humand. Te pedimos que actualices tu navegador y vuelvas a intentar.');
-  var message = '<h1 style="text-align: center; color: #164C63; border-radius: 18px; background-color: #CFF9FE; font-family: Roboto, sans-serif; margin-top: 50px;">oops! 😵‍💫 It seems that your browser is too old to use Humand. We ask that you refresh your browser and try again.</h1>';
+  var message = '<h1 style="text-align: center; color: #164C63; border-radius: 18px; background-color: #CFF9FE; font-family: Roboto, sans-serif; margin-top: 50px;">oops! 😵‍💫 It seems that your browser is too old to use Humand.\nWe ask that you refresh your browser and try again.</h1>';
   window.onload = function() {
     document.open();
     document.write(message);
