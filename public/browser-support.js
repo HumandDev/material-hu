@@ -32,7 +32,7 @@ if (!isSupported(browser)) {
   console.info('Deberias actualizar tu navegador');
 } else {
   console.info('Es un navegador soportado');
-  document.write(<h1>Deberias actualizar tu navegador</h1>)
+  document.write('<h1>Deberias actualizar tu navegador</h1>')
   document.write('<h1 style="text-align: center; color: #ff0000; font-family: Roboto, sans-serif; margin-top: 50px;">Ups! 😵‍💫 Parece que tu navegador es algo viejo para usar Humand. Te pedimos que actualices tu navegador y vuelvas a intentar.</h1>')
   document.write('<h1>oops! 😵‍💫 It seems that your browser is too old to use Humand. We ask that you refresh your browser and try again.</h1>')
   alert('oops! 😵‍💫 It seems that your browser is too old to use Humand. We ask that you refresh your browser and try again.');
