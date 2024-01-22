@@ -23,9 +23,13 @@ function getBrowser() {
 var browser = getBrowser();
 
 function isSupported(browser) {
-  return (browser.name === "Chrome" && browser.version >= 73) ||
-    ((browser.name === "MSIE" || browser.name === "IE") && browser.version >= 11) ||
-    (browser.name === "Edge");
+  return !(
+    (browser.name === "Chrome" && browser.version < 73) ||
+    ((browser.name === "MSIE" || browser.name === "IE") && browser.version < 11) ||
+    (browser.name === "Edge"  && browser.version < 79) ||
+    (browser.name === "Opera"  && browser.version < 60) ||
+    (browser.name === "Firefox"  && browser.version < 67)
+  );
 }
 
 if (!isSupported(browser)) {
