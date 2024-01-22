@@ -35,15 +35,19 @@ function getBrowser() {
 var browser = getBrowser();
 
 function isSupported(browser) {
-  return (browser.name === "Chrome" && browser.version >= 73) ||
-    ((browser.name === "MSIE" || browser.name === "IE") && browser.version >= 11) ||
-    (browser.name === "Edge");
+  return !(
+    (browser.name === "Chrome" && browser.version < 73) ||
+    ((browser.name === "MSIE" || browser.name === "IE") && browser.version < 11) ||
+    (browser.name === "Edge"  && browser.version < 79) ||
+    (browser.name === "Opera"  && browser.version < 60) ||
+    (browser.name === "Firefox"  && browser.version < 67)
+  );
 }
 
 if (!isSupported(browser)) {
   console.info('Browser unsupported.');
   alert('Ups! 😵‍💫 Parece que tu navegador es algo viejo para usar Humand. Te pedimos que actualices tu navegador y vuelvas a intentar.');
-  var message = '<h1 style="text-align: center; color: #164C63; border-radius: 18px; background-color: #CFF9FE; font-family: Roboto, sans-serif; margin-top: 50px;">oops! 😵‍💫 It seems that your browser is too old to use Humand. We ask that you refresh your browser and try again.</h1>';
+  var message = '<h1 style="text-align: center; color: #164C63; border-radius: 18px; background-color: #CFF9FE; font-family: Roboto, sans-serif; margin-top: 50px;">oops! 😵‍💫 It seems that your browser is too old to use Humand. We ask that you update your browser and try again.</h1>';
   window.onload = function() {
     document.open();
     document.write(message);
