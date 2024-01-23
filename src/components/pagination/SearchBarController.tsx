@@ -12,7 +12,6 @@ import {
 import SearchIcon from '../../svg-icons/Search'
 import {FormValues as ServerPaginationFormValues} from '../../hooks/useServerPagination'
 
-// { m: isSurveys ? 0 : 1, ...(isPeopleExperience && { flex: 1 }) }
 type BuildSearchbarParams<T extends FieldValues> = {
   control: Control<T>
   setValue: (name: keyof T, value: T[keyof T]) => void

@@ -90,14 +90,6 @@ type ClientPaginationOptions<TData> = {
   limitOptions?: number[]
 } 
 
-// items: T[],
-// queriedKeys: (keyof T)[],
-// placeholder: string,
-// labelRowsPerPage: string,
-// defaultOrderBy = 'position',
-// defaultOrder: TableSortLabelProps['direction'] = 'asc',
-// limitOptions = [10, 20, 30]
-
 const useClientPagination = <TData extends object>(options: ClientPaginationOptions<TData>) => {
     const {
       items,
