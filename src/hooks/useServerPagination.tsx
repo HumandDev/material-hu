@@ -4,8 +4,8 @@ import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
 
 import { useDebounce } from './useDebounce';
-import SearchBarController from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
+import buildSearchbar from '../components/pagination/SearchBarController';
 
 type TableSortingHeaderProps = FC<TableCellProps & { id: string, disabled?: boolean }>;
 
@@ -53,26 +53,33 @@ const useServerTableSorting = (form: Form) => {
   return TableSortingHeader;
 };
 
-const useServerPagination = (
-    placeholder = '', // Depends if the searchBar is used
+type ServerPaginationOptions = {
+  labelRowsPerPage?: string
+  defaultOrderBy?: string
+  defaultOrder?: string
+  limitOptions?: number[],
+
+}
+
+const useServerPagination = (options?: ServerPaginationOptions) => {
+  const {
     labelRowsPerPage = '', // Depends if paginationController is used
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
-    limitOptions = [10, 20, 30],
-    isSurveys = false,
-    isPeopleExperience = false
-  ) => {
-    const form = useForm<FormValues>({ 
+    limitOptions = [10, 20, 30]
+  } = options ?? {}
+  
+  const form = useForm<FormValues>({
     defaultValues: {
       query: '',
       pagination: {
         page: 0,
-        limit: limitOptions[0],
+        limit: limitOptions[0]
       },
       order: defaultOrder,
-      orderBy: defaultOrderBy,
+      orderBy: defaultOrderBy
     }
-  });
+  })
 
   const { watch, setValue, control } = form;
 
@@ -85,16 +92,6 @@ const useServerPagination = (
   const setQuery = useCallback((newQuery: string) => setValue('query', newQuery), [setValue]);
 
   const TableSortingHeader = useServerTableSorting(form);
-
-  const searchBar = (
-    <SearchBarController
-      control={control}
-      setValue={setValue}
-      placeholder={placeholder}
-      isSurveys={isSurveys}
-      isPeopleExperience={isPeopleExperience}
-    />
-  );
 
   const paginationController = (total: number) => (
     <PaginationController
@@ -117,7 +114,7 @@ const useServerPagination = (
   return {
     query: debouncedQuery,
     pagination,
-    searchBar,
+    Searchbar: buildSearchbar({ control, setValue }),
     paginationController,
     orderBy,
     order,

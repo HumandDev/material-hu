@@ -3,9 +3,9 @@ import {  useForm } from 'react-hook-form';
 import _ from 'lodash';
 import { TableCell, TableCellProps, TableSortLabel, TableSortLabelProps } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
-import SearchBarController from '../components/pagination/SearchBarController';
 import PaginationController from '../components/pagination/PaginationController';
 import { FormValues } from './useServerPagination';
+import buildSearchbar from '../components/pagination/SearchBarController';
 
 function applyFilters<T extends Record<string, any>>(
   items: T[],
@@ -81,15 +81,33 @@ const useTableSorting = <T extends unknown>(defaultOrderBy: string, defaultOrder
     };
   };
 
-const useClientPagination = <T extends object>(
-  items: T[],
-  queriedKeys: (keyof T)[],
-  placeholder: string,
-  labelRowsPerPage: string,
-  defaultOrderBy = 'position',
-  defaultOrder: TableSortLabelProps['direction'] = 'asc',
-  limitOptions = [10, 20, 30]
-) => {
+type ClientPaginationOptions<TData> = {
+  items: TData[]
+  queriedKeys: (keyof TData)[]
+  labelRowsPerPage: string
+  defaultOrderBy?: string,
+  defaultOrder?: TableSortLabelProps['direction'],
+  limitOptions?: number[]
+} 
+
+// items: T[],
+// queriedKeys: (keyof T)[],
+// placeholder: string,
+// labelRowsPerPage: string,
+// defaultOrderBy = 'position',
+// defaultOrder: TableSortLabelProps['direction'] = 'asc',
+// limitOptions = [10, 20, 30]
+
+const useClientPagination = <TData extends object>(options: ClientPaginationOptions<TData>) => {
+    const {
+      items,
+      queriedKeys,
+      labelRowsPerPage,
+      defaultOrderBy = 'position',
+      defaultOrder = 'asc',
+      limitOptions = [10, 20, 30]
+    } = options 
+
     const { watch, control, setValue, reset } = useForm<FormValues>({ defaultValues: {
       query: '',
       pagination: {
@@ -100,7 +118,7 @@ const useClientPagination = <T extends object>(
   
     const { query, pagination } = watch();
   
-    const { TableSortingHeader, sortFunction } = useTableSorting<T>(defaultOrderBy, defaultOrder);
+    const { TableSortingHeader, sortFunction } = useTableSorting<TData>(defaultOrderBy, defaultOrder);
   
     const sortedItems = sortFunction(items);
     // Usually query is done on backend with indexing solutions
@@ -113,14 +131,6 @@ const useClientPagination = <T extends object>(
     useEffect(() => {
       setPage(0);
     }, [filteredItems.length, pagination.limit]);
-  
-    const searchBar = (
-      <SearchBarController
-        control={control}
-        placeholder={placeholder}
-        setValue={setValue}
-      />
-    );
   
     const paginationController = (
       <PaginationController
@@ -135,7 +145,7 @@ const useClientPagination = <T extends object>(
   
     return {
       paginatedItems,
-      searchBar,
+      Searchbar: buildSearchbar({ control, setValue }),
       resetForm: reset,
       paginationController,
       TableSortingHeader
