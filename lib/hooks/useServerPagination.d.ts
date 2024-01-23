@@ -13,13 +13,19 @@ export type FormValues = {
     order: string;
     orderBy: string;
 };
-declare const useServerPagination: (placeholder?: string, labelRowsPerPage?: string, defaultOrderBy?: string, defaultOrder?: string, limitOptions?: number[], isSurveys?: boolean, isPeopleExperience?: boolean) => {
+type ServerPaginationOptions = {
+    labelRowsPerPage?: string;
+    defaultOrderBy?: string;
+    defaultOrder?: string;
+    limitOptions?: number[];
+};
+declare const useServerPagination: (options?: ServerPaginationOptions) => {
     query: string;
     pagination: {
         page: number;
         limit: number;
     };
-    searchBar: import("react/jsx-runtime").JSX.Element;
+    Searchbar: FC<import("@mui/material").TextFieldProps>;
     paginationController: (total: number) => import("react/jsx-runtime").JSX.Element;
     orderBy: string;
     order: string;

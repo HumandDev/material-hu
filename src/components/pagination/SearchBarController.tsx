@@ -1,28 +1,32 @@
-import { FC } from 'react';
-import { Controller, Control, FieldValues } from 'react-hook-form';
+import {FC} from 'react'
+import {Controller, Control, FieldValues} from 'react-hook-form'
 
-import { Close as CloseIcon, ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
-import { Box, InputAdornment, TextField } from '@mui/material';
-import SearchIcon from '../../svg-icons/Search';
-import { FormValues as ServerPaginationFormValues } from '../../hooks/useServerPagination';
+import {Close as CloseIcon} from '@mui/icons-material'
+import {
+  Box,
+  InputAdornment,
+  SxProps,
+  TextField,
+  TextFieldProps
+} from '@mui/material'
+import SearchIcon from '../../svg-icons/Search'
+import {FormValues as ServerPaginationFormValues} from '../../hooks/useServerPagination'
 
-export type SearchBarControllerProps<T extends FieldValues> = {
-  control: Control<T>;
-  setValue: (name: keyof T, value: T[keyof T]) => void;
-  placeholder?: string;
-  isSurveys?: boolean;
-  isPeopleExperience?: boolean;
-};
+type BuildSearchbarParams<T extends FieldValues> = {
+  control: Control<T>
+  setValue: (name: keyof T, value: T[keyof T]) => void
+}
 
-const SearchBarController: FC<SearchBarControllerProps<ServerPaginationFormValues>> = (props) => {
-  const { control, placeholder = "", setValue, isSurveys, isPeopleExperience } = props;
-
-  return (
-    <Box sx={{ m: isSurveys ? 0 : 1, ...(isPeopleExperience && { flex: 1 }) }}>
+const buildSearchbar = ({
+  control,
+  setValue
+}: BuildSearchbarParams<ServerPaginationFormValues>) => {
+  const SearchBarController: FC<TextFieldProps> = (props) => {
+    return (
       <Controller
         control={control}
         name="query"
-        render={({ field }) => (
+        render={({field}) => (
           <TextField
             fullWidth
             InputProps={{
@@ -35,20 +39,25 @@ const SearchBarController: FC<SearchBarControllerProps<ServerPaginationFormValue
                 <InputAdornment position="end">
                   <CloseIcon
                     fontSize="small"
-                    sx={{ cursor: 'pointer', visibility: field.value ? 'visible' : 'hidden' }}
+                    sx={{
+                      cursor: 'pointer',
+                      visibility: field.value ? 'visible' : 'hidden'
+                    }}
                     onClick={() => setValue('query', '')}
                   />
-                </InputAdornment>),
-              inputProps: { maxLength: 255 }
+                </InputAdornment>
+              ),
+              inputProps: {maxLength: 255}
             }}
-            placeholder={placeholder}
             variant="outlined"
             {...field}
+            {...props}
           />
         )}
       />
-    </Box>
-  );
-};
+    )
+  }
+  return SearchBarController
+}
 
-export default SearchBarController;
+export default buildSearchbar
