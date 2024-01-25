@@ -1,4 +1,4 @@
-import { FC, useEffect, useCallback } from 'react';
+import { FC, useEffect, useCallback, useMemo } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
 import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
@@ -111,10 +111,12 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
   },
   [debouncedQuery, pagination.limit]);
 
+  const Searchbar = useMemo(() => buildSearchbar({ control, setValue }), [])
+
   return {
     query: debouncedQuery,
     pagination,
-    Searchbar: buildSearchbar({ control, setValue }),
+    Searchbar,
     paginationController,
     orderBy,
     order,
