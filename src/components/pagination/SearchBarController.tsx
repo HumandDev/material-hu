@@ -1,11 +1,9 @@
-import {FC, useEffect} from 'react'
+import {FC} from 'react'
 import {Controller, Control, FieldValues} from 'react-hook-form'
 
 import {Close as CloseIcon} from '@mui/icons-material'
 import {
-  Box,
   InputAdornment,
-  SxProps,
   TextField,
   TextFieldProps
 } from '@mui/material'
