@@ -134,10 +134,12 @@ const useClientPagination = <TData extends object>(options: ClientPaginationOpti
         labelRowsPerPage={labelRowsPerPage}
       />
     );
+
+    const Searchbar = useMemo(() => buildSearchbar({ control, setValue }), [])
   
     return {
       paginatedItems,
-      Searchbar: buildSearchbar({ control, setValue }),
+      Searchbar,
       resetForm: reset,
       paginationController,
       TableSortingHeader
