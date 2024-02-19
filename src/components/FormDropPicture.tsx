@@ -29,6 +29,7 @@ export type FormDropPictureProps = {
   helpTextLabel?: string;
   linkLabel?: string;
   label?: string;
+  accept?: Record<string, string[]>;
 };
 
 export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
@@ -44,6 +45,7 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
     helpTextLabel = '',
     linkLabel = '',
     label = '',
+    accept = { 'image/png': [], 'image/jpeg': [] },
   } = props;
 
   const theme = useTheme();
@@ -90,7 +92,7 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
         const { getRootProps, getInputProps, isDragActive } = useDropzone({
           onDrop: handleDrop,
           onDropRejected: handleError,
-          accept: { 'image/png': [], 'image/jpeg': [] },
+          accept,
           maxFiles: 1,
           multiple: false,
           maxSize,
