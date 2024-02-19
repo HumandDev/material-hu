@@ -18,9 +18,11 @@ export {
   StepType,
 } from './components/HorizontalStepper';
 export {
-  default as FormDropPicture,
-  FormDropPictureProps,
-} from './components/FormDropPicture';
+  default as FormDrop,
+  FormDropProps,
+  FormDropTypes,
+  FormDropContext,
+} from './components/FormDrop';
 export {
   default as FormRadioCustomGroup,
   FormRadioCustomGroupProps,

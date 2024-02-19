@@ -12,6 +12,7 @@ export type FormDropPictureProps = {
     helpTextLabel?: string;
     linkLabel?: string;
     label?: string;
+    accept?: Record<string, string[]>;
 };
 export declare const FormDropPicture: FC<FormDropPictureProps>;
 export default FormDropPicture;
