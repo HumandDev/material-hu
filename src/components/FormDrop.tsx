@@ -16,27 +16,44 @@ import {
   alpha,
 } from '@mui/material';
 import { Upload } from '@mui/icons-material';
+import { megabytesToBytes } from 'src/utils/bytes';
 
-export type FormDropPictureProps = {
+export enum FormDropTypes {
+  IMAGE = 'image',
+  VIDEO = 'video',
+};
+
+const ACCEPT_BY_TYPE = {
+  [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },
+  [FormDropTypes.VIDEO]: { 'video/*': [] },
+};
+
+const MAX_SIZE_BY_TYPE = {
+  [FormDropTypes.IMAGE]: megabytesToBytes(100),
+  [FormDropTypes.VIDEO]: megabytesToBytes(500),
+};
+
+export type FormDropProps = {
   name: string;
   rules?: any;
   maxSize: number;
   recommendedWidth: number;
   recommendedHeight: number;
-  getErrorMessage?: (errorCode: ErrorCode) => string;
+  getErrorMessage?: (errorCode: ErrorCode, maxSize: number) => string;
   altLabel?: string;
   deleteLabel?: string;
   helpTextLabel?: string;
   linkLabel?: string;
   label?: string;
   accept?: Record<string, string[]>;
+  type?: FormDropTypes;
 };
 
-export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
+export const FormDrop: FC<FormDropProps> = (props) => {
   const {
     name,
     rules,
-    maxSize,
+    maxSize: maxSizeProp,
     recommendedWidth,
     recommendedHeight,
     getErrorMessage = () => '',
@@ -45,10 +62,14 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
     helpTextLabel = '',
     linkLabel = '',
     label = '',
-    accept = { 'image/png': [], 'image/jpeg': [] },
+    accept: acceptProp,
+    type = FormDropTypes.IMAGE,
   } = props;
 
   const theme = useTheme();
+
+  const accept = acceptProp || ACCEPT_BY_TYPE[type];
+  const maxSize = maxSizeProp || MAX_SIZE_BY_TYPE[type];
 
   const {
     control,
@@ -85,7 +106,10 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
 
           setError(name, {
             type: 'custom',
-            message: getErrorMessage(fileRejections[0].errors[0].code as ErrorCode),
+            message: getErrorMessage(
+              fileRejections[0].errors[0].code as ErrorCode,
+              maxSize,
+            ),
           });
         };
 
@@ -106,9 +130,10 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
             {value && (
               <>
                 <Box
-                  component="img"
+                  component={type === FormDropTypes.IMAGE ? "img" : "video"}
                   src={value.url || URL.createObjectURL(value.file)}
                   alt={altLabel}
+                  controls
                   sx={{
                     width: '100%',
                     height: 'auto',
@@ -206,4 +231,4 @@ export const FormDropPicture: FC<FormDropPictureProps> = (props) => {
     />
   );
 };
-export default FormDropPicture;
+export default FormDrop;
