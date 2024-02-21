@@ -13,7 +13,7 @@ export { default as FormRichEditor } from './components/FormRichEditor';
 export { default as CustomStepper, CustomStepperProps } from './components/CustomStepper';
 export { default as SideStepper } from './components/SideStepper';
 export { default as HorizontalStepper, HorizontalStepperProps, StepType, } from './components/HorizontalStepper';
-export { default as FormDropPicture, FormDropPictureProps, } from './components/FormDropPicture';
+export { default as FormDrop, FormDropProps, FormDropTypes, } from './components/FormDrop';
 export { default as FormRadioCustomGroup, FormRadioCustomGroupProps, } from './components/FormRadioCustomGroup';
 export { useDebounce } from './hooks/useDebounce';
 export { useServerPagination, TableSortingHeaderProps } from './hooks/useServerPagination';
