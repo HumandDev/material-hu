@@ -16,7 +16,7 @@ import {
   alpha,
 } from '@mui/material';
 import { Upload } from '@mui/icons-material';
-import { megabytesToBytes } from 'src/utils/bytes';
+import { megabytesToBytes } from '../utils/bytes';
 
 export enum FormDropTypes {
   IMAGE = 'image',
