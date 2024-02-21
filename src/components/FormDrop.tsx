@@ -47,8 +47,8 @@ export type FormDropProps = {
   name: string;
   rules?: any;
   maxSize?: number;
-  recommendedWidth: number;
-  recommendedHeight: number;
+  recommendedWidth?: number;
+  recommendedHeight?: number;
   getErrorMessage?: (errorCode: ErrorCode, context: FormDropContext) => string;
   altLabel?: (context: FormDropContext) => string;
   deleteLabel?: (context: FormDropContext) => string;
@@ -64,8 +64,8 @@ export const FormDrop: FC<FormDropProps> = (props) => {
     name,
     rules,
     maxSize: maxSizeProp,
-    recommendedWidth,
-    recommendedHeight,
+    recommendedWidth = RECOMMENDED_WIDTH,
+    recommendedHeight = RECOMMENDED_HEIGHT,
     getErrorMessage = () => '',
     altLabel = () => '',
     deleteLabel = () => '',
