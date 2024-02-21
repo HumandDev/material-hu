@@ -7,7 +7,7 @@ export declare enum FormDropTypes {
 export type FormDropProps = {
     name: string;
     rules?: any;
-    maxSize: number;
+    maxSize?: number;
     recommendedWidth: number;
     recommendedHeight: number;
     getErrorMessage?: (errorCode: ErrorCode, maxSize: number) => string;

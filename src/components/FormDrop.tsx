@@ -36,7 +36,7 @@ const MAX_SIZE_BY_TYPE = {
 export type FormDropProps = {
   name: string;
   rules?: any;
-  maxSize: number;
+  maxSize?: number;
   recommendedWidth: number;
   recommendedHeight: number;
   getErrorMessage?: (errorCode: ErrorCode, maxSize: number) => string;
