@@ -21,6 +21,7 @@ export {
   default as FormDrop,
   FormDropProps,
   FormDropTypes,
+  FormDropContext,
 } from './components/FormDrop';
 export {
   default as FormRadioCustomGroup,
