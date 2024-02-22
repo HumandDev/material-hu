@@ -25,12 +25,12 @@ export enum FormDropTypes {
 
 const ACCEPT_BY_TYPE = {
   [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },
-  [FormDropTypes.VIDEO]: { 'video/*': [] },
+  [FormDropTypes.VIDEO]: { 'video/mp4': [] },
 };
 
 const MAX_SIZE_BY_TYPE = {
   [FormDropTypes.IMAGE]: megabytesToBytes(100),
-  [FormDropTypes.VIDEO]: megabytesToBytes(500),
+  [FormDropTypes.VIDEO]: megabytesToBytes(150),
 };
 
 const RECOMMENDED_WIDTH = 900;
