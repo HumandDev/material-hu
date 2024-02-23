@@ -139,12 +139,14 @@ export const FormDrop: FC<FormDropProps> = (props) => {
           maxSize,
         });
 
+        const hasValue = value?.url?.length > 0 || !!value?.file;
+
         return (
           <Stack
             spacing={3}
             width="100%"
           >
-            {value && (
+            {hasValue && (
               <>
                 <Box
                   component={type === FormDropTypes.IMAGE ? "img" : "video"}
@@ -168,7 +170,7 @@ export const FormDrop: FC<FormDropProps> = (props) => {
                 </Button>
               </>
             )}
-            {!value && (
+            {!hasValue && (
               <>
                 <Box
                   aria-describedby="drop-picture-error-text"
