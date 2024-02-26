@@ -16,31 +16,41 @@ import {
   alpha,
 } from '@mui/material';
 import { Upload } from '@mui/icons-material';
+import DocumentItem from './DocumentItem';
 import { megabytesToBytes } from '../utils/bytes';
 
 export enum FormDropTypes {
   IMAGE = 'image',
   VIDEO = 'video',
+  PDF = 'pdf',
 };
 
 const ACCEPT_BY_TYPE = {
   [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },
   [FormDropTypes.VIDEO]: { 'video/mp4': [] },
+  [FormDropTypes.PDF]: { 'application/pdf': [] },
 };
 
 const MAX_SIZE_BY_TYPE = {
   [FormDropTypes.IMAGE]: megabytesToBytes(100),
   [FormDropTypes.VIDEO]: megabytesToBytes(150),
+  [FormDropTypes.PDF]: megabytesToBytes(100),
 };
 
 const RECOMMENDED_WIDTH = 900;
 const RECOMMENDED_HEIGHT = 400;
+
+export type FormDropValue = {
+  url?: string;
+  file?: File;
+};
 
 export type FormDropContext = {
   maxSize: number;
   recommendedHeight: number;
   recommendedWidth: number;
   type: FormDropTypes;
+  value: FormDropValue;
 };
 
 export type FormDropProps = {
@@ -55,6 +65,8 @@ export type FormDropProps = {
   helpTextLabel?: (context: FormDropContext) => string;
   linkLabel?: (context: FormDropContext) => string;
   label?: (context: FormDropContext) => string;
+  sizeLabel?: (context: FormDropContext) => string;
+  openLabel?: (context: FormDropContext) => string;
   accept?: Record<string, string[]>;
   type?: FormDropTypes;
 };
@@ -71,6 +83,8 @@ export const FormDrop: FC<FormDropProps> = (props) => {
     deleteLabel = () => '',
     helpTextLabel = () => '',
     linkLabel = () => '',
+    sizeLabel = () => '',
+    openLabel = () => '',
     label = () => '',
     accept: acceptProp,
     type = FormDropTypes.IMAGE,
@@ -96,11 +110,14 @@ export const FormDrop: FC<FormDropProps> = (props) => {
       control={control}
       rules={rules}
       render={({ field: { onChange, value } }) => {
+        const dropValue = value as FormDropValue;
+
         const context = {
           maxSize,
           recommendedHeight,
           recommendedWidth,
           type,
+          value,
         };
 
         const handleDrop = (files: File[]) => {
@@ -139,18 +156,18 @@ export const FormDrop: FC<FormDropProps> = (props) => {
           maxSize,
         });
 
-        const hasValue = value?.url?.length > 0 || !!value?.file;
+        const hasValue = (dropValue?.url?.length && dropValue.url.length > 0) || !!dropValue?.file;
 
         return (
           <Stack
             spacing={3}
             width="100%"
           >
-            {hasValue && (
+            {hasValue && type !== FormDropTypes.PDF && (
               <>
                 <Box
                   component={type === FormDropTypes.IMAGE ? "img" : "video"}
-                  src={value.url || URL.createObjectURL(value.file)}
+                  src={dropValue.url || (dropValue.file && URL.createObjectURL(dropValue.file))}
                   alt={altLabel(context)}
                   controls
                   sx={{
@@ -169,6 +186,22 @@ export const FormDrop: FC<FormDropProps> = (props) => {
                   {deleteLabel(context)}
                 </Button>
               </>
+            )}
+            {hasValue && type === FormDropTypes.PDF && (
+              <Stack
+                sx={{
+                  gap: 1,
+                }}
+              >
+                <DocumentItem
+                  name={value.file.name}
+                  size={sizeLabel(context)}
+                  url={dropValue.url || (dropValue.file && URL.createObjectURL(dropValue.file))}
+                  openLabel={openLabel(context)}
+                  deleteLabel={deleteLabel(context)}
+                  onDelete={handleDelete}
+                />
+              </Stack>
             )}
             {!hasValue && (
               <>

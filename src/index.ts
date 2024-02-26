@@ -24,6 +24,10 @@ export {
   FormDropContext,
 } from './components/FormDrop';
 export {
+  default as DocumentItem,
+  DocumentItemProps,
+} from './components/DocumentItem';
+export {
   default as FormRadioCustomGroup,
   FormRadioCustomGroupProps,
 } from './components/FormRadioCustomGroup';
