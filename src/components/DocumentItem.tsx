@@ -1,7 +1,6 @@
 import { FC, MouseEvent } from 'react';
 import {
   Typography,
-  Link,
   Stack,
   Tooltip,
   IconButton,
@@ -13,6 +12,7 @@ import {
   Close,
   PictureAsPdfOutlined,
 } from '@mui/icons-material';
+import { openFile } from '../utils/files';
 
 export type DocumentItemProps = {
   name?: string;
@@ -34,6 +34,13 @@ export const DocumentItem: FC<DocumentItemProps> = (props) => {
   } = props;
 
   const theme = useTheme();
+
+  const handleOpen = async () => {
+    if (!url) return;
+
+    const blob = await fetch(url).then((r) => r.blob());
+    openFile(blob);
+  };
 
   return (
     <Stack
@@ -89,15 +96,18 @@ export const DocumentItem: FC<DocumentItemProps> = (props) => {
             </span>
           )}
           {!!url && (
-            <Link
-              href={url}
+            <Button
+              onClick={handleOpen}
               color="primary"
-              underline="none"
-              target="_blank"
-              rel="noreferrer"
+              variant="text"
+              size="small"
+              sx={{
+                p: 0,
+                m: 0,
+              }}
             >
               {openLabel}
-            </Link>
+            </Button>
           )}
         </Stack>
       </Stack>

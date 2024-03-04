@@ -194,7 +194,7 @@ export const FormDrop: FC<FormDropProps> = (props) => {
                 }}
               >
                 <DocumentItem
-                  name={value.file.name}
+                  name={value.file?.name || ''}
                   size={sizeLabel(context)}
                   url={dropValue.url || (dropValue.file && URL.createObjectURL(dropValue.file))}
                   openLabel={openLabel(context)}
