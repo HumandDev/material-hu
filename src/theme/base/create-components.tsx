@@ -1,10 +1,16 @@
-import { inputLabelClasses, tableCellClasses, alertClasses, type Components, createTheme, Theme } from '@mui/material';
+import {
+  inputLabelClasses,
+  tableCellClasses,
+  alertClasses,
+  type Components,
+  createTheme,
+  Theme,
+} from '@mui/material';
 
 // Used only to create transitions
 const muiTheme = createTheme();
 
 export const createComponents = (): Components<Theme> => {
-
   const alertColors = {
     success: {
       icon: '#14B89E',
@@ -66,7 +72,7 @@ export const createComponents = (): Components<Theme> => {
           borderRadius: 20,
         },
       },
-      defaultProps:{
+      defaultProps: {
         elevation: 24,
       },
     },
@@ -207,7 +213,7 @@ export const createComponents = (): Components<Theme> => {
     },
     MuiInputBase: {
       styleOverrides: {
-        input: ({theme})=>({
+        input: ({ theme }) => ({
           '&::placeholder': {
             opacity: 1,
             color: theme.palette.text.disabled,
@@ -379,7 +385,7 @@ export const createComponents = (): Components<Theme> => {
         },
       ],
       styleOverrides: {
-        root: ({theme})=>({
+        root: ({ theme }) => ({
           padding: '15px 16px',
           whiteSpace: 'nowrap',
           overflow: 'hidden',

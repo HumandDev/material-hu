@@ -1,9 +1,5 @@
 import { FC } from 'react';
-import {
-  useDropzone,
-  ErrorCode,
-  FileRejection,
-} from 'react-dropzone';
+import { useDropzone, ErrorCode, FileRejection } from 'react-dropzone';
 import { Controller, useFormContext } from 'react-hook-form';
 import {
   FormHelperText,
@@ -71,7 +67,7 @@ export type FormDropProps = {
   type?: FormDropTypes;
 };
 
-export const FormDrop: FC<FormDropProps> = (props) => {
+export const FormDrop: FC<FormDropProps> = props => {
   const {
     name,
     rules,
@@ -95,12 +91,7 @@ export const FormDrop: FC<FormDropProps> = (props) => {
   const accept = acceptProp || ACCEPT_BY_TYPE[type];
   const maxSize = maxSizeProp || MAX_SIZE_BY_TYPE[type];
 
-  const {
-    control,
-    trigger,
-    setError,
-    getFieldState,
-  } = useFormContext();
+  const { control, trigger, setError, getFieldState } = useFormContext();
 
   const errorMessage = getFieldState(name)?.error?.message;
 
@@ -133,10 +124,8 @@ export const FormDrop: FC<FormDropProps> = (props) => {
         };
 
         const handleError = (fileRejections: FileRejection[]) => {
-          if (
-            !fileRejections?.length
-            && !fileRejections[0]?.errors?.length
-          ) return;
+          if (!fileRejections?.length && !fileRejections[0]?.errors?.length)
+            return;
 
           setError(name, {
             type: 'custom',
@@ -156,7 +145,9 @@ export const FormDrop: FC<FormDropProps> = (props) => {
           maxSize,
         });
 
-        const hasValue = (dropValue?.url?.length && dropValue.url.length > 0) || !!dropValue?.file;
+        const hasValue =
+          (dropValue?.url?.length && dropValue.url.length > 0) ||
+          !!dropValue?.file;
 
         return (
           <Stack
@@ -166,8 +157,11 @@ export const FormDrop: FC<FormDropProps> = (props) => {
             {hasValue && type !== FormDropTypes.PDF && (
               <>
                 <Box
-                  component={type === FormDropTypes.IMAGE ? "img" : "video"}
-                  src={dropValue.url || (dropValue.file && URL.createObjectURL(dropValue.file))}
+                  component={type === FormDropTypes.IMAGE ? 'img' : 'video'}
+                  src={
+                    dropValue.url ||
+                    (dropValue.file && URL.createObjectURL(dropValue.file))
+                  }
                   alt={altLabel(context)}
                   controls
                   sx={{
@@ -196,7 +190,10 @@ export const FormDrop: FC<FormDropProps> = (props) => {
                 <DocumentItem
                   name={value.file?.name || ''}
                   size={sizeLabel(context)}
-                  url={dropValue.url || (dropValue.file && URL.createObjectURL(dropValue.file))}
+                  url={
+                    dropValue.url ||
+                    (dropValue.file && URL.createObjectURL(dropValue.file))
+                  }
                   openLabel={openLabel(context)}
                   deleteLabel={deleteLabel(context)}
                   onDelete={handleDelete}
@@ -253,9 +250,7 @@ export const FormDrop: FC<FormDropProps> = (props) => {
                       variant="h6"
                       component="span"
                     >
-                      <Link color="primary">
-                        {linkLabel(context)}
-                      </Link>
+                      <Link color="primary">{linkLabel(context)}</Link>
                       {label(context)}
                     </Typography>
                     <Typography

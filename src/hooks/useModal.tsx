@@ -1,7 +1,11 @@
 import { useState, FC } from 'react';
 import { Dialog, DialogProps } from '@mui/material';
 
-function useModal<T>(ModalContentComponent: FC<T>, dialogProps?: Partial<DialogProps>, extraProps?: Partial<T>) {
+function useModal<T>(
+  ModalContentComponent: FC<T>,
+  dialogProps?: Partial<DialogProps>,
+  extraProps?: Partial<T>,
+) {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
   const [modalContentProps, setModalContentProps] = useState<Partial<T>>();
@@ -15,7 +19,7 @@ function useModal<T>(ModalContentComponent: FC<T>, dialogProps?: Partial<DialogP
       >
         <ModalContentComponent
           onClose={closeModal}
-          {...modalContentProps as T}
+          {...(modalContentProps as T)}
           {...extraProps}
         />
       </Dialog>

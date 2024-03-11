@@ -8,10 +8,7 @@ import {
   useTheme,
   colors,
 } from '@mui/material';
-import {
-  Close,
-  PictureAsPdfOutlined,
-} from '@mui/icons-material';
+import { Close, PictureAsPdfOutlined } from '@mui/icons-material';
 import { openFile } from '../utils/files';
 
 export type DocumentItemProps = {
@@ -23,22 +20,15 @@ export type DocumentItemProps = {
   onDelete?: (event: MouseEvent<HTMLButtonElement>) => void;
 };
 
-export const DocumentItem: FC<DocumentItemProps> = (props) => {
-  const {
-    name,
-    size,
-    url,
-    openLabel,
-    deleteLabel,
-    onDelete,
-  } = props;
+export const DocumentItem: FC<DocumentItemProps> = props => {
+  const { name, size, url, openLabel, deleteLabel, onDelete } = props;
 
   const theme = useTheme();
 
   const handleOpen = async () => {
     if (!url) return;
 
-    const blob = await fetch(url).then((r) => r.blob());
+    const blob = await fetch(url).then(r => r.blob());
     openFile(blob);
   };
 
@@ -70,9 +60,7 @@ export const DocumentItem: FC<DocumentItemProps> = (props) => {
       >
         {!!name && (
           <Stack>
-            <Typography variant="subtitle2">
-              {name}
-            </Typography>
+            <Typography variant="subtitle2">{name}</Typography>
           </Stack>
         )}
         <Stack
@@ -85,16 +73,8 @@ export const DocumentItem: FC<DocumentItemProps> = (props) => {
             justifyContent: 'center',
           }}
         >
-          {!!size && (
-            <span>
-              {size}
-            </span>
-          )}
-          {!!size && !!url && (
-            <span>
-              {"•"}
-            </span>
-          )}
+          {!!size && <span>{size}</span>}
+          {!!size && !!url && <span>{'•'}</span>}
           {!!url && (
             <Button
               onClick={handleOpen}

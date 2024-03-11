@@ -1,5 +1,5 @@
-import React from "react";
-import { createSvgIcon } from "@mui/material";
+import React from 'react';
+import { createSvgIcon } from '@mui/material';
 
 const Search = createSvgIcon(
   <svg
@@ -13,7 +13,7 @@ const Search = createSvgIcon(
       clipRule="evenodd"
     />
   </svg>,
-  'Search'
+  'Search',
 );
 
 export default Search;

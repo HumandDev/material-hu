@@ -7,18 +7,24 @@ import {
   DialogActions,
   DialogContentText,
 } from '@mui/material';
-import { default as Button, type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
-import { CloseOutlined as CloseOutlinedIcon, SvgIconComponent } from '@mui/icons-material';
+import {
+  default as Button,
+  type LoadingButtonProps as ButtonProps,
+} from '@mui/lab/LoadingButton';
+import {
+  CloseOutlined as CloseOutlinedIcon,
+  SvgIconComponent,
+} from '@mui/icons-material';
 import { ReactNode } from 'react';
 
 type Props = {
-  title: ReactNode
-  body?: ReactNode
-  textBody?: string
-  primaryButtonProps?: ButtonProps
-  secondaryButtonProps?: ButtonProps
-  onClose?: ()=>void
-  TitleIcon?: SvgIconComponent
+  title: ReactNode;
+  body?: ReactNode;
+  textBody?: string;
+  primaryButtonProps?: ButtonProps;
+  secondaryButtonProps?: ButtonProps;
+  onClose?: () => void;
+  TitleIcon?: SvgIconComponent;
 };
 
 const NewModal = ({
@@ -37,10 +43,10 @@ const NewModal = ({
       gap={1}
     >
       {TitleIcon && (
-      <TitleIcon
-        sx={{ mt: '2px' }}
-        color="humand"
-      />
+        <TitleIcon
+          sx={{ mt: '2px' }}
+          color="humand"
+        />
       )}
       <DialogTitle
         variant="h5"
@@ -57,21 +63,17 @@ const NewModal = ({
       </IconButton>
     </Stack>
     <DialogContent sx={{ px: 0 }}>
-      {textBody && (
-      <DialogContentText>
-        {textBody}
-      </DialogContentText>
-      )}
+      {textBody && <DialogContentText>{textBody}</DialogContentText>}
       {body}
     </DialogContent>
     <DialogActions sx={{ p: 0 }}>
       {secondaryButtonProps && (
-      <Button
-        color="humand"
-        variant="text"
-        {...secondaryButtonProps}
-        sx={{ mr: 2, ...secondaryButtonProps.sx }}
-      />
+        <Button
+          color="humand"
+          variant="text"
+          {...secondaryButtonProps}
+          sx={{ mr: 2, ...secondaryButtonProps.sx }}
+        />
       )}
       {primaryButtonProps && (
         <Button
@@ -81,7 +83,7 @@ const NewModal = ({
         />
       )}
     </DialogActions>
-    </Box>
+  </Box>
 );
 
 export default NewModal;

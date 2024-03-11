@@ -20,7 +20,7 @@ import { Check } from '@mui/icons-material';
 export type StepType = {
   id: string;
   label: string;
-  content: (info: { id: string, activeStep: number }) => ReactNode;
+  content: (info: { id: string; activeStep: number }) => ReactNode;
   stepProps?: StepProps;
   stepLabelProps?: StepLabelProps;
 };
@@ -50,7 +50,7 @@ export type HorizontalStepperProps = StepperProps & {
   };
 };
 
-export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
+export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
   const {
     steps,
     activeStep = 0,
@@ -68,7 +68,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
 
   const theme = useTheme();
 
-  const validStep = (step: number) => (step >= 0 && step < steps.length);
+  const validStep = (step: number) => step >= 0 && step < steps.length;
 
   const getStepState = (step: number) => {
     if (!validStep(step)) return null;
@@ -110,12 +110,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
         {...stepperProps}
       >
         {steps.map((step, index) => {
-          const {
-            id,
-            label,
-            stepProps = {},
-            stepLabelProps = {},
-          } = step;
+          const { id, label, stepProps = {}, stepLabelProps = {} } = step;
 
           return (
             <Step
@@ -190,9 +185,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = (props) => {
         })}
       </Stack>
       <Divider />
-      {!!currentStep && (
-        currentStep.content({ activeStep, id: currentStep.id })
-      )}
+      {!!currentStep && currentStep.content({ activeStep, id: currentStep.id })}
       <Stack
         component={Container}
         maxWidth="md"

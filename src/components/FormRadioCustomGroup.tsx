@@ -16,13 +16,12 @@ import {
 } from '@mui/material';
 
 export type Option = {
-  value: any,
-  label: ReactNode,
-  helperText?: string,
+  value: any;
+  label: ReactNode;
+  helperText?: string;
 };
 
-export type FormRadioCustomGroupProps =
-  Omit<RadioGroupProps, 'name'> & {
+export type FormRadioCustomGroupProps = Omit<RadioGroupProps, 'name'> & {
   name: string;
   options: Option[];
   radioProps?: RadioProps;
@@ -33,7 +32,7 @@ export type FormRadioCustomGroupProps =
   fullWidth?: boolean;
 };
 
-export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
+export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = props => {
   const {
     name,
     options,
@@ -60,7 +59,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
           sx={{
             flexDirection: column ? 'column' : 'row',
             width: fullWidth ? '100%' : undefined,
-              ...other?.sx,
+            ...other?.sx,
           }}
         >
           {options.map((option, index) => (
@@ -76,12 +75,14 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                 borderRadius: 1,
                 borderWidth: '1px',
                 borderStyle: 'solid',
-                borderColor: option.value === field.value
-                  ? theme.palette.humand.dark
-                  : 'rgba(0, 0, 0, 0.12)',
-                backgroundColor: option.value === field.value
-                  ? '#F5F7FF'
-                  : theme.palette.background.paper,
+                borderColor:
+                  option.value === field.value
+                    ? theme.palette.humand.dark
+                    : 'rgba(0, 0, 0, 0.12)',
+                backgroundColor:
+                  option.value === field.value
+                    ? '#F5F7FF'
+                    : theme.palette.background.paper,
                 '& .MuiFormControlLabel-root': {
                   padding: theme.spacing(1, 2),
                   width: '100%',
@@ -98,7 +99,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                     ? `${name}-${option.value}-helper-text`
                     : undefined
                 }
-                control={(
+                control={
                   <Radio
                     color="humand"
                     {...radioProps}
@@ -107,8 +108,8 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                       ...radioProps?.sx,
                     }}
                   />
-                )}
-                label={(
+                }
+                label={
                   <Stack>
                     <Typography
                       variant="subtitle2"
@@ -131,7 +132,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                       </FormHelperText>
                     )}
                   </Stack>
-                )}
+                }
                 value={option.value}
               />
             </Stack>

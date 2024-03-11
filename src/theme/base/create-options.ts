@@ -4,8 +4,8 @@ import createComponents from './create-components';
 
 type Config = {
   direction?: Direction;
-  color?: string
-}
+  color?: string;
+};
 
 // Here we do not modify the "palette" and "shadows" because "light" and "dark" mode
 // may have different values.
@@ -28,7 +28,7 @@ export const createOptions = (config: Config): ThemeOptions => {
     shape: {
       borderRadius: 8,
     },
-    shadows:[
+    shadows: [
       'none',
       '0px 1px 2px 0px rgba(0, 0, 0, 0.08);',
       '0px 1px 5px 0px rgba(0, 0, 0, 0.08);',

@@ -7,7 +7,9 @@ import { useDebounce } from './useDebounce';
 import PaginationController from '../components/pagination/PaginationController';
 import buildSearchbar from '../components/pagination/SearchBarController';
 
-type TableSortingHeaderProps = FC<TableCellProps & { id: string, disabled?: boolean }>;
+type TableSortingHeaderProps = FC<
+  TableCellProps & { id: string; disabled?: boolean }
+>;
 
 export type FormValues = {
   query: string;
@@ -22,7 +24,7 @@ export type FormValues = {
 type Form = UseFormReturn<FormValues, undefined>;
 
 const useServerTableSorting = (form: Form) => {
-  const { watch, setValue } = (form);
+  const { watch, setValue } = form;
   const { order, orderBy } = watch();
 
   const createSortHandler = (property: string) => () => {
@@ -32,7 +34,12 @@ const useServerTableSorting = (form: Form) => {
   };
 
   // this component replaces the TableCell inside TableHeader
-  const TableSortingHeader: TableSortingHeaderProps = ({ children, id, disabled, ...rest }) => (
+  const TableSortingHeader: TableSortingHeaderProps = ({
+    children,
+    id,
+    disabled,
+    ...rest
+  }) => (
     <TableCell
       {...rest}
       sortDirection={orderBy === id && order === 'ASC' ? 'asc' : 'desc'}
@@ -54,12 +61,11 @@ const useServerTableSorting = (form: Form) => {
 };
 
 type ServerPaginationOptions = {
-  labelRowsPerPage?: string
-  defaultOrderBy?: string
-  defaultOrder?: string
-  limitOptions?: number[],
-
-}
+  labelRowsPerPage?: string;
+  defaultOrderBy?: string;
+  defaultOrder?: string;
+  limitOptions?: number[];
+};
 
 const useServerPagination = (options?: ServerPaginationOptions) => {
   const {
@@ -67,8 +73,8 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
     limitOptions = [10, 20, 30],
-  } = options ?? {}
-  
+  } = options ?? {};
+
   const form = useForm<FormValues>({
     defaultValues: {
       query: '',
@@ -79,17 +85,33 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
       order: defaultOrder,
       orderBy: defaultOrderBy,
     },
-  })
+  });
 
   const { watch, setValue, control } = form;
 
   const { query, pagination, order, orderBy } = watch();
 
-  const setPage = useCallback((page: number) => setValue('pagination.page', page), [setValue]);
-  const setLimit = useCallback((limit: number) => setValue('pagination.limit', limit), [setValue]);
-  const setOrderBy = useCallback((newOrderBy: string) => setValue('orderBy', newOrderBy), [setValue]);
-  const setOrder = useCallback((newOrder?: string) => setValue('order', newOrder || order === 'DESC' ? 'ASC' : 'DESC'), [setValue]);
-  const setQuery = useCallback((newQuery: string) => setValue('query', newQuery), [setValue]);
+  const setPage = useCallback(
+    (page: number) => setValue('pagination.page', page),
+    [setValue],
+  );
+  const setLimit = useCallback(
+    (limit: number) => setValue('pagination.limit', limit),
+    [setValue],
+  );
+  const setOrderBy = useCallback(
+    (newOrderBy: string) => setValue('orderBy', newOrderBy),
+    [setValue],
+  );
+  const setOrder = useCallback(
+    (newOrder?: string) =>
+      setValue('order', newOrder || order === 'DESC' ? 'ASC' : 'DESC'),
+    [setValue],
+  );
+  const setQuery = useCallback(
+    (newQuery: string) => setValue('query', newQuery),
+    [setValue],
+  );
 
   const TableSortingHeader = useServerTableSorting(form);
 
@@ -108,10 +130,9 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
 
   useEffect(() => {
     setPage(0);
-  },
-  [debouncedQuery, pagination.limit]);
+  }, [debouncedQuery, pagination.limit]);
 
-  const Searchbar = useMemo(() => buildSearchbar({ control, setValue }), [])
+  const Searchbar = useMemo(() => buildSearchbar({ control, setValue }), []);
 
   return {
     query: debouncedQuery,
