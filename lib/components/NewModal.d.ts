@@ -10,5 +10,5 @@ type Props = {
     onClose?: () => void;
     TitleIcon?: SvgIconComponent;
 };
-declare const NewModal: ({ title, body, textBody, TitleIcon, primaryButtonProps, secondaryButtonProps, onClose }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const NewModal: ({ title, body, textBody, TitleIcon, primaryButtonProps, secondaryButtonProps, onClose, }: Props) => import("react/jsx-runtime").JSX.Element;
 export default NewModal;

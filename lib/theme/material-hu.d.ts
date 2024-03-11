@@ -43,13 +43,13 @@ declare module '@mui/material/TableCell' {
         userField: true;
     }
 }
-interface ThemeConfig {
+type ThemeConfig = {
     responsiveFontSizes?: boolean;
     colorPreset?: string;
     contrast?: Contrast;
     direction?: Direction;
     paletteMode?: PaletteMode;
-}
+};
 declare module '@mui/material/styles' {
     interface Palette {
         humand: Palette['primary'];

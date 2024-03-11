@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import {
   Theme,
   createTheme as createMuiTheme,
@@ -6,7 +7,7 @@ import {
 import createOptions from './base/create-options';
 
 declare module '@mui/material/styles/createPalette' {
-  type ColorRange = {
+  interface ColorRange {
     50: string;
     100: string;
     200: string;
@@ -17,13 +18,13 @@ declare module '@mui/material/styles/createPalette' {
     700: string;
     800: string;
     900: string;
-  };
+  }
 
-  type Palette = {
+  interface Palette {
     neutral: ColorRange;
-  };
+  }
 
-  type PaletteColor = {
+  interface PaletteColor {
     lightest?: string;
     darkest?: string;
     alpha4?: string;
@@ -31,16 +32,16 @@ declare module '@mui/material/styles/createPalette' {
     alpha12?: string;
     alpha30?: string;
     alpha50?: string;
-  };
+  }
 
-  type PaletteOptions = {
+  interface PaletteOptions {
     neutral?: ColorRange;
-  };
+  }
 
-  type TypeBackground = {
+  interface TypeBackground {
     paper: string;
     default: string;
-  };
+  }
 }
 
 export type ColorPreset = 'blue' | 'green' | 'indigo' | 'purple';
@@ -52,11 +53,11 @@ export type Direction = 'ltr' | 'rtl';
 export type PaletteMode = 'dark' | 'light';
 
 declare module '@mui/material/TableCell' {
-  type TableCellPropsVariantOverrides = {
+  interface TableCellPropsVariantOverrides {
     titleField: true;
     shortField: true;
     userField: true;
-  };
+  }
 }
 type ThemeConfig = {
   responsiveFontSizes?: boolean;
@@ -67,37 +68,37 @@ type ThemeConfig = {
 };
 
 declare module '@mui/material/styles' {
-  type Palette = {
+  interface Palette {
     humand: Palette['primary'];
-  };
+  }
 
-  type PaletteOptions = {
+  interface PaletteOptions {
     humand?: PaletteOptions['primary'];
-  };
+  }
 }
 
 declare module '@mui/material/Button' {
-  type ButtonPropsColorOverrides = {
+  interface ButtonPropsColorOverrides {
     humand: true;
-  };
+  }
 }
 
 declare module '@mui/material/SvgIcon' {
-  type SvgIconPropsColorOverrides = {
+  interface SvgIconPropsColorOverrides {
     humand: true;
-  };
+  }
 }
 
 declare module '@mui/material/IconButton' {
-  type IconButtonPropsColorOverrides = {
+  interface IconButtonPropsColorOverrides {
     humand: true;
-  };
+  }
 }
 
 declare module '@mui/material/Radio' {
-  type RadioPropsColorOverrides = {
+  interface RadioPropsColorOverrides {
     humand: true;
-  };
+  }
 }
 
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {

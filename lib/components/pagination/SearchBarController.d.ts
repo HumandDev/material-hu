@@ -6,5 +6,5 @@ type BuildSearchbarParams<T extends FieldValues> = {
     control: Control<T>;
     setValue: (name: keyof T, value: T[keyof T]) => void;
 };
-declare const buildSearchbar: ({ control, setValue }: BuildSearchbarParams<ServerPaginationFormValues>) => FC<TextFieldProps>;
+declare const buildSearchbar: ({ control, setValue, }: BuildSearchbarParams<ServerPaginationFormValues>) => FC<TextFieldProps>;
 export default buildSearchbar;

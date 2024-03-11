@@ -1,0 +1,21 @@
+name: CI Process Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Checking TS Rules
+        run: npm run tsc
+
+      - name: Checking lint Rules
+        run: npm run lint
