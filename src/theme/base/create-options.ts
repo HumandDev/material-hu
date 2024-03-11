@@ -2,7 +2,7 @@ import { ThemeOptions, colors, type Direction } from '@mui/material';
 import createTypography from './create-typography';
 import createComponents from './create-components';
 
-interface Config {
+type Config = {
   direction?: Direction;
   color?: string
 }
@@ -20,13 +20,13 @@ export const createOptions = (config: Config): ThemeOptions => {
         sm: 600,
         md: 900,
         lg: 1200,
-        xl: 1440
-      }
+        xl: 1440,
+      },
     },
     components: createComponents(),
     direction,
     shape: {
-      borderRadius: 8
+      borderRadius: 8,
     },
     shadows:[
       'none',
@@ -53,7 +53,7 @@ export const createOptions = (config: Config): ThemeOptions => {
       '0px 8px 40px 0px rgba(0, 0, 0, 0.08);',
       '0px 8px 42px 0px rgba(0, 0, 0, 0.08);',
       '0px 9px 44px 0px rgba(0, 0, 0, 0.08);',
-      '0px 5px 22px 0px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03);'
+      '0px 5px 22px 0px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03);',
     ],
     typography: createTypography(),
     palette: {
@@ -62,21 +62,21 @@ export const createOptions = (config: Config): ThemeOptions => {
         main: config?.color || 'blue',
       },
       secondary: {
-        main: colors.grey[600]
+        main: colors.grey[600],
       },
       divider: '#f2f4f7',
       success: {
         contrastText: '#ffffff',
-        main: '#4caf50'
+        main: '#4caf50',
       },
       text: {
         primary: '#111927',
-        secondary: '#6C737F'
+        secondary: '#6C737F',
       },
       warning: {
         contrastText: '#ffffff',
-        main: '#ff9800'
-      }
+        main: '#ff9800',
+      },
     },
   };
 };

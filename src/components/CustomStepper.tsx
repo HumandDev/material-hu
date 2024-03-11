@@ -24,7 +24,7 @@ const CustomStepIcon = ({ active, completed }:StepIconProps) => (
     border: '2px solid',
     borderColor: active || completed ? 'primary.main' : 'text.disabled',
     backgroundColor: completed ? 'primary.main' : 'none',
-    mr: 3
+    mr: 3,
   }}
   >
     {completed && (

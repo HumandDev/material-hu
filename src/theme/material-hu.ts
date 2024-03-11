@@ -2,7 +2,7 @@ import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '@mui/
 import createOptions from './base/create-options';
 
 declare module '@mui/material/styles/createPalette' {
-  interface ColorRange {
+  type ColorRange = {
     50: string;
     100: string;
     200: string;
@@ -15,11 +15,11 @@ declare module '@mui/material/styles/createPalette' {
     900: string;
   }
 
-  interface Palette {
+  type Palette = {
     neutral: ColorRange;
   }
 
-  interface PaletteColor {
+  type PaletteColor = {
     lightest?: string;
     darkest?: string;
     alpha4?: string;
@@ -29,11 +29,11 @@ declare module '@mui/material/styles/createPalette' {
     alpha50?: string;
   }
 
-  interface PaletteOptions {
+  type PaletteOptions = {
     neutral?: ColorRange;
   }
 
-  interface TypeBackground {
+  type TypeBackground = {
     paper: string;
     default: string;
   }
@@ -48,13 +48,13 @@ export type Direction = 'ltr' | 'rtl';
 export type PaletteMode = 'dark' | 'light';
 
 declare module '@mui/material/TableCell' {
-  interface TableCellPropsVariantOverrides {
+  type TableCellPropsVariantOverrides = {
     titleField: true;
     shortField: true;
     userField: true;
   }
 }
-interface ThemeConfig {
+type ThemeConfig = {
   responsiveFontSizes?: boolean;
   colorPreset?: string,
   contrast?: Contrast;
@@ -63,35 +63,35 @@ interface ThemeConfig {
 }
 
 declare module '@mui/material/styles' {
-  interface Palette {
+  type Palette = {
     humand: Palette['primary'];
   }
 
-  interface PaletteOptions {
+  type PaletteOptions = {
     humand?: PaletteOptions['primary'];
   }
 }
 
 declare module '@mui/material/Button' {
-  interface ButtonPropsColorOverrides {
+  type ButtonPropsColorOverrides = {
     humand: true;
   }
 }
 
 declare module '@mui/material/SvgIcon' {
-  interface SvgIconPropsColorOverrides {
+  type SvgIconPropsColorOverrides = {
     humand: true;
   }
 }
 
 declare module '@mui/material/IconButton' {
-  interface IconButtonPropsColorOverrides {
+  type IconButtonPropsColorOverrides = {
     humand: true;
   }
 }
 
 declare module '@mui/material/Radio' {
-  interface RadioPropsColorOverrides {
+  type RadioPropsColorOverrides = {
     humand: true;
   }
 }
@@ -102,7 +102,7 @@ export const createNewTheme = (config: ThemeConfig = {}): Theme => {
     // Base options available for both dark and light palette modes
     createOptions({
       direction: config.direction,
-      color: config.colorPreset
+      color: config.colorPreset,
     })
   );
 

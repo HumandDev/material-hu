@@ -5,7 +5,7 @@ import {
   IconButton,
   DialogContent,
   DialogActions,
-  DialogContentText
+  DialogContentText,
 } from '@mui/material';
 import { default as Button, type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
 import { CloseOutlined as CloseOutlinedIcon, SvgIconComponent } from '@mui/icons-material';
@@ -28,7 +28,7 @@ const NewModal = ({
   TitleIcon,
   primaryButtonProps,
   secondaryButtonProps,
-  onClose
+  onClose,
 }: Props) => (
   <Box sx={{ px: 4, pb: 4, pt: 3 }}>
     <Stack

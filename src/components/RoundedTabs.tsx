@@ -29,7 +29,7 @@ const RoundedTabs = ({ tabs, tabIndex, onChange }:Props) => (
                         borderRight: index === tabs.length - 1 ? 'none' : '1px solid',
                         marginLeft: '0 !important',
                         borderColor: 'primary.main',
-                        bgcolor: (theme) => (tabIndex === index ? alpha(theme.palette.primary.main, 0.1) : 'transparent')
+                        bgcolor: (theme) => (tabIndex === index ? alpha(theme.palette.primary.main, 0.1) : 'transparent'),
                     }}
                 />
             ))}

@@ -29,7 +29,9 @@ function applyPagination<T>(
   items: T[],
   page: number,
   limit: number
-) { return items.slice(page * limit, page * limit + limit); }
+) {
+ return items.slice(page * limit, page * limit + limit); 
+}
 
 const useTableSorting = <T extends unknown>(defaultOrderBy: string, defaultOrder: TableSortLabelProps['direction']) => {
     const [orderBy, setOrderBy] = useState(defaultOrderBy);
@@ -77,7 +79,7 @@ const useTableSorting = <T extends unknown>(defaultOrderBy: string, defaultOrder
   
     return {
       TableSortingHeader,
-      sortFunction
+      sortFunction,
     };
   };
 
@@ -97,15 +99,15 @@ const useClientPagination = <TData extends object>(options: ClientPaginationOpti
       labelRowsPerPage,
       defaultOrderBy = 'position',
       defaultOrder = 'asc',
-      limitOptions = [10, 20, 30]
+      limitOptions = [10, 20, 30],
     } = options 
 
     const { watch, control, setValue, reset } = useForm<FormValues>({ defaultValues: {
       query: '',
       pagination: {
         page: 0,
-        limit: limitOptions[0]
-      }
+        limit: limitOptions[0],
+      },
     } });
   
     const { query, pagination } = watch();
@@ -142,7 +144,7 @@ const useClientPagination = <TData extends object>(options: ClientPaginationOpti
       Searchbar,
       resetForm: reset,
       paginationController,
-      TableSortingHeader
+      TableSortingHeader,
     };
   };
 

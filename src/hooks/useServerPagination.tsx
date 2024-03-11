@@ -66,7 +66,7 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
     labelRowsPerPage = '', // Depends if paginationController is used
     defaultOrderBy = 'CREATED_AT',
     defaultOrder = 'ASC',
-    limitOptions = [10, 20, 30]
+    limitOptions = [10, 20, 30],
   } = options ?? {}
   
   const form = useForm<FormValues>({
@@ -74,11 +74,11 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
       query: '',
       pagination: {
         page: 0,
-        limit: limitOptions[0]
+        limit: limitOptions[0],
       },
       order: defaultOrder,
-      orderBy: defaultOrderBy
-    }
+      orderBy: defaultOrderBy,
+    },
   })
 
   const { watch, setValue, control } = form;

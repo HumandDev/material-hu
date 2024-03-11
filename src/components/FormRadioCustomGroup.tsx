@@ -60,7 +60,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
           sx={{
             flexDirection: column ? 'column' : 'row',
             width: fullWidth ? '100%' : undefined,
-              ...other?.sx
+              ...other?.sx,
           }}
         >
           {options.map((option, index) => (
@@ -104,7 +104,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = (props) => {
                     {...radioProps}
                     sx={{
                       mx: 1,
-                      ...radioProps?.sx
+                      ...radioProps?.sx,
                     }}
                   />
                 )}

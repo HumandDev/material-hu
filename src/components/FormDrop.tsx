@@ -23,7 +23,7 @@ export enum FormDropTypes {
   IMAGE = 'image',
   VIDEO = 'video',
   PDF = 'pdf',
-};
+}
 
 const ACCEPT_BY_TYPE = {
   [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },

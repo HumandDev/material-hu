@@ -73,10 +73,10 @@ function FormRichEditor({ editorProps, handleBlur, hideModalButtons, simplifyEdi
       table_default_styles: {
         display: 'block',
         'overflow-x': 'auto',
-        'border-collapse': 'collapse'
+        'border-collapse': 'collapse',
       },
-      ...(editorProps?.init || {})
-    }
+      ...(editorProps?.init || {}),
+    },
   };
   return (
     <Controller

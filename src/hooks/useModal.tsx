@@ -24,7 +24,7 @@ function useModal<T>(ModalContentComponent: FC<T>, dialogProps?: Partial<DialogP
     showModal: (props: Partial<T> = {}) => {
       setModalContentProps(props);
       setOpen(true);
-    }
+    },
   };
 }
 
