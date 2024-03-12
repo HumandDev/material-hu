@@ -14,8 +14,13 @@ jobs:
       - name: Installing dependencies
         run: npm ci
 
-      - name: Checking TS Rules
-        run: npm run tsc
+      - name: Check TS rules & check if lib folder is up to date
+        run: |
+          npm run tsc -- --outDir testDirectory
+          if ! diff -rq testDirectory lib >/dev/null; then
+            echo "::error::The lib folder is not up to date. Run 'npm run tsc' to update it."
+            exit 1
+          fi
 
       - name: Checking lint Rules
         run: npm run lint
