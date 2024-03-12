@@ -1,4 +1,4 @@
-import { FC, ReactNode, MouseEvent, useState } from 'react';
+import { FC, MouseEvent, useState } from 'react';
 import {
   Divider,
   IconButton,
@@ -25,12 +25,8 @@ export type IconsMenuProps = {
   onClose?: (event: MouseEvent) => void;
 };
 
-export const IconsMenu: FC<IconsMenuProps> = (props) => {
-  const {
-    options,
-    onClick = () => null,
-    onClose = () => null,
-  } = props;
+export const IconsMenu: FC<IconsMenuProps> = props => {
+  const { options, onClick = () => null, onClose = () => null } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -47,11 +43,12 @@ export const IconsMenu: FC<IconsMenuProps> = (props) => {
     onClose(event);
   };
 
-  const handleOptionClick = (callback: Option['onClick']) => (event: MouseEvent) => {
-    event.stopPropagation();
-    handleClose(event);
-    callback();
-  };
+  const handleOptionClick =
+    (callback: Option['onClick']) => (event: MouseEvent) => {
+      event.stopPropagation();
+      handleClose(event);
+      callback();
+    };
 
   return (
     <>
@@ -82,11 +79,9 @@ export const IconsMenu: FC<IconsMenuProps> = (props) => {
           horizontal: 'right',
         }}
       >
-        {options.map((option) => (
+        {options.map(option => (
           <div key={option.label}>
-            <MenuItem
-              onClick={handleOptionClick(option.onClick)}
-            >
+            <MenuItem onClick={handleOptionClick(option.onClick)}>
               {option.icon && (
                 <ListItemIcon
                   sx={{
@@ -107,7 +102,7 @@ export const IconsMenu: FC<IconsMenuProps> = (props) => {
                 {option.label}
               </ListItemText>
             </MenuItem>
-            {option.divider && (<Divider />)}
+            {option.divider && <Divider />}
           </div>
         ))}
       </Menu>

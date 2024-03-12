@@ -6,7 +6,9 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "lint": "eslint ./src && npx prettier ./src --check",
+    "lint-fix": "eslint --fix ./src && npx prettier ./src --write"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,10 @@
   "homepage": "https://github.com/HumandDev/material-hu#readme",
   "devDependencies": {
     "@types/lodash": "^4.14.202",
+    "eslint": "^8.57.0",
+    "eslint-config-humand": "github:HumandDev/eslint-config-humand",
+    "prettier": "^3.2.5",
+    "prettier-config-humand": "github:HumandDev/prettier-config-humand",
     "typescript": "^5.1.6"
   },
   "browserslist": [
@@ -27,6 +33,7 @@
     "not dead",
     "not op_mini all"
   ],
+  "prettier": "prettier-config-humand",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",

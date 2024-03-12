@@ -1,4 +1,9 @@
-import { Theme, createTheme as createMuiTheme, responsiveFontSizes } from '@mui/material';
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
+import {
+  Theme,
+  createTheme as createMuiTheme,
+  responsiveFontSizes,
+} from '@mui/material';
 import createOptions from './base/create-options';
 
 declare module '@mui/material/styles/createPalette' {
@@ -54,13 +59,13 @@ declare module '@mui/material/TableCell' {
     userField: true;
   }
 }
-interface ThemeConfig {
+type ThemeConfig = {
   responsiveFontSizes?: boolean;
-  colorPreset?: string,
+  colorPreset?: string;
   contrast?: Contrast;
   direction?: Direction;
   paletteMode?: PaletteMode;
-}
+};
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -97,13 +102,12 @@ declare module '@mui/material/Radio' {
 }
 
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {
-  
   let theme = createMuiTheme(
     // Base options available for both dark and light palette modes
     createOptions({
       direction: config.direction,
-      color: config.colorPreset
-    })
+      color: config.colorPreset,
+    }),
   );
 
   theme = createMuiTheme(theme, {
@@ -118,12 +122,9 @@ export const createNewTheme = (config: ThemeConfig = {}): Theme => {
     },
   });
 
-
-
   if (config.responsiveFontSizes) {
     theme = responsiveFontSizes(theme);
   }
 
   return theme;
 };
-

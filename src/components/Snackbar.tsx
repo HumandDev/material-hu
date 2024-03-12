@@ -13,7 +13,7 @@ export const useSnackbarUtils = () => {
         <IconButton onClick={() => closeSnackbar()}>
           <CloseIcon sx={{ color: '#FFFFFF', fontSize: 'small' }} />
         </IconButton>
-      )
+      ),
     });
   };
 
