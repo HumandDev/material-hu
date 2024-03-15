@@ -1,35 +1,46 @@
-import { Box, Tab, Tabs, Typography, alpha } from '@mui/material';
+import { Box, Tab, Tabs, Typography, TabsProps, alpha } from '@mui/material';
 
-type Props = {
-  tabs: any[];
-  tabIndex: number;
-  onChange: (event: any, value: any) => void;
+export type Tab = {
+  label: any;
 };
 
-const RoundedTabs = ({ tabs, tabIndex, onChange }: Props) => (
+export type RoundedTabsProps = TabsProps & {
+  tabs: Tab[];
+  tabIndex: number;
+  disabled?: boolean;
+};
+
+const RoundedTabs = ({
+  tabs,
+  tabIndex,
+  disabled = false,
+  ...tabsProps
+}: RoundedTabsProps) => (
   <Box
     sx={{
       mt: 2,
       width: '100%',
       border: '1px solid',
-      borderColor: 'primary.main',
+      borderColor: disabled ? '#11192761' : 'primary.main',
       borderRadius: '12px',
-      height: '36px',
+      height: '37px',
     }}
   >
     <Tabs
       value={tabIndex}
-      onChange={(event, value) => onChange(event, value)}
-      TabIndicatorProps={{
-        sx: {
+      textColor="primary"
+      variant="fullWidth"
+      {...tabsProps}
+      sx={{
+        minHeight: '37px',
+        '& .MuiTabs-indicator': {
           width: '500px',
           backgroundColor: 'transparent',
           minHeight: '30px',
           height: '30px',
         },
+        ...tabsProps.sx,
       }}
-      textColor="primary"
-      variant="fullWidth"
     >
       {tabs.map((tab, index) => (
         <Tab
@@ -40,17 +51,26 @@ const RoundedTabs = ({ tabs, tabIndex, onChange }: Props) => (
               {tab.label}
             </Typography>
           }
+          disabled={disabled}
           key={tab.label}
           sx={{
             minHeight: '35px',
             height: '35px',
             borderRight: index === tabs.length - 1 ? 'none' : '1px solid',
+            borderRadius: () => {
+              if (index === 0) return '12px 0px 0px 12px';
+              if (index === tabs.length - 1) return '0px 12px 12px 0px';
+              return '0px';
+            },
             marginLeft: '0 !important',
-            borderColor: 'primary.main',
-            bgcolor: theme =>
-              tabIndex === index
-                ? alpha(theme.palette.primary.main, 0.1)
-                : 'transparent',
+            borderColor: disabled ? '#11192761' : 'primary.main',
+            bgcolor: theme => {
+              if (tabIndex === index) {
+                if (disabled) return '#F8F9FA';
+                return alpha(theme.palette.primary.main, 0.1);
+              }
+              return 'transparent';
+            },
           }}
         />
       ))}
