@@ -26,8 +26,13 @@ export type IconsMenuProps = {
   disabled?: boolean;
 };
 
-export const IconsMenu: FC<IconsMenuProps> = (props) => {
-  const { options, onClick = () => null, onClose = () => null, disabled = false } = props;
+export const IconsMenu: FC<IconsMenuProps> = props => {
+  const {
+    options,
+    onClick = () => null,
+    onClose = () => null,
+    disabled = false,
+  } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
