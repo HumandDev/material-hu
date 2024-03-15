@@ -34,7 +34,7 @@ export const IconsMenu: FC<IconsMenuProps> = (props) => {
 
   const disabledStyles = {
     cursor: 'not-allowed',
-    opacity: '38%'
+    opacity: '38%',
   };
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
