@@ -23,13 +23,19 @@ export type IconsMenuProps = {
   options: Option[];
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   onClose?: (event: MouseEvent) => void;
+  disabled?: boolean;
 };
 
-export const IconsMenu: FC<IconsMenuProps> = props => {
-  const { options, onClick = () => null, onClose = () => null } = props;
+export const IconsMenu: FC<IconsMenuProps> = (props) => {
+  const { options, onClick = () => null, onClose = () => null, disabled = false } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const disabledStyles = {
+    cursor: 'not-allowed',
+    opacity: '38%'
+  };
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -58,9 +64,10 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         id="button-menu"
-        onClick={handleClick}
+        onClick={disabled ? undefined : handleClick}
+        disableRipple={disabled}
       >
-        <MoreVertIcon />
+        <MoreVertIcon sx={disabled ? disabledStyles : undefined} />
       </IconButton>
       <Menu
         id="icon-menu"
