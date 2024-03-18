@@ -1,7 +1,11 @@
-type Props = {
-    tabs: any[];
-    tabIndex: number;
-    onChange: (event: any, value: any) => void;
+import { TabsProps } from '@mui/material';
+export type Tab = {
+    label: any;
 };
-declare const RoundedTabs: ({ tabs, tabIndex, onChange }: Props) => import("react/jsx-runtime").JSX.Element;
+export type RoundedTabsProps = TabsProps & {
+    tabs: Tab[];
+    tabIndex: number;
+    disabled?: boolean;
+};
+declare const RoundedTabs: ({ tabs, tabIndex, disabled, ...tabsProps }: RoundedTabsProps) => import("react/jsx-runtime").JSX.Element;
 export default RoundedTabs;
