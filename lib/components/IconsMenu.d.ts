@@ -12,6 +12,7 @@ export type IconsMenuProps = {
     options: Option[];
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     onClose?: (event: MouseEvent) => void;
+    disabled?: boolean;
 };
 export declare const IconsMenu: FC<IconsMenuProps>;
 export default IconsMenu;
