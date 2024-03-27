@@ -4,12 +4,11 @@ import {
   Stack,
   Tooltip,
   IconButton,
-  Button,
+  Link,
   useTheme,
   colors,
 } from '@mui/material';
 import { Close, PictureAsPdfOutlined } from '@mui/icons-material';
-import { openFile } from '../utils/files';
 
 export type DocumentItemProps = {
   name?: string;
@@ -24,13 +23,6 @@ export const DocumentItem: FC<DocumentItemProps> = props => {
   const { name, size, url, openLabel, deleteLabel, onDelete } = props;
 
   const theme = useTheme();
-
-  const handleOpen = async () => {
-    if (!url) return;
-
-    const blob = await fetch(url).then(r => r.blob());
-    openFile(blob);
-  };
 
   return (
     <Stack
@@ -76,18 +68,19 @@ export const DocumentItem: FC<DocumentItemProps> = props => {
           {!!size && <span>{size}</span>}
           {!!size && !!url && <span>{'•'}</span>}
           {!!url && (
-            <Button
-              onClick={handleOpen}
+            <Link
+              href={url}
+              underline="none"
               color="primary"
-              variant="text"
-              size="small"
+              target="_blank"
+              rel="noreferrer"
               sx={{
                 p: 0,
                 m: 0,
               }}
             >
               {openLabel}
-            </Button>
+            </Link>
           )}
         </Stack>
       </Stack>
