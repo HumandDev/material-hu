@@ -149,16 +149,13 @@ export const FormDrop: FC<FormDropProps> = props => {
           (dropValue?.url?.length && dropValue.url.length > 0) ||
           !!dropValue?.file;
 
-        const src = useMemo(
-          () => {
-            if (!dropValue) return undefined;
+        const src = useMemo(() => {
+          if (!dropValue) return undefined;
 
-            const { url, file } = dropValue;
+          const { url, file } = dropValue;
 
-            return url || (file && URL.createObjectURL(file));
-          },
-          [hasValue],
-        );
+          return url || (file && URL.createObjectURL(file));
+        }, [hasValue]);
 
         return (
           <Stack
