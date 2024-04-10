@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { useDropzone, ErrorCode, FileRejection } from 'react-dropzone';
 import { Controller, useFormContext } from 'react-hook-form';
 import {
@@ -149,6 +149,14 @@ export const FormDrop: FC<FormDropProps> = props => {
           (dropValue?.url?.length && dropValue.url.length > 0) ||
           !!dropValue?.file;
 
+        const src = useMemo(() => {
+          if (!dropValue) return undefined;
+
+          const { url, file } = dropValue;
+
+          return url || (file && URL.createObjectURL(file));
+        }, [hasValue]);
+
         return (
           <Stack
             spacing={3}
@@ -158,10 +166,7 @@ export const FormDrop: FC<FormDropProps> = props => {
               <>
                 <Box
                   component={type === FormDropTypes.IMAGE ? 'img' : 'video'}
-                  src={
-                    dropValue.url ||
-                    (dropValue.file && URL.createObjectURL(dropValue.file))
-                  }
+                  src={src}
                   alt={altLabel(context)}
                   controls
                   sx={{
@@ -190,10 +195,7 @@ export const FormDrop: FC<FormDropProps> = props => {
                 <DocumentItem
                   name={value.file?.name || ''}
                   size={sizeLabel(context)}
-                  url={
-                    dropValue.url ||
-                    (dropValue.file && URL.createObjectURL(dropValue.file))
-                  }
+                  url={src}
                   openLabel={openLabel(context)}
                   deleteLabel={deleteLabel(context)}
                   onDelete={handleDelete}
