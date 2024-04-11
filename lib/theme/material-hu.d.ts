@@ -1,4 +1,5 @@
 import { Theme } from '@mui/material';
+import { BaseColorType } from './hugo/colors';
 declare module '@mui/material/styles/createPalette' {
     interface ColorRange {
         50: string;
@@ -51,10 +52,10 @@ type ThemeConfig = {
     paletteMode?: PaletteMode;
 };
 declare module '@mui/material/styles' {
-    interface Palette {
+    interface Palette extends Partial<BaseColorType> {
         humand: Palette['primary'];
     }
-    interface PaletteOptions {
+    interface PaletteOptions extends Partial<BaseColorType> {
         humand?: PaletteOptions['primary'];
     }
 }

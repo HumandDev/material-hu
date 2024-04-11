@@ -5,6 +5,7 @@ import {
   responsiveFontSizes,
 } from '@mui/material';
 import createOptions from './base/create-options';
+import { BaseColorType } from './hugo/colors';
 
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
@@ -68,11 +69,11 @@ type ThemeConfig = {
 };
 
 declare module '@mui/material/styles' {
-  interface Palette {
+  interface Palette extends Partial<BaseColorType> {
     humand: Palette['primary'];
   }
 
-  interface PaletteOptions {
+  interface PaletteOptions extends Partial<BaseColorType> {
     humand?: PaletteOptions['primary'];
   }
 }
