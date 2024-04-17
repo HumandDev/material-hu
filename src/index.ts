@@ -44,3 +44,4 @@ export {
 } from './hooks/useServerPagination';
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
+export { createHuGoTheme } from './theme/hugo';
