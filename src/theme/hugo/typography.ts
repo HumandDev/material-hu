@@ -1,42 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { ThemeOptions } from '@mui/material';
 
-// TYPOGRAPHY
-declare module '@mui/material/styles' {
-  interface TypographyOptions {
-    globalXXS?: React.CSSProperties;
-    globalXS?: React.CSSProperties;
-    globalS?: React.CSSProperties;
-    globalM?: React.CSSProperties;
-    globalL?: React.CSSProperties;
-    globalXL?: React.CSSProperties;
-    globalXXL?: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    globalXXS?: React.CSSProperties;
-    globalXS?: React.CSSProperties;
-    globalS?: React.CSSProperties;
-    globalM?: React.CSSProperties;
-    globalL?: React.CSSProperties;
-    globalXL?: React.CSSProperties;
-    globalXXL?: React.CSSProperties;
-  }
-}
-
-// Update the Typography's variant prop options
-declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
-    globalXXS: true;
-    globalXS: true;
-    globalS: true;
-    globalM: true;
-    globalL: true;
-    globalXL: true;
-    globalXXL: true;
-  }
-}
-
 const typographyWeight = {
   fontWeightRegular: 400,
   fontWeightSemiBold: 500,
