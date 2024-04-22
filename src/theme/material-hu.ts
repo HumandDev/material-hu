@@ -5,6 +5,7 @@ import {
   responsiveFontSizes,
 } from '@mui/material';
 import createOptions from './base/create-options';
+import { BaseColorType } from './hugo/colors';
 
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
@@ -68,12 +69,45 @@ type ThemeConfig = {
 };
 
 declare module '@mui/material/styles' {
-  interface Palette {
+  interface Palette extends Partial<BaseColorType> {
     humand: Palette['primary'];
   }
 
-  interface PaletteOptions {
+  interface PaletteOptions extends Partial<BaseColorType> {
     humand?: PaletteOptions['primary'];
+  }
+
+  interface TypographyOptions {
+    globalXXS?: React.CSSProperties;
+    globalXS?: React.CSSProperties;
+    globalS?: React.CSSProperties;
+    globalM?: React.CSSProperties;
+    globalL?: React.CSSProperties;
+    globalXL?: React.CSSProperties;
+    globalXXL?: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    globalXXS?: React.CSSProperties;
+    globalXS?: React.CSSProperties;
+    globalS?: React.CSSProperties;
+    globalM?: React.CSSProperties;
+    globalL?: React.CSSProperties;
+    globalXL?: React.CSSProperties;
+    globalXXL?: React.CSSProperties;
+  }
+}
+
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    globalXXS: true;
+    globalXS: true;
+    globalS: true;
+    globalM: true;
+    globalL: true;
+    globalXL: true;
+    globalXXL: true;
   }
 }
 
