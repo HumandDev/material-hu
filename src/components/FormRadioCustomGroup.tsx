@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { useFormContext, Controller } from 'react-hook-form';
+import { useFormContext, Controller, ControllerProps } from 'react-hook-form';
 import {
   RadioGroup,
   RadioGroupProps,
@@ -30,6 +30,7 @@ export type FormRadioCustomGroupProps = Omit<RadioGroupProps, 'name'> & {
   optionContainerProps?: StackProps;
   column?: boolean;
   fullWidth?: boolean;
+  rules?: ControllerProps['rules'];
 };
 
 export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = props => {
@@ -42,6 +43,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = props => {
     optionContainerProps = {},
     column = false,
     fullWidth = true,
+    rules,
     ...other
   } = props;
 
@@ -52,6 +54,7 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = props => {
     <Controller
       name={name}
       control={control}
+      rules={rules}
       render={({ field }) => (
         <RadioGroup
           {...other}
