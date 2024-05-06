@@ -6,7 +6,7 @@ export declare enum FormDropTypes {
     PDF = "pdf"
 }
 export type FormDropValue = {
-    url?: string;
+    url?: string | null;
     file?: File;
 };
 export type FormDropContext = {
@@ -32,6 +32,12 @@ export type FormDropProps = {
     openLabel?: (context: FormDropContext) => string;
     accept?: Record<string, string[]>;
     type?: FormDropTypes;
+    onDrop?: (drop: FormDropValue) => void;
+    withCrop?: boolean;
+    cancelLabel?: string;
+    saveLabel?: string;
+    cropLabel?: string;
+    sliderLabel?: string;
 };
 export declare const FormDrop: FC<FormDropProps>;
 export default FormDrop;
