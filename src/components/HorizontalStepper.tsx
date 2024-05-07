@@ -6,28 +6,40 @@ import {
   StepProps,
   StepLabel,
   StepLabelProps,
+  StepButton,
+  StepButtonProps,
   Divider,
   Button,
   Stack,
   Box,
   Typography,
+  IconButton,
+  Tooltip,
   Container,
   useTheme,
   alpha,
 } from '@mui/material';
-import { Check } from '@mui/icons-material';
+import { Check, Close } from '@mui/icons-material';
 
 export type StepType = {
   id: string;
   label: string;
   content: (info: { id: string; activeStep: number }) => ReactNode;
+  completed?: boolean;
+  disabled?: boolean;
   stepProps?: StepProps;
   stepLabelProps?: StepLabelProps;
+  stepButtonProps?: StepButtonProps;
 };
 
 export type HorizontalStepperProps = StepperProps & {
   steps: StepType[];
   disabled?: boolean;
+  clickable?: boolean;
+  onSelectStep?: (index: number) => void;
+  onClose?: () => void;
+  closeLabel?: string;
+  title?: string;
   backButton?: {
     onClick?: () => void;
     getLabel?: (step: StepType) => string | null;
@@ -55,6 +67,12 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
     steps,
     activeStep = 0,
     disabled = false,
+    clickable = false,
+    nonLinear = false,
+    onSelectStep = () => null,
+    onClose,
+    closeLabel,
+    title,
     finishButton,
     backButton,
     nextButton,
@@ -70,18 +88,20 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
 
   const validStep = (step: number) => step >= 0 && step < steps.length;
 
-  const getStepState = (step: number) => {
+  const getStepState = (step: number, completed?: boolean) => {
     if (!validStep(step)) return null;
 
     if (step === activeStep) return stateLabels.active;
-    if (step < activeStep) return stateLabels.completed;
+    if (nonLinear ? completed : step < activeStep) return stateLabels.completed;
     return stateLabels.pending;
   };
 
-  const getStepIcon = (step: number) => {
+  const getStepIcon = (step: number, completed?: boolean) => {
     if (!validStep(step)) return null;
 
-    if (step < activeStep) {
+    if (step === activeStep) return null;
+
+    if (nonLinear ? completed : step < activeStep) {
       return (
         <Box className="MuiStepIcon-root">
           <Check />
@@ -91,6 +111,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
 
     return null;
   };
+  const handleSelectStep = (step: number) => () => onSelectStep(step);
 
   const currentStep = validStep(activeStep) && steps[activeStep];
   const prevStep = validStep(activeStep - 1) && steps[activeStep - 1];
@@ -99,90 +120,176 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
   return (
     <>
       <Stack
-        component={Stepper}
-        activeStep={activeStep}
-        connector={null}
-        flexDirection="row"
-        justifyContent="space-around"
-        alignItems="center"
-        spacing={1}
-        p={3}
-        {...stepperProps}
+        sx={{
+          position: 'relative',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 1,
+          py: 2,
+          px: 3,
+          width: '100%',
+        }}
       >
-        {steps.map((step, index) => {
-          const { id, label, stepProps = {}, stepLabelProps = {} } = step;
-
-          return (
-            <Step
-              key={id}
-              {...stepProps}
-              sx={{
-                '& .MuiStepIcon-root': {
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '40px',
-                  color: '#f3f4f6 !important',
-                  '& .MuiStepIcon-text': {
-                    fill: theme.palette.text.secondary,
+        {(title || onClose) && (
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              gap: 2,
+              position: 'absolute',
+              left: theme.spacing(3),
+            }}
+          >
+            {onClose && (
+              <Tooltip title={closeLabel}>
+                <IconButton
+                  onClick={onClose}
+                  aria-label={closeLabel}
+                >
+                  <Close fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            )}
+            {title && (
+              <Typography
+                variant="h5"
+                sx={{
+                  [theme.breakpoints.down('lg')]: {
+                    display: 'none',
                   },
-                },
-                '& .MuiStepLabel-root': {
-                  color: alpha(theme.palette.text.primary, 0.38),
-                },
-                '& .Mui-active': {
-                  '&.MuiStepLabel-label .state': {
-                    color: theme.palette.primary.main,
-                  },
-                  '& .MuiStepIcon-root': {
-                    borderWidth: '1px',
-                    borderStyle: 'solid',
-                    borderColor: theme.palette.primary.main,
-                    color: 'transparent !important',
-                    '& .MuiStepIcon-text': {
-                      fill: theme.palette.primary.main,
-                    },
-                  },
-                },
-                '& .Mui-completed': {
-                  '&.MuiStepLabel-label .state': {
-                    color: '#087443',
-                  },
-                  '& .MuiStepIcon-root': {
-                    backgroundColor: '#edfcf2 !important',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '& svg': {
-                      fill: '#087443',
-                    },
-                  },
-                },
-              }}
-            >
-              <StepLabel
-                icon={getStepIcon(index)}
-                {...stepLabelProps}
+                }}
               >
-                <Stack>
-                  <Typography
-                    className="state"
-                    variant="body2"
-                    component="span"
+                {title}
+              </Typography>
+            )}
+          </Stack>
+        )}
+        <Stack
+          component={Stepper}
+          activeStep={activeStep}
+          connector={null}
+          nonLinear={nonLinear}
+          sx={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 5,
+            [theme.breakpoints.up('lg')]: {
+              gap: 7,
+            },
+            ...stepperProps?.sx,
+          }}
+          {...stepperProps}
+        >
+          {steps.map((step, index) => {
+            const {
+              id,
+              label,
+              completed,
+              disabled: stepDisabled,
+              stepProps = {},
+              stepLabelProps = {},
+              stepButtonProps = {},
+            } = step;
+
+            const labelComponent = (
+              <>
+                <Typography
+                  className="state"
+                  variant="caption"
+                  component="span"
+                >
+                  {getStepState(index, completed)}
+                </Typography>
+                <Typography
+                  className="label"
+                  variant="subtitle2"
+                  component="span"
+                >
+                  {label}
+                </Typography>
+              </>
+            );
+
+            return (
+              <Step
+                key={id}
+                completed={index !== activeStep && completed}
+                {...stepProps}
+                sx={{
+                  '& .MuiStepIcon-root': {
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '40px',
+                    color: '#f3f4f6 !important',
+                    '& .MuiStepIcon-text': {
+                      fill: theme.palette.text.secondary,
+                    },
+                  },
+                  '& .MuiStepLabel-root': {
+                    color: alpha(theme.palette.text.primary, 0.38),
+                    '& .MuiStepLabel-label': {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      justifyContent: 'center',
+                    },
+                  },
+                  '& .Mui-active': {
+                    '&.MuiStepLabel-label .state': {
+                      color: theme.palette.primary.main,
+                    },
+                    '& .MuiStepIcon-root': {
+                      borderWidth: '1px',
+                      borderStyle: 'solid',
+                      borderColor: theme.palette.primary.main,
+                      color: 'transparent !important',
+                      '& .MuiStepIcon-text': {
+                        fill: theme.palette.primary.main,
+                      },
+                    },
+                  },
+                  '& .Mui-completed': {
+                    color: theme.palette.text.secondary,
+                    '&.MuiStepLabel-label .state': {
+                      color: '#087443',
+                    },
+                    '& .MuiStepIcon-root': {
+                      backgroundColor: '#edfcf2 !important',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      '& svg': {
+                        fill: '#087443',
+                      },
+                    },
+                  },
+                }}
+              >
+                {clickable && (
+                  <StepButton
+                    icon={getStepIcon(index, completed)}
+                    disabled={disabled || stepDisabled}
+                    onClick={handleSelectStep(index)}
+                    {...stepButtonProps}
                   >
-                    {getStepState(index)}
-                  </Typography>
-                  <Typography
-                    className="label"
-                    variant="h6"
-                    component="span"
+                    {labelComponent}
+                  </StepButton>
+                )}
+                {!clickable && (
+                  <StepLabel
+                    icon={getStepIcon(index, completed)}
+                    {...stepLabelProps}
                   >
-                    {label}
-                  </Typography>
-                </Stack>
-              </StepLabel>
-            </Step>
-          );
-        })}
+                    {labelComponent}
+                  </StepLabel>
+                )}
+              </Step>
+            );
+          })}
+        </Stack>
       </Stack>
       <Divider />
       {!!currentStep && currentStep.content({ activeStep, id: currentStep.id })}
