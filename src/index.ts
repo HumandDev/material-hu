@@ -30,6 +30,10 @@ export {
   FormDropContext,
 } from './components/FormDrop';
 export {
+  default as CroppingModal,
+  CroppingModalProps,
+} from './components/CroppingModal';
+export {
   default as DocumentItem,
   DocumentItemProps,
 } from './components/DocumentItem';

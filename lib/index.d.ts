@@ -14,6 +14,7 @@ export { default as CustomStepper, CustomStepperProps, } from './components/Cust
 export { default as SideStepper } from './components/SideStepper';
 export { default as HorizontalStepper, HorizontalStepperProps, StepType, } from './components/HorizontalStepper';
 export { default as FormDrop, FormDropProps, FormDropTypes, FormDropContext, } from './components/FormDrop';
+export { default as CroppingModal, CroppingModalProps, } from './components/CroppingModal';
 export { default as DocumentItem, DocumentItemProps, } from './components/DocumentItem';
 export { default as FormRadioCustomGroup, FormRadioCustomGroupProps, } from './components/FormRadioCustomGroup';
 export { useDebounce } from './hooks/useDebounce';

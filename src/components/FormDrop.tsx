@@ -12,6 +12,8 @@ import {
   alpha,
 } from '@mui/material';
 import { Upload } from '@mui/icons-material';
+import { useModal } from '../hooks/useModal';
+import { CroppingModal, CroppingModalProps } from './CroppingModal';
 import DocumentItem from './DocumentItem';
 import { megabytesToBytes } from '../utils/bytes';
 
@@ -37,7 +39,7 @@ const RECOMMENDED_WIDTH = 900;
 const RECOMMENDED_HEIGHT = 400;
 
 export type FormDropValue = {
-  url?: string;
+  url?: string | null;
   file?: File;
 };
 
@@ -65,6 +67,12 @@ export type FormDropProps = {
   openLabel?: (context: FormDropContext) => string;
   accept?: Record<string, string[]>;
   type?: FormDropTypes;
+  onDrop?: (drop: FormDropValue) => void;
+  withCrop?: boolean;
+  cancelLabel?: string;
+  saveLabel?: string;
+  cropLabel?: string;
+  sliderLabel?: string;
 };
 
 export const FormDrop: FC<FormDropProps> = props => {
@@ -84,6 +92,12 @@ export const FormDrop: FC<FormDropProps> = props => {
     label = () => '',
     accept: acceptProp,
     type = FormDropTypes.IMAGE,
+    onDrop = () => null,
+    withCrop,
+    cancelLabel,
+    saveLabel,
+    cropLabel,
+    sliderLabel,
   } = props;
 
   const theme = useTheme();
@@ -111,9 +125,38 @@ export const FormDrop: FC<FormDropProps> = props => {
           value,
         };
 
+        const handleSaveCropping = (file: File) => {
+          onChange({ file, url: null });
+          trigger(name);
+        };
+
+        const { modal: croppingModal, showModal: showCroppingModal } =
+          useModal<CroppingModalProps>(
+            CroppingModal,
+            {
+              fullWidth: true,
+              maxWidth: 'md',
+            },
+            {
+              onSave: handleSaveCropping,
+              recommendedWidth,
+              recommendedHeight,
+              title: cropLabel,
+              cancelLabel,
+              saveLabel,
+              sliderLabel,
+            },
+          );
+
         const handleDrop = (files: File[]) => {
           if (!files[0]) return;
 
+          if (type === FormDropTypes.IMAGE && withCrop) {
+            showCroppingModal({ file: files[0] });
+            return;
+          }
+
+          onDrop({ file: files[0], url: null });
           onChange({ file: files[0], url: null });
           trigger(name);
         };
@@ -162,6 +205,7 @@ export const FormDrop: FC<FormDropProps> = props => {
             spacing={3}
             width="100%"
           >
+            {type === FormDropTypes.IMAGE && withCrop && croppingModal}
             {hasValue && type !== FormDropTypes.PDF && (
               <>
                 <Box
