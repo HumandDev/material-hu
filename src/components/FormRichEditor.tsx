@@ -1,9 +1,12 @@
 import { Controller, UseControllerProps } from 'react-hook-form';
 import i18next from 'i18next';
 import { Editor, IAllProps } from '@tinymce/tinymce-react';
+import { Editor as EditorType } from 'tinymce';
 
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
+  onEditorChange?: (value: string, editor: EditorType) => string;
+  onInit?: (event: any, editor: EditorType) => void;
   handleBlur?: Function;
   hideModalButtons?: boolean; // some toolbar buttons don't work when tinymce is rendered on a modal
   simplifyEditor?: boolean;
@@ -39,6 +42,8 @@ const transformPaste = (elem: any) => {
 
 function FormRichEditor({
   editorProps,
+  onEditorChange = value => value,
+  onInit = () => null,
   handleBlur,
   hideModalButtons,
   simplifyEditor = false,
@@ -96,12 +101,19 @@ function FormRichEditor({
       ...(editorProps?.init || {}),
     },
   };
+
+  const handleEditorChange =
+    (onChange: Function) => (value: string, editor: EditorType) => {
+      onChange(onEditorChange(value, editor));
+    };
+
   return (
     <Controller
       render={({ field: { onChange, ...field } }) => (
         <Editor
           {...field}
-          onEditorChange={onChange}
+          onEditorChange={handleEditorChange(onChange)}
+          onInit={onInit}
           {...allEditorProps}
           apiKey={tinyKey}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
