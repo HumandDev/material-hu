@@ -17,6 +17,7 @@ export type Option = {
   divider?: boolean;
   textProps?: SxProps;
   color?: string;
+  disabled?: boolean;
 };
 
 export type IconsMenuProps = {
@@ -93,12 +94,19 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
       >
         {options.map(option => (
           <div key={option.label}>
-            <MenuItem onClick={handleOptionClick(option.onClick)}>
+            <MenuItem
+              onClick={
+                option.disabled ? undefined : handleOptionClick(option.onClick)
+              }
+              sx={{
+                cursor: option.disabled ? 'not-allowed' : 'pointer',
+              }}
+            >
               {option.icon && (
                 <ListItemIcon
                   sx={{
                     '&>*': {
-                      color: option.color,
+                      color: option.disabled ? 'text.disabled' : option.color,
                     },
                   }}
                 >
@@ -108,7 +116,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               <ListItemText
                 sx={{
                   ...option.textProps,
-                  color: option.color,
+                  color: option.disabled ? 'text.disabled' : option.color,
                 }}
               >
                 {option.label}

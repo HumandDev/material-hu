@@ -7,6 +7,7 @@ export type Option = {
     divider?: boolean;
     textProps?: SxProps;
     color?: string;
+    disabled?: boolean;
 };
 export type IconsMenuProps = {
     options: Option[];
