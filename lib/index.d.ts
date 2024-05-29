@@ -24,3 +24,6 @@ export { useModal } from './hooks/useModal';
 export { createHuGoTheme } from './theme/hugo';
 export { default as PXDisplayGroup } from './components/peopleExperience/DisplayGroup';
 export { default as PXDisplayGroupItem } from './components/peopleExperience/DisplayGroupItem';
+export { default as PXMenu, MenuItem as PXMenuItem, } from './components/peopleExperience/Menu';
+export { default as PXValueIndicator } from './components/peopleExperience/ValueIndicator';
+export { default as PXResultContainer } from './components/peopleExperience/ResultContainer';
