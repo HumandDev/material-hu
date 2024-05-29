@@ -49,3 +49,5 @@ export {
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
 export { createHuGoTheme } from './theme/hugo';
+export { default as PXDisplayGroup } from './components/peopleExperience/DisplayGroup';
+export { default as PXDisplayGroupItem } from './components/peopleExperience/DisplayGroupItem';
