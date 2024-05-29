@@ -95,12 +95,8 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
         {options.map(option => (
           <div key={option.label}>
             <MenuItem
-              onClick={
-                option.disabled ? undefined : handleOptionClick(option.onClick)
-              }
-              sx={{
-                cursor: option.disabled ? 'not-allowed' : 'pointer',
-              }}
+              onClick={handleOptionClick(option.onClick)}
+              disabled={option.disabled}
             >
               {option.icon && (
                 <ListItemIcon
