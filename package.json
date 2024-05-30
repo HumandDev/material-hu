@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "lint": "eslint ./src && npx prettier ./src --check",
-    "lint-fix": "eslint --fix ./src && npx prettier ./src --write"
+    "lint-fix": "eslint --fix ./src && npx prettier ./src --write",
+    "start-storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -21,12 +23,24 @@
   },
   "homepage": "https://github.com/HumandDev/material-hu#readme",
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.5.0",
+    "@storybook/addon-essentials": "^8.1.4",
+    "@storybook/addon-interactions": "^8.1.4",
+    "@storybook/addon-links": "^8.1.4",
+    "@storybook/addon-onboarding": "^8.1.4",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.3",
+    "@storybook/blocks": "^8.1.4",
+    "@storybook/react": "^8.1.4",
+    "@storybook/react-webpack5": "^8.1.4",
+    "@storybook/test": "^8.1.4",
     "@types/lodash": "^4.14.202",
     "@types/react-avatar-editor": "^13.0.2",
     "eslint": "^8.57.0",
     "eslint-config-humand": "github:HumandDev/eslint-config-humand",
     "prettier": "^3.2.5",
     "prettier-config-humand": "github:HumandDev/prettier-config-humand",
+    "react": "^18.3.1",
+    "storybook": "^8.1.4",
     "typescript": "^5.1.6"
   },
   "browserslist": [
