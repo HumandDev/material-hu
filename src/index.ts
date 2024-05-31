@@ -49,11 +49,18 @@ export {
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
 export { createHuGoTheme } from './theme/hugo';
-export { default as PXDisplayGroup } from './components/peopleExperience/DisplayGroup';
-export { default as PXDisplayGroupItem } from './components/peopleExperience/DisplayGroupItem';
+export { default as DisplayGroup } from './components/peopleExperience/DisplayGroup';
+export { default as DisplayGroupItem } from './components/peopleExperience/DisplayGroupItem';
 export {
-  default as PXMenu,
-  MenuItem as PXMenuItem,
-} from './components/peopleExperience/Menu';
-export { default as PXValueIndicator } from './components/peopleExperience/ValueIndicator';
-export { default as PXResultContainer } from './components/peopleExperience/ResultContainer';
+  default as ActionsMenu,
+  MenuItem as ActionsMenuItem,
+} from './components/peopleExperience/ActionsMenu';
+export { default as ValueIndicator } from './components/peopleExperience/ValueIndicator';
+export { default as ResultContainer } from './components/peopleExperience/ResultContainer';
+export { default as ListWithDivider } from './components/peopleExperience/ListWithDivider';
+export {
+  ParticipationItemSkeleton,
+  ParticipationExpandableItem,
+  ParticipationItem,
+} from './components/peopleExperience/Participation';
+export { default as LinearProgressWithLabel } from './components/peopleExperience/LinearProgressWithLabel';
