@@ -8,7 +8,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import LinearProgressWithLabel from './LinearProgressWithLabel';
 
 export const ParticipationItemSkeleton = () => (
@@ -44,18 +43,18 @@ export const ParticipationItemSkeleton = () => (
 type MiscProps = {
   total: number;
   partial: number;
+  noDataMessage?: ReactNode;
+  label: string;
 };
 
-const Misc = ({ total, partial }: MiscProps) => {
-  const { t } = useTranslation();
-
+const Misc = ({ total, partial, noDataMessage, label }: MiscProps) => {
   if (total === 0) {
     return (
       <Typography
         variant="body1"
         color="secondary"
       >
-        {t('NOT_ENOUGH_PARTICIPANTS')}
+        {noDataMessage}
       </Typography>
     );
   }
@@ -70,7 +69,7 @@ const Misc = ({ total, partial }: MiscProps) => {
         variant="body2"
         color="secondary"
       >
-        {t('EMPLOYEES_RATIO', { partial, total })}
+        {label}
       </Typography>
     </Stack>
   );
@@ -81,6 +80,9 @@ export type ParticipationItemProps = {
   secondary?: string | null;
   partial: number;
   total: number;
+  slotProps: {
+    misc: Omit<MiscProps, 'partial' | 'total'>;
+  };
 };
 
 export const ParticipationItem = ({
@@ -88,6 +90,7 @@ export const ParticipationItem = ({
   secondary,
   partial,
   total,
+  slotProps,
 }: ParticipationItemProps) => (
   <ListItem>
     <ListItemText
@@ -97,6 +100,7 @@ export const ParticipationItem = ({
     <Misc
       partial={partial}
       total={total}
+      {...slotProps.misc}
     />
   </ListItem>
 );
@@ -111,6 +115,7 @@ export const ParticipationExpandableItem = ({
   secondary,
   partial,
   total,
+  slotProps,
 }: ParticipationExpandableItemProps) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -145,6 +150,7 @@ export const ParticipationExpandableItem = ({
         <Misc
           partial={partial}
           total={total}
+          {...slotProps.misc}
         />
       </ListItemButton>
       {children(expanded)}

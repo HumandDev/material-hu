@@ -35,7 +35,7 @@ const useMenu = () => {
   return context;
 };
 
-export const MenuItem = (props: MenuItemProps) => {
+export const ActionsMenuItem = (props: MenuItemProps) => {
   const { closeOnSelect, closeMenu } = useMenu();
   const { sx } = props;
   const handleClick = () => {
@@ -52,7 +52,7 @@ export const MenuItem = (props: MenuItemProps) => {
   );
 };
 
-const Menu = ({ children, renderTrigger, closeOnSelect }: MenuProps) => {
+const ActionsMenu = ({ children, renderTrigger, closeOnSelect }: MenuProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const id = useId();
   const isOpen = Boolean(anchorEl);
@@ -93,4 +93,4 @@ const Menu = ({ children, renderTrigger, closeOnSelect }: MenuProps) => {
   );
 };
 
-export default Menu;
+export default ActionsMenu;

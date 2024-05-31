@@ -1,3 +1,17 @@
+import ActionsMenu, {
+  ActionsMenuItem,
+} from './components/peopleExperience/ActionsMenu';
+import DisplayGroup from './components/peopleExperience/DisplayGroup';
+import DisplayGroupItem from './components/peopleExperience/DisplayGroupItem';
+import LinearProgressWithLabel from './components/peopleExperience/LinearProgressWithLabel';
+import ListWithDivider from './components/peopleExperience/ListWithDivider';
+import {
+  ParticipationItemSkeleton,
+  ParticipationExpandableItem,
+  ParticipationItem,
+} from './components/peopleExperience/Participation';
+import ResultContainer from './components/peopleExperience/ResultContainer';
+import ValueIndicator from './components/peopleExperience/ValueIndicator';
 export * from '@mui/material';
 export * from '@mui/x-date-pickers';
 export * from '@mui/x-date-pickers/AdapterDateFns';
@@ -49,18 +63,16 @@ export {
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
 export { createHuGoTheme } from './theme/hugo';
-export { default as DisplayGroup } from './components/peopleExperience/DisplayGroup';
-export { default as DisplayGroupItem } from './components/peopleExperience/DisplayGroupItem';
-export {
-  default as ActionsMenu,
-  MenuItem as ActionsMenuItem,
-} from './components/peopleExperience/ActionsMenu';
-export { default as ValueIndicator } from './components/peopleExperience/ValueIndicator';
-export { default as ResultContainer } from './components/peopleExperience/ResultContainer';
-export { default as ListWithDivider } from './components/peopleExperience/ListWithDivider';
-export {
+export const PeopleExperience = {
+  DisplayGroup,
+  DisplayGroupItem,
   ParticipationItemSkeleton,
   ParticipationExpandableItem,
   ParticipationItem,
-} from './components/peopleExperience/Participation';
-export { default as LinearProgressWithLabel } from './components/peopleExperience/LinearProgressWithLabel';
+  ValueIndicator,
+  ListWithDivider,
+  ResultContainer,
+  LinearProgressWithLabel,
+  ActionsMenu,
+  ActionsMenuItem,
+};
