@@ -4,17 +4,20 @@ type MiscProps = {
     total: number;
     partial: number;
     noDataMessage?: ReactNode;
+    label: string;
 };
 export type ParticipationItemProps = {
     primary: string;
     secondary?: string | null;
     partial: number;
     total: number;
-    noDataMessage?: MiscProps['noDataMessage'];
+    slotProps: {
+        misc: Omit<MiscProps, 'partial' | 'total'>;
+    };
 };
-export declare const ParticipationItem: ({ primary, secondary, partial, total, noDataMessage, }: ParticipationItemProps) => import("react/jsx-runtime").JSX.Element;
+export declare const ParticipationItem: ({ primary, secondary, partial, total, slotProps, }: ParticipationItemProps) => import("react/jsx-runtime").JSX.Element;
 export type ParticipationExpandableItemProps = ParticipationItemProps & {
     children: (expandable: boolean) => ReactNode;
 };
-export declare const ParticipationExpandableItem: ({ children, primary, secondary, partial, total, noDataMessage, }: ParticipationExpandableItemProps) => import("react/jsx-runtime").JSX.Element;
+export declare const ParticipationExpandableItem: ({ children, primary, secondary, partial, total, slotProps, }: ParticipationExpandableItemProps) => import("react/jsx-runtime").JSX.Element;
 export {};
