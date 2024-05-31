@@ -29,3 +29,4 @@ export { default as ValueIndicator } from './components/peopleExperience/ValueIn
 export { default as ResultContainer } from './components/peopleExperience/ResultContainer';
 export { default as ListWithDivider } from './components/peopleExperience/ListWithDivider';
 export { ParticipationItemSkeleton, ParticipationExpandableItem, ParticipationItem, } from './components/peopleExperience/Participation';
+export { default as LinearProgressWithLabel } from './components/peopleExperience/LinearProgressWithLabel';
