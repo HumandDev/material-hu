@@ -43,11 +43,14 @@ export declare const PeopleExperience: {
     ParticipationItemSkeleton: () => import("react/jsx-runtime").JSX.Element;
     ParticipationExpandableItem: ({ children, primary, secondary, partial, total, slotProps, }: import("./components/peopleExperience/Participation").ParticipationExpandableItemProps) => import("react/jsx-runtime").JSX.Element;
     ParticipationItem: ({ primary, secondary, partial, total, slotProps, }: import("./components/peopleExperience/Participation").ParticipationItemProps) => import("react/jsx-runtime").JSX.Element;
-    ValueIndicator: ({ value, label, loading, description, }: {
+    ValueIndicator: ({ value, label, loading, description, slotProps, }: {
         value: string | number;
         label: string;
         loading?: boolean | undefined;
         description?: string | undefined;
+        slotProps?: Partial<{
+            container: import("@mui/material").StackProps;
+        }> | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     ListWithDivider: ({ items, dividerProps, ...other }: {
         children?: import("react").ReactNode;
@@ -80,4 +83,10 @@ export declare const PeopleExperience: {
         closeOnSelect?: boolean | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     ActionsMenuItem: (props: import("@mui/material").MenuItemProps) => import("react/jsx-runtime").JSX.Element;
+    SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, }: {
+        title: string;
+        selectedIndex: number;
+        onChangeIndex: (nextIndex: number) => void;
+        tabs: import("./components/peopleExperience/SideTabNavigation").Tab[];
+    }) => import("react/jsx-runtime").JSX.Element;
 };
