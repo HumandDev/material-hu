@@ -76,5 +76,5 @@ export const PeopleExperience = {
   LinearProgressWithLabel,
   ActionsMenu,
   ActionsMenuItem,
-  TabSidebar: SideTabNavigation,
+  SideTabNavigation,
 };
