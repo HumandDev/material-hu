@@ -11,6 +11,7 @@ import {
   ParticipationItem,
 } from './components/peopleExperience/Participation';
 import ResultContainer from './components/peopleExperience/ResultContainer';
+import SideTabNavigation from './components/peopleExperience/SideTabNavigation';
 import ValueIndicator from './components/peopleExperience/ValueIndicator';
 export * from '@mui/material';
 export * from '@mui/x-date-pickers';
@@ -75,4 +76,5 @@ export const PeopleExperience = {
   LinearProgressWithLabel,
   ActionsMenu,
   ActionsMenuItem,
+  TabSidebar: SideTabNavigation,
 };
