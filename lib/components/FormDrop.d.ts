@@ -3,7 +3,8 @@ import { ErrorCode } from 'react-dropzone';
 export declare enum FormDropTypes {
     IMAGE = "image",
     VIDEO = "video",
-    PDF = "pdf"
+    PDF = "pdf",
+    FILE = "file"
 }
 export type FormDropValue = {
     url?: string | null;

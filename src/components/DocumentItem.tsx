@@ -8,7 +8,21 @@ import {
   useTheme,
   colors,
 } from '@mui/material';
-import { Close, PictureAsPdfOutlined } from '@mui/icons-material';
+import {
+  Close,
+  PictureAsPdfOutlined,
+  FolderZipOutlined,
+} from '@mui/icons-material';
+
+export enum DocumentItemTypes {
+  PDF = 'pdf',
+  FILE = 'file',
+}
+
+const DOCUMENT_ICONS = {
+  [DocumentItemTypes.PDF]: PictureAsPdfOutlined,
+  [DocumentItemTypes.FILE]: FolderZipOutlined,
+};
 
 export type DocumentItemProps = {
   name?: string;
@@ -17,12 +31,23 @@ export type DocumentItemProps = {
   openLabel?: string;
   deleteLabel?: string;
   onDelete?: (event: MouseEvent<HTMLButtonElement>) => void;
+  type?: DocumentItemTypes;
 };
 
 export const DocumentItem: FC<DocumentItemProps> = props => {
-  const { name, size, url, openLabel, deleteLabel, onDelete } = props;
+  const {
+    name,
+    size,
+    url,
+    openLabel,
+    deleteLabel,
+    onDelete,
+    type = DocumentItemTypes.FILE,
+  } = props;
 
   const theme = useTheme();
+
+  const Icon = DOCUMENT_ICONS[type];
 
   return (
     <Stack
@@ -36,7 +61,7 @@ export const DocumentItem: FC<DocumentItemProps> = props => {
         backgroundColor: colors.grey[100],
       }}
     >
-      <PictureAsPdfOutlined
+      <Icon
         color="primary"
         sx={{
           width: theme.spacing(5),

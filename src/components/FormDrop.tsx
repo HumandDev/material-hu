@@ -14,25 +14,30 @@ import {
 import { Upload } from '@mui/icons-material';
 import { useModal } from '../hooks/useModal';
 import { CroppingModal, CroppingModalProps } from './CroppingModal';
-import DocumentItem from './DocumentItem';
+import { DocumentItem, DocumentItemTypes } from './DocumentItem';
 import { megabytesToBytes } from '../utils/bytes';
 
 export enum FormDropTypes {
   IMAGE = 'image',
   VIDEO = 'video',
   PDF = 'pdf',
+  FILE = 'file',
 }
+
+const DOCUMENT_TYPES = [FormDropTypes.PDF, FormDropTypes.FILE];
 
 const ACCEPT_BY_TYPE = {
   [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },
   [FormDropTypes.VIDEO]: { 'video/mp4': [] },
   [FormDropTypes.PDF]: { 'application/pdf': [] },
+  [FormDropTypes.FILE]: { '*': [] },
 };
 
 const MAX_SIZE_BY_TYPE = {
   [FormDropTypes.IMAGE]: megabytesToBytes(100),
   [FormDropTypes.VIDEO]: megabytesToBytes(150),
   [FormDropTypes.PDF]: megabytesToBytes(100),
+  [FormDropTypes.FILE]: megabytesToBytes(100),
 };
 
 const RECOMMENDED_WIDTH = 900;
@@ -206,7 +211,7 @@ export const FormDrop: FC<FormDropProps> = props => {
             width="100%"
           >
             {type === FormDropTypes.IMAGE && withCrop && croppingModal}
-            {hasValue && type !== FormDropTypes.PDF && (
+            {hasValue && !DOCUMENT_TYPES.includes(type) && (
               <>
                 <Box
                   component={type === FormDropTypes.IMAGE ? 'img' : 'video'}
@@ -230,7 +235,7 @@ export const FormDrop: FC<FormDropProps> = props => {
                 </Button>
               </>
             )}
-            {hasValue && type === FormDropTypes.PDF && (
+            {hasValue && DOCUMENT_TYPES.includes(type) && (
               <Stack
                 sx={{
                   gap: 1,
@@ -243,6 +248,11 @@ export const FormDrop: FC<FormDropProps> = props => {
                   openLabel={openLabel(context)}
                   deleteLabel={deleteLabel(context)}
                   onDelete={handleDelete}
+                  type={
+                    type === FormDropTypes.PDF
+                      ? DocumentItemTypes.PDF
+                      : DocumentItemTypes.FILE
+                  }
                 />
               </Stack>
             )}
