@@ -9,8 +9,11 @@ Ante de pushear al repo, es necesario correr `npm run tsc` para compilar los cam
 ## HuGo
 
 HuGo es el Design System de Humand.
+
 Links útiles:
+
 [Foundations](https://www.figma.com/design/JZaQqFSAyJBX6RC1aBVKTp/Foundations)
+
 [Components](https://www.figma.com/design/mLRasWttlTuAWuE0MeBeWD/Components)
 
 ### Demo
