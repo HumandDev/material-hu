@@ -35,18 +35,18 @@ const useMenu = () => {
   return context;
 };
 
-export const ActionsMenuItem = (props: MenuItemProps) => {
+export const ActionsMenuItem = ({ onClick, sx, ...props }: MenuItemProps) => {
   const { closeOnSelect, closeMenu } = useMenu();
-  const { sx } = props;
-  const handleClick = () => {
+  const handleClick: MenuItemProps['onClick'] = event => {
     if (closeOnSelect) {
       closeMenu();
     }
+    onClick?.(event);
   };
   return (
     <MuiMenuItem
-      onClick={handleClick}
       {...props}
+      onClick={handleClick}
       sx={{ borderRadius: '12px', ...sx }}
     />
   );

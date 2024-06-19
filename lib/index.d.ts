@@ -82,7 +82,7 @@ export declare const PeopleExperience: {
         }) => JSX.Element;
         closeOnSelect?: boolean | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
-    ActionsMenuItem: (props: import("@mui/material").MenuItemProps) => import("react/jsx-runtime").JSX.Element;
+    ActionsMenuItem: ({ onClick, sx, ...props }: import("@mui/material").MenuItemProps) => import("react/jsx-runtime").JSX.Element;
     SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, }: {
         title: string;
         selectedIndex: number;
