@@ -10,6 +10,6 @@ type MenuProps = {
     renderTrigger: (props: RenderTriggerProps) => JSX.Element;
     closeOnSelect?: boolean;
 };
-export declare const ActionsMenuItem: (props: MenuItemProps) => import("react/jsx-runtime").JSX.Element;
+export declare const ActionsMenuItem: ({ onClick, sx, ...props }: MenuItemProps) => import("react/jsx-runtime").JSX.Element;
 declare const ActionsMenu: ({ children, renderTrigger, closeOnSelect }: MenuProps) => import("react/jsx-runtime").JSX.Element;
 export default ActionsMenu;
