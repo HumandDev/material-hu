@@ -12,6 +12,7 @@ import {
 } from './components/peopleExperience/Participation';
 import ResultContainer from './components/peopleExperience/ResultContainer';
 import SideTabNavigation from './components/peopleExperience/SideTabNavigation';
+import { TabPanel, TabPanelItem } from './components/peopleExperience/TabPanel';
 import ValueIndicator from './components/peopleExperience/ValueIndicator';
 export * from '@mui/material';
 export * from '@mui/x-date-pickers';
@@ -77,4 +78,6 @@ export const PeopleExperience = {
   ActionsMenu,
   ActionsMenuItem,
   SideTabNavigation,
+  TabPanel,
+  TabPanelItem,
 };
