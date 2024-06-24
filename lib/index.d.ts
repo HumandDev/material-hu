@@ -89,4 +89,9 @@ export declare const PeopleExperience: {
         onChangeIndex: (nextIndex: number) => void;
         tabs: import("./components/peopleExperience/SideTabNavigation").Tab[];
     }) => import("react/jsx-runtime").JSX.Element;
+    TabPanel: ({ children, value }: {
+        children: import("react").ReactNode;
+        value: number;
+    }) => import("react/jsx-runtime").JSX.Element;
+    TabPanelItem: ({ children, index, ...other }: import("./components/peopleExperience/TabPanel").TabPanelItemProps) => import("react/jsx-runtime").JSX.Element;
 };
