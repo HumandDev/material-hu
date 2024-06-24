@@ -6,23 +6,21 @@ import {
   DividerProps,
 } from '@mui/material';
 
-type ListWithDividerProps<TItem> = BaseListProps & {
-  items: TItem[];
+type ListWithDividerProps = BaseListProps & {
+  items: ReactNode[];
   dividerProps?: DividerProps;
-  renderItem: (item: TItem) => ReactNode;
 };
 
-const ListWithDivider = <TItem extends unknown>({
+const ListWithDivider = ({
   items,
   dividerProps,
-  renderItem,
   ...other
-}: ListWithDividerProps<TItem>) => {
+}: ListWithDividerProps) => {
   return (
     <BaseList {...other}>
       {items.map(item => (
         <>
-          {renderItem(item)}
+          {item}
           <Divider
             variant="middle"
             {...dividerProps}
