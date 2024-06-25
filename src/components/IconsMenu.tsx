@@ -19,7 +19,6 @@ export type Option = {
   textProps?: SxProps;
   color?: string;
   disabled?: boolean;
-  arrow?: boolean;
 };
 
 export type IconsMenuProps = {
@@ -101,18 +100,26 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
             <MenuItem
               onClick={handleOptionClick(option.onClick)}
               disabled={option.disabled}
+              sx={{
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                display: 'flex',
+                pr: 0,
+              }}
             >
               {option.icon && (
                 <ListItemIcon
                   sx={{
                     '&>*': {
                       color: option.disabled ? 'text.disabled' : option.color,
+                      minWidth: 0,
                     },
                   }}
                 >
                   <Avatar
                     sx={{
                       bgcolor: option.disabled ? 'grey.300' : 'grey.200',
+                      color: 'grey.700',
                       width: 24,
                       height: 24,
                     }}
@@ -132,9 +139,9 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               {arrow && (
                 <ListItemIcon
                   sx={{
-                    minWidth: 'auto',
-                    marginLeft: 'auto',
                     color: option.disabled ? 'text.disabled' : 'inherit',
+                    minWidth: 0,
+                    mr: 0,
                   }}
                 >
                   <ChevronRight />

@@ -8,7 +8,6 @@ export type Option = {
     textProps?: SxProps;
     color?: string;
     disabled?: boolean;
-    arrow?: boolean;
 };
 export type IconsMenuProps = {
     options: Option[];
