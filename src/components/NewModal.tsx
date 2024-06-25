@@ -23,7 +23,7 @@ type Props = {
   textBody?: string;
   primaryButtonProps?: ButtonProps;
   secondaryButtonProps?: ButtonProps;
-  onClose?: () => void;
+  onClose?: (e?: any) => void;
   TitleIcon?: SvgIconComponent;
 };
 
