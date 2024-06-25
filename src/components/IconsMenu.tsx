@@ -27,7 +27,7 @@ export type IconsMenuProps = {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   onClose?: (event: MouseEvent) => void;
   disabled?: boolean;
-  chevron?: boolean;
+  arrow?: boolean;
 };
 
 export const IconsMenu: FC<IconsMenuProps> = props => {
@@ -36,7 +36,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
     onClick = () => null,
     onClose = () => null,
     disabled = false,
-    chevron = false,
+    arrow = false,
   } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -129,7 +129,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               >
                 {option.label}
               </ListItemText>
-              {chevron && (
+              {arrow && (
                 <ListItemIcon
                   sx={{
                     minWidth: 'auto',
