@@ -8,12 +8,14 @@ export type Option = {
     textProps?: SxProps;
     color?: string;
     disabled?: boolean;
+    arrow?: boolean;
 };
 export type IconsMenuProps = {
     options: Option[];
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     onClose?: (event: MouseEvent) => void;
     disabled?: boolean;
+    chevron?: boolean;
 };
 export declare const IconsMenu: FC<IconsMenuProps>;
 export default IconsMenu;

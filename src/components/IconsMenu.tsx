@@ -1,5 +1,6 @@
 import { FC, MouseEvent, useState } from 'react';
 import {
+  Avatar,
   Divider,
   IconButton,
   ListItemIcon,
@@ -8,7 +9,7 @@ import {
   MenuItem,
   SxProps,
 } from '@mui/material';
-import { MoreVert as MoreVertIcon } from '@mui/icons-material';
+import { ChevronRight, MoreVert as MoreVertIcon } from '@mui/icons-material';
 
 export type Option = {
   onClick: () => void;
@@ -18,6 +19,7 @@ export type Option = {
   textProps?: SxProps;
   color?: string;
   disabled?: boolean;
+  arrow?: boolean;
 };
 
 export type IconsMenuProps = {
@@ -25,6 +27,7 @@ export type IconsMenuProps = {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   onClose?: (event: MouseEvent) => void;
   disabled?: boolean;
+  chevron?: boolean;
 };
 
 export const IconsMenu: FC<IconsMenuProps> = props => {
@@ -33,6 +36,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
     onClick = () => null,
     onClose = () => null,
     disabled = false,
+    chevron = false,
   } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -106,7 +110,15 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                     },
                   }}
                 >
-                  {option.icon}
+                  <Avatar
+                    sx={{
+                      bgcolor: option.disabled ? 'grey.300' : 'grey.200',
+                      width: 24,
+                      height: 24,
+                    }}
+                  >
+                    {option.icon}
+                  </Avatar>
                 </ListItemIcon>
               )}
               <ListItemText
@@ -117,8 +129,19 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               >
                 {option.label}
               </ListItemText>
+              {chevron && (
+                <ListItemIcon
+                  sx={{
+                    minWidth: 'auto',
+                    marginLeft: 'auto',
+                    color: option.disabled ? 'text.disabled' : 'inherit',
+                  }}
+                >
+                  <ChevronRight />
+                </ListItemIcon>
+              )}
             </MenuItem>
-            {option.divider && <Divider />}
+            {option.divider && <Divider sx={{ px: 1 }} />}
           </div>
         ))}
       </Menu>
