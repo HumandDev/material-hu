@@ -118,7 +118,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                 >
                   <Avatar
                     sx={{
-                      bgcolor: option.disabled ? 'grey.300' : 'grey.200',
+                      bgcolor: option.disabled ? 'grey.200' : 'grey.100',
                       color: 'grey.700',
                       width: 24,
                       height: 24,
