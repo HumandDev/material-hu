@@ -134,7 +134,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                   color: option.disabled ? 'text.disabled' : option.color,
                 }}
               >
-                {option.label}
+                {option.label} test
               </ListItemText>
               {arrow && (
                 <ListItemIcon
@@ -148,7 +148,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                 </ListItemIcon>
               )}
             </MenuItem>
-            {option.divider && <Divider sx={{ px: 1 }} />}
+            {option.divider && <Divider sx={{ mx: 1 }} />}
           </div>
         ))}
       </Menu>
