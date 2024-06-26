@@ -107,7 +107,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                 pr: 0,
               }}
             >
-              {false && option.icon && (
+              {option.icon && (
                 <ListItemIcon
                   sx={{
                     '&>*': {
@@ -134,7 +134,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                   color: option.disabled ? 'text.disabled' : option.color,
                 }}
               >
-                {option.label} test
+                {option.label}
               </ListItemText>
               {arrow && (
                 <ListItemIcon
@@ -143,6 +143,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                     minWidth: 0,
                     marginRight: 0,
                     marginLeft: 0,
+                    fontWeight: 600,
                   }}
                 >
                   <ChevronRight />
