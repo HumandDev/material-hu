@@ -131,7 +131,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               <ListItemText
                 sx={{
                   ...option.textProps,
-                  mr: 1,
+                  mr: 3,
                   color: option.disabled ? 'text.disabled' : option.color,
                 }}
               >
