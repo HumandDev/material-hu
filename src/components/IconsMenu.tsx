@@ -119,7 +119,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                   <Avatar
                     sx={{
                       bgcolor: option.disabled ? 'grey.300' : 'grey.200',
-                      color: 'black',
+                      color: 'grey.700',
                       width: 24,
                       height: 24,
                     }}
@@ -131,6 +131,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
               <ListItemText
                 sx={{
                   ...option.textProps,
+                  mr: 1,
                   color: option.disabled ? 'text.disabled' : option.color,
                 }}
               >
