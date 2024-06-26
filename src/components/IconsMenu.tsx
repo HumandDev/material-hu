@@ -9,7 +9,10 @@ import {
   MenuItem,
   SxProps,
 } from '@mui/material';
-import { ChevronRight, MoreVert as MoreVertIcon } from '@mui/icons-material';
+import {
+  ChevronRight as ChevronRightIcon,
+  MoreVert as MoreVertIcon,
+} from '@mui/icons-material';
 
 export type Option = {
   onClick: () => void;
@@ -147,7 +150,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                     fontWeight: 600,
                   }}
                 >
-                  <ChevronRight />
+                  <ChevronRightIcon />
                 </ListItemIcon>
               )}
             </MenuItem>
