@@ -107,7 +107,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                 pr: 0,
               }}
             >
-              {option.icon && (
+              {false && option.icon && (
                 <ListItemIcon
                   sx={{
                     '&>*': {
@@ -119,7 +119,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                   <Avatar
                     sx={{
                       bgcolor: option.disabled ? 'grey.300' : 'grey.200',
-                      color: 'grey.700',
+                      color: 'black',
                       width: 24,
                       height: 24,
                     }}
@@ -141,7 +141,8 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
                   sx={{
                     color: option.disabled ? 'text.disabled' : 'inherit',
                     minWidth: 0,
-                    mr: 0,
+                    marginRight: 0,
+                    marginLeft: 0,
                   }}
                 >
                   <ChevronRight />
