@@ -44,8 +44,13 @@ const RECOMMENDED_WIDTH = 900;
 const RECOMMENDED_HEIGHT = 400;
 
 export type FormDropValue = {
-  url?: string | null;
   file?: File;
+  url?: string | null;
+  attachment?: {
+    id: number;
+    url?: string;
+    type?: string;
+  } | null;
 };
 
 export type FormDropContext = {
@@ -78,6 +83,7 @@ export type FormDropProps = {
   saveLabel?: string;
   cropLabel?: string;
   sliderLabel?: string;
+  attachmentFormatEnabled?: boolean;
 };
 
 export const FormDrop: FC<FormDropProps> = props => {
@@ -103,6 +109,7 @@ export const FormDrop: FC<FormDropProps> = props => {
     saveLabel,
     cropLabel,
     sliderLabel,
+    attachmentFormatEnabled = false,
   } = props;
 
   const theme = useTheme();
@@ -131,7 +138,7 @@ export const FormDrop: FC<FormDropProps> = props => {
         };
 
         const handleSaveCropping = (file: File) => {
-          onChange({ file, url: null });
+          onChange({ file, url: null, attachment: null });
           trigger(name);
         };
 
@@ -161,8 +168,8 @@ export const FormDrop: FC<FormDropProps> = props => {
             return;
           }
 
-          onDrop({ file: files[0], url: null });
-          onChange({ file: files[0], url: null });
+          onDrop({ file: files[0], url: null, attachment: null });
+          onChange({ file: files[0], url: null, attachment: null });
           trigger(name);
         };
 
@@ -193,17 +200,31 @@ export const FormDrop: FC<FormDropProps> = props => {
           maxSize,
         });
 
-        const hasValue =
-          (dropValue?.url?.length && dropValue.url.length > 0) ||
-          !!dropValue?.file;
+        const hasValue = useMemo(
+          () =>
+            attachmentFormatEnabled
+              ? !!dropValue?.file ||
+                (!!dropValue?.attachment && !!dropValue.attachment.url)
+              : !!dropValue?.file || !!dropValue?.url,
+          [
+            attachmentFormatEnabled,
+            dropValue?.attachment,
+            dropValue?.file,
+            dropValue?.url,
+          ],
+        );
 
         const src = useMemo(() => {
           if (!dropValue) return undefined;
 
-          const { url, file } = dropValue;
-
-          return url || (file && URL.createObjectURL(file));
-        }, [hasValue]);
+          if (attachmentFormatEnabled) {
+            const { attachment, file } = dropValue;
+            return attachment?.url || (file && URL.createObjectURL(file));
+          } else {
+            const { url, file } = dropValue;
+            return url || (file && URL.createObjectURL(file));
+          }
+        }, [hasValue, attachmentFormatEnabled]);
 
         return (
           <Stack
