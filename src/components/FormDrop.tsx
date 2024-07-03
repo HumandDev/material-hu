@@ -200,19 +200,10 @@ export const FormDrop: FC<FormDropProps> = props => {
           maxSize,
         });
 
-        const hasValue = useMemo(
-          () =>
-            attachmentFormatEnabled
-              ? !!dropValue?.file ||
-                (!!dropValue?.attachment && !!dropValue.attachment.url)
-              : !!dropValue?.file || !!dropValue?.url,
-          [
-            attachmentFormatEnabled,
-            dropValue?.attachment,
-            dropValue?.file,
-            dropValue?.url,
-          ],
-        );
+        const hasValue = attachmentFormatEnabled
+          ? !!dropValue?.file ||
+            (!!dropValue?.attachment && !!dropValue.attachment.url)
+          : !!dropValue?.file || !!dropValue?.url;
 
         const src = useMemo(() => {
           if (!dropValue) return undefined;
