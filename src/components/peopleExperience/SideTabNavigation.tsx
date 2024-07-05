@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ComponentType, Fragment, ReactNode } from 'react';
 import {
   Stack,
   colors,
@@ -33,13 +33,15 @@ type TabSidebarProps = {
   selectedIndex: number;
   onChangeIndex: (nextIndex: number) => void;
   tabs: Tab[];
+  layout?: ComponentType<{ children: ReactNode }>;
 };
 
-const TabSidebar = ({
+const SideTabNavigation = ({
   selectedIndex,
   onChangeIndex,
   tabs,
   title,
+  layout: Layout = Fragment,
 }: TabSidebarProps) => {
   const handleListItemClick = (
     _event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -81,20 +83,22 @@ const TabSidebar = ({
         </List>
       </Stack>
       <Stack sx={{ height: '100%', flex: 1, minWidth: 0, maxWidth: '100%' }}>
-        <TabPanel value={selectedIndex}>
-          {tabs.map(({ id, element }, index) => (
-            <TabPanelItem
-              key={id}
-              index={index}
-              sx={{ flex: 1 }}
-            >
-              {element}
-            </TabPanelItem>
-          ))}
-        </TabPanel>
+        <Layout>
+          <TabPanel value={selectedIndex}>
+            {tabs.map(({ id, element }, index) => (
+              <TabPanelItem
+                key={id}
+                index={index}
+                sx={{ flex: 1 }}
+              >
+                {element}
+              </TabPanelItem>
+            ))}
+          </TabPanel>
+        </Layout>
       </Stack>
     </Stack>
   );
 };
 
-export default TabSidebar;
+export default SideTabNavigation;

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import { Key } from 'react-hook-form/dist/types/path/common';
 export type Tab = {
     id: Key;
@@ -10,6 +10,9 @@ type TabSidebarProps = {
     selectedIndex: number;
     onChangeIndex: (nextIndex: number) => void;
     tabs: Tab[];
+    layout?: ComponentType<{
+        children: ReactNode;
+    }>;
 };
-declare const TabSidebar: ({ selectedIndex, onChangeIndex, tabs, title, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
-export default TabSidebar;
+declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
+export default SideTabNavigation;
