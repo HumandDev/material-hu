@@ -8,4 +8,40 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
+  MuiBadge: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        color: theme.palette.base?.white,
+      }),
+      colorPrimary: ({ theme }) => ({
+        backgroundColor: theme.palette.base?.blueBrand[400],
+      }),
+      colorSuccess: ({ theme }) => ({
+        backgroundColor: theme.palette.base?.green[400],
+      }),
+      colorWarning: ({ theme }) => ({
+        backgroundColor: theme.palette.base?.yellow[400],
+      }),
+      colorError: ({ theme }) => ({
+        backgroundColor: theme.palette.base?.red[400],
+      }),
+      dot: ({ theme }) => ({
+        borderColor: theme.palette.base?.white,
+        border: 1,
+      }),
+      standard: () => ({
+        // text style globalXXS to avoid a wrapper component
+        fontFamily: 'Roboto',
+        fontSize: 12,
+        lineHeight: '140%',
+        fontWeight: 400,
+        letterSpacing: 0.2,
+        // text style globalXXS
+        maxHeight: 20,
+        minHeight: 20,
+        maxWidth: 25,
+        minWidth: 20,
+      }),
+    },
+  },
 };
