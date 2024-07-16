@@ -27,6 +27,7 @@ export const components: ThemeOptions['components'] = {
       }),
       dot: ({ theme }) => ({
         borderColor: theme.palette.base?.white,
+        borderStyle: 'solid',
         border: 1,
       }),
       standard: () => ({
