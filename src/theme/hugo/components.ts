@@ -28,7 +28,7 @@ export const components: ThemeOptions['components'] = {
       dot: ({ theme }) => ({
         borderColor: theme.palette.base?.white,
         borderStyle: 'solid',
-        borderWith: 1,
+        borderWidth: 1,
       }),
       standard: () => ({
         // text style globalXXS to avoid a wrapper component
