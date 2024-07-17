@@ -21,6 +21,8 @@ export type HorizontalStepperProps = StepperProps & {
     onClose?: () => void;
     closeLabel?: string;
     title?: string;
+    titleRightComponent?: ReactNode;
+    actions?: ReactNode;
     backButton?: {
         onClick?: () => void;
         getLabel?: (step: StepType) => string | null;
