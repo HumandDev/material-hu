@@ -8,6 +8,7 @@ import {
   Menu,
   MenuItem,
   SxProps,
+  IconButtonProps,
 } from '@mui/material';
 import {
   ChevronRight as ChevronRightIcon,
@@ -30,6 +31,7 @@ export type IconsMenuProps = {
   onClose?: (event: MouseEvent) => void;
   disabled?: boolean;
   arrow?: boolean;
+  iconButtonProps?: IconButtonProps;
 };
 
 export const IconsMenu: FC<IconsMenuProps> = props => {
@@ -39,6 +41,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
     onClose = () => null,
     disabled = false,
     arrow = false,
+    iconButtonProps = {},
   } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -78,6 +81,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
         id="button-menu"
         onClick={disabled ? undefined : handleClick}
         disableRipple={disabled}
+        {...iconButtonProps}
       >
         <MoreVertIcon sx={disabled ? disabledStyles : undefined} />
       </IconButton>
