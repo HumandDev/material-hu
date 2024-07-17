@@ -8,7 +8,7 @@ import {
   Menu,
   MenuItem,
   SxProps,
-  IconButtonProps
+  IconButtonProps,
 } from '@mui/material';
 import {
   ChevronRight as ChevronRightIcon,
