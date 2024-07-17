@@ -31,7 +31,7 @@ export type IconsMenuProps = {
   onClose?: (event: MouseEvent) => void;
   disabled?: boolean;
   arrow?: boolean;
-  iconButtonProps?: IconButtonProps; 
+  iconButtonProps?: IconButtonProps;
 };
 
 export const IconsMenu: FC<IconsMenuProps> = props => {
