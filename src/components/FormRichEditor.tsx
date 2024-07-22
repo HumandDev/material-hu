@@ -112,7 +112,7 @@ function FormRichEditor({
     ...editorProps,
     init: {
       language: i18next.language,
-      language_url: langsURL + i18next.language + '.js',
+      language_url: '/tinymce/langs/' + i18next.language + '.js',
       menubar: false,
       height: 500,
       elementpath: false,
