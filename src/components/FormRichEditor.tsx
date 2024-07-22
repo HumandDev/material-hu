@@ -65,7 +65,6 @@ type Props = UseControllerProps & {
   placeholder?: string;
   imagesUploadHandler: any;
   addVideoEditorPlugin: Function;
-  tinyKey: string;
   fontsURL: string;
 };
 
