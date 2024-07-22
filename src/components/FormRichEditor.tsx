@@ -30,6 +30,8 @@ import 'tinymce/plugins/emoticons';
 import 'tinymce/plugins/fullscreen';
 import 'tinymce/plugins/help';
 import 'tinymce/plugins/help/js/i18n/keynav/en';
+import 'tinymce/plugins/help/js/i18n/keynav/es';
+import 'tinymce/plugins/help/js/i18n/keynav/pt';
 import 'tinymce/plugins/image';
 import 'tinymce/plugins/importcss';
 import 'tinymce/plugins/insertdatetime';
