@@ -52,6 +52,7 @@ type Props = UseControllerProps & {
     imagesUploadHandler: any;
     addVideoEditorPlugin: Function;
     fontsURL: string;
+    langsURL: string;
 };
-declare function FormRichEditor({ editorProps, onEditorChange, onInit, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, imagesUploadHandler, addVideoEditorPlugin, fontsURL, ...props }: Props): import("react/jsx-runtime").JSX.Element;
+declare function FormRichEditor({ editorProps, onEditorChange, onInit, handleBlur, hideModalButtons, simplifyEditor, placeholder, disabled, imagesUploadHandler, addVideoEditorPlugin, fontsURL, langsURL, ...props }: Props): import("react/jsx-runtime").JSX.Element;
 export default FormRichEditor;
