@@ -3,6 +3,55 @@ import i18next from 'i18next';
 import { Editor, IAllProps } from '@tinymce/tinymce-react';
 import { Editor as EditorType } from 'tinymce';
 
+// TinyMCE so the global var exists
+import '../../vendors/tinymce/tinymce.min.js';
+// DOM model
+import '../../vendors/tinymce/models/dom/model.min.js';
+// Theme
+import '../../vendors/tinymce/themes/silver/theme.min.js';
+// Toolbar icons
+import '../../vendors/tinymce/icons/default/icons.min.js';
+// Editor styles
+import '../../vendors/tinymce/skins/ui/oxide/skin.min.js';
+
+// importing the plugin index.js file.
+// if you use a plugin that is not listed here the editor will fail to load
+import '../../vendors/tinymce/plugins/advlist';
+import '../../vendors/tinymce/plugins/anchor';
+import '../../vendors/tinymce/plugins/autolink';
+import '../../vendors/tinymce/plugins/autoresize';
+import '../../vendors/tinymce/plugins/autosave';
+import '../../vendors/tinymce/plugins/charmap';
+import '../../vendors/tinymce/plugins/code';
+import '../../vendors/tinymce/plugins/codesample';
+import '../../vendors/tinymce/plugins/directionality';
+import '../../vendors/tinymce/plugins/emoticons';
+import '../../vendors/tinymce/plugins/fullscreen';
+import '../../vendors/tinymce/plugins/help';
+import '../../vendors/tinymce/plugins/image';
+import '../../vendors/tinymce/plugins/importcss';
+import '../../vendors/tinymce/plugins/insertdatetime';
+import '../../vendors/tinymce/plugins/link';
+import '../../vendors/tinymce/plugins/lists';
+import '../../vendors/tinymce/plugins/media';
+import '../../vendors/tinymce/plugins/nonbreaking';
+import '../../vendors/tinymce/plugins/pagebreak';
+import '../../vendors/tinymce/plugins/preview';
+import '../../vendors/tinymce/plugins/quickbars';
+import '../../vendors/tinymce/plugins/save';
+import '../../vendors/tinymce/plugins/searchreplace';
+import '../../vendors/tinymce/plugins/table';
+import '../../vendors/tinymce/plugins/visualblocks';
+import '../../vendors/tinymce/plugins/visualchars';
+import '../../vendors/tinymce/plugins/wordcount';
+
+// importing plugin resources
+import '../../vendors/tinymce/plugins/emoticons/js/emojis.js';
+
+// Content styles, including inline UI like fake cursors
+import '../../vendors/tinymce/skins/content/default/content.js';
+import '../../vendors/tinymce/skins/ui/oxide/content.js';
+
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
   onEditorChange?: (value: string, editor: EditorType) => string;
@@ -114,9 +163,8 @@ function FormRichEditor({
           {...field}
           onEditorChange={handleEditorChange(onChange)}
           onInit={onInit}
-          tinymceScriptSrc="../../vendors/tinymce/tinymce.min.js"
           {...allEditorProps}
-          apiKey={tinyKey}
+          apiKey={'gpl'}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
         />
