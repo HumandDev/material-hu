@@ -102,7 +102,6 @@ function FormRichEditor({
   disabled = false,
   imagesUploadHandler,
   addVideoEditorPlugin,
-  tinyKey,
   fontsURL,
   ...props
 }: Props) {
