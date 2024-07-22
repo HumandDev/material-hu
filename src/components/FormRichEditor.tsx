@@ -118,7 +118,7 @@ function FormRichEditor({
           apiKey={tinyKey}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
-          tinymceScriptSrc="/tinymce/tinymce.min.js"
+          tinymceScriptSrc="../../vendors/tinymce/tinymce.min.js"
         />
       )}
       {...props}
