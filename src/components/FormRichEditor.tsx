@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import { Editor, IAllProps } from '@tinymce/tinymce-react';
 import { Editor as EditorType } from 'tinymce';
 
+// https://www.tiny.cloud/docs/tinymce/latest/react-zip-bundle/
 // TinyMCE so the global var exists
 import '../../vendors/tinymce/tinymce.min.js';
 // DOM model
@@ -12,7 +13,7 @@ import '../../vendors/tinymce/themes/silver/theme.min.js';
 // Toolbar icons
 import '../../vendors/tinymce/icons/default/icons.min.js';
 // Editor styles
-import '../../vendors/tinymce/skins/ui/oxide/skin.min.js';
+import '../../vendors/tinymce/skins/ui/oxide/skin.js';
 
 // importing the plugin index.js file.
 // if you use a plugin that is not listed here the editor will fail to load

@@ -5,7 +5,7 @@ import '../../vendors/tinymce/tinymce.min.js';
 import '../../vendors/tinymce/models/dom/model.min.js';
 import '../../vendors/tinymce/themes/silver/theme.min.js';
 import '../../vendors/tinymce/icons/default/icons.min.js';
-import '../../vendors/tinymce/skins/ui/oxide/skin.min.js';
+import '../../vendors/tinymce/skins/ui/oxide/skin.js';
 import '../../vendors/tinymce/plugins/advlist/plugin.min.js';
 import '../../vendors/tinymce/plugins/anchor/plugin.min.js';
 import '../../vendors/tinymce/plugins/autolink/plugin.min.js';
