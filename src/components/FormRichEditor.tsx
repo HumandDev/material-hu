@@ -114,11 +114,11 @@ function FormRichEditor({
           {...field}
           onEditorChange={handleEditorChange(onChange)}
           onInit={onInit}
+          tinymceScriptSrc="../../vendors/tinymce/tinymce.min.js"
           {...allEditorProps}
           apiKey={tinyKey}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
-          tinymceScriptSrc="../../vendors/tinymce/tinymce.min.js"
         />
       )}
       {...props}
