@@ -15,8 +15,6 @@ import 'tinymce/icons/default';
 // Editor styles
 import 'tinymce/skins/ui/oxide/skin';
 
-import './es';
-import './pt';
 // importing the plugin js.
 // if you use a plugin that is not listed here the editor will fail to load
 import 'tinymce/plugins/advlist';
