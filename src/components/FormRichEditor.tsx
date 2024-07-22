@@ -106,6 +106,7 @@ function FormRichEditor({
   fontsURL,
   ...props
 }: Props) {
+  console.log(process.env.PUBLIC_URL);
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
