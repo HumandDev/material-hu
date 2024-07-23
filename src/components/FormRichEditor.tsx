@@ -68,7 +68,6 @@ type Props = UseControllerProps & {
   imagesUploadHandler: any;
   addVideoEditorPlugin: Function;
   fontsURL: string;
-  langsURL: string;
 };
 
 const transformPaste = (elem: any) => {
@@ -105,14 +104,12 @@ function FormRichEditor({
   imagesUploadHandler,
   addVideoEditorPlugin,
   fontsURL,
-  langsURL,
   ...props
 }: Props) {
   const allEditorProps: IAllProps = {
     ...editorProps,
     init: {
       language: i18next.language,
-      language_url: '/tinymce/langs/' + i18next.language + '.js',
       menubar: false,
       height: 500,
       elementpath: false,
