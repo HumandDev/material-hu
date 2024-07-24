@@ -114,7 +114,6 @@ function FormRichEditor({
       height: 500,
       elementpath: false,
       contextmenu: false,
-      branding: false,
       placeholder,
       statusbar: !simplifyEditor,
       resize: !simplifyEditor,
