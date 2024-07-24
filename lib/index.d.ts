@@ -83,7 +83,7 @@ export declare const PeopleExperience: {
         closeOnSelect?: boolean | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     ActionsMenuItem: ({ onClick, sx, ...props }: import("@mui/material").MenuItemProps) => import("react/jsx-runtime").JSX.Element;
-    SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, }: {
+    SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, sx, }: {
         title: string;
         selectedIndex: number;
         onChangeIndex: (nextIndex: number) => void;
@@ -91,6 +91,7 @@ export declare const PeopleExperience: {
         layout?: import("react").ComponentType<{
             children: import("react").ReactNode;
         }> | undefined;
+        sx?: import("@mui/material").SxProps<import("@mui/material").Theme> | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     TabPanel: ({ children, value }: {
         children: import("react").ReactNode;

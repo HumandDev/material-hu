@@ -7,6 +7,7 @@ import {
   List,
   styled,
   ListItemButton,
+  StackProps,
 } from '@mui/material';
 import { Key } from 'react-hook-form/dist/types/path/common';
 import { TabPanel, TabPanelItem } from './TabPanel';
@@ -34,6 +35,7 @@ type TabSidebarProps = {
   onChangeIndex: (nextIndex: number) => void;
   tabs: Tab[];
   layout?: ComponentType<{ children: ReactNode }>;
+  sx?: StackProps['sx'];
 };
 
 const SideTabNavigation = ({
@@ -42,6 +44,7 @@ const SideTabNavigation = ({
   tabs,
   title,
   layout: Layout = Fragment,
+  sx,
 }: TabSidebarProps) => {
   const handleListItemClick = (
     _event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -51,7 +54,7 @@ const SideTabNavigation = ({
   };
 
   return (
-    <Stack sx={{ flexDirection: 'row', height: '100%' }}>
+    <Stack sx={{ flexDirection: 'row', height: '100%', ...sx }}>
       <Stack sx={{ gap: 2, py: 4, bgcolor: colors.grey[50], height: '100%' }}>
         <Typography
           variant="h5"
