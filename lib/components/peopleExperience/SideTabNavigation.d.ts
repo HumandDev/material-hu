@@ -1,4 +1,5 @@
 import { ComponentType, ReactNode } from 'react';
+import { StackProps } from '@mui/material';
 import { Key } from 'react-hook-form/dist/types/path/common';
 export type Tab = {
     id: Key;
@@ -13,6 +14,7 @@ type TabSidebarProps = {
     layout?: ComponentType<{
         children: ReactNode;
     }>;
+    sx?: StackProps['sx'];
 };
-declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
+declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, sx, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
 export default SideTabNavigation;
