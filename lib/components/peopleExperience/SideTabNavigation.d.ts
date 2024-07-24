@@ -14,7 +14,9 @@ type TabSidebarProps = {
     layout?: ComponentType<{
         children: ReactNode;
     }>;
-    sx?: StackProps['sx'];
+    slotProps?: Partial<{
+        tabs: StackProps;
+    }>;
 };
-declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, sx, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
+declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, slotProps, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
 export default SideTabNavigation;
