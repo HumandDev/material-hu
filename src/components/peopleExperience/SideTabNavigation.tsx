@@ -35,7 +35,9 @@ type TabSidebarProps = {
   onChangeIndex: (nextIndex: number) => void;
   tabs: Tab[];
   layout?: ComponentType<{ children: ReactNode }>;
-  sx?: StackProps['sx'];
+  slotProps?: Partial<{
+    tabs: StackProps;
+  }>;
 };
 
 const SideTabNavigation = ({
@@ -44,7 +46,7 @@ const SideTabNavigation = ({
   tabs,
   title,
   layout: Layout = Fragment,
-  sx,
+  slotProps,
 }: TabSidebarProps) => {
   const handleListItemClick = (
     _event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -54,8 +56,17 @@ const SideTabNavigation = ({
   };
 
   return (
-    <Stack sx={{ flexDirection: 'row', height: '100%', ...sx }}>
-      <Stack sx={{ gap: 2, py: 4, bgcolor: colors.grey[50], height: '100%' }}>
+    <Stack sx={{ flexDirection: 'row', height: '100%' }}>
+      <Stack
+        {...slotProps?.tabs}
+        sx={{
+          gap: 2,
+          py: 4,
+          bgcolor: colors.grey[50],
+          height: '100%',
+          ...slotProps?.tabs?.sx,
+        }}
+      >
         <Typography
           variant="h5"
           component="h2"
