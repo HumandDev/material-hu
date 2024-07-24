@@ -166,7 +166,6 @@ function FormRichEditor({
           onEditorChange={handleEditorChange(onChange)}
           onInit={onInit}
           {...allEditorProps}
-          apiKey={'gpl'}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
         />
