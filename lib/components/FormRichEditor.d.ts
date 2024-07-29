@@ -5,7 +5,7 @@ import 'tinymce/tinymce';
 import 'tinymce/models/dom/model';
 import 'tinymce/themes/silver';
 import 'tinymce/icons/default';
-import 'tinymce/skins/ui/oxide/skin';
+import 'tinymce/skins/ui/oxide/skin.min.css';
 import 'tinymce/plugins/advlist';
 import 'tinymce/plugins/anchor';
 import 'tinymce/plugins/autolink';
@@ -38,8 +38,6 @@ import 'tinymce/plugins/visualblocks';
 import 'tinymce/plugins/visualchars';
 import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/emoticons/js/emojis';
-import 'tinymce/skins/content/default/content';
-import 'tinymce/skins/ui/oxide/content';
 type Props = UseControllerProps & {
     editorProps?: IAllProps;
     onEditorChange?: (value: string, editor: EditorType) => string;
