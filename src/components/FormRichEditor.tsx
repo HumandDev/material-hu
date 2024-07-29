@@ -54,9 +54,9 @@ import 'tinymce/plugins/emoticons/js/emojis';
 
 // Content styles, including inline UI like fake cursors
 // @ts-ignore
-import contentCss from 'tinymce/skins/content/default/content.min.css';
+import contentCss from '!!css-loader!tinymce/skins/content/default/content.min.css';
 // @ts-ignore
-import contentUiCss from 'tinymce/skins/ui/oxide/content.min.css';
+import contentUiCss from '!!css-loader!tinymce/skins/ui/oxide/content.min.css';
 
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
