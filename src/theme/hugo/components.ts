@@ -45,4 +45,12 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
+  /* MuiCircularProgress: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        // Esto es solo un estilo de ejemplo que se aplicará globalmente
+        // Los estilos específicos basados en `onDark` se manejan en el componente StyledCircularProgress
+      }),
+    },
+  }, */
 };
