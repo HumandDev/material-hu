@@ -53,6 +53,7 @@ export {
   default as DocumentItem,
   DocumentItemProps,
 } from './components/DocumentItem';
+export { default as CenteredCircularProgress } from './components/CircularProgress';
 export {
   default as FormRadioCustomGroup,
   FormRadioCustomGroupProps,

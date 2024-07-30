@@ -1,4 +1,4 @@
-import { ThemeOptions } from '@mui/material';
+import { CircularProgressProps, ThemeOptions } from '@mui/material';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -45,12 +45,19 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
-  /* MuiCircularProgress: {
+  MuiCircularProgress: {
     styleOverrides: {
-      root: ({ theme }) => ({
-        // Esto es solo un estilo de ejemplo que se aplicará globalmente
-        // Los estilos específicos basados en `onDark` se manejan en el componente StyledCircularProgress
+      root: ({
+        theme,
+        ownerState,
+      }: {
+        theme: any;
+        ownerState: CircularProgressProps & { dark?: boolean };
+      }) => ({
+        color: ownerState.dark
+          ? theme.palette.base?.white
+          : theme.palette.base?.blueBrand[400],
       }),
     },
-  }, */
+  },
 };
