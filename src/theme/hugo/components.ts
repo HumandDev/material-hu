@@ -55,6 +55,8 @@ export const components: ThemeOptions['components'] = {
         ownerState: CircularProgressProps;
       }) => ({
         color: ownerState.dark ? '#fff' : theme.palette.base?.blueBrand[400],
+        height: ownerState?.sizes === 'small' ? 24 : 32,
+        width: ownerState?.sizes === 'small' ? 24 : 32,
       }),
     },
   },
