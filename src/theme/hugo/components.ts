@@ -52,13 +52,10 @@ export const components: ThemeOptions['components'] = {
         ownerState,
       }: {
         theme: any;
-        ownerState: CircularProgressProps & { dark?: boolean };
-      }) => {
-        console.error('ownerState.dark:', ownerState.dark); // Verifica el valor
-        return {
-          color: ownerState.dark ? '#fff' : theme.palette.base?.blueBrand[400],
-        };
-      },
+        ownerState: CircularProgressProps;
+      }) => ({
+        color: ownerState.dark ? '#fff' : theme.palette.base?.blueBrand[400],
+      }),
     },
   },
 };
