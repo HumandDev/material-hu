@@ -7,13 +7,15 @@ type Props = CircularProgressProps & {
 
 const CenteredCircularProgress = ({
   centered = false,
-  // dark = false,
+  dark = false,
+  sizes,
   ...props
 }: Props) => {
+  console.error('here', dark, sizes);
   const circularProgress = (
     <CircularProgress
       {...props}
-      // dark
+      dark={dark}
     />
   );
 
