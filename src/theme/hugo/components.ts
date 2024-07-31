@@ -48,9 +48,11 @@ export const components: ThemeOptions['components'] = {
   MuiCircularProgress: {
     styleOverrides: {
       root: ({ theme, ownerState }) => ({
-        color: ownerState?.dark ? '#fff' : theme.palette.base?.blueBrand[400],
-        height: ownerState?.sizes === 'small' ? 24 : 32,
-        width: ownerState?.sizes === 'small' ? 24 : 32,
+        color: ownerState?.dark
+          ? theme.palette.base?.white
+          : theme.palette.base?.blueBrand[400],
+        height: ownerState.sizes === 'small' ? 24 : 32,
+        width: ownerState.sizes === 'small' ? 24 : 32,
       }),
     },
   },

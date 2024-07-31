@@ -14,9 +14,9 @@ const CenteredCircularProgress = ({
 }: Props) => {
   const circularProgress = (
     <CircularProgress
-      {...props}
       dark={dark}
       sizes={sizes}
+      {...props}
     />
   );
 
