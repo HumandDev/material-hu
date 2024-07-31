@@ -2,21 +2,26 @@ import { Stack, CircularProgress, CircularProgressProps } from '@mui/material';
 
 type Props = CircularProgressProps & {
   centered?: boolean;
-  dark?: boolean;
-  width?: string;
+  darkBackground?: boolean;
+  size?: 'small' | 'medium';
 };
 
 const CenteredCircularProgress = ({
-  centered = false,
-  dark = false,
-  width = 'medium',
+  centered = true,
+  darkBackground = false,
+  size = 'medium',
   ...props
 }: Props) => {
-  const size = width === 'small' ? 24 : 32;
   const circularProgress = (
     <CircularProgress
-      dark={dark}
-      size={size}
+      sx={{
+        ...props.sx,
+        color: theme =>
+          darkBackground
+            ? theme.palette.base?.white
+            : theme.palette.base?.blueBrand[400],
+      }}
+      size={size === 'small' ? 24 : 32}
       {...props}
     />
   );

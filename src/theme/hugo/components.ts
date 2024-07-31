@@ -45,13 +45,4 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
-  MuiCircularProgress: {
-    styleOverrides: {
-      root: ({ theme, ownerState }) => ({
-        color: ownerState?.dark
-          ? theme.palette.base?.white
-          : theme.palette.base?.blueBrand[400],
-      }),
-    },
-  },
 };

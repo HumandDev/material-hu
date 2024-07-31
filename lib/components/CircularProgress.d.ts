@@ -1,8 +1,8 @@
 import { CircularProgressProps } from '@mui/material';
 type Props = CircularProgressProps & {
     centered?: boolean;
-    dark?: boolean;
-    width?: string;
+    darkBackground?: boolean;
+    size?: 'small' | 'medium';
 };
-declare const CenteredCircularProgress: ({ centered, dark, width, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const CenteredCircularProgress: ({ centered, darkBackground, size, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
 export default CenteredCircularProgress;
