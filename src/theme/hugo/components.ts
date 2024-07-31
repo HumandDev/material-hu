@@ -51,8 +51,6 @@ export const components: ThemeOptions['components'] = {
         color: ownerState?.dark
           ? theme.palette.base?.white
           : theme.palette.base?.blueBrand[400],
-        height: ownerState.sizes === 'small' ? 24 : 32,
-        width: ownerState.sizes === 'small' ? 24 : 32,
       }),
     },
   },

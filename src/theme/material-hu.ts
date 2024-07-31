@@ -138,7 +138,7 @@ declare module '@mui/material/Radio' {
 declare module '@mui/material/CircularProgress' {
   interface CircularProgressProps {
     dark?: boolean;
-    sizes?: 'small' | 'medium';
+    width?: 'small' | 'medium';
   }
 }
 
