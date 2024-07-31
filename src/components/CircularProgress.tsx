@@ -2,20 +2,21 @@ import { Stack, CircularProgress, CircularProgressProps } from '@mui/material';
 
 type Props = CircularProgressProps & {
   centered?: boolean;
-  onDark?: boolean;
+  dark?: boolean;
+  sizes?: string;
 };
 
 const CenteredCircularProgress = ({
   centered = false,
   dark = false,
-  sizes,
+  sizes = 'medium',
   ...props
 }: Props) => {
-  console.error('here', dark, sizes);
   const circularProgress = (
     <CircularProgress
       {...props}
       dark={dark}
+      sizes={sizes}
     />
   );
 
