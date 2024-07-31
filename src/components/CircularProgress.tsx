@@ -3,15 +3,17 @@ import { Stack, CircularProgress, CircularProgressProps } from '@mui/material';
 type Props = CircularProgressProps & {
   centered?: boolean;
   darkBackground?: boolean;
-  size?: 'small' | 'medium';
+  width?: string;
 };
 
 const CenteredCircularProgress = ({
   centered = true,
   darkBackground = false,
-  size = 'medium',
+  width = 'medium',
   ...props
 }: Props) => {
+  const size = width === 'small' ? 24 : 32;
+
   const circularProgress = (
     <CircularProgress
       sx={{
@@ -21,7 +23,7 @@ const CenteredCircularProgress = ({
             ? theme.palette.base?.white
             : theme.palette.base?.blueBrand[400],
       }}
-      size={size === 'small' ? 24 : 32}
+      size={size}
       {...props}
     />
   );
