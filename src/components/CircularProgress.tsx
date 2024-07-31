@@ -17,7 +17,6 @@ const CenteredCircularProgress = ({
   const circularProgress = (
     <CircularProgress
       sx={{
-        ...props.sx,
         color: theme =>
           darkBackground
             ? theme.palette.base?.white
