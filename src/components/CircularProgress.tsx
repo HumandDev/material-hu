@@ -12,11 +12,11 @@ const CenteredCircularProgress = ({
   width = 'medium',
   ...props
 }: Props) => {
-  const dimension = width === 'small' ? 24 : 32;
+  const size = width === 'small' ? 24 : 32;
   const circularProgress = (
     <CircularProgress
       dark={dark}
-      size={dimension}
+      size={size}
       {...props}
     />
   );

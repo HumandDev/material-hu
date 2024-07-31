@@ -112,7 +112,6 @@ declare module '@mui/material/Radio' {
 declare module '@mui/material/CircularProgress' {
     interface CircularProgressProps {
         dark?: boolean;
-        width?: 'small' | 'medium';
     }
 }
 export declare const createNewTheme: (config?: ThemeConfig) => Theme;
