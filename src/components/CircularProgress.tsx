@@ -13,8 +13,6 @@ const CenteredCircularProgress = ({
   ...props
 }: Props) => {
   const size = width === 'small' ? 24 : 32;
-  // eslint-disable-next-line
-  console.log(darkBackground);
   const circularProgress = (
     <CircularProgress
       sx={{
