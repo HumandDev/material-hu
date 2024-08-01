@@ -1,4 +1,3 @@
-import { round } from 'lodash';
 import {
   LinearProgress,
   LinearProgressProps,
@@ -37,11 +36,11 @@ const LinearProgressWithLabel = ({
         value={mappedValue}
       />
       <Typography
-        variant="body1"
+        variant="body2"
         color="text.secondary"
         sx={{ flexShrink: 0 }}
       >
-        {`${round(mappedValue, 1)}%`}
+        {`${Math.round(mappedValue)}%`}
       </Typography>
     </Stack>
   );

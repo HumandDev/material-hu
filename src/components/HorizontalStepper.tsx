@@ -40,6 +40,8 @@ export type HorizontalStepperProps = StepperProps & {
   onClose?: () => void;
   closeLabel?: string;
   title?: string;
+  titleRightComponent?: ReactNode;
+  actions?: ReactNode;
   backButton?: {
     onClick?: () => void;
     getLabel?: (step: StepType) => string | null;
@@ -73,6 +75,8 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
     onClose,
     closeLabel,
     title,
+    titleRightComponent,
+    actions,
     finishButton,
     backButton,
     nextButton,
@@ -131,7 +135,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
           width: '100%',
         }}
       >
-        {(title || onClose) && (
+        {(title || titleRightComponent || onClose) && (
           <Stack
             sx={{
               flexDirection: 'row',
@@ -156,7 +160,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
               <Typography
                 variant="h5"
                 sx={{
-                  [theme.breakpoints.down('lg')]: {
+                  [theme.breakpoints.down('xl')]: {
                     display: 'none',
                   },
                 }}
@@ -164,6 +168,15 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
                 {title}
               </Typography>
             )}
+            <Stack
+              sx={{
+                [theme.breakpoints.down('xl')]: {
+                  display: 'none',
+                },
+              }}
+            >
+              {titleRightComponent}
+            </Stack>
           </Stack>
         )}
         <Stack
@@ -175,10 +188,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: 5,
-            [theme.breakpoints.up('lg')]: {
-              gap: 7,
-            },
+            gap: 7,
             ...stepperProps?.sx,
           }}
           {...stepperProps}
@@ -266,6 +276,11 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
                       },
                     },
                   },
+                  [theme.breakpoints.down('lg')]: {
+                    '& .MuiStepIcon-root': {
+                      display: 'none',
+                    },
+                  },
                 }}
               >
                 {clickable && (
@@ -290,6 +305,20 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
             );
           })}
         </Stack>
+        {actions && (
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              gap: 2,
+              position: 'absolute',
+              right: theme.spacing(3),
+            }}
+          >
+            {actions}
+          </Stack>
+        )}
       </Stack>
       <Divider />
       {!!currentStep && currentStep.content({ activeStep, id: currentStep.id })}

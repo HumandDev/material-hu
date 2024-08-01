@@ -13,7 +13,7 @@ import 'tinymce/themes/silver';
 // Toolbar icons
 import 'tinymce/icons/default';
 // Editor styles
-import 'tinymce/skins/ui/oxide/skin';
+import 'tinymce/skins/ui/oxide/skin.min.css';
 
 // importing the plugin js.
 // if you use a plugin that is not listed here the editor will fail to load
@@ -53,8 +53,10 @@ import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/emoticons/js/emojis';
 
 // Content styles, including inline UI like fake cursors
-import 'tinymce/skins/content/default/content';
-import 'tinymce/skins/ui/oxide/content';
+// @ts-ignore
+import contentCss from '!!css-loader!tinymce/skins/content/default/content.min.css';
+// @ts-ignore
+import contentUiCss from '!!css-loader!tinymce/skins/ui/oxide/content.min.css';
 
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
@@ -128,10 +130,14 @@ function FormRichEditor({
       font_family_formats: simplifyEditor
         ? ''
         : 'Andale Mono=andale mono; Arial=arial; Arial Black=arial black; Book Antiqua=book antiqua; Comic Sans MS=comic sans ms; Courier New=courier new; Georgia=georgia; Helvetica=helvetica; Impact=impact; Ogi Sans=ogilvy sans web; Ogi Serif=ogilvy serif web; Tahoma=tahoma; Terminal=terminal; Times New Roman=times new roman; Trebuchet MS=trebuchet ms; Verdana=verdana; Darker Grotesque=darker grotesque; Work Sans=work sans; Montserrat=montserrat; Abril Fatface=abril fatface; Satisfy=satisfy; Lato=lato; Poppins=poppins; Ludicrous=ludicrous; Nunito=nunito; MavenPro=maven pro', // custom fonts
-      content_style: `
+      content_style: [
+        `
       @import url(${fontsURL});
       body { font-family: arial; overflow-x: hidden; }
       `,
+        contentCss,
+        contentUiCss,
+      ].join('\n'),
       toolbar_mode: 'wrap',
       images_upload_handler: imagesUploadHandler,
       setup: ({ editorManager }) => addVideoEditorPlugin(editorManager),
