@@ -17,6 +17,7 @@ export { default as HorizontalStepper, HorizontalStepperProps, StepType, } from 
 export { default as FormDrop, FormDropProps, FormDropTypes, FormDropContext, } from './components/FormDrop';
 export { default as CroppingModal, CroppingModalProps, } from './components/CroppingModal';
 export { default as DocumentItem, DocumentItemProps, } from './components/DocumentItem';
+export { default as CenteredCircularProgress } from './components/CircularProgress';
 export { default as FormRadioCustomGroup, FormRadioCustomGroupProps, } from './components/FormRadioCustomGroup';
 export { useDebounce } from './hooks/useDebounce';
 export { useServerPagination, TableSortingHeaderProps, } from './hooks/useServerPagination';
