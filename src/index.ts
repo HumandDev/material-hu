@@ -81,3 +81,5 @@ export const PeopleExperience = {
   TabPanel,
   TabPanelItem,
 };
+
+export { default as Avatar } from './components/Avatar';
