@@ -138,6 +138,8 @@ function FormRichEditor({
         contentCss,
         contentUiCss,
       ].join('\n'),
+      skin: false, // loaded manually
+      content_css: false, // loaded manually
       toolbar_mode: 'wrap',
       images_upload_handler: imagesUploadHandler,
       setup: ({ editorManager }) => addVideoEditorPlugin(editorManager),
