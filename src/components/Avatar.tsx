@@ -26,7 +26,7 @@ export const getSizeInPixels = (size: Props['size']): string => {
   }
 };
 
-const getColorsVariant = (
+export const getColorsVariant = (
   color: Props['color'],
   palette: Palette,
 ): { backgroundColor: string; color: string } => {
@@ -58,8 +58,8 @@ const getColorsVariant = (
       };
     default:
       return {
-        backgroundColor: 'yellow',
-        color: 'black',
+        backgroundColor: 'red',
+        color: 'white',
       };
   }
 };
@@ -82,6 +82,14 @@ const Avatar = ({
       sx={{
         ...props.sx,
         ...colorsVariant,
+        '.MuiAvatar-colorDefault': {
+          backgroundColor: 'blue',
+          color: 'yellow',
+        },
+        '& .MuiAvatar-colorDefault': {
+          backgroundColor: 'blue',
+          color: 'yellow',
+        },
         height: sizeInPixels,
         width: sizeInPixels,
         ...(props.variant === 'rounded' && {

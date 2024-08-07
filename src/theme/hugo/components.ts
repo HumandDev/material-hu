@@ -51,11 +51,9 @@ export const components: ThemeOptions['components'] = {
       root: () => ({
         position: 'static',
       }),
-      avatar: ({ theme, ownerState }) => ({
+      avatar: ({ ownerState }) => ({
         height: getSizeInPixels(ownerState.size),
         width: getSizeInPixels(ownerState.size),
-        // backgroundColor: 'red',
-        // color: 'blue',
       }),
     },
   },
