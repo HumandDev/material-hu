@@ -52,7 +52,6 @@ export const components: ThemeOptions['components'] = {
         position: 'static',
       }),
       avatar: ({ theme, ownerState }) => ({
-        position: 'static',
         height: getSizeInPixels(ownerState.size),
         width: getSizeInPixels(ownerState.size),
         backgroundColor: theme.palette.grey[200],
