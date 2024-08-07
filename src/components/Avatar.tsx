@@ -82,10 +82,6 @@ const Avatar = ({
       sx={{
         ...props.sx,
         ...colorsVariant,
-        '.MuiAvatar-colorDefault': {
-          backgroundColor: theme.palette.grey[200],
-          color: theme.palette.grey[800],
-        },
         height: sizeInPixels,
         width: sizeInPixels,
         ...(props.variant === 'rounded' && {
