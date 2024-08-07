@@ -1,5 +1,4 @@
 import { ThemeOptions } from '@mui/material';
-import { getSizeInPixels } from '../../components/Avatar';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -43,17 +42,6 @@ export const components: ThemeOptions['components'] = {
         minHeight: 20,
         maxWidth: 25,
         minWidth: 20,
-      }),
-    },
-  },
-  MuiAvatarGroup: {
-    styleOverrides: {
-      root: () => ({
-        position: 'static',
-      }),
-      avatar: ({ ownerState }) => ({
-        height: getSizeInPixels(ownerState.size),
-        width: getSizeInPixels(ownerState.size),
       }),
     },
   },

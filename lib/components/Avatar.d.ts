@@ -6,8 +6,8 @@ export type Props = AvatarProps & {
     badgeContent?: BadgeProps['badgeContent'];
     badgeProps?: Omit<BadgeProps, 'badgeContent'>;
 };
-export declare const getSizeInPixels: (size: Props['size']) => string;
-export declare const getColorsVariant: (color: Props['color'], palette: Palette) => {
+export declare const getSizeInPixels: (size: Props["size"]) => string;
+export declare const getColorsVariant: (color: Props["color"], palette: Palette) => {
     backgroundColor: string;
     color: string;
 };

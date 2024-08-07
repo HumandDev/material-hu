@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { TableCellProps, TableSortLabelProps } from '@mui/material';
 import { FormValues } from './useServerPagination';
 type ClientPaginationOptions<TData> = {

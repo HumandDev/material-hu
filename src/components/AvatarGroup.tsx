@@ -12,11 +12,26 @@ import {
 
 const MAX_AVATARS = 4;
 
-export type Props = Omit<AvatarGroupProps, 'max'> & {
-  size?: AvatarProps['size'];
+export const formatSurplus = (surplus: number) => {
+  const thousandFraction = surplus / 1000;
+  if (surplus > 9999 || surplus % 1000 === 0) {
+    return `+${Math.trunc(thousandFraction).toString()}K`;
+  }
+  return surplus > 999
+    ? `+${(Math.trunc(thousandFraction * 10) / 10).toString()}K`
+    : `+${surplus}`;
 };
 
-const AvatarGroup = ({ size = 'medium', ...props }: Props) => {
+export type Props = Omit<AvatarGroupProps, 'max' | 'spacing'> & {
+  size?: AvatarProps['size'];
+  spacing?: 'medium' | 'small';
+};
+
+const AvatarGroup = ({
+  size = 'medium',
+  spacing = 'medium',
+  ...props
+}: Props) => {
   const theme = useTheme();
   const sizeInPixels = getSizeInPixels(size);
   const colorsVariant = getColorsVariant('default', theme.palette);
@@ -40,6 +55,8 @@ const AvatarGroup = ({ size = 'medium', ...props }: Props) => {
         },
       }}
       max={MAX_AVATARS}
+      spacing={spacing}
+      renderSurplus={formatSurplus}
       {...props}
     />
   );

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Theme } from '@mui/material';
 import { BaseColorType } from './hugo/colors';
 declare module '@mui/material/styles/createPalette' {
@@ -107,11 +106,6 @@ declare module '@mui/material/IconButton' {
 declare module '@mui/material/Radio' {
     interface RadioPropsColorOverrides {
         humand: true;
-    }
-}
-declare module '@mui/material/AvatarGroup' {
-    interface AvatarGroupProps {
-        size?: 'small' | 'medium' | 'large';
     }
 }
 export declare const createNewTheme: (config?: ThemeConfig) => Theme;
