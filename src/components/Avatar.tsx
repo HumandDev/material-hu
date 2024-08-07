@@ -58,13 +58,13 @@ const getColorsVariant = (
       };
     case 'default':
       return {
-        backgroundColor: palette.grey[200],
-        color: palette.grey[800],
+        backgroundColor: 'yellow',
+        color: 'white',
       };
     default:
       return {
-        backgroundColor: palette.grey[200],
-        color: palette.grey[800],
+        backgroundColor: 'rose',
+        color: 'black',
       };
   }
 };

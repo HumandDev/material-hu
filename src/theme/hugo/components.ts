@@ -54,8 +54,8 @@ export const components: ThemeOptions['components'] = {
       avatar: ({ theme, ownerState }) => ({
         height: getSizeInPixels(ownerState.size),
         width: getSizeInPixels(ownerState.size),
-        backgroundColor: theme.palette.grey[200],
-        color: theme.palette.grey[800],
+        backgroundColor: 'red',
+        color: 'blue',
       }),
     },
   },
