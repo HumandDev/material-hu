@@ -135,6 +135,12 @@ declare module '@mui/material/Radio' {
   }
 }
 
+declare module '@mui/material/AvatarGroup' {
+  interface AvatarGroupProps {
+    size?: 'small' | 'medium' | 'large';
+  }
+}
+
 export const createNewTheme = (config: ThemeConfig = {}): Theme => {
   let theme = createMuiTheme(
     // Base options available for both dark and light palette modes

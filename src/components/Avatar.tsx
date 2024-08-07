@@ -15,7 +15,7 @@ export type Props = AvatarProps & {
   badgeProps?: Omit<BadgeProps, 'badgeContent'>;
 };
 
-const getSizeInPixels = (size: Props['size']): string => {
+export const getSizeInPixels = (size: Props['size']): string => {
   switch (size) {
     case 'small':
       return '32px';

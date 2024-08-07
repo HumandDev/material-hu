@@ -1,4 +1,5 @@
 import { ThemeOptions } from '@mui/material';
+import { getSizeInPixels } from '../../components/Avatar';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -42,6 +43,22 @@ export const components: ThemeOptions['components'] = {
         minHeight: 20,
         maxWidth: 25,
         minWidth: 20,
+      }),
+    },
+  },
+  MuiAvatarGroup: {
+    styleOverrides: {
+      root: () => ({
+        position: 'static',
+      }),
+      avatar: ({ ownerState }) => ({
+        position: 'static',
+        height: getSizeInPixels(ownerState.size),
+        width: getSizeInPixels(ownerState.size),
+        // size
+        // quiero evitar armar el wrapper porque hay que mantener la misma logica
+        // con la que venimos laburando. Asi que voy a buscar la forma de mandar los sizes
+        // y que impacten en los avatars hijos y ver si se puede evitar dos veces las mismas cosas
       }),
     },
   },

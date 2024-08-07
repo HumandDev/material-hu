@@ -109,5 +109,10 @@ declare module '@mui/material/Radio' {
         humand: true;
     }
 }
+declare module '@mui/material/AvatarGroup' {
+    interface AvatarGroupProps {
+        size?: 'small' | 'medium' | 'large';
+    }
+}
 export declare const createNewTheme: (config?: ThemeConfig) => Theme;
 export {};
