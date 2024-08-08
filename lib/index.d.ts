@@ -30,16 +30,11 @@ export declare const PeopleExperience: {
         items: TData[];
         renderItem: (item: TData, index: number) => JSX.Element;
     }) => import("react/jsx-runtime").JSX.Element;
-    DisplayGroupItem: import("@emotion/styled").StyledComponent<import("@mui/system").SystemProps<import("@mui/material").Theme> & {
-        children?: import("react").ReactNode;
-        direction?: import("@mui/system").ResponsiveStyleValue<"column" | "column-reverse" | "row" | "row-reverse"> | undefined;
-        spacing?: import("@mui/system").ResponsiveStyleValue<string | number> | undefined;
-        divider?: import("react").ReactNode;
-        useFlexGap?: boolean | undefined;
-        sx?: import("@mui/material").SxProps<import("@mui/material").Theme> | undefined;
-    } & import("@mui/material/OverridableComponent").CommonProps & Omit<Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & {
+    DisplayGroupItem: import("@emotion/styled").StyledComponent<import("@mui/material").StackOwnProps & import("@mui/material/OverridableComponent").CommonProps & Omit<Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & {
         ref?: ((instance: HTMLDivElement | null) => void) | import("react").RefObject<HTMLDivElement> | null | undefined;
-    }, "direction" | "children" | "spacing" | ("flex" | "height" | "width" | "left" | "top" | "alignContent" | "alignItems" | "alignSelf" | "border" | "borderBottom" | "borderColor" | "borderLeft" | "borderRadius" | "borderRight" | "borderTop" | "bottom" | "boxShadow" | "boxSizing" | "color" | "columnGap" | "display" | "flexBasis" | "flexDirection" | "flexGrow" | "flexShrink" | "flexWrap" | "fontFamily" | "fontSize" | "fontStyle" | "fontWeight" | "gap" | "gridArea" | "gridAutoColumns" | "gridAutoFlow" | "gridAutoRows" | "gridColumn" | "gridRow" | "gridTemplateAreas" | "gridTemplateColumns" | "gridTemplateRows" | "justifyContent" | "justifyItems" | "justifySelf" | "letterSpacing" | "lineHeight" | "margin" | "marginBottom" | "marginLeft" | "marginRight" | "marginTop" | "maxHeight" | "maxWidth" | "minHeight" | "minWidth" | "order" | "overflow" | "padding" | "paddingBottom" | "paddingLeft" | "paddingRight" | "paddingTop" | "position" | "right" | "rowGap" | "textAlign" | "textOverflow" | "textTransform" | "visibility" | "whiteSpace" | "zIndex" | "p" | "bgcolor" | "m" | "mt" | "mr" | "mb" | "ml" | "mx" | "marginX" | "my" | "marginY" | "pt" | "pr" | "pb" | "pl" | "px" | "paddingX" | "py" | "paddingY" | "typography" | "displayPrint") | "sx" | "divider" | "useFlexGap" | keyof import("@mui/material/OverridableComponent").CommonProps> & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme>, {}, {}>;
+    }, keyof import("@mui/material/OverridableComponent").CommonProps | keyof import("@mui/material").StackOwnProps> & import("@mui/system").MUIStyledCommonProps<import("@mui/material").Theme> & {
+        component?: import("react").ElementType<any> | undefined;
+    }, {}, {}>;
     ParticipationItemSkeleton: () => import("react/jsx-runtime").JSX.Element;
     ParticipationExpandableItem: ({ children, primary, secondary, partial, total, slotProps, }: import("./components/peopleExperience/Participation").ParticipationExpandableItemProps) => import("react/jsx-runtime").JSX.Element;
     ParticipationItem: ({ primary, secondary, partial, total, slotProps, }: import("./components/peopleExperience/Participation").ParticipationItemProps) => import("react/jsx-runtime").JSX.Element;
@@ -52,16 +47,11 @@ export declare const PeopleExperience: {
             container: import("@mui/material").StackProps;
         }> | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
-    ListWithDivider: ({ items, dividerProps, ...other }: {
-        children?: import("react").ReactNode;
-        classes?: Partial<import("@mui/material").ListClasses> | undefined;
-        dense?: boolean | undefined;
-        disablePadding?: boolean | undefined;
-        subheader?: import("react").ReactNode;
-        sx?: import("@mui/material").SxProps<import("@mui/material").Theme> | undefined;
-    } & import("@mui/material/OverridableComponent").CommonProps & Omit<Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLUListElement>, HTMLUListElement>, "ref"> & {
+    ListWithDivider: ({ items, dividerProps, ...other }: import("@mui/material").ListOwnProps & import("@mui/material/OverridableComponent").CommonProps & Omit<Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLUListElement>, HTMLUListElement>, "ref"> & {
         ref?: ((instance: HTMLUListElement | null) => void) | import("react").RefObject<HTMLUListElement> | null | undefined;
-    }, "children" | "dense" | "sx" | keyof import("@mui/material/OverridableComponent").CommonProps | "subheader" | "disablePadding"> & {
+    }, "style" | "className" | "children" | "dense" | "sx" | "classes" | "subheader" | "disablePadding"> & {
+        component?: import("react").ElementType<any> | undefined;
+    } & {
         items: import("react").ReactNode[];
         dividerProps?: import("@mui/material").DividerProps | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
