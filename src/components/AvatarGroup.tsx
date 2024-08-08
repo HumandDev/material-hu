@@ -43,7 +43,6 @@ const AvatarGroup = ({
         ...colorsVariant,
         height: sizeInPixels,
         width: sizeInPixels,
-        position: 'static',
       }}
       slotProps={{
         additionalAvatar: {
