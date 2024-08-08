@@ -57,9 +57,10 @@ export const components: ThemeOptions['components'] = {
       variant: 'contained',
     },
     styleOverrides: {
-      colorPrimary: ({ theme }) => ({
-        color: theme.palette.base?.white,
-      }),
+      // colorPrimary: ({ theme }) => ({
+      //   color: theme.palette.base?.white,
+      //   textTransform: 'capitalize',
+      // }),
       containedPrimary: ({ theme }) => ({
         backgroundColor: theme.palette.base?.blueBrand[400],
       }),
