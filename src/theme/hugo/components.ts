@@ -64,6 +64,7 @@ export const components: ThemeOptions['components'] = {
       root: {
         textTransform: 'capitalize',
         boxShadow: 'none',
+        borderRadius: '8px',
         '&:hover': {
           boxShadow: 'none',
         },
@@ -86,6 +87,22 @@ export const components: ThemeOptions['components'] = {
         '&:hover': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
+      }),
+      sizeLarge: () => ({
+        minWidth: '256px',
+        paddingTop: '12px',
+        paddingBottom: '12px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
+      }),
+      sizeMedium: () => ({
+        minWidth: '104px',
+      }),
+      startIcon: () => ({
+        marginRight: '4px',
+      }),
+      endIcon: () => ({
+        marginLeft: '4px',
       }),
     },
   },
