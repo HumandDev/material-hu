@@ -45,4 +45,12 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
+  MuiButton: {
+    defaultProps: {
+      size: 'large',
+    },
+    //  styleOverrides: {
+    //
+    // }
+  },
 };
