@@ -56,6 +56,11 @@ const AvatarGroup = ({
         ...colorsVariant,
         height: sizeInPixels,
         width: sizeInPixels,
+        '& .MuiAvatarGroup-root': {
+          backgroundColor: 'yellow',
+          color: 'blue',
+          position: 'static',
+        },
         // position: 'static',
       }}
     />
