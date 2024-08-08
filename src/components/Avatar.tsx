@@ -58,8 +58,8 @@ export const getColorsVariant = (
       };
     default:
       return {
-        backgroundColor: "red",
-        color: "white",
+        backgroundColor: 'red',
+        color: 'white',
       };
   }
 };
@@ -83,8 +83,8 @@ const Avatar = ({
         ...props.sx,
         ...colorsVariant,
         '& .MuiAvatar-colorDefault': {
-          backgroundColor: "yellow",
-          color: "blue",
+          backgroundColor: 'yellow',
+          color: 'blue',
         },
         height: sizeInPixels,
         width: sizeInPixels,
