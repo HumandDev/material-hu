@@ -42,9 +42,12 @@ const AvatarGroup = ({
       {...props}
       sx={{
         ...props.sx,
-        ...colorsVariant,
-        height: sizeInPixels,
-        width: sizeInPixels,
+        '& .MuiAvatar-root': {
+          ...colorsVariant,
+          height: sizeInPixels,
+          width: sizeInPixels,
+          position: 'static',
+        },
       }}
       slotProps={{
         additionalAvatar: {

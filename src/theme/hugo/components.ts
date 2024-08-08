@@ -45,11 +45,11 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
-  MuiAvatarGroup: {
-    styleOverrides: {
-      avatar: () => ({
-        position: 'static',
-      }),
-    },
-  },
+  // MuiAvatarGroup: {
+  //   styleOverrides: {
+  //     avatar: () => ({
+  //       position: 'static',
+  //     }),
+  //   },
+  // },
 };
