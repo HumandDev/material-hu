@@ -1,4 +1,4 @@
-import { ThemeOptions } from '@mui/material';
+import { ThemeOptions, buttonClasses } from '@mui/material';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -74,6 +74,13 @@ export const components: ThemeOptions['components'] = {
         '&:hover': {
           backgroundColor: theme.palette.base?.blueBrand[600],
         },
+        [`&.${buttonClasses.focusVisible}`]: {
+          boxShadow: '0px -4px 4px 0px #00000040 inset',
+        },
+        [`&:${buttonClasses.disabled}`]: {
+          color: theme.palette.base?.grey[600],
+          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+        },
       }),
       outlined: ({ theme }) => ({
         color: theme.palette.base?.blueBrand[800],
@@ -81,11 +88,26 @@ export const components: ThemeOptions['components'] = {
         '&:hover': {
           backgroundColor: theme.palette.base?.blueBrand[100],
         },
+        [`&.${buttonClasses.focusVisible}`]: {
+          boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
+        },
+        [`&:${buttonClasses.disabled}`]: {
+          color: theme.palette.base?.grey[600],
+          backgroundColor: theme.palette.base?.white,
+          borderColor: theme.palette.base?.grey[300],
+        },
       }),
       text: ({ theme }) => ({
         color: theme.palette.base?.blueBrand[800],
         '&:hover': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+        },
+        [`&.${buttonClasses.focusVisible}`]: {
+          boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
+          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+        },
+        [`&:${buttonClasses.disabled}`]: {
+          color: theme.palette.base?.grey[600],
         },
       }),
       sizeLarge: () => ({
