@@ -45,12 +45,24 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
+  // Button
+  // MuiButtonBase: {
+  //   defaultProps: {
+  //     size: 'large',
+  //   },
+  // },
   MuiButton: {
     defaultProps: {
       size: 'large',
+      variant: 'contained',
     },
-    //  styleOverrides: {
-    //
-    // }
+    styleOverrides: {
+      colorPrimary: ({ theme }) => ({
+        color: theme.palette.base?.white,
+      }),
+      containedPrimary: ({ theme }) => ({
+        backgroundColor: theme.palette.base?.blueBrand[400],
+      }),
+    },
   },
 };
