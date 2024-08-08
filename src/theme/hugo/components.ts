@@ -87,6 +87,7 @@ export const components: ThemeOptions['components'] = {
         borderColor: theme.palette.base?.blueBrand[200],
         '&:hover': {
           backgroundColor: theme.palette.base?.blueBrand[100],
+          borderColor: theme.palette.base?.blueBrand[200],
         },
         [`&.${buttonClasses.focusVisible}`]: {
           boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
@@ -119,6 +120,10 @@ export const components: ThemeOptions['components'] = {
       }),
       sizeMedium: () => ({
         minWidth: '104px',
+        paddingTop: '8px',
+        paddingBottom: '8px',
+        paddingLeft: '12px',
+        paddingRight: '12px',
       }),
       startIcon: () => ({
         marginRight: '4px',
