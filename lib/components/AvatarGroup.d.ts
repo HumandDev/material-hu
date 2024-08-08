@@ -5,5 +5,5 @@ export type Props = Omit<AvatarGroupProps, 'max' | 'spacing'> & {
     size?: AvatarProps['size'];
     spacing?: 'medium' | 'small';
 };
-declare const AvatarGroup: ({ size, spacing, sx, children, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const AvatarGroup: ({ size, spacing, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
 export default AvatarGroup;
