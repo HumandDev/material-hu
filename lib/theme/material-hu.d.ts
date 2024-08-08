@@ -89,6 +89,7 @@ declare module '@mui/material/Typography' {
         globalXXL: true;
     }
 }
+export type AugmentedVariants = 'globalXXS' | 'globalXS' | 'globalS' | 'globalM' | 'globalL' | 'globalXL' | 'globalXXL';
 declare module '@mui/material/Button' {
     interface ButtonPropsColorOverrides {
         humand: true;

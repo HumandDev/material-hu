@@ -1,5 +1,5 @@
 import { SxProps } from '@mui/material';
-type TitleVariant = 'globalXXS' | 'globalXS' | 'globalS' | 'globalM' | 'globalL' | 'globalXL' | 'globalXXL';
+type TitleVariant = 'XL' | 'L' | 'M' | 'S';
 type Props = {
     copetin?: string;
     description?: string;

@@ -1,33 +1,21 @@
 import { Stack, SxProps, Typography } from '@mui/material';
 import { colorPalette } from '../theme/hugo/colors';
+import { AugmentedVariants } from '../theme/material-hu';
 
-type TitleVariant =
-  | 'globalXXS'
-  | 'globalXS'
-  | 'globalS'
-  | 'globalM'
-  | 'globalL'
-  | 'globalXL'
-  | 'globalXXL';
+type TitleVariant = 'XL' | 'L' | 'M' | 'S';
 
-const adjustedCopetin: Record<TitleVariant, TitleVariant> = {
-  globalXXS: 'globalXXS',
-  globalXS: 'globalXXS',
-  globalS: 'globalXXS',
-  globalM: 'globalXXS',
-  globalL: 'globalXS',
-  globalXL: 'globalS',
-  globalXXL: 'globalM',
+const adjustedCopetin: Record<TitleVariant, AugmentedVariants> = {
+  XL: 'globalS',
+  L: 'globalXS',
+  M: 'globalXXS',
+  S: 'globalXXS',
 };
 
-const adjustedDescription: Record<TitleVariant, TitleVariant> = {
-  globalXXS: 'globalXXS',
-  globalXS: 'globalXXS',
-  globalS: 'globalXS',
-  globalM: 'globalXS',
-  globalL: 'globalS',
-  globalXL: 'globalM',
-  globalXXL: 'globalM', // M o L?
+const adjustedDescription: Record<TitleVariant, AugmentedVariants> = {
+  XL: 'globalM',
+  L: 'globalS',
+  M: 'globalXS',
+  S: 'globalXS',
 };
 
 type Props = {
@@ -65,7 +53,7 @@ const Title = ({
         </Typography>
       )}
       <Typography
-        variant={variant}
+        variant={`global${variant}`}
         sx={{
           color: colorPalette.textColors.neutralText,
         }}
