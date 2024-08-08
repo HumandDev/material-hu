@@ -77,7 +77,7 @@ export const components: ThemeOptions['components'] = {
         [`&.${buttonClasses.focusVisible}`]: {
           boxShadow: '0px -4px 4px 0px #00000040 inset',
         },
-        [`&:${buttonClasses.disabled}`]: {
+        [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
@@ -91,7 +91,7 @@ export const components: ThemeOptions['components'] = {
         [`&.${buttonClasses.focusVisible}`]: {
           boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
         },
-        [`&:${buttonClasses.disabled}`]: {
+        [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
           backgroundColor: theme.palette.base?.white,
           borderColor: theme.palette.base?.grey[300],
@@ -106,7 +106,7 @@ export const components: ThemeOptions['components'] = {
           boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
-        [`&:${buttonClasses.disabled}`]: {
+        [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
         },
       }),
