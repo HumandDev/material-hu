@@ -30,6 +30,7 @@ export type Props = Omit<AvatarGroupProps, 'max' | 'spacing'> & {
 const AvatarGroup = ({
   size = 'medium',
   spacing = 'medium',
+  children,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -38,6 +39,7 @@ const AvatarGroup = ({
 
   return (
     <AvatarGroupMui
+      {...props}
       sx={{
         ...props.sx,
         ...colorsVariant,
@@ -56,8 +58,9 @@ const AvatarGroup = ({
       max={MAX_AVATARS}
       spacing={spacing}
       renderSurplus={formatSurplus}
-      {...props}
-    />
+    >
+      {children}
+    </AvatarGroupMui>
   );
 };
 
