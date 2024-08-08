@@ -61,6 +61,13 @@ export const components: ThemeOptions['components'] = {
       //   color: theme.palette.base?.white,
       //   textTransform: 'capitalize',
       // }),
+      root: {
+        textTransform: 'capitalize',
+        boxShadow: 'none',
+        '&:hover': {
+          boxShadow: 'none',
+        },
+      },
       contained: ({ theme }) => ({
         backgroundColor: theme.palette.base?.blueBrand[400],
         '&:hover': {
@@ -71,7 +78,7 @@ export const components: ThemeOptions['components'] = {
         color: theme.palette.base?.blueBrand[800],
         borderColor: theme.palette.base?.blueBrand[200],
         '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[200],
+          backgroundColor: theme.palette.base?.blueBrand[100],
         },
       }),
       text: ({ theme }) => ({
