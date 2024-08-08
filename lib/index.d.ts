@@ -91,3 +91,5 @@ export declare const PeopleExperience: {
     }) => import("react/jsx-runtime").JSX.Element;
     TabPanelItem: ({ children, index, ...other }: import("./components/peopleExperience/TabPanel").TabPanelItemProps) => import("react/jsx-runtime").JSX.Element;
 };
+export { default as Avatar } from './components/Avatar';
+export { default as AvatarGroup } from './components/AvatarGroup';
