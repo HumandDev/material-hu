@@ -43,7 +43,6 @@ const AvatarGroup = ({
       sx={{
         ...props.sx,
         '& .MuiAvatar-root': {
-          ...colorsVariant,
           height: sizeInPixels,
           width: sizeInPixels,
           position: 'static',
