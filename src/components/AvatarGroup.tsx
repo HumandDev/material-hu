@@ -38,6 +38,12 @@ const AvatarGroup = ({
 
   return (
     <AvatarGroupMui
+      sx={{
+        ...props.sx,
+        ...colorsVariant,
+        height: sizeInPixels,
+        width: sizeInPixels,
+      }}
       slotProps={{
         additionalAvatar: {
           sx: {
@@ -51,18 +57,6 @@ const AvatarGroup = ({
       spacing={spacing}
       renderSurplus={formatSurplus}
       {...props}
-      sx={{
-        ...props.sx,
-        ...colorsVariant,
-        height: sizeInPixels,
-        width: sizeInPixels,
-        '& .MuiAvatarGroup-root': {
-          backgroundColor: 'yellow',
-          color: 'blue',
-          position: 'static',
-        },
-        // position: 'static',
-      }}
     />
   );
 };
