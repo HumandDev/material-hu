@@ -61,12 +61,24 @@ export const components: ThemeOptions['components'] = {
       //   color: theme.palette.base?.white,
       //   textTransform: 'capitalize',
       // }),
-      containedPrimary: ({ theme }) => ({
+      contained: ({ theme }) => ({
         backgroundColor: theme.palette.base?.blueBrand[400],
+        '&:hover': {
+          backgroundColor: theme.palette.base?.blueBrand[600],
+        },
       }),
       outlined: ({ theme }) => ({
         color: theme.palette.base?.blueBrand[800],
         borderColor: theme.palette.base?.blueBrand[200],
+        '&:hover': {
+          backgroundColor: theme.palette.base?.blueBrand[200],
+        },
+      }),
+      text: ({ theme }) => ({
+        color: theme.palette.base?.blueBrand[800],
+        '&:hover': {
+          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+        },
       }),
     },
   },
