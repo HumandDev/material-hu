@@ -22,7 +22,7 @@ export const formatSurplus = (surplus: number) => {
     : `+${surplus}`;
 };
 
-export type Props = Omit<AvatarGroupProps, 'max' | 'spacing'> & {
+export type Props = Omit<AvatarGroupProps, 'spacing'> & {
   size?: AvatarProps['size'];
   spacing?: 'medium' | 'small';
 };
@@ -30,7 +30,7 @@ export type Props = Omit<AvatarGroupProps, 'max' | 'spacing'> & {
 const AvatarGroup = ({
   size = 'medium',
   spacing = 'medium',
-  children,
+  max = MAX_AVATARS,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -58,12 +58,10 @@ const AvatarGroup = ({
           },
         },
       }}
-      max={MAX_AVATARS}
+      max={max}
       spacing={spacing}
       renderSurplus={formatSurplus}
-    >
-      {children}
-    </AvatarGroupMui>
+    />
   );
 };
 
