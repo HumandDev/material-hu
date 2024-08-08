@@ -64,6 +64,10 @@ export const components: ThemeOptions['components'] = {
       containedPrimary: ({ theme }) => ({
         backgroundColor: theme.palette.base?.blueBrand[400],
       }),
+      outlined: ({ theme }) => ({
+        color: theme.palette.base?.blueBrand[800],
+        borderColor: theme.palette.base?.blueBrand[200],
+      }),
     },
   },
 };
