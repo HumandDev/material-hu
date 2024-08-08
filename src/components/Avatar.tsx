@@ -15,7 +15,7 @@ export type Props = AvatarProps & {
   badgeProps?: Omit<BadgeProps, 'badgeContent'>;
 };
 
-const getSizeInPixels = (size: Props['size']): string => {
+export const getSizeInPixels = (size: Props['size']): string => {
   switch (size) {
     case 'small':
       return '32px';
@@ -26,7 +26,7 @@ const getSizeInPixels = (size: Props['size']): string => {
   }
 };
 
-const getColorsVariant = (
+export const getColorsVariant = (
   color: Props['color'],
   palette: Palette,
 ): { backgroundColor: string; color: string } => {
@@ -82,6 +82,10 @@ const Avatar = ({
       sx={{
         ...props.sx,
         ...colorsVariant,
+        '& .MuiAvatar-colorDefault': {
+          backgroundColor: theme.palette.grey[200],
+          color: theme.palette.grey[800],
+        },
         height: sizeInPixels,
         width: sizeInPixels,
         ...(props.variant === 'rounded' && {
