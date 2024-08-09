@@ -48,15 +48,10 @@ export const components: ThemeOptions['components'] = {
   },
   MuiDivider: {
     styleOverrides: {
-      root: ({ ownerState }) => {
-        const margin =
-          ownerState.orientation === 'vertical' ? { mx: 2 } : { my: 2 };
-        return {
-          borderWidth: '1px',
-          color: colorPalette.border.neutralDivider,
-          ...margin,
-        };
-      },
+      root: () => ({
+        borderWidth: '1px',
+        color: colorPalette.border.neutralDivider,
+      }),
     },
   },
 };
