@@ -81,4 +81,4 @@ export const PeopleExperience = {
   TabPanel,
   TabPanelItem,
 };
-export * from './utils/validations';
+export { sanitizeInput } from './utils/validations';
