@@ -1,17 +1,23 @@
 import { Stack, SxProps, Typography } from '@mui/material';
 import { colorPalette } from '../theme/hugo/colors';
-import { AugmentedVariants } from '../theme/material-hu';
+import { TypographyPropsVariantOverrides } from '@mui/material/Typography/Typography';
 
 type TitleVariant = 'XL' | 'L' | 'M' | 'S';
 
-const adjustedCopetin: Record<TitleVariant, AugmentedVariants> = {
+const adjustedCopetin: Record<
+  TitleVariant,
+  keyof TypographyPropsVariantOverrides
+> = {
   XL: 'globalS',
   L: 'globalXS',
   M: 'globalXXS',
   S: 'globalXXS',
 };
 
-const adjustedDescription: Record<TitleVariant, AugmentedVariants> = {
+const adjustedDescription: Record<
+  TitleVariant,
+  keyof TypographyPropsVariantOverrides
+> = {
   XL: 'globalM',
   L: 'globalS',
   M: 'globalXS',

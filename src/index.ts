@@ -81,3 +81,4 @@ export const PeopleExperience = {
   TabPanel,
   TabPanelItem,
 };
+export { default as Title } from './components/Title';
