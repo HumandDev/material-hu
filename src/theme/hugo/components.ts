@@ -1,4 +1,5 @@
 import { ThemeOptions } from '@mui/material';
+import { colorPalette } from './colors';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -42,6 +43,14 @@ export const components: ThemeOptions['components'] = {
         minHeight: 20,
         maxWidth: 25,
         minWidth: 20,
+      }),
+    },
+  },
+  MuiDivider: {
+    styleOverrides: {
+      root: () => ({
+        borderWidth: '1px',
+        color: colorPalette.border.neutralDivider,
       }),
     },
   },
