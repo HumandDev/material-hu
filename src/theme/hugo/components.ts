@@ -54,4 +54,11 @@ export const components: ThemeOptions['components'] = {
       }),
     },
   },
+  MuiSkeleton: {
+    styleOverrides: {
+      root: {
+        backgroundColor: colorPalette.background.neutralBg,
+      },
+    },
+  },
 };
