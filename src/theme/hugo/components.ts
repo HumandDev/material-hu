@@ -1,4 +1,5 @@
 import { ThemeOptions, buttonClasses } from '@mui/material';
+import { colorPalette } from './colors';
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -232,6 +233,14 @@ export const components: ThemeOptions['components'] = {
       sizeMedium: {
         padding: '4px',
       },
+    },
+  },
+  MuiDivider: {
+    styleOverrides: {
+      root: () => ({
+        borderWidth: '1px',
+        color: colorPalette.border.neutralDivider,
+      }),
     },
   },
 };
