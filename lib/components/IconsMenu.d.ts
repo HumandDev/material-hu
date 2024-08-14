@@ -1,5 +1,5 @@
 import { FC, MouseEvent } from 'react';
-import { SxProps } from '@mui/material';
+import { SxProps, IconButtonProps } from '@mui/material';
 export type Option = {
     onClick: () => void;
     label: string;
@@ -14,6 +14,8 @@ export type IconsMenuProps = {
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
     onClose?: (event: MouseEvent) => void;
     disabled?: boolean;
+    arrow?: boolean;
+    iconButtonProps?: IconButtonProps;
 };
 export declare const IconsMenu: FC<IconsMenuProps>;
 export default IconsMenu;

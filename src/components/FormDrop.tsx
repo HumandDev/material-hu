@@ -14,33 +14,43 @@ import {
 import { Upload } from '@mui/icons-material';
 import { useModal } from '../hooks/useModal';
 import { CroppingModal, CroppingModalProps } from './CroppingModal';
-import DocumentItem from './DocumentItem';
+import { DocumentItem, DocumentItemTypes } from './DocumentItem';
 import { megabytesToBytes } from '../utils/bytes';
 
 export enum FormDropTypes {
   IMAGE = 'image',
   VIDEO = 'video',
   PDF = 'pdf',
+  FILE = 'file',
 }
+
+const DOCUMENT_TYPES = [FormDropTypes.PDF, FormDropTypes.FILE];
 
 const ACCEPT_BY_TYPE = {
   [FormDropTypes.IMAGE]: { 'image/png': [], 'image/jpeg': [] },
   [FormDropTypes.VIDEO]: { 'video/mp4': [] },
   [FormDropTypes.PDF]: { 'application/pdf': [] },
+  [FormDropTypes.FILE]: { '*': [] },
 };
 
 const MAX_SIZE_BY_TYPE = {
   [FormDropTypes.IMAGE]: megabytesToBytes(100),
   [FormDropTypes.VIDEO]: megabytesToBytes(150),
   [FormDropTypes.PDF]: megabytesToBytes(100),
+  [FormDropTypes.FILE]: megabytesToBytes(100),
 };
 
 const RECOMMENDED_WIDTH = 900;
 const RECOMMENDED_HEIGHT = 400;
 
 export type FormDropValue = {
-  url?: string | null;
   file?: File;
+  url?: string | null;
+  attachment?: {
+    id: number;
+    url?: string;
+    type?: string;
+  } | null;
 };
 
 export type FormDropContext = {
@@ -73,6 +83,7 @@ export type FormDropProps = {
   saveLabel?: string;
   cropLabel?: string;
   sliderLabel?: string;
+  attachmentFormatEnabled?: boolean;
 };
 
 export const FormDrop: FC<FormDropProps> = props => {
@@ -98,6 +109,7 @@ export const FormDrop: FC<FormDropProps> = props => {
     saveLabel,
     cropLabel,
     sliderLabel,
+    attachmentFormatEnabled = false,
   } = props;
 
   const theme = useTheme();
@@ -126,7 +138,7 @@ export const FormDrop: FC<FormDropProps> = props => {
         };
 
         const handleSaveCropping = (file: File) => {
-          onChange({ file, url: null });
+          onChange({ file, url: null, attachment: null });
           trigger(name);
         };
 
@@ -156,8 +168,8 @@ export const FormDrop: FC<FormDropProps> = props => {
             return;
           }
 
-          onDrop({ file: files[0], url: null });
-          onChange({ file: files[0], url: null });
+          onDrop({ file: files[0], url: null, attachment: null });
+          onChange({ file: files[0], url: null, attachment: null });
           trigger(name);
         };
 
@@ -188,17 +200,22 @@ export const FormDrop: FC<FormDropProps> = props => {
           maxSize,
         });
 
-        const hasValue =
-          (dropValue?.url?.length && dropValue.url.length > 0) ||
-          !!dropValue?.file;
+        const hasValue = attachmentFormatEnabled
+          ? !!dropValue?.file ||
+            (!!dropValue?.attachment && !!dropValue.attachment.url)
+          : !!dropValue?.file || !!dropValue?.url;
 
         const src = useMemo(() => {
           if (!dropValue) return undefined;
 
-          const { url, file } = dropValue;
-
-          return url || (file && URL.createObjectURL(file));
-        }, [hasValue]);
+          if (attachmentFormatEnabled) {
+            const { attachment, file } = dropValue;
+            return attachment?.url || (file && URL.createObjectURL(file));
+          } else {
+            const { url, file } = dropValue;
+            return url || (file && URL.createObjectURL(file));
+          }
+        }, [hasValue, attachmentFormatEnabled]);
 
         return (
           <Stack
@@ -206,7 +223,7 @@ export const FormDrop: FC<FormDropProps> = props => {
             width="100%"
           >
             {type === FormDropTypes.IMAGE && withCrop && croppingModal}
-            {hasValue && type !== FormDropTypes.PDF && (
+            {hasValue && !DOCUMENT_TYPES.includes(type) && (
               <>
                 <Box
                   component={type === FormDropTypes.IMAGE ? 'img' : 'video'}
@@ -230,7 +247,7 @@ export const FormDrop: FC<FormDropProps> = props => {
                 </Button>
               </>
             )}
-            {hasValue && type === FormDropTypes.PDF && (
+            {hasValue && DOCUMENT_TYPES.includes(type) && (
               <Stack
                 sx={{
                   gap: 1,
@@ -243,6 +260,11 @@ export const FormDrop: FC<FormDropProps> = props => {
                   openLabel={openLabel(context)}
                   deleteLabel={deleteLabel(context)}
                   onDelete={handleDelete}
+                  type={
+                    type === FormDropTypes.PDF
+                      ? DocumentItemTypes.PDF
+                      : DocumentItemTypes.FILE
+                  }
                 />
               </Stack>
             )}

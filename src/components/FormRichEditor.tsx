@@ -3,6 +3,61 @@ import i18next from 'i18next';
 import { Editor, IAllProps } from '@tinymce/tinymce-react';
 import { Editor as EditorType } from 'tinymce';
 
+// https://www.tiny.cloud/docs/tinymce/latest/react-zip-bundle/
+// TinyMCE so the global var exists
+import 'tinymce/tinymce';
+// DOM model
+import 'tinymce/models/dom/model';
+// Theme
+import 'tinymce/themes/silver';
+// Toolbar icons
+import 'tinymce/icons/default';
+// Editor styles
+import 'tinymce/skins/ui/oxide/skin.min.css';
+
+// importing the plugin js.
+// if you use a plugin that is not listed here the editor will fail to load
+import 'tinymce/plugins/advlist';
+import 'tinymce/plugins/anchor';
+import 'tinymce/plugins/autolink';
+import 'tinymce/plugins/autoresize';
+import 'tinymce/plugins/autosave';
+import 'tinymce/plugins/charmap';
+import 'tinymce/plugins/code';
+import 'tinymce/plugins/codesample';
+import 'tinymce/plugins/directionality';
+import 'tinymce/plugins/emoticons';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/help';
+import 'tinymce/plugins/help/js/i18n/keynav/en';
+import 'tinymce/plugins/help/js/i18n/keynav/es';
+import 'tinymce/plugins/help/js/i18n/keynav/pt_BR';
+import 'tinymce/plugins/image';
+import 'tinymce/plugins/importcss';
+import 'tinymce/plugins/insertdatetime';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/media';
+import 'tinymce/plugins/nonbreaking';
+import 'tinymce/plugins/pagebreak';
+import 'tinymce/plugins/preview';
+import 'tinymce/plugins/quickbars';
+import 'tinymce/plugins/save';
+import 'tinymce/plugins/searchreplace';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/visualblocks';
+import 'tinymce/plugins/visualchars';
+import 'tinymce/plugins/wordcount';
+
+// importing plugin resources
+import 'tinymce/plugins/emoticons/js/emojis';
+
+// Content styles, including inline UI like fake cursors
+// @ts-ignore
+import contentCss from '!!css-loader!tinymce/skins/content/default/content.min.css';
+// @ts-ignore
+import contentUiCss from '!!css-loader!tinymce/skins/ui/oxide/content.min.css';
+
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
   onEditorChange?: (value: string, editor: EditorType) => string;
@@ -14,7 +69,6 @@ type Props = UseControllerProps & {
   placeholder?: string;
   imagesUploadHandler: any;
   addVideoEditorPlugin: Function;
-  tinyKey: string;
   fontsURL: string;
 };
 
@@ -51,7 +105,6 @@ function FormRichEditor({
   disabled = false,
   imagesUploadHandler,
   addVideoEditorPlugin,
-  tinyKey,
   fontsURL,
   ...props
 }: Props) {
@@ -77,10 +130,16 @@ function FormRichEditor({
       font_family_formats: simplifyEditor
         ? ''
         : 'Andale Mono=andale mono; Arial=arial; Arial Black=arial black; Book Antiqua=book antiqua; Comic Sans MS=comic sans ms; Courier New=courier new; Georgia=georgia; Helvetica=helvetica; Impact=impact; Ogi Sans=ogilvy sans web; Ogi Serif=ogilvy serif web; Tahoma=tahoma; Terminal=terminal; Times New Roman=times new roman; Trebuchet MS=trebuchet ms; Verdana=verdana; Darker Grotesque=darker grotesque; Work Sans=work sans; Montserrat=montserrat; Abril Fatface=abril fatface; Satisfy=satisfy; Lato=lato; Poppins=poppins; Ludicrous=ludicrous; Nunito=nunito; MavenPro=maven pro', // custom fonts
-      content_style: `
+      content_style: [
+        `
       @import url(${fontsURL});
       body { font-family: arial; overflow-x: hidden; }
       `,
+        contentCss,
+        contentUiCss,
+      ].join('\n'),
+      skin: false, // loaded manually
+      content_css: false, // loaded manually
       toolbar_mode: 'wrap',
       images_upload_handler: imagesUploadHandler,
       setup: ({ editorManager }) => addVideoEditorPlugin(editorManager),
@@ -115,7 +174,6 @@ function FormRichEditor({
           onEditorChange={handleEditorChange(onChange)}
           onInit={onInit}
           {...allEditorProps}
-          apiKey={tinyKey}
           onBlur={() => (handleBlur ? handleBlur(field.value) : null)}
           disabled={disabled}
         />

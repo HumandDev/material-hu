@@ -7,7 +7,7 @@ type Props = {
     textBody?: string;
     primaryButtonProps?: ButtonProps;
     secondaryButtonProps?: ButtonProps;
-    onClose?: () => void;
+    onClose?: (e?: any) => void;
     TitleIcon?: SvgIconComponent;
 };
 declare const NewModal: ({ title, body, textBody, TitleIcon, primaryButtonProps, secondaryButtonProps, onClose, }: Props) => import("react/jsx-runtime").JSX.Element;

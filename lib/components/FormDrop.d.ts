@@ -3,11 +3,17 @@ import { ErrorCode } from 'react-dropzone';
 export declare enum FormDropTypes {
     IMAGE = "image",
     VIDEO = "video",
-    PDF = "pdf"
+    PDF = "pdf",
+    FILE = "file"
 }
 export type FormDropValue = {
-    url?: string | null;
     file?: File;
+    url?: string | null;
+    attachment?: {
+        id: number;
+        url?: string;
+        type?: string;
+    } | null;
 };
 export type FormDropContext = {
     maxSize: number;
@@ -38,6 +44,7 @@ export type FormDropProps = {
     saveLabel?: string;
     cropLabel?: string;
     sliderLabel?: string;
+    attachmentFormatEnabled?: boolean;
 };
 export declare const FormDrop: FC<FormDropProps>;
 export default FormDrop;
