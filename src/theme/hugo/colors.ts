@@ -1,7 +1,7 @@
 import { alpha } from '@mui/material';
 
 const createBaseColors = () => {
-  const preBaseolors = {
+  const preBaseColors = {
     white: '#FFFFFF',
     grey: {
       100: '#FAFAFC',
@@ -57,12 +57,12 @@ const createBaseColors = () => {
   };
 
   const base = {
-    ...preBaseolors,
+    ...preBaseColors,
     greyTransparent: {
-      '300p20': alpha(preBaseolors.grey[300], 0.2),
-      '300p50': alpha(preBaseolors.grey[300], 0.5),
-      '300p80': alpha(preBaseolors.grey[300], 0.8),
-      '900p40': alpha(preBaseolors.grey[900], 0.4),
+      '300p20': alpha(preBaseColors.grey[300], 0.2),
+      '300p50': alpha(preBaseColors.grey[300], 0.5),
+      '300p80': alpha(preBaseColors.grey[300], 0.8),
+      '900p40': alpha(preBaseColors.grey[900], 0.4),
     },
   };
 

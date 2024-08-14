@@ -1,4 +1,4 @@
-import { ThemeOptions } from '@mui/material';
+import { ThemeOptions, alpha } from '@mui/material';
 import { colorPalette } from './colors';
 
 export const components: ThemeOptions['components'] = {
@@ -52,6 +52,16 @@ export const components: ThemeOptions['components'] = {
         borderWidth: '1px',
         color: colorPalette.border.neutralDivider,
       }),
+    },
+  },
+  MuiSkeleton: {
+    styleOverrides: {
+      root: {
+        backgroundColor: colorPalette.base.grey[300],
+        '&:after': {
+          background: `linear-gradient(90deg, transparent, ${alpha(colorPalette.base.white, 0.3)}, transparent)`,
+        },
+      },
     },
   },
 };
