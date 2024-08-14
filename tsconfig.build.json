@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig",
+  // we need this to exclude the stories from the final build but still typecheck them locally
+  "exclude": ["node_modules", "**/__tests__/*", "**/*.stories.*"]
+}
