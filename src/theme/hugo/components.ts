@@ -66,7 +66,7 @@ export const components: ThemeOptions['components'] = {
           backgroundColor: theme.palette.base?.blueBrand[600],
         },
         [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: '0px -4px 4px 0px #00000040 inset',
+          boxShadow: '0px -4px 4px 0px #00000040 inset', // Duplicated
         },
         [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
@@ -81,7 +81,7 @@ export const components: ThemeOptions['components'] = {
           borderColor: theme.palette.base?.blueBrand[200],
         },
         [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
+          boxShadow: '0px -4px 4px 0px #AAAABA73 inset', // Duplicated style value
         },
         [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
@@ -227,12 +227,12 @@ export const components: ThemeOptions['components'] = {
           boxShadow: '0px -4px 4px 0px #00000040 inset',
         },
       }),
-      sizeLarge: {
-        padding: '8px',
-      },
-      sizeMedium: {
-        padding: '4px',
-      },
+      sizeLarge: ({ theme }) => ({
+        padding: theme.spacing(1),
+      }),
+      sizeMedium: ({ theme }) => ({
+        padding: theme.spacing(0.5),
+      }),
     },
   },
   MuiDivider: {
