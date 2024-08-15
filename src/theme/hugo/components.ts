@@ -1,6 +1,11 @@
 import { ThemeOptions, buttonClasses } from '@mui/material';
 import { colorPalette } from './colors';
 
+const customShadow = {
+  outlinedFocusedVisible: '0px -4px 4px 0px #AAAABA73 inset',
+  containedFocusedVisible: '0px -4px 4px 0px #00000040 inset',
+};
+
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
     styleOverrides: {
@@ -66,7 +71,7 @@ export const components: ThemeOptions['components'] = {
           backgroundColor: theme.palette.base?.blueBrand[600],
         },
         [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: '0px -4px 4px 0px #00000040 inset', // Duplicated
+          boxShadow: customShadow.containedFocusedVisible,
         },
         [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
@@ -81,7 +86,7 @@ export const components: ThemeOptions['components'] = {
           borderColor: theme.palette.base?.blueBrand[200],
         },
         [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: '0px -4px 4px 0px #AAAABA73 inset', // Duplicated style value
+          boxShadow: customShadow.outlinedFocusedVisible,
         },
         [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
@@ -95,26 +100,26 @@ export const components: ThemeOptions['components'] = {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
         [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
+          boxShadow: customShadow.outlinedFocusedVisible,
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
         [`&.${buttonClasses.disabled}`]: {
           color: theme.palette.base?.grey[600],
         },
       }),
-      sizeLarge: () => ({
+      sizeLarge: ({ theme }) => ({
         minWidth: '256px',
-        paddingTop: '12px',
-        paddingBottom: '12px',
-        paddingLeft: '16px',
-        paddingRight: '16px',
+        paddingTop: theme.spacing(1.5),
+        paddingBottom: theme.spacing(1.5),
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
       }),
-      sizeMedium: () => ({
+      sizeMedium: ({ theme }) => ({
         minWidth: '104px',
-        paddingTop: '8px',
-        paddingBottom: '8px',
-        paddingLeft: '12px',
-        paddingRight: '12px',
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        paddingLeft: theme.spacing(1.5),
+        paddingRight: theme.spacing(1.5),
       }),
       startIcon: () => ({
         marginRight: '4px',
@@ -130,26 +135,29 @@ export const components: ThemeOptions['components'] = {
       disableRipple: true,
     },
     styleOverrides: {
-      root: {
+      root: ({ theme }) => ({
         textTransform: 'capitalize',
         boxShadow: 'none',
         maxWidth: '224px',
         width: 'fit-content',
         height: 'fit-content',
-        padding: '16px',
+        padding: theme.spacing(2),
         fontSize: '18px',
         lineHeight: 1,
         '&:hover': {
           boxShadow: 'none',
         },
-      },
-      sizeMedium: {
-        paddingTop: '8px',
-        paddingBottom: '8px',
-        paddingLeft: '16px',
-        paddingRight: '16px',
+        '& > svg': {
+          marginLeft: theme.spacing(0.5),
+        },
+      }),
+      sizeMedium: ({ theme }) => ({
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
         fontSize: '14px',
-      },
+      }),
       circular: {
         borderRadius: '9999px',
       },
@@ -164,7 +172,7 @@ export const components: ThemeOptions['components'] = {
           color: theme.palette.base?.grey[600],
         },
         '&:focus-visible': {
-          boxShadow: '0px -4px 4px 0px #00000040 inset',
+          boxShadow: customShadow.containedFocusedVisible,
         },
         svg: {
           stroke: theme.palette.base?.white,
@@ -195,7 +203,7 @@ export const components: ThemeOptions['components'] = {
         },
         ':focus-visible': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-          boxShadow: '0px -4px 4px 0px #AAAABA73 inset',
+          boxShadow: customShadow.outlinedFocusedVisible,
         },
       }),
       colorSecondary: ({ theme }) => ({
@@ -224,7 +232,7 @@ export const components: ThemeOptions['components'] = {
         },
         '&:focus-visible': {
           backgroundColor: theme.palette.base?.blueBrand[600],
-          boxShadow: '0px -4px 4px 0px #00000040 inset',
+          boxShadow: customShadow.containedFocusedVisible,
         },
       }),
       sizeLarge: ({ theme }) => ({
