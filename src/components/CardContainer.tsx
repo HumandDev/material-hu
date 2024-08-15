@@ -95,7 +95,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
   if ('action2' in footer) {
     return (
       <>
-        <Button {...footer.action2}></Button>
+        <Button {...footer.action2}>{footer.action2.title}</Button>
         <Button
           variant="contained"
           {...footer.action1}
@@ -175,6 +175,7 @@ const CardContainer = ({
           />
           <Typography sx={{ color: badgeProps.fontColor, fontSize: '12px' }}>
             {/* globalXXS */}
+            {badge?.label}
           </Typography>
         </Box>
       )}
