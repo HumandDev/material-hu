@@ -1,4 +1,4 @@
-import { ThemeOptions, buttonClasses } from '@mui/material';
+import { ThemeOptions, buttonClasses, alpha } from '@mui/material';
 import { colorPalette } from './colors';
 
 const customShadow = {
@@ -249,6 +249,16 @@ export const components: ThemeOptions['components'] = {
         borderWidth: '1px',
         color: colorPalette.border.neutralDivider,
       }),
+    },
+  },
+  MuiSkeleton: {
+    styleOverrides: {
+      root: {
+        backgroundColor: colorPalette.base.grey[300],
+        '&:after': {
+          background: `linear-gradient(90deg, transparent, ${alpha(colorPalette.base.white, 0.3)}, transparent)`,
+        },
+      },
     },
   },
 };
