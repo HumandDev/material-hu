@@ -8,19 +8,19 @@ export type CardContainerProps = CardProps & {
     footer?: {
         action1: {
             onClick: () => void;
-            label: string;
+            title: string;
         };
         text: string;
     } | {
         action1: {
             onClick: () => void;
-            label: string;
+            title: string;
         };
         action2: {
             onClick: () => void;
-            label: string;
+            title: string;
         };
     };
 };
-declare const CardContainer: ({ badge, footer, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
+declare const CardContainer: ({ badge, footer, children, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
 export default CardContainer;

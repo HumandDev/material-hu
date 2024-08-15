@@ -27,18 +27,18 @@ export type CardContainerProps = CardProps & {
     | {
         action1: {
           onClick: () => void;
-          label: string;
+          title: string;
         };
         text: string;
       }
     | {
         action1: {
           onClick: () => void;
-          label: string;
+          title: string;
         };
         action2: {
           onClick: () => void;
-          label: string;
+          title: string;
         };
       };
 };
@@ -118,6 +118,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
 const CardContainer = ({
   badge = undefined,
   footer = undefined,
+  children,
   ...props
 }: CardContainerProps) => {
   const theme = useTheme();
@@ -138,16 +139,19 @@ const CardContainer = ({
       <CardContent>
         <Typography>Texto contenido texto contenido</Typography>
         <Typography>Texto contenido texto contenido</Typography>
+        {children}
       </CardContent>
-      <CardActions
-        sx={{
-          justifyContent: 'space-between',
-          borderTop: '1px solid #E9E9F4',
-          p: '8px 16px 8px 16px',
-        }}
-      >
-        {footerActions}
-      </CardActions>
+      {footer && (
+        <CardActions
+          sx={{
+            justifyContent: 'space-between',
+            borderTop: '1px solid #E9E9F4',
+            p: '8px 16px 8px 16px',
+          }}
+        >
+          {footerActions}
+        </CardActions>
+      )}
       {badgeProps && (
         <Box
           sx={{
