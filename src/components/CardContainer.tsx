@@ -12,6 +12,7 @@ import {
 import {
   AddBoxOutlined as AddIcon,
   Check as CheckIcon,
+  ChevronRight,
   ErrorOutline as ErrorIcon,
   InfoOutlined as InfoIcon,
   WarningAmberRounded as WarningIcon,
@@ -115,8 +116,9 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
       <>
         <Typography>{footer.text}</Typography>
         <Button
-          variant="contained"
+          variant="text"
           {...footer.action1}
+          endIcon={<ChevronRight fontSize="small" />}
         >
           {footer.action1.title}
         </Button>
