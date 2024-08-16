@@ -97,9 +97,10 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
       <>
         <Button
           variant="text"
-          {...footer.action2}
+          onClick={footer.action2.onClick}
         >
           {footer.action2.title}
+          Botonazo
         </Button>
         <Button
           variant="contained"
