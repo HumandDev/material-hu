@@ -135,7 +135,8 @@ const CardContainer = ({
 
   console.error(
     badgeProps,
-    theme.palette.base,
+    theme,
+    theme.palette,
     theme.palette.base?.yellow[100] || 'null base',
   );
 
