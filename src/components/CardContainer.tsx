@@ -117,7 +117,9 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
         <Button
           variant="contained"
           {...footer.action1}
-        ></Button>
+        >
+          {footer.action1.title}
+        </Button>
       </>
     );
   }
@@ -133,13 +135,6 @@ const CardContainer = ({
   const badgeProps = badge ? getBadgeProps(badge.type, theme.palette) : null;
   const footerActions = getFooterActions(footer);
 
-  console.error(
-    badgeProps,
-    theme,
-    theme.palette,
-    theme.palette.base?.yellow[100] || 'null base',
-  );
-
   return (
     <Card
       sx={{
@@ -151,11 +146,7 @@ const CardContainer = ({
         ...props,
       }}
     >
-      <CardContent>
-        <Typography>Texto contenido texto contenido</Typography>
-        <Typography>Texto contenido texto contenido</Typography>
-        {children}
-      </CardContent>
+      <CardContent>{children}</CardContent>
       {footer && (
         <CardActions
           sx={{
@@ -188,8 +179,10 @@ const CardContainer = ({
               mr: 0.5,
             }}
           />
-          <Typography sx={{ color: badgeProps.fontColor, fontSize: '12px' }}>
-            {/* globalXXS */}
+          <Typography
+            sx={{ color: badgeProps.fontColor /*, fontSize: '12px'*/ }}
+            variant="globalXXS"
+          >
             {badge.label}
           </Typography>
         </Box>
