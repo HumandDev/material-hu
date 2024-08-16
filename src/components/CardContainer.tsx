@@ -49,6 +49,7 @@ type BadgeProps = {
   borderColor: string;
   fontColor: string;
 };
+
 const getBadgeProps = (type: string, palette: Palette): BadgeProps => {
   switch (type) {
     case 'success':
@@ -97,10 +98,9 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
       <>
         <Button
           variant="text"
-          onClick={footer.action2.onClick}
+          {...footer.action2}
         >
           {footer.action2.title}
-          Botonazo
         </Button>
         <Button
           variant="contained"
@@ -132,6 +132,8 @@ const CardContainer = ({
   const theme = useTheme();
   const badgeProps = badge ? getBadgeProps(badge.type, theme.palette) : null;
   const footerActions = getFooterActions(footer);
+
+  console.error(badgeProps);
 
   return (
     <Card
