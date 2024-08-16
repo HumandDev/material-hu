@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -8,13 +9,12 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
-import { Button } from '..';
 import {
-  AddBoxOutlined,
-  Check,
-  ErrorOutline,
-  InfoOutlined,
-  WarningAmberRounded,
+  AddBoxOutlined as AddIcon,
+  Check as CheckIcon,
+  ErrorOutline as ErrorIcon,
+  InfoOutlined as InfoIcon,
+  WarningAmberRounded as WarningIcon,
 } from '@mui/icons-material';
 
 export type CardContainerProps = CardProps & {
@@ -54,28 +54,28 @@ const getBadgeProps = (type: string, palette: Palette): BadgeProps => {
   switch (type) {
     case 'success':
       return {
-        icon: Check,
+        icon: CheckIcon,
         backgroundColor: palette.base?.green[100]!,
         borderColor: palette.base?.green[200]!,
         fontColor: palette.base?.green[800]!,
       };
     case 'warning':
       return {
-        icon: WarningAmberRounded,
+        icon: WarningIcon,
         backgroundColor: palette.base?.yellow[100]!,
         borderColor: palette.base?.yellow[200]!,
         fontColor: palette.base?.yellow[800]!,
       };
     case 'info':
       return {
-        icon: InfoOutlined,
+        icon: InfoIcon,
         backgroundColor: palette.base?.lightBlue[100]!,
         borderColor: palette.base?.lightBlue[200]!,
         fontColor: palette.base?.lightBlue[800]!,
       };
     case 'highlight':
       return {
-        icon: AddBoxOutlined,
+        icon: AddIcon,
         backgroundColor: palette.base?.lilac[100]!,
         borderColor: palette.base?.lilac[200]!,
         fontColor: palette.base?.lilac[800]!,
@@ -83,7 +83,7 @@ const getBadgeProps = (type: string, palette: Palette): BadgeProps => {
     case 'error':
     default:
       return {
-        icon: ErrorOutline,
+        icon: ErrorIcon,
         backgroundColor: palette.base?.red[100]!,
         borderColor: palette.base?.red[200]!,
         fontColor: palette.base?.red[800]!,
@@ -133,7 +133,11 @@ const CardContainer = ({
   const badgeProps = badge ? getBadgeProps(badge.type, theme.palette) : null;
   const footerActions = getFooterActions(footer);
 
-  console.error(badgeProps);
+  console.error(
+    badgeProps,
+    theme.palette.base,
+    theme.palette.base?.yellow[100] || 'null base',
+  );
 
   return (
     <Card
