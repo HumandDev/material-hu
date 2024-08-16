@@ -145,7 +145,7 @@ const CardContainer = ({
         border: '1px solid #E9E9F4',
         boxShadow: '-1px 4px 8px 0px #E9E9F4',
         my: 2,
-        ...props,
+        ...props.sx,
       }}
     >
       <CardContent>{children}</CardContent>
