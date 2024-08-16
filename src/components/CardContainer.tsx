@@ -114,7 +114,12 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
   } else {
     return (
       <>
-        <Typography>{footer.text}</Typography>
+        <Typography
+          variant="globalXXS"
+          color="textSecondary"
+        >
+          {footer.text}
+        </Typography>
         <Button
           variant="text"
           {...footer.action1}
@@ -183,7 +188,7 @@ const CardContainer = ({
             }}
           />
           <Typography
-            sx={{ color: badgeProps.fontColor /*, fontSize: '12px'*/ }}
+            sx={{ color: badgeProps.fontColor }}
             variant="globalXXS"
           >
             {badge.label}
