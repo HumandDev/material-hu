@@ -120,7 +120,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
         >
           {footer.text}
         </Typography>
-        <Button
+        <Button // update to new buttons
           variant="text"
           {...footer.action1}
           endIcon={<ChevronRight fontSize="small" />}
@@ -136,12 +136,14 @@ const CardContainer = ({
   badge = undefined,
   footer = undefined,
   children,
+  sx,
   ...props
 }: CardContainerProps) => {
   const theme = useTheme();
   const badgeProps = badge ? getBadgeProps(badge.type, theme.palette) : null;
   const footerActions = getFooterActions(footer);
-  console.error(props);
+  console.error('props: ', props);
+  console.error('sx: ', sx);
 
   return (
     <Card
@@ -151,7 +153,7 @@ const CardContainer = ({
         border: '1px solid #E9E9F4',
         boxShadow: '-1px 4px 8px 0px #E9E9F4',
         p: 2,
-        ...props.sx,
+        ...sx,
       }}
     >
       <CardContent>{children}</CardContent>

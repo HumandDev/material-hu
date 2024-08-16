@@ -22,5 +22,5 @@ export type CardContainerProps = CardProps & {
         };
     };
 };
-declare const CardContainer: ({ badge, footer, children, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
+declare const CardContainer: ({ badge, footer, children, sx, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
 export default CardContainer;
