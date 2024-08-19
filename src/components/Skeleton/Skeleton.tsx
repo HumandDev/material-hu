@@ -6,15 +6,17 @@ type Props = SkeletonProps & {
   children?: ReactNode;
 };
 
-const Skeleton: FC<PropsWithChildren<Props>> = props => {
-  const { children = undefined, isLoading = true, ...skeletonProps } = props;
+const Skeleton: FC<PropsWithChildren<Props>> = ({
+  children = undefined,
+  isLoading = true,
+  animation = 'wave',
+  ...skeletonProps
+}) => {
   return isLoading || !children ? (
     <MuiSkeleton
       {...skeletonProps}
-      animation={'wave' || skeletonProps.animation}
-    >
-      {children}
-    </MuiSkeleton>
+      animation={animation}
+    />
   ) : (
     <>{children}</>
   );

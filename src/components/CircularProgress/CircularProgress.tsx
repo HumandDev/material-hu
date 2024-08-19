@@ -3,7 +3,7 @@ import { Stack, CircularProgress, CircularProgressProps } from '@mui/material';
 type Props = CircularProgressProps & {
   centered?: boolean;
   darkBackground?: boolean;
-  width?: string;
+  width?: 'small' | 'medium';
 };
 
 const CenteredCircularProgress = ({
