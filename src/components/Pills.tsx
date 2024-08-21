@@ -9,7 +9,8 @@ import {
 } from '@mui/icons-material';
 
 export type PillsProps = ChipProps & {
-  type:
+  label: string;
+  type?:
     | 'default'
     | 'error'
     | 'success'
@@ -18,8 +19,7 @@ export type PillsProps = ChipProps & {
     | 'highlight'
     | 'neutral'
     | 'disabled';
-  size: 'small' | 'medium';
-  label: string;
+  size?: 'small' | 'medium';
   hasIcon?: boolean;
 };
 
