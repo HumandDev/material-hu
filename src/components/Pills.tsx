@@ -101,7 +101,7 @@ const Pills = ({
   return (
     <Chip
       label={
-        <Typography // variant: 'globalXS', fontWeight: 'fontWeightSemiBold',
+        <Typography // variant: isSmall ? 'globalXXS' : 'globalXS', fontWeight: 'fontWeightSemiBold',
           sx={{
             margin: 0,
             padding: 0,
