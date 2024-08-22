@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { Theme } from '@mui/material';
 import { BaseColorType } from './hugo/colors';
 declare module '@mui/material/styles/createPalette' {
