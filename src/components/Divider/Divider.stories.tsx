@@ -26,9 +26,6 @@ const meta: Meta<typeof Divider> = {
           flexDirection:
             context.args.orientation === 'vertical' ? 'row' : 'column',
           maxWidth: context.args.orientation === 'vertical' ? 'auto' : 50,
-          '& hr': {
-            height: 'auto',
-          },
         }}
       >
         <Box p={0.5}>Item 1</Box>
