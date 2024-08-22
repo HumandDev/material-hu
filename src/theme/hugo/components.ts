@@ -261,4 +261,11 @@ export const components: ThemeOptions['components'] = {
       },
     },
   },
+  MuiBreadcrumbs: {
+    styleOverrides: {
+      separator: ({ theme }) => ({
+        color: theme.palette.base?.yellow[400],
+      }),
+    },
+  },
 };
