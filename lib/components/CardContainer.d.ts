@@ -1,8 +1,8 @@
 import { CardProps } from '@mui/material';
 export type CardContainerProps = CardProps & {
     badge?: {
-        type: 'default' | 'error' | 'success' | 'warning' | 'info' | 'highlight';
         label: string;
+        type?: 'error' | 'success' | 'warning' | 'info' | 'highlight';
         hasIcon?: boolean;
     };
     footer?: {

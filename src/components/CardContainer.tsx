@@ -20,8 +20,8 @@ import {
 
 export type CardContainerProps = CardProps & {
   badge?: {
-    type: 'default' | 'error' | 'success' | 'warning' | 'info' | 'highlight';
     label: string;
+    type?: 'error' | 'success' | 'warning' | 'info' | 'highlight';
     hasIcon?: boolean;
   };
   footer?:
@@ -49,9 +49,13 @@ type BadgeProps = {
   backgroundColor: string;
   borderColor: string;
   fontColor: string;
-};
+} | null;
 
-const getBadgeProps = (type: string, palette: Palette): BadgeProps => {
+const getBadgeProps = (
+  type: string | undefined,
+  palette: Palette,
+): BadgeProps => {
+  if (!type) return null;
   switch (type) {
     case 'success':
       return {
@@ -140,7 +144,7 @@ const CardContainer = ({
   ...props
 }: CardContainerProps) => {
   const theme = useTheme();
-  const badgeProps = badge ? getBadgeProps(badge.type, theme.palette) : null;
+  const badgeProps = getBadgeProps(badge?.type, theme.palette);
   const footerActions = getFooterActions(footer);
 
   return (
