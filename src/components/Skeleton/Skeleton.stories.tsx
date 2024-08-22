@@ -1,14 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Skeleton from './Skeleton';
+import { Typography } from '@mui/material';
 
 const meta: Meta<typeof Skeleton> = {
   component: Skeleton,
   title: 'Skeleton',
   tags: ['autodocs'],
   args: {
-    children: 'Lorem ipsum odor amet, consectetuer adipiscing elit.',
+    children: (
+      <Typography p={1}>
+        Lorem ipsum odor amet, consectetuer adipiscing elit.
+      </Typography>
+    ),
+
+    // Default component values manually set here to show the default values in the controls table
+    isLoading: true,
+    variant: 'rounded',
   },
   argTypes: {
+    children: { control: { disable: true } },
+    isLoading: {
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'true' },
+      },
+    },
+    variant: {
+      control: 'radio',
+      options: ['rectangular', 'circular', 'rounded', 'text'],
+      table: {
+        defaultValue: { summary: 'rounded' },
+      },
+    },
     width: {
       control: 'number',
       min: 0,
@@ -23,21 +46,6 @@ const meta: Meta<typeof Skeleton> = {
         type: { summary: 'number' },
       },
     },
-    variant: {
-      control: 'select',
-      options: ['circular', 'rectangular', 'rounded', 'text'],
-      table: {
-        type: { summary: 'union' },
-        defaultValue: { summary: "'text'" },
-      },
-    },
-    animation: {
-      control: 'select',
-      options: ['pulse', 'wave', false],
-      table: {
-        type: { summary: 'union' },
-      },
-    },
   },
 };
 
@@ -49,32 +57,30 @@ export const Default: Story = {
   args: {},
 };
 
-export const Circular: Story = {
+export const NotLoading: Story = {
   args: {
-    variant: 'circular',
-    width: 40,
-    height: 40,
+    isLoading: false,
   },
 };
 
 export const Rectangular: Story = {
   args: {
     variant: 'rectangular',
-    width: 210,
+  },
+};
+
+export const CircularWithFixedDimensions: Story = {
+  args: {
+    variant: 'circular',
+    width: 60,
     height: 60,
   },
 };
 
-export const Rounded: Story = {
+export const RoundedWithFixedDimensions: Story = {
   args: {
     variant: 'rounded',
     width: 210,
     height: 60,
-  },
-};
-
-export const NotLoading: Story = {
-  args: {
-    isLoading: false,
   },
 };
