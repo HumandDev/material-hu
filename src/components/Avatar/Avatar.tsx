@@ -4,8 +4,11 @@ import {
   Palette,
   BadgeProps,
   useTheme,
+  SxProps,
+  Theme,
 } from '@mui/material';
 import Badge from '../Badge/Badge';
+import React from 'react';
 
 export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
@@ -64,6 +67,22 @@ const getColorsVariant = (
   }
 };
 
+const getDotOffset = (
+  size: Props['size'],
+  badgeContent: React.ReactNode,
+): SxProps<Theme> => {
+  if (badgeContent) {
+    return {};
+  }
+  const translateOffset =
+    size === 'medium' || size === 'small' ? '-0.5px' : '-4px';
+  return {
+    '& .MuiBadge-badge': {
+      transform: `translate(${translateOffset}, ${translateOffset})`,
+    },
+  };
+};
+
 const Avatar = ({
   size = 'medium',
   color = 'default',
@@ -107,11 +126,7 @@ const Avatar = ({
     <Badge
       {...badgeProps}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      sx={
-        badgeContent === undefined
-          ? { '& .MuiBadge-badge': { transform: 'translate(-0.5px, -0.5px)' } }
-          : undefined
-      }
+      sx={getDotOffset(size, badgeContent)}
       // On DS3 the standard variant can be used with large and medium size
       variant={isDotVariant ? 'dot' : badgeProps?.variant}
       badgeContent={badgeContent}
