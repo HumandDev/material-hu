@@ -1,25 +1,5 @@
-import {
-  Badge as MuiBadge,
-  BadgeProps,
-  useTheme,
-  Palette,
-} from '@mui/material';
+import { Badge as MuiBadge, BadgeProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
-
-const getColor = (color: BadgeProps['color'], palette: Palette) => {
-  switch (color) {
-    case 'primary':
-      return palette.base?.blueBrand[400];
-    case 'success':
-      return palette.base?.green[400];
-    case 'warning':
-      return palette.base?.yellow[400];
-    case 'error':
-      return palette.base?.red[400];
-    default:
-      return color;
-  }
-};
 
 type Props = Pick<
   BadgeProps,
@@ -32,19 +12,8 @@ type Props = Pick<
   | 'badgeContent'
 >;
 
-const Badge: FC<PropsWithChildren<Props>> = ({ color, ...badgeProps }) => {
-  const theme = useTheme();
-
-  return (
-    <MuiBadge
-      sx={{
-        '& .MuiBadge-badge': {
-          backgroundColor: getColor(color, theme.palette),
-        },
-      }}
-      {...badgeProps}
-    />
-  );
+const Badge: FC<PropsWithChildren<Props>> = ({ ...badgeProps }) => {
+  return <MuiBadge {...badgeProps} />;
 };
 
 export default Badge;
