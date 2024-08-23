@@ -14,6 +14,7 @@ const themeObject: ThemeOptions = {
   typography,
   shape: {
     borderRadius: 8,
+    squareBorderRadius: 1,
   },
   spacing: 8,
   direction: 'ltr',

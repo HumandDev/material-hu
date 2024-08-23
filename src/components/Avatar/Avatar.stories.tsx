@@ -40,6 +40,12 @@ export const BadgeMax: Story = {
   },
 };
 
+export const SquareAvatar: Story = {
+  args: {
+    variant: 'square',
+  },
+};
+
 export const FallbackAlt: Story = {
   args: {
     src: 'broken-image.png',

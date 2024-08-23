@@ -10,6 +10,7 @@ type Props = Pick<
   | 'anchorOrigin'
   | 'title'
   | 'badgeContent'
+  | 'sx'
 >;
 
 const Badge: FC<PropsWithChildren<Props>> = ({ ...badgeProps }) => {

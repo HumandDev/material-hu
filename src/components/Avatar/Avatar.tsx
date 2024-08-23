@@ -2,12 +2,12 @@ import {
   Avatar as AvatarMui,
   AvatarProps,
   Palette,
-  Badge,
   BadgeProps,
   useTheme,
 } from '@mui/material';
+import Badge from '../Badge/Badge';
 
-export type Props = AvatarProps & {
+export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
@@ -87,6 +87,9 @@ const Avatar = ({
         ...(props.variant === 'rounded' && {
           borderRadius: roundedBorderRadius,
         }),
+        ...(props.variant === 'square' && {
+          borderRadius: theme.shape.squareBorderRadius,
+        }),
         ...(!props.src && {
           // text style globalXS
           fontFamily: 'Roboto',
@@ -103,8 +106,12 @@ const Avatar = ({
   return withBadge ? (
     <Badge
       {...badgeProps}
-      overlap="circular"
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      sx={
+        badgeContent === undefined
+          ? { '& .MuiBadge-badge': { transform: 'translate(-0.5px, -0.5px)' } }
+          : undefined
+      }
       // On DS3 the standard variant can be used with large and medium size
       variant={isDotVariant ? 'dot' : badgeProps?.variant}
       badgeContent={badgeContent}
