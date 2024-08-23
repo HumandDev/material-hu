@@ -107,7 +107,7 @@ const Avatar = ({
           borderRadius: roundedBorderRadius,
         }),
         ...(props.variant === 'square' && {
-          borderRadius: theme.shape.squareBorderRadius,
+          borderRadius: 1,
         }),
         ...(!props.src && {
           // text style globalXS
