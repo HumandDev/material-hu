@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Badge } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
+import Badge from './Badge';
 
 const meta: Meta<typeof Badge> = {
   component: Badge,
@@ -28,27 +28,6 @@ const meta: Meta<typeof Badge> = {
       },
     },
     invisible: {
-      control: 'boolean',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    max: {
-      control: 'number',
-      table: {
-        type: { summary: 'number' },
-        defaultValue: { summary: '99' },
-      },
-    },
-    overlap: {
-      control: 'radio',
-      options: ['circular', 'rectangular'],
-      table: {
-        type: { summary: 'union' },
-        defaultValue: { summary: 'rectangular' },
-      },
-    },
-    showZero: {
       control: 'boolean',
       table: {
         defaultValue: { summary: 'false' },
@@ -101,12 +80,6 @@ export const Default: Story = {
 export const Dot: Story = {
   args: {
     variant: 'dot',
-  },
-};
-
-export const Max: Story = {
-  args: {
-    badgeContent: 100,
   },
 };
 
