@@ -248,6 +248,7 @@ export const components: ThemeOptions['components'] = {
       root: () => ({
         borderWidth: '1px',
         color: colorPalette.border.neutralDivider,
+        height: 'auto',
       }),
     },
   },
