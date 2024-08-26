@@ -9,9 +9,10 @@ type Props = Pick<
   | 'children'
   | 'anchorOrigin'
   | 'title'
-  | 'badgeContent'
   | 'sx'
->;
+> & {
+  badgeContent: number;
+};
 
 const Badge: FC<PropsWithChildren<Props>> = ({ ...badgeProps }) => {
   return <MuiBadge {...badgeProps} />;

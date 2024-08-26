@@ -21,7 +21,6 @@ type Props = Pick<
 };
 
 const Skeleton: FC<PropsWithChildren<Props>> = ({
-  children = undefined,
   isLoading = true,
   variant = 'rounded', // Safer default that the MUI default 'text' which is not very useful beyond single lines of text (see variant definition at https://mui.com/material-ui/react-skeleton/#variants)
   sx,
@@ -36,11 +35,9 @@ const Skeleton: FC<PropsWithChildren<Props>> = ({
       }}
       variant={variant}
       {...skeletonProps}
-    >
-      {children}
-    </MuiSkeleton>
+    ></MuiSkeleton>
   ) : (
-    <>{children}</>
+    <>{skeletonProps?.children}</>
   );
 };
 
