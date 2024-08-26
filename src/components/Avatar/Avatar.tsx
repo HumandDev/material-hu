@@ -2,12 +2,15 @@ import {
   Avatar as AvatarMui,
   AvatarProps,
   Palette,
-  Badge,
   BadgeProps,
   useTheme,
+  SxProps,
+  Theme,
 } from '@mui/material';
+import Badge from '../Badge/Badge';
+import React from 'react';
 
-export type Props = AvatarProps & {
+export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
@@ -64,6 +67,22 @@ const getColorsVariant = (
   }
 };
 
+const getDotOffset = (
+  size: Props['size'],
+  badgeContent: React.ReactNode,
+): SxProps<Theme> => {
+  if (badgeContent) {
+    return {};
+  }
+  const translateOffset =
+    size === 'medium' || size === 'small' ? '-0.5px' : '-4px';
+  return {
+    '& .MuiBadge-badge': {
+      transform: `translate(${translateOffset}, ${translateOffset})`,
+    },
+  };
+};
+
 const Avatar = ({
   size = 'medium',
   color = 'default',
@@ -87,6 +106,9 @@ const Avatar = ({
         ...(props.variant === 'rounded' && {
           borderRadius: roundedBorderRadius,
         }),
+        ...(props.variant === 'square' && {
+          borderRadius: 1,
+        }),
         ...(!props.src && {
           // text style globalXS
           fontFamily: 'Roboto',
@@ -103,8 +125,8 @@ const Avatar = ({
   return withBadge ? (
     <Badge
       {...badgeProps}
-      overlap="circular"
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      sx={getDotOffset(size, badgeContent)}
       // On DS3 the standard variant can be used with large and medium size
       variant={isDotVariant ? 'dot' : badgeProps?.variant}
       badgeContent={badgeContent}

@@ -65,12 +65,13 @@ export declare const PeopleExperience: {
         items: import("react").ReactNode[];
         dividerProps?: import("@mui/material").DividerProps | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
-    ResultContainer: ({ title, children, subtitle, actions, sx, }: {
+    ResultContainer: ({ title, children, subtitle, actions, sx, animateOnEnter, }: {
         title: string;
         subtitle?: string | undefined;
         children: import("react").ReactNode;
         actions?: import("react").ReactNode;
         sx?: import("@mui/material").SxProps<import("@mui/material").Theme> | undefined;
+        animateOnEnter?: boolean | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     LinearProgressWithLabel: ({ linearProgressProps, value, ...other }: import("./components/peopleExperience/LinearProgressWithLabel").LinearProgressWithLabelProps) => import("react/jsx-runtime").JSX.Element;
     ActionsMenu: ({ children, renderTrigger, closeOnSelect }: {
@@ -102,3 +103,4 @@ export declare const PeopleExperience: {
     TabPanelItem: ({ children, index, ...other }: import("./components/peopleExperience/TabPanel").TabPanelItemProps) => import("react/jsx-runtime").JSX.Element;
 };
 export { sanitizeInput } from './utils/validations';
+export * as animations from './utils/animations';
