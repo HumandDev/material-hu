@@ -16,6 +16,8 @@ const DECO_BORDER_WIDTH = '4px';
 
 const ListItem = styled(ListItemButton)(({ theme }) => ({
   borderLeft: `${DECO_BORDER_WIDTH} solid transparent`,
+  paddingLeft: `calc(${theme.spacing(3)} - ${DECO_BORDER_WIDTH})`,
+  paddingRight: theme.spacing(3),
   transition: 'all 250ms',
   '&.Mui-selected': {
     color: theme.palette.primary.main,
@@ -60,7 +62,6 @@ const SideTabNavigation = ({
       <Stack
         {...slotProps?.tabs}
         sx={{
-          gap: 2,
           py: 4,
           bgcolor: colors.grey[50],
           height: '100%',
@@ -71,7 +72,8 @@ const SideTabNavigation = ({
           variant="h5"
           component="h2"
           sx={{
-            px: theme => `calc(${theme.spacing(2)} + ${DECO_BORDER_WIDTH})`,
+            px: 3,
+            py: 2,
           }}
         >
           {title}
