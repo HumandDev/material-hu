@@ -83,5 +83,3 @@ export const PeopleExperience = {
 };
 export { sanitizeInput } from './utils/validations';
 export * as animations from './utils/animations';
-export { default as Skeleton } from './components/Skeleton/Skeleton';
-export { default as Badge } from './components/Badge/Badge';
