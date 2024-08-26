@@ -14,15 +14,7 @@ const meta: Meta<typeof Badge> = {
     },
     color: {
       control: 'select',
-      options: [
-        'default',
-        'primary',
-        'secondary',
-        'error',
-        'info',
-        'success',
-        'warning',
-      ],
+      options: ['primary', 'error', 'success', 'warning'],
       table: {
         type: { summary: 'union' },
       },
