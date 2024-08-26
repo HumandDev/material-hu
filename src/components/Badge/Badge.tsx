@@ -1,8 +1,8 @@
-import { Badge as MuiBadge, BadgeProps } from '@mui/material';
+import { Badge as MuiBadge, BadgeProps as MuiBadgeProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
 export type BadgeProps = Pick<
-  BadgeProps,
+  MuiBadgeProps,
   | 'color'
   | 'invisible'
   | 'variant'
