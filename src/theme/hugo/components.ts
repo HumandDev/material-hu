@@ -262,9 +262,4 @@ export const components: ThemeOptions['components'] = {
       },
     },
   },
-  MuiBreadcrumbs: {
-    defaultProps: {
-      maxItems: 5,
-    },
-  },
 };
