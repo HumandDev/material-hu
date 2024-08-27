@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Typography } from '@mui/material';
 
-const meta = {
+const meta: Meta<typeof Typography> = {
   title: 'Typography',
   component: Typography,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -23,9 +22,10 @@ const meta = {
       options: ['fontWeightRegular', 'fontWeightSemiBold'],
     },
   },
-} satisfies Meta<typeof Typography>;
+};
 
 export default meta;
+
 type Story = StoryObj<typeof meta>;
 
 export const Typography1: Story = {

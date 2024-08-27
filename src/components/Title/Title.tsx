@@ -1,5 +1,5 @@
 import { Stack, SxProps, Typography } from '@mui/material';
-import { colorPalette } from '../theme/hugo/colors';
+import { colorPalette } from '../../theme/hugo/colors';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography/Typography';
 
 type TitleVariant = 'XL' | 'L' | 'M' | 'S';
