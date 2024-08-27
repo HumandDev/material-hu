@@ -82,5 +82,3 @@ export const PeopleExperience = {
   TabPanelItem,
 };
 export { sanitizeInput } from './utils/validations';
-
-export { default as CardContainer } from './components/CardContainer';
