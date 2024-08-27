@@ -1,10 +1,15 @@
-import { AvatarProps } from '@mui/material';
+import { AvatarProps, Palette } from '@mui/material';
 import { BadgeProps } from '../Badge/Badge';
-export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
+export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt' | 'children'> & {
     size?: 'small' | 'medium' | 'large';
     color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
     withBadge?: boolean;
     badgeProps?: BadgeProps;
+};
+export declare const getSizeInPixels: (size: Props['size']) => string;
+export declare const getColorsVariant: (color: Props['color'], palette: Palette) => {
+    backgroundColor: string;
+    color: string;
 };
 declare const Avatar: ({ size, color, withBadge, badgeProps, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
 export default Avatar;

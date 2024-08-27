@@ -8,14 +8,17 @@ import {
 } from '@mui/material';
 import Badge, { BadgeProps } from '../Badge/Badge';
 
-export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
+export type Props = Pick<
+  AvatarProps,
+  'sx' | 'variant' | 'src' | 'alt' | 'children'
+> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
   badgeProps?: BadgeProps;
 };
 
-const getSizeInPixels = (size: Props['size']): string => {
+export const getSizeInPixels = (size: Props['size']): string => {
   switch (size) {
     case 'small':
       return '32px';
@@ -26,7 +29,7 @@ const getSizeInPixels = (size: Props['size']): string => {
   }
 };
 
-const getColorsVariant = (
+export const getColorsVariant = (
   color: Props['color'],
   palette: Palette,
 ): { backgroundColor: string; color: string } => {
