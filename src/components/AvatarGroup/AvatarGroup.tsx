@@ -1,10 +1,6 @@
-import {
-  AvatarGroup as AvatarGroupMui,
-  AvatarGroupProps,
-  useTheme,
-} from '@mui/material';
+import { AvatarGroup as AvatarGroupMui, useTheme } from '@mui/material';
 
-import {
+import Avatar, {
   Props as AvatarProps,
   getColorsVariant,
   getSizeInPixels,
@@ -22,25 +18,20 @@ export const formatSurplus = (surplus: number) => {
     : `+${surplus}`;
 };
 
-export type Props = AvatarGroupProps & {
+export type Props = {
   size?: AvatarProps['size'];
+  avatars: Pick<AvatarProps, 'src' | 'color' | 'alt' | 'text'>[];
 };
 
-const AvatarGroup = ({
-  size = 'medium',
-  max = MAX_AVATARS,
-  ...props
-}: Props) => {
+const AvatarGroup = ({ size = 'medium', avatars }: Props) => {
   const theme = useTheme();
   const sizeInPixels = getSizeInPixels(size);
   const colorsVariant = getColorsVariant('default', theme.palette);
 
   return (
     <AvatarGroupMui
-      {...props}
       sx={{
         justifyContent: 'start',
-        ...props.sx,
         '& .MuiAvatar-root': {
           height: sizeInPixels,
           width: sizeInPixels,
@@ -56,9 +47,16 @@ const AvatarGroup = ({
           },
         },
       }}
-      max={max}
+      max={MAX_AVATARS}
       renderSurplus={formatSurplus}
-    />
+    >
+      {avatars.map((a, index) => (
+        <Avatar
+          key={index}
+          {...a}
+        />
+      ))}
+    </AvatarGroupMui>
   );
 };
 

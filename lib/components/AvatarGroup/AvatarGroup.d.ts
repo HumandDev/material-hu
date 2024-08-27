@@ -1,8 +1,8 @@
-import { AvatarGroupProps } from '@mui/material';
 import { Props as AvatarProps } from '../Avatar/Avatar';
 export declare const formatSurplus: (surplus: number) => string;
-export type Props = AvatarGroupProps & {
+export type Props = {
     size?: AvatarProps['size'];
+    avatars: Pick<AvatarProps, 'src' | 'color' | 'alt' | 'text'>[];
 };
-declare const AvatarGroup: ({ size, max, ...props }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const AvatarGroup: ({ size, avatars }: Props) => import("react/jsx-runtime").JSX.Element;
 export default AvatarGroup;

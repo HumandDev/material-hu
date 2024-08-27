@@ -8,14 +8,12 @@ import {
 } from '@mui/material';
 import Badge, { BadgeProps } from '../Badge/Badge';
 
-export type Props = Pick<
-  AvatarProps,
-  'sx' | 'variant' | 'src' | 'alt' | 'children'
-> & {
+export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
   badgeProps?: BadgeProps;
+  text?: string;
 };
 
 export const getSizeInPixels = (size: Props['size']): string => {
@@ -99,6 +97,7 @@ const Avatar = ({
   color = 'default',
   withBadge = false,
   badgeProps = { variant: 'standard', color: 'primary' },
+  text,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -129,7 +128,9 @@ const Avatar = ({
         }),
       }}
       {...props}
-    />
+    >
+      {text}
+    </AvatarMui>
   );
   const forcedVariant =
     size === 'small' || !badgeProps.badgeContent ? 'dot' : badgeProps?.variant;
