@@ -29,7 +29,6 @@ export type Props = Omit<AvatarGroupProps, 'spacing'> & {
 
 const AvatarGroup = ({
   size = 'medium',
-  spacing = 'medium',
   max = MAX_AVATARS,
   ...props
 }: Props) => {
@@ -41,7 +40,7 @@ const AvatarGroup = ({
     <AvatarGroupMui
       {...props}
       sx={{
-        ...props.sx,
+        ...props?.sx,
         '& .MuiAvatar-root': {
           height: sizeInPixels,
           width: sizeInPixels,
@@ -58,7 +57,6 @@ const AvatarGroup = ({
         },
       }}
       max={max}
-      spacing={spacing}
       renderSurplus={formatSurplus}
     />
   );
