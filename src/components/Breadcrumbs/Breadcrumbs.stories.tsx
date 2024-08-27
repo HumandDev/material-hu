@@ -1,43 +1,42 @@
-import { Link, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 import Breadcrumbs from './Breadcrumbs';
+import { East, Cake } from '@mui/icons-material';
+import { Box } from '@mui/material';
 
 const breadcrumbsChildren = [
-  <Link
-    key={0}
-    href="#"
-  >
-    Home
-  </Link>,
-  <Link
-    key={1}
-    href="#"
-  >
-    Core
-  </Link>,
-  <Link
-    key={2}
-    href="#"
-  >
-    Core
-  </Link>,
-  <Typography
-    key={3}
-    color="text.primary"
-  >
-    Leaf
-  </Typography>,
+  {
+    title: 'Home',
+    href: '#',
+  },
+  {
+    title: 'Second',
+    href: '#',
+  },
+  {
+    title: 'Third',
+    href: '#',
+  },
+  {
+    title: 'Fourth',
+    href: '#',
+  },
+];
+
+const breadcrumbsChildrenCollapsed = [
+  ...breadcrumbsChildren,
+  {
+    title: 'Fifth',
+    href: '#',
+  },
 ];
 
 const meta: Meta<typeof Breadcrumbs> = {
   component: Breadcrumbs,
   title: 'Breadcrumbs',
   tags: ['autodocs'],
-  argTypes: {
-    children: { control: { disable: true } },
-  },
+  argTypes: {},
   args: {
-    children: breadcrumbsChildren,
+    links: breadcrumbsChildren,
   },
 };
 
@@ -51,18 +50,27 @@ export const Default: Story = {
 
 export const Collapsed: Story = {
   args: {
-    children: [
-      ...breadcrumbsChildren,
-      <Link
-        key={99}
-        href="#"
-      >
-        Core
-      </Link>,
-    ],
+    links: breadcrumbsChildrenCollapsed,
   },
 };
 
-export const A: Story = {
-  args: {},
+export const DarkBackground: Story = {
+  args: {
+    links: breadcrumbsChildrenCollapsed,
+    darkBackground: true,
+  },
+  render: props => (
+    <Box sx={{ backgroundColor: 'black', p: 3 }}>
+      <Breadcrumbs {...props} />
+    </Box>
+  ),
+};
+
+export const WithIcons: Story = {
+  args: {
+    links: breadcrumbsChildren.map((link, index) => ({
+      ...link,
+      icon: index === 0 ? East : Cake,
+    })),
+  },
 };

@@ -1,30 +1,60 @@
 import {
-  BreadcrumbsProps,
+  Box,
   Link,
   Breadcrumbs as MuiBreadcrumbs,
+  Typography,
+  useTheme,
 } from '@mui/material';
+import { useMemo } from 'react';
+import { CustomCollapsedIcon } from './CustomCollapsedIcon';
+import { BreadcrumbLink } from './types';
+import React from 'react';
 
-const CustomCollapsedIcon = () => {
+type LinkBoxProps = {
+  children: React.ReactNode;
+  darkBackground?: boolean;
+  breadcrumbIcon?: BreadcrumbLink['icon'];
+};
+const LinkBox = ({
+  children,
+  darkBackground,
+  breadcrumbIcon,
+}: LinkBoxProps) => {
+  const theme = useTheme();
   return (
-    <Link
+    <Box
       sx={{
-        backgroundColor: 'inherit',
-        textDecoration: 'underline',
-        cursor: 'pointer',
-      }}
-      onClick={e => {
-        e.stopPropagation();
-        alert('hola vic');
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
-      ...
-    </Link>
+      {children}
+      {/* Creating the icon component here allows us to pass properties more easily if needed */}
+      {breadcrumbIcon
+        ? React.createElement(breadcrumbIcon, {
+            sx: {
+              ml: 0.25,
+              width: 16,
+              height: 16,
+              color: darkBackground
+                ? theme.palette.base?.white
+                : theme.palette.base?.blueBrand[400],
+            },
+          })
+        : null}
+    </Box>
   );
 };
 
-type Props = Pick<BreadcrumbsProps, 'children' | 'sx'>;
+type Props = {
+  links: BreadcrumbLink[];
+  darkBackground?: boolean;
+};
 
-const BreadCrumbs = ({ children, sx, ...props }: Props) => {
+const BreadCrumbs = ({ links, darkBackground }: Props) => {
+  const theme = useTheme();
+  const collapsedLinks = useMemo(() => links.slice(1, -2), [links]);
+
   return (
     <MuiBreadcrumbs
       aria-label="breadcrumb"
@@ -34,20 +64,58 @@ const BreadCrumbs = ({ children, sx, ...props }: Props) => {
           cursor: 'pointer',
         },
         '& .MuiButtonBase-root': {
-          backgroundColor: 'transparent',
+          '&, &:hover': {
+            backgroundColor: 'transparent',
+          },
         },
         '& .MuiBreadcrumbs-separator': {
           mx: 0.5,
+          color: darkBackground ? theme.palette.base?.white : 'inherit',
         },
-        ...sx,
       }}
       maxItems={4}
       itemsAfterCollapse={2}
+      separator={
+        <Typography
+          variant="globalS"
+          mx={0.5}
+        >
+          /
+        </Typography>
+      }
       slots={{ CollapsedIcon: CustomCollapsedIcon }}
-      // slotProps={{ collapsedIcon: { children: '.-.' } }}
-      // {...props}
+      // @ts-ignore - Mui does not recognize the CustomCollapsedIcon props
+      slotProps={{ collapsedIcon: { collapsedLinks, darkBackground } }}
     >
-      {children}
+      {links.map((link, index) => (
+        <LinkBox
+          key={index}
+          breadcrumbIcon={link.icon}
+          darkBackground={darkBackground}
+        >
+          {index < links.length - 1 ? (
+            <Link
+              color={
+                darkBackground ? theme.palette.base?.white : 'primary.main'
+              }
+              href={link.href}
+            >
+              {link.title}
+            </Link>
+          ) : (
+            <Typography
+              variant="globalS"
+              color={
+                darkBackground
+                  ? theme.palette.base?.white
+                  : theme.palette.base?.grey[800]
+              }
+            >
+              {link.title}
+            </Typography>
+          )}
+        </LinkBox>
+      ))}
     </MuiBreadcrumbs>
   );
 };
