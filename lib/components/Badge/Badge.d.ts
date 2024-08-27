@@ -1,5 +1,7 @@
-import { BadgeProps } from '@mui/material';
+import { BadgeProps as MuiBadgeProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
-type Props = Pick<BadgeProps, 'color' | 'invisible' | 'variant' | 'children' | 'anchorOrigin' | 'title' | 'badgeContent' | 'sx'>;
-declare const Badge: FC<PropsWithChildren<Props>>;
+export type BadgeProps = Pick<MuiBadgeProps, 'color' | 'invisible' | 'variant' | 'children' | 'anchorOrigin' | 'title' | 'sx'> & {
+    badgeContent?: number;
+};
+declare const Badge: FC<PropsWithChildren<BadgeProps>>;
 export default Badge;

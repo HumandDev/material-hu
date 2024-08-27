@@ -1,19 +1,20 @@
-import { Badge as MuiBadge, BadgeProps } from '@mui/material';
+import { Badge as MuiBadge, BadgeProps as MuiBadgeProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-type Props = Pick<
-  BadgeProps,
+export type BadgeProps = Pick<
+  MuiBadgeProps,
   | 'color'
   | 'invisible'
   | 'variant'
   | 'children'
   | 'anchorOrigin'
   | 'title'
-  | 'badgeContent'
   | 'sx'
->;
+> & {
+  badgeContent?: number;
+};
 
-const Badge: FC<PropsWithChildren<Props>> = ({ ...badgeProps }) => {
+const Badge: FC<PropsWithChildren<BadgeProps>> = ({ ...badgeProps }) => {
   return <MuiBadge {...badgeProps} />;
 };
 
