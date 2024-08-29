@@ -45,6 +45,7 @@ export declare const PeopleExperience: {
         description?: string | undefined;
         slotProps?: Partial<{
             container: import("@mui/material").StackProps;
+            description: Partial<import("@mui/material").TooltipProps>;
         }> | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     ListWithDivider: ({ items, dividerProps, ...other }: import("@mui/material").ListOwnProps & import("@mui/material/OverridableComponent").CommonProps & Omit<Omit<import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLUListElement>, HTMLUListElement>, "ref"> & {

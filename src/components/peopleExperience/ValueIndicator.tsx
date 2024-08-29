@@ -4,8 +4,10 @@ import {
   Stack,
   StackProps,
   Tooltip,
+  TooltipProps,
   Typography,
 } from '@mui/material';
+import { merge } from 'lodash';
 
 type ValueIndicatorProps = {
   value: number | string;
@@ -14,6 +16,7 @@ type ValueIndicatorProps = {
   description?: string;
   slotProps?: Partial<{
     container: StackProps;
+    description: Partial<TooltipProps>;
   }>;
 };
 
@@ -28,7 +31,7 @@ const ValueIndicator = ({
   return (
     <Stack
       {...container}
-      sx={{ alignItems: 'center', gap: 1, ...container?.sx }}
+      sx={{ alignItems: 'center', gap: 0.5, ...container?.sx }}
     >
       {loading && (
         <Skeleton
@@ -41,10 +44,10 @@ const ValueIndicator = ({
           variant="h5"
           component="p"
         >
-          {value.toLocaleString()}
+          {value}
         </Typography>
       )}
-      <Stack sx={{ flexDirection: 'row', gap: 1, alignItems: 'center' }}>
+      <Stack sx={{ flexDirection: 'row', gap: 0.5, alignItems: 'center' }}>
         <Typography
           variant="overline"
           sx={{ color: theme => theme.palette.secondary.main }}
@@ -53,9 +56,14 @@ const ValueIndicator = ({
         </Typography>
         {description && (
           <Tooltip
-            title={description}
-            placement="right-end"
-            slotProps={{ tooltip: { sx: { maxWidth: '135px' } } }}
+            {...merge(
+              {
+                title: description,
+                placement: 'right-end',
+                slotProps: { tooltip: { sx: { maxWidth: '135px' } } },
+              },
+              slotProps.description,
+            )}
           >
             <InfoOutlined
               fontSize="small"
