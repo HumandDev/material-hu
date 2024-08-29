@@ -10,13 +10,13 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  AddBoxOutlined as AddIcon,
-  Check as CheckIcon,
-  ChevronRight,
-  ErrorOutline as ErrorIcon,
-  InfoOutlined as InfoIcon,
-  WarningAmberRounded as WarningIcon,
-} from '@mui/icons-material';
+  IconSquareRoundedPlus as AddIcon,
+  IconCheck as CheckIcon,
+  IconChevronRight as ChevronRight,
+  IconExclamationCircle as ErrorIcon,
+  IconInfoCircle as InfoIcon,
+  IconAlertTriangle as WarningIcon
+} from '@tabler/icons-react';
 
 export type CardContainerProps = CardProps & {
   badge?: {
