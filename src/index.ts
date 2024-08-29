@@ -83,5 +83,5 @@ export const PeopleExperience = {
 };
 export { sanitizeInput } from './utils/validations';
 
-export { default as Pills } from './components/Pills';
 export * as animations from './utils/animations';
+export { default as Pill } from './components/Pills';

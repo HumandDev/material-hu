@@ -104,5 +104,5 @@ export declare const PeopleExperience: {
     TabPanelItem: ({ children, index, ...other }: import("./components/peopleExperience/TabPanel").TabPanelItemProps) => import("react/jsx-runtime").JSX.Element;
 };
 export { sanitizeInput } from './utils/validations';
-export { default as Pills } from './components/Pills';
 export * as animations from './utils/animations';
+export { default as Pill } from './components/Pills';
