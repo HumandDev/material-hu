@@ -39,7 +39,6 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
         borderColor: palette.base?.green[200]!,
         fontColor: palette.base?.green[800]!,
       };
-
     case 'warning':
       return {
         icon: WarningIcon,
@@ -47,7 +46,6 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
         borderColor: palette.base?.yellow[200]!,
         fontColor: palette.base?.yellow[800]!,
       };
-
     case 'info':
       return {
         icon: InfoIcon,
@@ -55,7 +53,6 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
         borderColor: palette.base?.lightBlue[200]!,
         fontColor: palette.base?.lightBlue[800]!,
       };
-
     case 'highlight':
       return {
         icon: TipsAndUpdatesOutlinedIcon,
@@ -101,7 +98,9 @@ const Pills = ({
   return (
     <Chip
       label={
-        <Typography // variant: isSmall ? 'globalXXS' : 'globalXS', fontWeight: 'fontWeightSemiBold',
+        <Typography
+          // variant: isSmall ? 'globalXXS' : 'globalXS',
+          // fontWeight: 'fontWeightSemiBold',
           sx={{
             margin: 0,
             padding: 0,
