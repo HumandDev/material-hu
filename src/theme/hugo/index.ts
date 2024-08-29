@@ -2,7 +2,6 @@ import {
   Theme,
   ThemeOptions,
   createTheme as createMuiTheme,
-  responsiveFontSizes,
 } from '@mui/material';
 import { colorPalette } from './colors';
 import { typography } from './typography';
@@ -23,10 +22,6 @@ const themeObject: ThemeOptions = {
 
 export const createHuGoTheme = (): Theme => {
   let theme = createMuiTheme(themeObject);
-
-  if (false) {
-    theme = responsiveFontSizes(theme);
-  }
 
   return theme;
 };

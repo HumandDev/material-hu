@@ -2,17 +2,17 @@ import {
   Avatar as AvatarMui,
   AvatarProps,
   Palette,
-  Badge,
-  BadgeProps,
   useTheme,
+  SxProps,
+  Theme,
 } from '@mui/material';
+import Badge, { BadgeProps } from '../Badge/Badge';
 
-export type Props = AvatarProps & {
+export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
-  badgeContent?: BadgeProps['badgeContent'];
-  badgeProps?: Omit<BadgeProps, 'badgeContent'>;
+  badgeProps?: BadgeProps;
 };
 
 const getSizeInPixels = (size: Props['size']): string => {
@@ -64,11 +64,37 @@ const getColorsVariant = (
   }
 };
 
+const getOffset = (
+  size: Props['size'],
+  variant: BadgeProps['variant'],
+): SxProps<Theme> => {
+  if (variant === 'dot') {
+    const dotLarge = '-4px';
+    const dotSmallMedium = '-0.5px';
+    const translateOffset =
+      size === 'medium' || size === 'small' ? dotSmallMedium : dotLarge;
+    return {
+      '& .MuiBadge-badge': {
+        transform: `translate(${translateOffset}, ${translateOffset})`,
+      },
+    };
+  } else if (variant === 'standard') {
+    const standardLarge = '0px';
+    const standardMedium = '6px';
+    const translateOffset = size === 'large' ? standardLarge : standardMedium;
+    return {
+      '& .MuiBadge-badge': {
+        transform: `translate(${translateOffset}, ${translateOffset})`,
+      },
+    };
+  }
+  return {};
+};
+
 const Avatar = ({
   size = 'medium',
   color = 'default',
   withBadge = false,
-  badgeContent,
   badgeProps = { variant: 'standard', color: 'primary' },
   ...props
 }: Props) => {
@@ -87,6 +113,9 @@ const Avatar = ({
         ...(props.variant === 'rounded' && {
           borderRadius: roundedBorderRadius,
         }),
+        ...(props.variant === 'square' && {
+          borderRadius: 1,
+        }),
         ...(!props.src && {
           // text style globalXS
           fontFamily: 'Roboto',
@@ -99,15 +128,16 @@ const Avatar = ({
       {...props}
     />
   );
-  const isDotVariant = size === 'small' || !badgeContent;
+  const forcedVariant =
+    size === 'small' || !badgeProps.badgeContent ? 'dot' : badgeProps?.variant;
   return withBadge ? (
     <Badge
       {...badgeProps}
-      overlap="circular"
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      sx={getOffset(size, forcedVariant)}
       // On DS3 the standard variant can be used with large and medium size
-      variant={isDotVariant ? 'dot' : badgeProps?.variant}
-      badgeContent={badgeContent}
+      variant={forcedVariant}
+      badgeContent={badgeProps.badgeContent}
     >
       {avatar}
     </Badge>

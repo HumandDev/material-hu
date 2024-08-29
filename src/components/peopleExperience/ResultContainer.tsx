@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Stack, StackProps, Typography } from '@mui/material';
+import { fadeIn } from '../../utils/animations';
 
 type ResultContainerProps = {
   title: string;
@@ -7,6 +8,7 @@ type ResultContainerProps = {
   children: ReactNode;
   actions?: ReactNode;
   sx?: StackProps['sx'];
+  animateOnEnter?: boolean;
 };
 
 const ResultContainer = ({
@@ -15,8 +17,18 @@ const ResultContainer = ({
   subtitle,
   actions,
   sx,
+  animateOnEnter = true,
 }: ResultContainerProps) => (
-  <Stack sx={{ p: 4, gap: 4, ...sx }}>
+  <Stack
+    sx={{
+      p: 4,
+      gap: 4,
+      ...(animateOnEnter && {
+        animation: `${fadeIn} 0.5s ease-in-out`,
+      }),
+      ...sx,
+    }}
+  >
     <Stack
       sx={{
         flexDirection: 'row',
