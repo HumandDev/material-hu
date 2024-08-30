@@ -65,7 +65,7 @@ const ValueIndicator = ({
               slotProps.description,
             )}
           >
-            <InfoIcon />
+            <InfoIcon fontSize="small" />
           </Tooltip>
         )}
       </Stack>

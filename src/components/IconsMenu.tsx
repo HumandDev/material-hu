@@ -47,6 +47,11 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const disabledStyles = {
+    cursor: 'not-allowed',
+    opacity: '38%',
+  };
+
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
@@ -78,7 +83,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
         disableRipple={disabled}
         {...iconButtonProps}
       >
-        <MoreVertIcon />
+        <MoreVertIcon style={disabled ? disabledStyles : undefined} />
       </IconButton>
       <Menu
         id="icon-menu"

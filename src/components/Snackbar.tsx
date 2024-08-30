@@ -11,7 +11,7 @@ export const useSnackbarUtils = () => {
       anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
       action: (
         <IconButton onClick={() => closeSnackbar()}>
-          <CloseIcon />
+          <CloseIcon style={{ color: '#FFFFFF', fontSize: 'small' }} />
         </IconButton>
       ),
     });
