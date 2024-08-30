@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
 import {
   IconChevronUp as ExpandLessIcon,
-  IconChevronDown as ExpandMoreIcon
+  IconChevronDown as ExpandMoreIcon,
 } from '@tabler/icons-react';
 import {
   ListItem,
@@ -144,11 +144,7 @@ export const ParticipationExpandableItem = ({
             secondary={secondary}
             sx={{ flexGrow: 0 }}
           />
-          {expanded ? (
-            <ExpandLessIcon />
-          ) : (
-            <ExpandMoreIcon />
-          )}
+          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </Stack>
         <Misc
           partial={partial}

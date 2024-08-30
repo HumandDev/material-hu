@@ -39,11 +39,7 @@ const CustomStepIcon = ({ active, completed }: StepIconProps) => (
       mr: 3,
     }}
   >
-    {completed && (
-      <CheckIcon
-        fontSize="small"
-      />
-    )}
+    {completed && <CheckIcon fontSize="small" />}
   </Box>
 );
 

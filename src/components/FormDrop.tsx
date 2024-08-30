@@ -11,7 +11,7 @@ import {
   useTheme,
   alpha,
 } from '@mui/material';
-import { IconUpload as UploadIcon} from '@tabler/icons-react';
+import { IconUpload as UploadIcon } from '@tabler/icons-react';
 import { useModal } from '../hooks/useModal';
 import { CroppingModal, CroppingModalProps } from './CroppingModal';
 import { DocumentItem, DocumentItemTypes } from './DocumentItem';

@@ -20,7 +20,7 @@ import {
   alpha,
 } from '@mui/material';
 import {
-  IconCheck as CheckIcon, 
+  IconCheck as CheckIcon,
   IconX as CloseIcon,
 } from '@tabler/icons-react';
 

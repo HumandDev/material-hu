@@ -15,7 +15,7 @@ import {
   IconChevronRight as ChevronRight,
   IconExclamationCircle as ErrorIcon,
   IconInfoCircle as InfoIcon,
-  IconAlertTriangle as WarningIcon
+  IconAlertTriangle as WarningIcon,
 } from '@tabler/icons-react';
 
 export type CardContainerProps = CardProps & {

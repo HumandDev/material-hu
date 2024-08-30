@@ -12,9 +12,7 @@ import {
   PictureAsPdfOutlined as PictureAsPdfOutlinedIcon,
   FolderZipOutlined as FolderZipOutlinedIcon,
 } from '@mui/icons-material';
-import {
-  IconX as CloseIcon,
-} from '@tabler/icons-react';
+import { IconX as CloseIcon } from '@tabler/icons-react';
 
 export enum DocumentItemTypes {
   PDF = 'pdf',
