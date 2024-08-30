@@ -11,9 +11,9 @@ import {
 import Button from '@mui/lab/LoadingButton';
 import AvatarEditor from 'react-avatar-editor';
 import {
-  ZoomOut as ZoomOutIcon,
-  ZoomIn as ZoomInIcon,
-} from '@mui/icons-material';
+  IconZoomOut as ZoomOutIcon,
+  IconZoomIn as ZoomInIcon,
+} from '@tabler/icons-react';
 
 export type CroppingModalProps = {
   file: File;

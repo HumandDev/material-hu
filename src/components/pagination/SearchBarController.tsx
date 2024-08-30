@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Controller, Control, FieldValues } from 'react-hook-form';
-
-import { Close as CloseIcon } from '@mui/icons-material';
+import { IconX as CloseIcon } from '@tabler/icons-react';
 import { InputAdornment, TextField, TextFieldProps } from '@mui/material';
 import SearchIcon from '../../svg-icons/Search';
 import { FormValues as ServerPaginationFormValues } from '../../hooks/useServerPagination';
@@ -33,7 +32,7 @@ const buildSearchbar = ({
                 <InputAdornment position="end">
                   <CloseIcon
                     fontSize="small"
-                    sx={{
+                    style={{
                       cursor: 'pointer',
                       visibility: field.value ? 'visible' : 'hidden',
                     }}

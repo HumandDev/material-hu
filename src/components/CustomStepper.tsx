@@ -11,7 +11,7 @@ import {
   StepperProps,
   Typography,
 } from '@mui/material';
-import { Check as CheckIcon } from '@mui/icons-material';
+import { IconCheck as CheckIcon } from '@tabler/icons-react';
 
 export type CustomStepperProps = {
   steps: {
@@ -41,7 +41,6 @@ const CustomStepIcon = ({ active, completed }: StepIconProps) => (
   >
     {completed && (
       <CheckIcon
-        sx={{ color: 'primary.contrastText' }}
         fontSize="small"
       />
     )}

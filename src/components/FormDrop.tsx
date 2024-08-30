@@ -11,7 +11,7 @@ import {
   useTheme,
   alpha,
 } from '@mui/material';
-import { Upload } from '@mui/icons-material';
+import { IconUpload as UploadIcon} from '@tabler/icons-react';
 import { useModal } from '../hooks/useModal';
 import { CroppingModal, CroppingModalProps } from './CroppingModal';
 import { DocumentItem, DocumentItemTypes } from './DocumentItem';
@@ -311,7 +311,7 @@ export const FormDrop: FC<FormDropProps> = props => {
                       },
                     }}
                   >
-                    <Upload />
+                    <UploadIcon />
                   </Box>
                   <Stack spacing={1}>
                     <Typography

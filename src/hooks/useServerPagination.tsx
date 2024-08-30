@@ -1,8 +1,7 @@
 import { FC, useEffect, useCallback, useMemo } from 'react';
 import { UseFormReturn, useForm } from 'react-hook-form';
 import { TableCell, TableCellProps, TableSortLabel } from '@mui/material';
-import { ArrowDropDown as ArrowDropDownIcon } from '@mui/icons-material';
-
+import { IconCaretDownFilled as ArrowDropDownIcon } from '@tabler/icons-react';
 import { useDebounce } from './useDebounce';
 import PaginationController from '../components/pagination/PaginationController';
 import buildSearchbar from '../components/pagination/SearchBarController';

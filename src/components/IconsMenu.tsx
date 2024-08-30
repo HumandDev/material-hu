@@ -11,9 +11,9 @@ import {
   IconButtonProps,
 } from '@mui/material';
 import {
-  ChevronRight as ChevronRightIcon,
-  MoreVert as MoreVertIcon,
-} from '@mui/icons-material';
+  IconChevronRight as ChevronRightIcon,
+  IconDotsVertical as MoreVertIcon,
+} from '@tabler/icons-react';
 
 export type Option = {
   onClick: () => void;
@@ -47,11 +47,6 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const disabledStyles = {
-    cursor: 'not-allowed',
-    opacity: '38%',
-  };
-
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setAnchorEl(event.currentTarget);
@@ -83,7 +78,7 @@ export const IconsMenu: FC<IconsMenuProps> = props => {
         disableRipple={disabled}
         {...iconButtonProps}
       >
-        <MoreVertIcon sx={disabled ? disabledStyles : undefined} />
+        <MoreVertIcon />
       </IconButton>
       <Menu
         id="icon-menu"

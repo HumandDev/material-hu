@@ -11,10 +11,8 @@ import {
   default as Button,
   type LoadingButtonProps as ButtonProps,
 } from '@mui/lab/LoadingButton';
-import {
-  CloseOutlined as CloseOutlinedIcon,
-  SvgIconComponent,
-} from '@mui/icons-material';
+import { IconX as CloseIcon } from '@tabler/icons-react';
+import { SvgIconComponent } from '@mui/icons-material';
 import { ReactNode } from 'react';
 
 type Props = {
@@ -59,7 +57,7 @@ const NewModal = ({
         onClick={onClose}
         sx={{ p: 0 }}
       >
-        <CloseOutlinedIcon />
+        <CloseIcon />
       </IconButton>
     </Stack>
     <DialogContent sx={{ px: 0 }}>

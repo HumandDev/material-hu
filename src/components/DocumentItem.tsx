@@ -9,10 +9,12 @@ import {
   colors,
 } from '@mui/material';
 import {
-  Close,
-  PictureAsPdfOutlined,
-  FolderZipOutlined,
+  PictureAsPdfOutlined as PictureAsPdfOutlinedIcon,
+  FolderZipOutlined as FolderZipOutlinedIcon,
 } from '@mui/icons-material';
+import {
+  IconX as CloseIcon,
+} from '@tabler/icons-react';
 
 export enum DocumentItemTypes {
   PDF = 'pdf',
@@ -20,8 +22,8 @@ export enum DocumentItemTypes {
 }
 
 const DOCUMENT_ICONS = {
-  [DocumentItemTypes.PDF]: PictureAsPdfOutlined,
-  [DocumentItemTypes.FILE]: FolderZipOutlined,
+  [DocumentItemTypes.PDF]: PictureAsPdfOutlinedIcon,
+  [DocumentItemTypes.FILE]: FolderZipOutlinedIcon,
 };
 
 export type DocumentItemProps = {
@@ -115,7 +117,7 @@ export const DocumentItem: FC<DocumentItemProps> = props => {
             onClick={onDelete}
             aria-label={deleteLabel}
           >
-            <Close fontSize="small" />
+            <CloseIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       )}

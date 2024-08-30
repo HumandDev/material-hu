@@ -1,6 +1,6 @@
 import { useSnackbar } from 'notistack';
 import { IconButton } from '@mui/material';
-import { Close as CloseIcon } from '@mui/icons-material';
+import { IconX as CloseIcon } from '@tabler/icons-react';
 
 export const useSnackbarUtils = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -11,7 +11,7 @@ export const useSnackbarUtils = () => {
       anchorOrigin: { horizontal: 'center', vertical: 'bottom' },
       action: (
         <IconButton onClick={() => closeSnackbar()}>
-          <CloseIcon sx={{ color: '#FFFFFF', fontSize: 'small' }} />
+          <CloseIcon />
         </IconButton>
       ),
     });

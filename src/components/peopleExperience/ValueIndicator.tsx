@@ -1,4 +1,4 @@
-import { InfoOutlined } from '@mui/icons-material';
+import { IconInfoCircle as InfoIcon } from '@tabler/icons-react';
 import {
   Skeleton,
   Stack,
@@ -65,10 +65,7 @@ const ValueIndicator = ({
               slotProps.description,
             )}
           >
-            <InfoOutlined
-              fontSize="small"
-              color="secondary"
-            />
+            <InfoIcon />
           </Tooltip>
         )}
       </Stack>

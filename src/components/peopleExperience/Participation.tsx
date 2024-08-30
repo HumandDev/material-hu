@@ -1,5 +1,8 @@
 import { ReactNode, useState } from 'react';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import {
+  IconChevronUp as ExpandLessIcon,
+  IconChevronDown as ExpandMoreIcon
+} from '@tabler/icons-react';
 import {
   ListItem,
   ListItemButton,
@@ -142,9 +145,9 @@ export const ParticipationExpandableItem = ({
             sx={{ flexGrow: 0 }}
           />
           {expanded ? (
-            <ExpandLess color="secondary" />
+            <ExpandLessIcon />
           ) : (
-            <ExpandMore color="secondary" />
+            <ExpandMoreIcon />
           )}
         </Stack>
         <Misc

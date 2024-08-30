@@ -19,7 +19,10 @@ import {
   useTheme,
   alpha,
 } from '@mui/material';
-import { Check, Close } from '@mui/icons-material';
+import {
+  IconCheck as CheckIcon, 
+  IconX as CloseIcon,
+} from '@tabler/icons-react';
 
 export type StepType = {
   id: string;
@@ -108,7 +111,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
     if (nonLinear ? completed : step < activeStep) {
       return (
         <Box className="MuiStepIcon-root">
-          <Check />
+          <CheckIcon />
         </Box>
       );
     }
@@ -152,7 +155,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
                   onClick={onClose}
                   aria-label={closeLabel}
                 >
-                  <Close fontSize="small" />
+                  <CloseIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
             )}
