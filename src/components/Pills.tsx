@@ -118,11 +118,11 @@ const Pills = ({
       icon={
         hasIcon && pillProps.icon ? (
           <pillProps.icon
-            sx={{
-              color: `${pillProps.fontColor} !important`,
-              marginLeft: '0 !important',
-              marginRight: '4px !important',
-              fontSize: '14px !important',
+            style={{
+              color: pillProps.fontColor,
+              marginLeft: '0',
+              marginRight: '4px',
+              fontSize: '14px',
             }}
           />
         ) : undefined
