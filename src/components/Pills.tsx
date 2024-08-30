@@ -1,12 +1,12 @@
 import { Chip, ChipProps, Palette, Typography, useTheme } from '@mui/material';
 import {
-  AnnouncementOutlined as AnnouncementOutlinedIcon,
-  Check as CheckIcon,
-  ErrorOutline as ErrorIcon,
-  InfoOutlined as InfoIcon,
-  TipsAndUpdatesOutlined as TipsAndUpdatesOutlinedIcon,
-  WarningAmberRounded as WarningIcon,
-} from '@mui/icons-material';
+  IconAlertSquareRounded,
+  IconBulb,
+  IconCheck,
+  IconExclamationCircle,
+  IconInfoCircle,
+  IconInfoTriangle,
+} from '../theme/hugo/icons';
 
 export type PillsProps = ChipProps & {
   label: string;
@@ -34,35 +34,35 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
   switch (type) {
     case 'success':
       return {
-        icon: CheckIcon,
+        icon: IconCheck,
         backgroundColor: palette.base?.green[100]!,
         borderColor: palette.base?.green[200]!,
         fontColor: palette.base?.green[800]!,
       };
     case 'warning':
       return {
-        icon: WarningIcon,
+        icon: IconInfoTriangle,
         backgroundColor: palette.base?.yellow[100]!,
         borderColor: palette.base?.yellow[200]!,
         fontColor: palette.base?.yellow[800]!,
       };
     case 'info':
       return {
-        icon: InfoIcon,
+        icon: IconInfoCircle,
         backgroundColor: palette.base?.lightBlue[100]!,
         borderColor: palette.base?.lightBlue[200]!,
         fontColor: palette.base?.lightBlue[800]!,
       };
     case 'highlight':
       return {
-        icon: TipsAndUpdatesOutlinedIcon,
+        icon: IconBulb,
         backgroundColor: palette.base?.lilac[100]!,
         borderColor: palette.base?.lilac[200]!,
         fontColor: palette.base?.lilac[800]!,
       };
     case 'neutral':
       return {
-        icon: AnnouncementOutlinedIcon,
+        icon: IconAlertSquareRounded,
         backgroundColor: palette.base?.white!,
         borderColor: palette.base?.grey[300]!,
         fontColor: palette.base?.grey[600]!,
@@ -76,7 +76,7 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
     case 'error':
     default:
       return {
-        icon: ErrorIcon,
+        icon: IconExclamationCircle,
         backgroundColor: palette.base?.red[100]!,
         borderColor: palette.base?.red[200]!,
         fontColor: palette.base?.red[800]!,
