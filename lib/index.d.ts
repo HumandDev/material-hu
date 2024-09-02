@@ -105,4 +105,4 @@ export declare const PeopleExperience: {
 };
 export { sanitizeInput } from './utils/validations';
 export * as animations from './utils/animations';
-export { default as Pill } from './components/Pills';
+export { default as Pills } from './components/Pills';
