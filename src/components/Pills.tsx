@@ -123,8 +123,8 @@ const Pills = ({
               marginLeft: '0',
               marginRight: '4px',
               fontSize: '14px',
-              width: '16px',
             }}
+            width="16px"
           />
         ) : undefined
       }
