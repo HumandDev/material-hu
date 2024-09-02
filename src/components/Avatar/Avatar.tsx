@@ -13,9 +13,10 @@ export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
   badgeProps?: BadgeProps;
+  text?: string;
 };
 
-const getSizeInPixels = (size: Props['size']): string => {
+export const getSizeInPixels = (size: Props['size']): string => {
   switch (size) {
     case 'small':
       return '32px';
@@ -26,7 +27,7 @@ const getSizeInPixels = (size: Props['size']): string => {
   }
 };
 
-const getColorsVariant = (
+export const getColorsVariant = (
   color: Props['color'],
   palette: Palette,
 ): { backgroundColor: string; color: string } => {
@@ -96,6 +97,7 @@ const Avatar = ({
   color = 'default',
   withBadge = false,
   badgeProps = { variant: 'standard', color: 'primary' },
+  text,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -126,7 +128,9 @@ const Avatar = ({
         }),
       }}
       {...props}
-    />
+    >
+      {text}
+    </AvatarMui>
   );
   const forcedVariant =
     size === 'small' || !badgeProps.badgeContent ? 'dot' : badgeProps?.variant;
