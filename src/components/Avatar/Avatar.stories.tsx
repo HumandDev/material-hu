@@ -9,6 +9,7 @@ const meta: Meta<typeof Avatar> = {
   args: {
     src: ImgAvatar1,
     alt: 'Avatar Alt',
+    text: 'AP',
   },
 };
 
@@ -46,9 +47,17 @@ export const SquareAvatar: Story = {
   },
 };
 
+export const FallbackText: Story = {
+  args: {
+    src: 'broken-image.png',
+    alt: undefined,
+  },
+};
+
 export const FallbackAlt: Story = {
   args: {
     src: 'broken-image.png',
+    text: undefined,
   },
 };
 
@@ -56,5 +65,6 @@ export const Fallback: Story = {
   args: {
     src: 'broken-image.png',
     alt: '',
+    text: undefined,
   },
 };
