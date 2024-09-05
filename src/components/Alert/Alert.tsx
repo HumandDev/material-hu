@@ -106,7 +106,10 @@ const Alert = (props: AlertProps) => {
                 setOpen(false);
               }}
             >
-              <IconX />
+              <IconX
+                width="16px"
+                height="16px"
+              />
             </IconButton>
           )}
         </Stack>
@@ -115,6 +118,7 @@ const Alert = (props: AlertProps) => {
         backgroundColor: data.backgroundColor,
         borderColor: data.borderColor,
         borderStyle: 'solid',
+        borderLeftStyle: 'none',
         color: data.color,
         p: 2,
         alignItems: description ? 'normal' : 'center',
@@ -122,17 +126,27 @@ const Alert = (props: AlertProps) => {
           content: '""',
           position: 'absolute',
           left: 0,
-          top: 0,
-          bottom: 0,
+          top: '-1px',
+          bottom: '-1px',
           borderLeft: `solid ${data.graphic} 6px`,
           borderRadius: '6px',
           width: '20px',
         },
         position: 'relative',
+        '& div': {
+          py: 0,
+        },
       }}
     >
-      <AlertTitle sx={{ mb: description ? 0.25 : 0 }}>{title}</AlertTitle>
-      {description && <Typography>{description}</Typography>}
+      <AlertTitle sx={{ mb: description ? 0.25 : 0 }}>
+        <Typography
+          variant="globalS"
+          fontWeight={'semiBold'}
+        >
+          {title}
+        </Typography>
+      </AlertTitle>
+      {description && <Typography variant="globalXS">{description}</Typography>}
     </AlertMui>
   );
 };
