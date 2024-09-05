@@ -1,67 +1,133 @@
 import { useState } from 'react';
 import {
   Alert as AlertMui,
-  AlertProps as AlertMuiProps,
   AlertTitle,
   IconButton,
-  Stack,
   Typography,
   Button,
+  Stack,
 } from '@mui/material';
-import { IconX as CloseIcon } from '@tabler/icons-react';
+import {
+  IconX,
+  IconExclamationCircle,
+  IconCheck,
+  IconAlertTriangle,
+  IconInfoCircle,
+  IconBulb,
+} from '@tabler/icons-react';
+import { colorPalette } from '../../theme/hugo/colors';
 
-type AlertProps = AlertMuiProps & {
-  description: string;
+type AlertProps = {
+  description?: string;
   hasClose?: boolean;
-  actionText?: string;
-  onAction?: () => void;
+  action?: {
+    text: string;
+    onClick: () => void;
+  };
+  severity: 'success' | 'error' | 'warning' | 'info' | 'highlight';
+  title: string;
+  onClose?: () => void;
+};
+
+const mapSeverityIcon = {
+  success: {
+    icon: IconCheck,
+    backgroundColor: colorPalette.background.successBg,
+    borderColor: colorPalette.border.successBorder,
+    color: colorPalette.textColors.successText,
+  },
+  error: {
+    icon: IconExclamationCircle,
+    backgroundColor: colorPalette.background.errorBg,
+    borderColor: colorPalette.border.errorBorder,
+    color: colorPalette.textColors.errorText,
+  },
+  warning: {
+    icon: IconAlertTriangle,
+    backgroundColor: colorPalette.background.warningBg,
+    borderColor: colorPalette.border.warningBorder,
+    color: colorPalette.textColors.warningText,
+  },
+  info: {
+    icon: IconInfoCircle,
+    backgroundColor: colorPalette.background.infoBg,
+    borderColor: colorPalette.border.infoBorder,
+    color: colorPalette.textColors.infoText,
+  },
+  highlight: {
+    icon: IconBulb,
+    backgroundColor: colorPalette.background.secondaryBg,
+    borderColor: colorPalette.border.secondaryBorder,
+    color: colorPalette.textColors.secondaryText,
+  },
 };
 
 const Alert = (props: AlertProps) => {
-  const {
-    title,
-    description,
-    hasClose = false,
-    onClose,
-    actionText,
-    onAction,
-    ...rest
-  } = props;
+  const { title, description, hasClose, onClose, action, severity } = props;
   const [open, setOpen] = useState(true);
 
   if (!open) return null;
 
+  const data = mapSeverityIcon[severity];
+
   return (
     <AlertMui
+      icon={<data.icon color={data.color} />}
       action={
-        hasClose && (
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            size="small"
-            onClick={e => {
-              if (onClose) onClose(e);
-              setOpen(false);
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        )
+        <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+          {action && (
+            <Button
+              variant="text"
+              onClick={action.onClick}
+              sx={{
+                color: data.color,
+                minWidth: 'unset',
+                '&:hover': {
+                  backgroundColor: data.borderColor,
+                },
+              }}
+            >
+              {action.text}
+            </Button>
+          )}
+          {hasClose && (
+            <IconButton
+              sx={{ alignSelf: 'flex-start' }}
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                onClose?.();
+                setOpen(false);
+              }}
+            >
+              <IconX />
+            </IconButton>
+          )}
+        </Stack>
       }
-      {...rest}
+      sx={{
+        backgroundColor: data.backgroundColor,
+        borderColor: data.borderColor,
+        borderStyle: 'solid',
+        color: data.color,
+        p: 2,
+        alignItems: description ? 'normal' : 'center',
+        ':before': {
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          borderLeft: `solid ${colorPalette.graphics.successText} 6px`,
+          borderRadius: '6px',
+          width: '20px',
+        },
+        position: 'relative',
+      }}
     >
-      <AlertTitle>{title}</AlertTitle>
-      <Stack sx={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <Typography>{description}</Typography>
-        {actionText && (
-          <Button
-            variant="text"
-            onClick={onAction}
-          >
-            {actionText}
-          </Button>
-        )}
-      </Stack>
+      <AlertTitle sx={{ mb: description ? 0.25 : 0 }}>{title}</AlertTitle>
+      {description && <Typography>{description}</Typography>}
     </AlertMui>
   );
 };
