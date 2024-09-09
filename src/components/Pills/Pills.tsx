@@ -6,7 +6,7 @@ import {
   IconExclamationCircle,
   IconInfoCircle,
   IconInfoTriangle,
-} from '../theme/hugo/icons';
+} from '@tabler/icons-react';
 
 export type PillsProps = ChipProps & {
   label: string;
