@@ -99,15 +99,13 @@ const Pills = ({
     <Chip
       label={
         <Typography
-          // variant: isSmall ? 'globalXXS' : 'globalXS',
-          // fontWeight: 'fontWeightSemiBold',
+          variant={isSmall ? 'globalXXS' : 'globalXS'}
+          fontWeight={'fontWeightSemiBold'}
           sx={{
             margin: 0,
             padding: 0,
             lineHeight: 'normal',
             color: pillProps.fontColor,
-            fontSize: isSmall ? '12px' : '14px',
-            fontWeight: 500,
             ...sx,
           }}
         >

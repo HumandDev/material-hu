@@ -82,6 +82,4 @@ export const PeopleExperience = {
   TabPanelItem,
 };
 export { sanitizeInput } from './utils/validations';
-
 export * as animations from './utils/animations';
-export { default as Pills } from './components/Pills/Pills';
