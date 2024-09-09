@@ -11,7 +11,6 @@ import {
 export type PillsProps = ChipProps & {
   label: string;
   type?:
-    | 'default'
     | 'error'
     | 'success'
     | 'warning'
@@ -86,7 +85,7 @@ const getPillProps = (type: string, palette: Palette): PillTypeProps => {
 
 const Pills = ({
   label,
-  type = 'default',
+  type = 'error',
   size = 'medium',
   hasIcon = true,
   sx,

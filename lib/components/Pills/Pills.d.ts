@@ -1,7 +1,7 @@
 import { ChipProps } from '@mui/material';
 export type PillsProps = ChipProps & {
     label: string;
-    type?: 'default' | 'error' | 'success' | 'warning' | 'info' | 'highlight' | 'neutral' | 'disabled';
+    type?: 'error' | 'success' | 'warning' | 'info' | 'highlight' | 'neutral' | 'disabled';
     size?: 'small' | 'medium';
     hasIcon?: boolean;
 };
