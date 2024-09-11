@@ -57,8 +57,8 @@ export const FormRadioCustomGroup: FC<FormRadioCustomGroupProps> = props => {
       rules={rules}
       render={({ field }) => (
         <RadioGroup
-          {...other}
           {...field}
+          {...other}
           sx={{
             flexDirection: column ? 'column' : 'row',
             width: fullWidth ? '100%' : undefined,
