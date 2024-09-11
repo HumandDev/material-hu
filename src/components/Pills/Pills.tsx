@@ -132,8 +132,7 @@ const Pills = ({
         px: isSmall ? 1 : 1.5,
         py: isSmall ? 0.5 : 1,
         '& .MuiChip-label': {
-          paddingLeft: 0,
-          paddingRight: 0,
+          px: 0,
         },
       }}
     />
