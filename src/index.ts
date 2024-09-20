@@ -83,3 +83,5 @@ export const PeopleExperience = {
 };
 export { sanitizeInput } from './utils/validations';
 export * as animations from './utils/animations';
+
+export * as HugoComponents from './exports';
