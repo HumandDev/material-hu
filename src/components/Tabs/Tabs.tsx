@@ -21,14 +21,13 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
   );
 
   return (
-    <Stack>
+    <Stack sx={sx}>
       <MuiTabs
         sx={{
           '.MuiTabs-indicator': {
             backgroundColor: theme => theme.palette.base?.blueBrand[400],
             borderRadius: '4px 4px 0px 0px',
           },
-          ...sx,
         }}
         value={currentTab}
         onChange={(e, v) => {
