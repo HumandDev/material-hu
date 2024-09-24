@@ -1,6 +1,6 @@
 import { TabsProps } from '@mui/material';
 type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
-    tabs?: {
+    tabs: {
         label: string;
     }[];
     onTabChange?: (value: string) => void;

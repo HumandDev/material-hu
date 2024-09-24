@@ -9,7 +9,7 @@ import {
 import { useState } from 'react';
 
 type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
-  tabs?: {
+  tabs: {
     label: string;
   }[];
   onTabChange?: (value: string) => void;
