@@ -9,3 +9,4 @@ export { default as CircularProgress } from './components/CircularProgress/Circu
 export { default as Pills } from './components/Pills/Pills';
 export { default as Skeleton } from './components/Skeleton/Skeleton';
 export { default as Title } from './components/Title/Title';
+export { default as Tabs } from './components/Tabs/Tabs';
