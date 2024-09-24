@@ -158,7 +158,16 @@ const CardContainer = ({
       }}
       {...props}
     >
-      <CardContent sx={{ p: 2 }}>{children}</CardContent>
+      <CardContent
+        sx={{
+          p: 2,
+          ':last-child': {
+            pb: 2,
+          },
+        }}
+      >
+        {children}
+      </CardContent>
       {footer && (
         <CardActions
           sx={{
