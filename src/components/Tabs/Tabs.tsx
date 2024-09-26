@@ -12,7 +12,7 @@ type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
   tabs: {
     label: string;
   }[];
-  onTabChange?: (value: string) => void;
+  onTabChange?: (value: string, index: number) => void;
 };
 
 const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
@@ -31,7 +31,10 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
         }}
         value={currentTab}
         onChange={(e, v) => {
-          onTabChange?.(v);
+          onTabChange?.(
+            v,
+            tabs.findIndex(tab => tab.label === v),
+          );
           setCurrentTab(v);
         }}
       >
