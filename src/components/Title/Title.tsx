@@ -63,6 +63,7 @@ const Title = ({
         sx={{
           color: colorPalette.textColors.neutralText,
         }}
+        fontWeight={'fontWeightSemiBold'}
       >
         {title}
       </Typography>
