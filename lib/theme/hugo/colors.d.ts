@@ -59,7 +59,7 @@ export declare const colorPalette: {
             800: string;
         };
     };
-    background: {
+    hugoBackground: {
         neutralBg: string;
         neutralBgSecondary: string;
         neutralBgTransparent: string;
@@ -84,7 +84,7 @@ export declare const colorPalette: {
     textColors: {
         neutralText: string;
         neutralTextLighter: string;
-        neutralTextDisasbled: string;
+        neutralTextDisabled: string;
         primaryText: string;
         neutralTextInverted: string;
         successText: string;

@@ -46,7 +46,7 @@ const CollapsedItemsPopper = ({
             sx={{
               p: 1,
               ':hover': {
-                backgroundColor: colorPalette.background.neutralBgSecondary,
+                backgroundColor: colorPalette.hugoBackground.neutralBgSecondary,
               },
               textDecoration: 'none',
               color: 'inherit',
