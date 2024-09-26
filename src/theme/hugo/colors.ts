@@ -66,7 +66,7 @@ const createBaseColors = () => {
     },
   };
 
-  const background = {
+  const hugoBackground = {
     neutralBg: base.grey[100],
     neutralBgSecondary: base.grey[200],
     neutralBgTransparent: base.greyTransparent['300p20'],
@@ -93,7 +93,7 @@ const createBaseColors = () => {
   const textColors = {
     neutralText: base.grey[800],
     neutralTextLighter: base.grey[600],
-    neutralTextDisasbled: base.grey[600],
+    neutralTextDisabled: base.grey[600],
     primaryText: base.blueBrand[800],
     neutralTextInverted: base.white,
     successText: base.green[800],
@@ -139,7 +139,7 @@ const createBaseColors = () => {
 
   return {
     base,
-    background,
+    hugoBackground,
     border,
     textColors,
     graphics,
