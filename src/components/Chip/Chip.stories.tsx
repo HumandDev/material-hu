@@ -15,6 +15,7 @@ const meta: Meta<typeof Chip> = {
     onClick: () => {
       alert('Chip clicked');
     },
+    isSelected: false,
   },
   argTypes: {
     size: {

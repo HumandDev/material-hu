@@ -86,7 +86,7 @@ const Chip = ({
         },
         px: isSmall ? 0.5 : 1,
       }}
-      deleteIcon={<IconX style={iconStyle} />}
+      deleteIcon={onDelete && <IconX style={iconStyle} />}
     />
   );
 };
