@@ -1,4 +1,4 @@
-import { Stack, SxProps, Typography } from '@mui/material';
+import { Stack, StackProps, Typography } from '@mui/material';
 import { colorPalette } from '../../theme/hugo/colors';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography/Typography';
 
@@ -30,7 +30,7 @@ type Props = {
   title: string;
   centered?: boolean;
   variant: TitleVariant;
-  sx?: SxProps;
+  sx?: StackProps['sx'];
 };
 
 const Title = ({
