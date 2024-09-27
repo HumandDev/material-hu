@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { IconUser } from '@tabler/icons-react';
 import ImgAvatar1 from '../../../static/avatar1.png';
 import Avatar from './Avatar';
 
@@ -66,5 +67,32 @@ export const Fallback: Story = {
     src: 'broken-image.png',
     alt: '',
     text: undefined,
+  },
+};
+
+export const BadgeIconSmall: Story = {
+  args: {
+    Icon: IconUser,
+    src: undefined,
+    text: undefined,
+    size: 'small',
+  },
+};
+
+export const BadgeIconMedium: Story = {
+  args: {
+    Icon: IconUser,
+    src: undefined,
+    text: undefined,
+    size: 'medium',
+  },
+};
+
+export const BadgeIconLarge: Story = {
+  args: {
+    Icon: IconUser,
+    src: undefined,
+    text: undefined,
+    size: 'large',
   },
 };

@@ -7,6 +7,7 @@ import {
   Theme,
 } from '@mui/material';
 import Badge, { BadgeProps } from '../Badge/Badge';
+import { TablerIcon } from '@tabler/icons-react';
 
 export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   size?: 'small' | 'medium' | 'large';
@@ -14,6 +15,7 @@ export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   withBadge?: boolean;
   badgeProps?: BadgeProps;
   text?: string;
+  Icon?: TablerIcon;
 };
 
 export const getSizeInPixels = (size: Props['size']): string => {
@@ -24,6 +26,17 @@ export const getSizeInPixels = (size: Props['size']): string => {
       return '60px';
     default:
       return '40px';
+  }
+};
+
+export const getIconSize = (size: Props['size']) => {
+  switch (size) {
+    case 'small':
+      return 24;
+    case 'large':
+      return 32;
+    default:
+      return 24;
   }
 };
 
@@ -98,6 +111,7 @@ const Avatar = ({
   withBadge = false,
   badgeProps = { variant: 'standard', color: 'primary' },
   text,
+  Icon,
   ...props
 }: Props) => {
   const theme = useTheme();
@@ -130,6 +144,7 @@ const Avatar = ({
       {...props}
     >
       {text}
+      {Icon && <Icon size={getIconSize(size)} />}
     </AvatarMui>
   );
   const forcedVariant =
