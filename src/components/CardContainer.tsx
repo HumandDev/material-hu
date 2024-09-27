@@ -42,6 +42,7 @@ export type CardContainerProps = CardProps & {
           title: string;
         };
       };
+  hasShadow?: boolean;
 };
 
 type BadgeProps = {
@@ -139,6 +140,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
 const CardContainer = ({
   badge = undefined,
   footer = undefined,
+  hasShadow,
   children,
   sx,
   ...props
@@ -153,7 +155,7 @@ const CardContainer = ({
         borderRadius: '16px',
         width: 328,
         border: '1px solid #E9E9F4',
-        boxShadow: '-1px 4px 8px 0px #E9E9F4',
+        boxShadow: hasShadow ? '-1px 4px 8px 0px #E9E9F4' : 'none',
         ...sx,
       }}
       {...props}

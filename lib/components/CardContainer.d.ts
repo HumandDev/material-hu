@@ -21,6 +21,7 @@ export type CardContainerProps = CardProps & {
             title: string;
         };
     };
+    hasShadow?: boolean;
 };
-declare const CardContainer: ({ badge, footer, children, sx, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
+declare const CardContainer: ({ badge, footer, hasShadow, children, sx, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
 export default CardContainer;
