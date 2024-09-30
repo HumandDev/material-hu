@@ -13,7 +13,10 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Default: Story = {
   args: {
-    tabs: [{ label: 'Item', value: 'ITEM' }, { label: 'Item 2', value: 'ITEM_2' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+    ],
   },
 };
 
@@ -25,13 +28,20 @@ export const OneTab: Story = {
 
 export const TwoTabs: Story = {
   args: {
-    tabs: [{ label: 'Item', value: 'ITEM' }, { label: 'Item 2', value: 'ITEM_2' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+    ],
   },
 };
 
 export const ThreeTabs: Story = {
   args: {
-    tabs: [{ label: 'Item', value: 'ITEM' }, { label: 'Item 2', value: 'ITEM_2' }, { label: 'Item 3', value: 'ITEM_3' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+    ],
   },
 };
 
