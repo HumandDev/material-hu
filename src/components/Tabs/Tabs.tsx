@@ -41,7 +41,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
       >
         {tabs?.map(tab => (
           <Tab
-            key={tab.label}
+            key={tab.value}
             label={
               <Typography
                 variant="globalXS"
