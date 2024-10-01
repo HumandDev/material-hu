@@ -18,7 +18,7 @@ import { FC } from 'react';
 
 type Props = Pick<
   TextFieldProps<'outlined'>,
-  'placeholder' | 'sx' | 'inputRef'
+  'placeholder' | 'sx' | 'inputRef' | 'fullWidth'
 > & {
   label?: string;
   helperText?: string;
@@ -157,11 +157,13 @@ const InputClassic = ({
   error,
   maxLength = 100,
   hasCounter = true,
+  fullWidth = true,
 }: Props) => {
   return (
     <FormControl
       sx={sx}
       error={error}
+      fullWidth={fullWidth}
     >
       <CustomLabel label={label} />
       <CustomInput

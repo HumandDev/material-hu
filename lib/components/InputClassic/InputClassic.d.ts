@@ -1,5 +1,5 @@
 import { TextFieldProps } from '@mui/material';
-type Props = Pick<TextFieldProps<'outlined'>, 'placeholder' | 'sx' | 'inputRef'> & {
+type Props = Pick<TextFieldProps<'outlined'>, 'placeholder' | 'sx' | 'inputRef' | 'fullWidth'> & {
     label?: string;
     helperText?: string;
     errorText?: string;
@@ -9,5 +9,5 @@ type Props = Pick<TextFieldProps<'outlined'>, 'placeholder' | 'sx' | 'inputRef'>
     maxLength?: number;
     hasCounter?: boolean;
 };
-declare const InputClassic: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, maxLength, hasCounter, }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const InputClassic: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, maxLength, hasCounter, fullWidth, }: Props) => import("react/jsx-runtime").JSX.Element;
 export default InputClassic;
