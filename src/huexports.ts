@@ -10,3 +10,4 @@ export { default as HuPills } from './components/Pills/Pills';
 export { default as HuSkeleton } from './components/Skeleton/Skeleton';
 export { default as HuTitle } from './components/Title/Title';
 export { default as HuTabs } from './components/Tabs/Tabs';
+export { default as InputClassic } from './components/InputClassic/InputClassic';
