@@ -5,7 +5,7 @@ import FormInputClassic from './FormInputClassic';
 
 const meta: Meta<typeof InputClassic> = {
   component: InputClassic,
-  title: 'InputClassic',
+  title: 'Input/Classic',
   tags: ['autodocs'],
   args: {
     value: 'value!',
@@ -38,6 +38,17 @@ export const Error: Story = {
     errorText: 'Error text',
     value: 'value!',
     error: true,
+  },
+};
+
+export const Success: Story = {
+  args: {
+    placeholder: 'Placeholder',
+    label: 'Label',
+    helperText: 'HelperText',
+    errorText: 'Error text',
+    value: 'value!',
+    success: true,
   },
 };
 
