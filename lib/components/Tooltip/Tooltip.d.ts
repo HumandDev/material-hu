@@ -1,11 +1,10 @@
-import { FC, PropsWithChildren } from 'react';
 type TooltipBodyProps = {
     title?: string;
     description?: string;
-    isRemovable?: boolean;
 };
 export type TooltipProps = TooltipBodyProps & {
     direction?: 'top' | 'left' | 'right' | 'bottom';
+    children: any;
 };
-declare const Tooltip: FC<PropsWithChildren<TooltipProps>>;
+declare const Tooltip: ({ children, ...props }: TooltipProps) => import("react/jsx-runtime").JSX.Element;
 export default Tooltip;
