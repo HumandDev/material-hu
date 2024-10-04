@@ -11,13 +11,14 @@ import { useState } from 'react';
 type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
   tabs: {
     label: string;
+    value: string;
   }[];
   onTabChange?: (value: string, index: number) => void;
 };
 
 const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
   const [currentTab, setCurrentTab] = useState(
-    defaultValue || tabs?.[0]?.label,
+    defaultValue || tabs?.[0]?.value,
   );
 
   return (
@@ -33,14 +34,14 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
         onChange={(e, v) => {
           onTabChange?.(
             v,
-            tabs.findIndex(tab => tab.label === v),
+            tabs.findIndex(tab => tab.value === v),
           );
           setCurrentTab(v);
         }}
       >
         {tabs?.map(tab => (
           <Tab
-            key={tab.label}
+            key={tab.value}
             label={
               <Typography
                 variant="globalXS"
@@ -49,7 +50,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
                 {tab.label}
               </Typography>
             }
-            value={tab.label}
+            value={tab.value}
             sx={{
               px: 1,
               minWidth: 0,

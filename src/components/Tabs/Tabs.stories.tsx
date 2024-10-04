@@ -13,35 +13,45 @@ type Story = StoryObj<typeof Tabs>;
 
 export const Default: Story = {
   args: {
-    tabs: [{ label: 'Item' }, { label: 'Item 2' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+    ],
   },
 };
 
 export const OneTab: Story = {
   args: {
-    tabs: [{ label: 'Item' }],
+    tabs: [{ label: 'Item', value: 'ITEM' }],
   },
 };
 
 export const TwoTabs: Story = {
   args: {
-    tabs: [{ label: 'Item' }, { label: 'Item 2' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+    ],
   },
 };
 
 export const ThreeTabs: Story = {
   args: {
-    tabs: [{ label: 'Item' }, { label: 'Item 2' }, { label: 'Item 3' }],
+    tabs: [
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+    ],
   },
 };
 
 export const FourTabs: Story = {
   args: {
     tabs: [
-      { label: 'Item' },
-      { label: 'Item 2' },
-      { label: 'Item 3' },
-      { label: 'Item 4' },
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+      { label: 'Item 4', value: 'ITEM_4' },
     ],
   },
 };
@@ -49,11 +59,11 @@ export const FourTabs: Story = {
 export const FiveTabs: Story = {
   args: {
     tabs: [
-      { label: 'Item' },
-      { label: 'Item 2' },
-      { label: 'Item 3' },
-      { label: 'Item 4' },
-      { label: 'Item 5' },
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+      { label: 'Item 4', value: 'ITEM_4' },
+      { label: 'Item 5', value: 'ITEM_5' },
     ],
   },
 };
@@ -61,12 +71,12 @@ export const FiveTabs: Story = {
 export const SixTabs: Story = {
   args: {
     tabs: [
-      { label: 'Item' },
-      { label: 'Item 2' },
-      { label: 'Item 3' },
-      { label: 'Item 4' },
-      { label: 'Item 5' },
-      { label: 'Item 6' },
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+      { label: 'Item 4', value: 'ITEM_4' },
+      { label: 'Item 5', value: 'ITEM_5' },
+      { label: 'Item 6', value: 'ITEM_6' },
     ],
   },
 };
@@ -74,13 +84,13 @@ export const SixTabs: Story = {
 export const SevenTabs: Story = {
   args: {
     tabs: [
-      { label: 'Item' },
-      { label: 'Item 2' },
-      { label: 'Item 3' },
-      { label: 'Item 4' },
-      { label: 'Item 5' },
-      { label: 'Item 6' },
-      { label: 'Item 7' },
+      { label: 'Item', value: 'ITEM' },
+      { label: 'Item 2', value: 'ITEM_2' },
+      { label: 'Item 3', value: 'ITEM_3' },
+      { label: 'Item 4', value: 'ITEM_4' },
+      { label: 'Item 5', value: 'ITEM_5' },
+      { label: 'Item 6', value: 'ITEM_6' },
+      { label: 'Item 7', value: 'ITEM_7' },
     ],
   },
 };
