@@ -17,5 +17,7 @@ export const Default: Story = {
     description: 'Description',
     title: 'Title',
     variant: 'XL',
+    descriptionTooltip: 'Description Tooltip',
+    copetinTooltip: 'Copetin Tooltip',
   },
 };
