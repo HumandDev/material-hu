@@ -6,9 +6,9 @@ import {
   useFormControl,
   useTheme,
 } from '@mui/material';
+import { IconAlertCircle, IconChevronDown } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
 import { Props } from './InputSelect';
-import { IconAlertCircle, IconChevronDown } from '@tabler/icons-react';
 
 const CustomSelect: FC<
   Pick<Props, 'value' | 'onChange' | 'inputRef' | 'placeholder' | 'options'>
