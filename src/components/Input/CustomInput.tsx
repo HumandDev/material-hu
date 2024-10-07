@@ -7,6 +7,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { IconAlertCircle, IconCheck, IconX } from '@tabler/icons-react';
+import { getBorderColor } from './utils';
 
 const CustomInput: FC<
   Pick<
@@ -17,19 +18,6 @@ const CustomInput: FC<
   const { focused, error } = useFormControl() || {};
   const hastEndAdornment = success || error || (focused && value.length > 0);
   const theme = useTheme();
-
-  const getBorderColor = () => {
-    if (focused) {
-      return theme.palette.base?.blueBrand[400];
-    }
-    if (error) {
-      return theme.palette.graphics?.errorText;
-    }
-    if (success) {
-      return theme.palette.graphics?.successText;
-    }
-    return theme.palette.border?.neutralBorder;
-  };
 
   return (
     <OutlinedInput
@@ -68,7 +56,7 @@ const CustomInput: FC<
       onChange={e => onChange(e.target.value)}
       sx={{
         '& fieldset': {
-          borderColor: getBorderColor(),
+          borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',
         },
         input: {
