@@ -19,20 +19,15 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
   const handleOnClick = (onChange: Function, param: boolean) => {
     onChange(param);
     if (isOnlyOption) {
-      const values = getValues();
-
       const nameParts = name.split('.');
       const baseRoute = nameParts.slice(0, -1).join('.');
       const currentProperty = nameParts[nameParts.length - 1];
 
-      const baseObject = _.get(values, baseRoute);
+      const baseObject = getValues(baseRoute);
 
-      const remainingInputs = _.omit(baseObject, currentProperty);
-
-      const remainingInputKeys = Object.keys(remainingInputs);
-
-      remainingInputKeys.forEach(key =>
-        setValue([baseRoute, key].join('.'), false),
+      Object.keys(baseObject).forEach(
+        key =>
+          key !== currentProperty && setValue(`${baseRoute}.${key}`, false),
       );
     }
   };
