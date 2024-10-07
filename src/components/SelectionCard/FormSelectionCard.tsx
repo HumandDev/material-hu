@@ -1,5 +1,4 @@
 import { FC, PropsWithChildren } from 'react';
-import _ from 'lodash';
 import { Controller, ControllerProps, useFormContext } from 'react-hook-form';
 import SelectionCard from './SelectionCard';
 
