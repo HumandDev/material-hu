@@ -12,3 +12,4 @@ export { default as HuTitle } from './components/Title/Title';
 export { default as HuTabs } from './components/Tabs/Tabs';
 export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
+export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
