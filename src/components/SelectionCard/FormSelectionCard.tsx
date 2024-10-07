@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
+import _ from 'lodash';
 import { Controller, ControllerProps, useFormContext } from 'react-hook-form';
-
 import SelectionCard from './SelectionCard';
 
 type FormSelectionCardProps = PropsWithChildren<{
@@ -17,29 +17,31 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
   const valueInput = getValues(name);
 
   const handleOnClick = (onChange: Function, param: boolean) => {
+    onChange(param);
     if (isOnlyOption) {
       const values = getValues();
-      const allInputs = Object.keys(values);
 
-      allInputs.forEach(key => {
-        if (name === key) {
-          setValue(key, true);
-        } else {
-          setValue(key, false);
-        }
-      });
-    } else {
-      onChange(param);
+      const nameParts = name.split('.');
+      const baseRoute = nameParts.slice(0, -1).join('.');
+      const currentProperty = nameParts[nameParts.length - 1];
+
+      const baseObject = _.get(values, baseRoute);
+
+      const remainingInputs = _.omit(baseObject, currentProperty);
+
+      const remainingInputKeys = Object.keys(remainingInputs);
+
+      remainingInputKeys.forEach(key =>
+        setValue([baseRoute, key].join('.'), false),
+      );
     }
   };
 
   return (
     <Controller
-      render={({ field: { onChange }, fieldState: { error } }) => (
+      render={({ field: { onChange } }) => (
         <SelectionCard
           onClick={param => handleOnClick(onChange, param)}
-          error={!!error}
-          errorText={error?.message}
           checked={valueInput}
         >
           {children}

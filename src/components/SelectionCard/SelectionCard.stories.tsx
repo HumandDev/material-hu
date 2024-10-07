@@ -79,27 +79,29 @@ export const FormSelectionCardOnlyOneOptionStory: Story = {
   render: () => {
     const form = useForm({
       defaultValues: {
-        myInput1: false,
-        myInput2: false,
+        mainRoute: {
+          myInput1: false,
+          myInput2: false,
+        },
       },
     });
 
-    const { myInput1, myInput2 } = form.watch();
+    const { mainRoute } = form.watch();
 
     return (
       <FormProvider {...form}>
         <Stack sx={{ gap: 1 }}>
           <FormSelectionCard
-            name="myInput1"
+            name="mainRoute.myInput1"
             isOnlyOption
           >
-            <Checkbox checked={myInput1} />
+            <Checkbox checked={mainRoute.myInput1} />
           </FormSelectionCard>
           <FormSelectionCard
-            name="myInput2"
+            name="mainRoute.myInput2"
             isOnlyOption
           >
-            <Checkbox checked={myInput2} />
+            <Checkbox checked={mainRoute.myInput2} />
           </FormSelectionCard>
         </Stack>
       </FormProvider>

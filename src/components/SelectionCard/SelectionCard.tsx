@@ -1,52 +1,42 @@
 import { FC, PropsWithChildren } from 'react';
-import { Typography, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 import CardContainer from '../CardContainer';
 
 export type SelectionCardProps = PropsWithChildren<{
   onClick: (param: boolean) => void;
-  errorText?: string;
-  error?: boolean;
   checked: boolean;
 }>;
 
 const SelectionCard: FC<SelectionCardProps> = props => {
-  const { onClick, children, checked = false, error, errorText } = props;
+  const { onClick, children, checked = false } = props;
 
   const theme = useTheme();
 
   const handleOnClick = () => onClick(!checked);
 
   return (
-    <>
-      <CardContainer
-        onClick={handleOnClick}
-        sx={{
-          '&.MuiPaper-root': {
-            cursor: 'pointer',
-            backgroundColor: checked
-              ? theme.palette.hugoBackground?.primaryBgLighter
-              : theme.palette.hugoBackground?.neutralBgTerciary,
-            borderColor: checked
-              ? theme.palette.border?.primaryBorder
-              : theme.palette.border?.neutralBorder,
+    <CardContainer
+      onClick={handleOnClick}
+      sx={{
+        '&': {
+          cursor: 'pointer',
+          backgroundColor: checked
+            ? theme.palette.hugoBackground?.primaryBgLighter
+            : theme.palette.hugoBackground?.neutralBgTerciary,
+          borderColor: checked
+            ? theme.palette.base?.blueBrand[400]
+            : theme.palette.border?.neutralBorder,
+        },
+        ...(!checked && {
+          '&:hover': {
+            backgroundColor: theme.palette.hugoBackground?.neutralBgTerciary,
+            borderColor: theme.palette.border?.primaryBorder,
           },
-        }}
-      >
-        {children}
-      </CardContainer>
-      {error && (
-        <Typography
-          variant="globalS"
-          fontWeight="fontWeightSemiBold"
-          sx={{
-            color: theme.palette.textColors?.errorText,
-            mb: 0.5,
-          }}
-        >
-          {errorText}
-        </Typography>
-      )}
-    </>
+        }),
+      }}
+    >
+      {children}
+    </CardContainer>
   );
 };
 
