@@ -33,6 +33,9 @@ const CustomHelperText: FC<
         mx: 0,
         mt: 0.5,
         color: getHelperColor(),
+        '&.Mui-error': {
+          color: getHelperColor(),
+        },
       }}
     >
       <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 0.5 }}>
