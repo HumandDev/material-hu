@@ -3,16 +3,30 @@ import {
   InputAdornment,
   MenuItem,
   Select,
+  SelectProps,
   useFormControl,
   useTheme,
 } from '@mui/material';
 import { IconAlertCircle, IconChevronDown } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
-import { Props } from './InputSelect';
 
-const CustomSelect: FC<
-  Pick<Props, 'value' | 'onChange' | 'inputRef' | 'placeholder' | 'options'>
-> = ({ value, onChange, inputRef, placeholder, options }) => {
+export type CustomSelectProps = Pick<
+  SelectProps,
+  'placeholder' | 'inputRef'
+> & {
+  value: string;
+  success?: boolean;
+  onChange: (value: string) => void;
+  options: { label: string; value: string | number }[];
+};
+
+const CustomSelect: FC<CustomSelectProps> = ({
+  value,
+  onChange,
+  inputRef,
+  placeholder,
+  options,
+}) => {
   const { focused, error } = useFormControl() || {};
   const theme = useTheme();
   return (

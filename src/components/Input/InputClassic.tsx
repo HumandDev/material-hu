@@ -1,22 +1,15 @@
-import { FormControl, TextFieldProps } from '@mui/material';
+import { FormControl, FormControlProps } from '@mui/material';
 import CustomLabel from './CustomLabel';
-import CustomInput from './CustomInput';
+import CustomInput, { CustomInputProps } from './CustomInput';
 import CustomHelperText from './CustomHelperText';
 
-export type InputProps = Pick<
-  TextFieldProps<'outlined'>,
-  'placeholder' | 'sx' | 'inputRef' | 'fullWidth'
-> & {
+export type InputProps = Pick<FormControlProps, 'sx' | 'fullWidth'> & {
   label?: string;
   helperText?: string;
   errorText?: string;
-  value: string;
-  onChange: (v: string) => void;
   error?: boolean;
-  success?: boolean;
-  maxLength?: number;
   hasCounter?: boolean;
-};
+} & CustomInputProps;
 
 const InputClassic = ({
   sx = {},
@@ -32,6 +25,7 @@ const InputClassic = ({
   maxLength = 100,
   hasCounter = true,
   fullWidth = true,
+  multiline,
 }: InputProps) => {
   return (
     <FormControl
@@ -50,6 +44,7 @@ const InputClassic = ({
         inputRef={inputRef}
         maxLength={maxLength}
         success={success}
+        multiline={multiline}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}

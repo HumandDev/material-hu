@@ -1,20 +1,33 @@
 import { FC } from 'react';
-import { InputProps } from './InputClassic';
 import {
   InputAdornment,
   OutlinedInput,
+  OutlinedInputProps,
   useFormControl,
   useTheme,
 } from '@mui/material';
 import { IconAlertCircle, IconCheck, IconX } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
 
-const CustomInput: FC<
-  Pick<
-    InputProps,
-    'value' | 'placeholder' | 'onChange' | 'inputRef' | 'maxLength' | 'success'
-  >
-> = ({ value, onChange, placeholder, inputRef, maxLength, success }) => {
+export type CustomInputProps = Pick<
+  OutlinedInputProps,
+  'placeholder' | 'inputRef' | 'multiline'
+> & {
+  value: string;
+  success?: boolean;
+  maxLength?: number;
+  onChange: (value: string) => void;
+};
+
+const CustomInput: FC<CustomInputProps> = ({
+  value,
+  onChange,
+  placeholder,
+  inputRef,
+  maxLength,
+  success,
+  multiline = false,
+}) => {
   const { focused, error } = useFormControl() || {};
   const hastEndAdornment = success || error || (focused && value.length > 0);
   const theme = useTheme();
@@ -22,10 +35,15 @@ const CustomInput: FC<
   return (
     <OutlinedInput
       inputRef={inputRef}
-      inputProps={{ maxLength: maxLength }}
+      inputProps={{ maxLength }}
+      multiline={multiline}
+      minRows={5}
       endAdornment={
         hastEndAdornment && (
-          <InputAdornment position="end">
+          <InputAdornment
+            sx={{ alignSelf: multiline ? 'flex-start' : 'center' }}
+            position="end"
+          >
             {focused && (
               <IconX
                 size={20}
