@@ -74,3 +74,27 @@ export const FormInputClassicStory: Story = {
     );
   },
 };
+
+export const FormInputClassicMultilineStory: Story = {
+  render: () => {
+    const form = useForm({
+      defaultValues: {
+        myInput: '',
+      },
+    });
+    return (
+      <FormProvider {...form}>
+        <FormInputClassic
+          inputProps={{
+            placeholder: 'Placeholder',
+            label: 'Label',
+            helperText: 'HelperText',
+            hasCounter: true,
+            multiline: true,
+          }}
+          name="myInput"
+        />
+      </FormProvider>
+    );
+  },
+};
