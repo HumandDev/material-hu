@@ -12,13 +12,14 @@ import CustomHelperText from '../Input/CustomHelperText';
 import Title from '../Title/Title';
 import FileCard, { FileCardProps } from '../FileCard/FileCard';
 import { useTranslation } from './i18n';
+import { bytesToSize, megabytesToBytes } from '../../utils/bytes';
 
 export type UploaderProps = {
   helperText?: string;
   label?: string;
   value?: FileCardProps[];
   onChange: (files: FileCardProps[]) => void;
-  fileSizeLimitInMB: number;
+  fileSizeLimit: number;
   uploadFunction: (file: File) => Promise<FileCardProps>;
   onDropAccepted?: (files: File[]) => void;
   onFilesUploaded?: (files: FileCardProps[]) => void;
@@ -30,7 +31,7 @@ const Uploader: FC<UploaderProps> = ({
   helperText,
   label,
   value = [],
-  fileSizeLimitInMB = 50,
+  fileSizeLimit = megabytesToBytes(50),
   onDropRejected,
   onDropAccepted,
   uploadFunction,
@@ -55,7 +56,7 @@ const Uploader: FC<UploaderProps> = ({
     },
     maxFiles: 10,
     multiple: true,
-    maxSize: fileSizeLimitInMB * 1024 * 1024,
+    maxSize: fileSizeLimit,
   });
 
   return (
@@ -90,7 +91,9 @@ const Uploader: FC<UploaderProps> = ({
             centered
             variant="S"
             title={t('TITLE')}
-            description={t('ALLOWED_FORMATS', { fileSizeLimitInMB })}
+            description={t('ALLOWED_FORMATS', {
+              fileSizeLimit: bytesToSize(fileSizeLimit),
+            })}
           />
           <Button
             variant="outlined"
