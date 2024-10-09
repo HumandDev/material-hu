@@ -70,6 +70,7 @@ const Title = ({
     <Stack
       sx={{
         textAlign: centered ? 'center' : 'left',
+        alignItems: centered ? 'center' : 'flex-start',
         ...sx,
       }}
     >
