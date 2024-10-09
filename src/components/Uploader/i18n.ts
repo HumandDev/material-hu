@@ -3,18 +3,19 @@ import { useTranslation as usei18nextTranslation } from 'react-i18next';
 
 const NAMESPACE = 'UPLOADER';
 
-/*const isInitialized = i18next.options;
+const isInitialized = !!i18next.options.ns?.length;
 
-i18next.addResources('es', NAMESPACE, {
-  TITLE: 'Elija un archivo o arrástrelo aquí',
-});
+if (isInitialized) {
+  i18next.addResources('es', NAMESPACE, {
+    TITLE: 'Elija un archivo o arrástrelo aquí',
+  });
 
-i18next.addResources('en', NAMESPACE, {
-  TITLE: 'Choose a file or drag it here',
-});
+  i18next.addResources('en', NAMESPACE, {
+    TITLE: 'Choose a file or drag it here',
+  });
 
-i18next.addResources('pt', NAMESPACE, {
-  TITLE: 'Escolha um arquivo ou arraste-o aqui',
-});*/
-
+  i18next.addResources('pt', NAMESPACE, {
+    TITLE: 'Escolha um arquivo ou arraste-o aqui',
+  });
+}
 export const useTranslation = () => usei18nextTranslation(NAMESPACE);
