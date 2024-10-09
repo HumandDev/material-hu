@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { Meta, StoryObj } from '@storybook/react';
 import Uploader from './Uploader';
 
@@ -9,6 +10,12 @@ const meta: Meta<typeof Uploader> = {
     helperText: 'Helper Text',
     label: 'Label',
     uploads: [],
+    onDropAccepted(files, event) {
+      console.log('onDropAccepted', files, event);
+    },
+    onDropRejected(files, event) {
+      console.log('onDropRejected', files, event);
+    },
   },
 };
 

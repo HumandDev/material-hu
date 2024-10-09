@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Stack, Typography, Button } from '@mui/material';
+import { useDropzone, DropzoneProps } from 'react-dropzone';
 import { IconUpload } from '@tabler/icons-react';
 import CustomHelperText from '../Input/CustomHelperText';
 import Title from '../Title/Title';
@@ -10,10 +11,31 @@ export type UploaderProps = {
   helperText?: string;
   label?: string;
   uploads?: FileCardProps[];
-};
+  fileSizeLimitInMB: number;
+} & Pick<DropzoneProps, 'onDropAccepted' | 'onDropRejected'>;
 
-const Uploader: FC<UploaderProps> = ({ helperText, label, uploads = [] }) => {
+const Uploader: FC<UploaderProps> = ({
+  helperText,
+  label,
+  uploads = [],
+  fileSizeLimitInMB = 50,
+  onDropRejected,
+  onDropAccepted,
+}) => {
   const { t } = useTranslation();
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDropAccepted,
+    onDropRejected,
+    accept: {
+      'image/*': ['.jpg', '.png'],
+      'application/pdf': ['.pdf'],
+    },
+    maxFiles: 10,
+    multiple: true,
+    maxSize: fileSizeLimitInMB * 1024 * 1024,
+  });
+
   return (
     <Stack>
       <Typography
@@ -35,22 +57,24 @@ const Uploader: FC<UploaderProps> = ({ helperText, label, uploads = [] }) => {
           gap: 1,
           borderRadius: 2,
         }}
+        {...getRootProps()}
       >
+        <input {...getInputProps()} />
         <Title
           centered
           variant="S"
           title={t('TITLE')}
-          description="Formatos permitidos: PDF, JPG o PNG hasta 50mb"
+          description={t('ALLOWED_FORMATS', { fileSizeLimitInMB })}
         />
         <Button
           variant="outlined"
           size="small"
           endIcon={<IconUpload size={16} />}
         >
-          Subir archivo
+          {t('UPLOAD_FILE')}
         </Button>
       </Stack>
-      {!!uploads?.length && (
+      {!uploads?.length && (
         <CustomHelperText
           value=""
           helperText={helperText}
