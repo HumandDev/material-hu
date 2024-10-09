@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import type { Meta, StoryObj } from '@storybook/react';
-import Uploader from './Uploader';
 import { FormProvider, useForm } from 'react-hook-form';
+import Uploader from './Uploader';
 import FormUploader from './FormUploader';
 
 const meta: Meta<typeof Uploader> = {
@@ -30,22 +30,22 @@ export const WithUploads: Story = {
   args: {
     value: [
       {
-        name: 'file 1',
-        format: 'PDF',
-        size: 300,
         status: 'success',
+        file: new File([], 'file1.pdf', {
+          type: 'application/pdf',
+        }),
       },
       {
-        name: 'file 2',
-        format: 'PDF',
-        size: 300,
         status: 'error',
+        file: new File([], 'file1.pdf', {
+          type: 'application/pdf',
+        }),
       },
       {
-        name: 'file 3',
-        format: 'PDF',
-        size: 3000,
         status: 'uploading',
+        file: new File([], 'file1.pdf', {
+          type: 'application/pdf',
+        }),
       },
     ],
   },
@@ -65,15 +65,12 @@ export const UploaderWithForm: Story = {
           uploaderProps={{
             sx: { width: '100%' },
             label: 'Upload Files',
-            fileSizeLimitInMB: 400,
             helperText: 'Upload your files here',
             uploadFunction: file =>
               new Promise(resolve =>
                 resolve({
-                  name: file.name,
                   status: 'success',
-                  format: file.type,
-                  size: file.size,
+                  file,
                 }),
               ),
           }}

@@ -1,28 +1,29 @@
-import { FC } from 'react';
 import {
-  Stack,
-  Typography,
   Button,
   FormControl,
   FormControlProps,
+  Stack,
+  Typography,
 } from '@mui/material';
-import { useDropzone, DropzoneProps } from 'react-dropzone';
 import { IconUpload } from '@tabler/icons-react';
+import _ from 'lodash';
+import { FC } from 'react';
+import { DropzoneProps, useDropzone } from 'react-dropzone';
+import { bytesToSize, megabytesToBytes } from '../../utils/bytes';
+import FileCard, { FileCardType } from '../FileCard/FileCard';
 import CustomHelperText from '../Input/CustomHelperText';
 import Title from '../Title/Title';
-import FileCard, { FileCardProps } from '../FileCard/FileCard';
 import { useTranslation } from './i18n';
-import { bytesToSize, megabytesToBytes } from '../../utils/bytes';
 
 export type UploaderProps = {
   helperText?: string;
   label?: string;
-  value?: FileCardProps[];
-  onChange: (files: FileCardProps[]) => void;
-  fileSizeLimit: number;
-  uploadFunction: (file: File) => Promise<FileCardProps>;
+  value?: FileCardType[];
+  onChange: (files: FileCardType[]) => void;
+  fileSizeLimit?: number;
+  uploadFunction: (file: File) => Promise<FileCardType>;
   onDropAccepted?: (files: File[]) => void;
-  onFilesUploaded?: (files: FileCardProps[]) => void;
+  onFilesUploaded?: (files: FileCardType[]) => void;
   error?: boolean;
   sx?: FormControlProps['sx'];
 } & Pick<DropzoneProps, 'onDropRejected'>;
@@ -111,8 +112,10 @@ const Uploader: FC<UploaderProps> = ({
         )}
         {value?.map(u => (
           <FileCard
-            key={u.name}
+            key={u.file.name}
             sx={{ width: '100%', mt: 1 }}
+            onRemove={() => onChange(_.without(value, u))}
+            onReupload={() => handleDropAccepted([u.file])}
             {...u}
           />
         ))}

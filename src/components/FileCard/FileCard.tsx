@@ -7,42 +7,56 @@ import {
   IconAlertTriangle,
   IconTrash,
   IconDownload,
+  IconExchange,
 } from '@tabler/icons-react';
 import Title from '../Title/Title';
 import Avatar from '../Avatar/Avatar';
 import CardContainer, { CardContainerProps } from '../CardContainer';
+import { downloadFile } from '../../utils/files';
+import { bytesToSize } from '../../utils/bytes';
 
-export type FileCardProps = {
+export type FileCardType = {
   status: 'uploading' | 'success' | 'error';
-  name: string;
-  size: number;
-  format: string;
-  sx?: CardContainerProps['sx'];
+  file: File;
 };
 
-const FileCard: FC<FileCardProps> = ({ status, name, size, format, sx }) => {
+export type FileCardProps = FileCardType & {
+  sx?: CardContainerProps['sx'];
+  onRemove: () => void;
+  onReupload: () => void;
+};
+
+const FileCard: FC<FileCardProps> = ({
+  status,
+  sx,
+  onRemove,
+  onReupload,
+  file,
+}) => {
   const theme = useTheme();
   let Icon = null;
   let iconColor: ComponentProps<typeof Avatar>['color'] = 'primary';
   let description = '';
   let descriptionColor = null;
   let RemoveIcon = IconTrash;
-  let ExtraIcon = null;
+  let ReuploadIcon = null;
+  let DownloadIcon = null;
   let backgroundColor = null;
   let borderColor = null;
   switch (status) {
     case 'success':
       Icon = IconCheck;
-      description = `${size} mb • ${format}`;
-      ExtraIcon = IconDownload;
+      description = `${bytesToSize(file.size)} • ${file.type}`;
+      DownloadIcon = IconDownload;
       break;
     case 'uploading':
       Icon = IconFile;
-      description = `${size} mb • Cargando...`;
+      description = `${bytesToSize(file.size)} • Cargando...`;
       RemoveIcon = IconX;
       break;
     case 'error':
       Icon = IconAlertTriangle;
+      ReuploadIcon = IconExchange;
       iconColor = 'error';
       backgroundColor = theme.palette.hugoBackground?.errorBg;
       borderColor = theme.palette.graphics?.errorText;
@@ -66,7 +80,7 @@ const FileCard: FC<FileCardProps> = ({ status, name, size, format, sx }) => {
         />
         <Title
           variant="S"
-          title={name}
+          title={file.name}
           description={description}
           sx={{
             flex: 1,
@@ -75,8 +89,22 @@ const FileCard: FC<FileCardProps> = ({ status, name, size, format, sx }) => {
             },
           }}
         />
-        <RemoveIcon size={24} />
-        {ExtraIcon && <ExtraIcon size={24} />}
+        {ReuploadIcon && (
+          <ReuploadIcon
+            onClick={onReupload}
+            size={24}
+          />
+        )}
+        {DownloadIcon && (
+          <DownloadIcon
+            onClick={() => downloadFile(file)}
+            size={24}
+          />
+        )}
+        <RemoveIcon
+          onClick={onRemove}
+          size={24}
+        />
       </Stack>
       {status === 'uploading' && (
         <LinearProgress
