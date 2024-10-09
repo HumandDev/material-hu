@@ -10,6 +10,7 @@ initializeCheck(() => {
     ALLOWED_FORMATS:
       'Formatos permitidos: PDF, JPG o PNG hasta {{fileSizeLimitInMB}} MB',
     UPLOAD_FILE: 'Subir archivo',
+    SOME_FILE_NOT_UPLOADED: 'Alguno de tus archivos no pudo ser cargado',
   });
 
   i18next.addResources('en', NAMESPACE, {
@@ -17,6 +18,7 @@ initializeCheck(() => {
     ALLOWED_FORMATS:
       'Allowed formats: PDF, JPG or PNG up to {{fileSizeLimitInMB}} MB',
     UPLOAD_FILE: 'Upload file',
+    SOME_FILE_NOT_UPLOADED: 'Some of your files could not be uploaded',
   });
 
   i18next.addResources('pt', NAMESPACE, {
@@ -24,6 +26,8 @@ initializeCheck(() => {
     ALLOWED_FORMATS:
       'Formatos permitidos: PDF, JPG ou PNG até {{fileSizeLimitInMB}} MB',
     UPLOAD_FILE: 'Carregar arquivo',
+    SOME_FILE_NOT_UPLOADED:
+      'Alguns dos seus arquivos não puderam ser carregados',
   });
 
   i18next.addResources('de', NAMESPACE, {
@@ -31,6 +35,8 @@ initializeCheck(() => {
     ALLOWED_FORMATS:
       'Zulässige Formate: PDF, JPG oder PNG bis zu {{fileSizeLimitInMB}} MB',
     UPLOAD_FILE: 'Datei hochladen',
+    SOME_FILE_NOT_UPLOADED:
+      'Einige Ihrer Dateien konnten nicht hochgeladen werden',
   });
 });
 

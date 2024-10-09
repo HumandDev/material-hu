@@ -1,5 +1,11 @@
 import { FC } from 'react';
-import { Stack, Typography, Button } from '@mui/material';
+import {
+  Stack,
+  Typography,
+  Button,
+  FormControl,
+  FormControlProps,
+} from '@mui/material';
 import { useDropzone, DropzoneProps } from 'react-dropzone';
 import { IconUpload } from '@tabler/icons-react';
 import CustomHelperText from '../Input/CustomHelperText';
@@ -10,22 +16,38 @@ import { useTranslation } from './i18n';
 export type UploaderProps = {
   helperText?: string;
   label?: string;
-  uploads?: FileCardProps[];
+  value?: FileCardProps[];
+  onChange: (files: FileCardProps[]) => void;
   fileSizeLimitInMB: number;
-} & Pick<DropzoneProps, 'onDropAccepted' | 'onDropRejected'>;
+  uploadFunction: (file: File) => Promise<FileCardProps>;
+  onDropAccepted?: (files: File[]) => void;
+  onFilesUploaded?: (files: FileCardProps[]) => void;
+  error?: boolean;
+  sx?: FormControlProps['sx'];
+} & Pick<DropzoneProps, 'onDropRejected'>;
 
 const Uploader: FC<UploaderProps> = ({
   helperText,
   label,
-  uploads = [],
+  value = [],
   fileSizeLimitInMB = 50,
   onDropRejected,
   onDropAccepted,
+  uploadFunction,
+  onChange,
+  error,
+  sx,
 }) => {
   const { t } = useTranslation();
 
+  const handleDropAccepted = async (files: File[]) => {
+    onDropAccepted?.(files);
+    const fileCards = await Promise.all(files.map(uploadFunction));
+    onChange(fileCards);
+  };
+
   const { getRootProps, getInputProps } = useDropzone({
-    onDropAccepted,
+    onDropAccepted: handleDropAccepted,
     onDropRejected,
     accept: {
       'image/*': ['.jpg', '.png'],
@@ -37,57 +59,62 @@ const Uploader: FC<UploaderProps> = ({
   });
 
   return (
-    <Stack>
-      <Typography
-        variant="globalS"
-        fontWeight="fontWeightSemiBold"
-        sx={{
-          color: theme => theme.palette.textColors?.neutralText,
-          mb: 1,
-        }}
-      >
-        {label}
-      </Typography>
-      <Stack
-        sx={{
-          borderStyle: 'dashed',
-          borderColor: theme => theme.palette.border?.neutralBorder,
-          py: 3,
-          alignItems: 'center',
-          gap: 1,
-          borderRadius: 2,
-        }}
-        {...getRootProps()}
-      >
-        <input {...getInputProps()} />
-        <Title
-          centered
-          variant="S"
-          title={t('TITLE')}
-          description={t('ALLOWED_FORMATS', { fileSizeLimitInMB })}
-        />
-        <Button
-          variant="outlined"
-          size="small"
-          endIcon={<IconUpload size={16} />}
+    <FormControl
+      error={error}
+      sx={sx}
+    >
+      <Stack>
+        <Typography
+          variant="globalS"
+          fontWeight="fontWeightSemiBold"
+          sx={{
+            color: theme => theme.palette.textColors?.neutralText,
+            mb: 1,
+          }}
         >
-          {t('UPLOAD_FILE')}
-        </Button>
+          {label}
+        </Typography>
+        <Stack
+          sx={{
+            borderStyle: 'dashed',
+            borderColor: theme => theme.palette.border?.neutralBorder,
+            py: 3,
+            alignItems: 'center',
+            gap: 1,
+            borderRadius: 2,
+          }}
+          {...getRootProps()}
+        >
+          <input {...getInputProps()} />
+          <Title
+            centered
+            variant="S"
+            title={t('TITLE')}
+            description={t('ALLOWED_FORMATS', { fileSizeLimitInMB })}
+          />
+          <Button
+            variant="outlined"
+            size="small"
+            endIcon={<IconUpload size={16} />}
+          >
+            {t('UPLOAD_FILE')}
+          </Button>
+        </Stack>
+        {(error || !value.length) && (
+          <CustomHelperText
+            value=""
+            helperText={helperText}
+          />
+        )}
+        {value?.map(u => (
+          <FileCard
+            key={u.name}
+            sx={{ width: '100%', mt: 1 }}
+            {...u}
+          />
+        ))}
       </Stack>
-      {!uploads?.length && (
-        <CustomHelperText
-          value=""
-          helperText={helperText}
-        />
-      )}
-      {uploads?.map(u => (
-        <FileCard
-          key={u.name}
-          sx={{ width: '100%', mt: 1 }}
-          {...u}
-        />
-      ))}
-    </Stack>
+    </FormControl>
   );
 };
 

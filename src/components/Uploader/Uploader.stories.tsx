@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import type { Meta, StoryObj } from '@storybook/react';
 import Uploader from './Uploader';
+import { FormProvider, useForm } from 'react-hook-form';
+import FormUploader from './FormUploader';
 
 const meta: Meta<typeof Uploader> = {
   component: Uploader,
@@ -9,13 +11,14 @@ const meta: Meta<typeof Uploader> = {
   args: {
     helperText: 'Helper Text',
     label: 'Label',
-    uploads: [],
-    onDropAccepted(files, event) {
-      console.log('onDropAccepted', files, event);
+    value: [],
+    onDropAccepted: files => {
+      console.log('onDropAccepted', files);
     },
-    onDropRejected(files, event) {
+    onDropRejected: (files, event) => {
       console.log('onDropRejected', files, event);
     },
+    sx: { width: '100%' },
   },
 };
 
@@ -25,7 +28,7 @@ type Story = StoryObj<typeof Uploader>;
 
 export const WithUploads: Story = {
   args: {
-    uploads: [
+    value: [
       {
         name: 'file 1',
         format: 'PDF',
@@ -45,5 +48,37 @@ export const WithUploads: Story = {
         status: 'uploading',
       },
     ],
+  },
+};
+
+export const UploaderWithForm: Story = {
+  render: () => {
+    const form = useForm({
+      defaultValues: {
+        files: [],
+      },
+    });
+    return (
+      <FormProvider {...form}>
+        <FormUploader
+          name="files"
+          uploaderProps={{
+            sx: { width: '100%' },
+            label: 'Upload Files',
+            fileSizeLimitInMB: 400,
+            helperText: 'Upload your files here',
+            uploadFunction: file =>
+              new Promise(resolve =>
+                resolve({
+                  name: file.name,
+                  status: 'success',
+                  format: file.type,
+                  size: file.size,
+                }),
+              ),
+          }}
+        />
+      </FormProvider>
+    );
   },
 };
