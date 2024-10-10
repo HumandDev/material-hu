@@ -14,3 +14,4 @@ export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
 export { default as HuUploader } from './components/Uploader/Uploader';
+export { default as HuFormUploader } from './components/Uploader/FormUploader';
