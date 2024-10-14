@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { ThemeOptions } from '@mui/material';
+import { colorPalette } from './colors';
 
 const typographyWeight = {
   fontWeightRegular: 400,
@@ -15,6 +16,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalXS: {
     fontFamily: 'Roboto',
@@ -22,6 +24,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalS: {
     fontFamily: 'Roboto',
@@ -29,6 +32,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalM: {
     fontFamily: 'Roboto',
@@ -36,6 +40,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalL: {
     fontFamily: 'Roboto',
@@ -43,6 +48,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalXL: {
     fontFamily: 'Roboto',
@@ -50,6 +56,7 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '130%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
   globalXXL: {
     fontFamily: 'Roboto',
@@ -57,5 +64,6 @@ export const typography: ThemeOptions['typography'] = {
     lineHeight: '140%',
     fontWeight: typographyWeight.fontWeightRegular,
     letterSpacing: 0.2,
+    color: colorPalette.textColors.neutralText,
   },
 };
