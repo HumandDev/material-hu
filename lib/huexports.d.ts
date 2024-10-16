@@ -15,3 +15,5 @@ export { default as HuFormInputClassic } from './components/Input/FormInputClass
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
 export { default as HuCheckbox } from './components/Checkbox/Checkbox';
 export { default as HuFormCheckbox } from './components/Checkbox/FormCheckbox';
+export { default as HuMenu } from './components/Menu/Menu';
+export { default as HuMenuItem } from './components/Menu/MenuItem';
