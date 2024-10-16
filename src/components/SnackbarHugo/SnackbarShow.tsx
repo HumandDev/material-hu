@@ -17,18 +17,21 @@ export const useSnackbar = () => {
 export const SnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [snackbarProps, setSnackbarProps] = useState<SnackbarProps | null>(
-    null,
-  );
+  const [snackbarQueue, setSnackbarQueue] = useState<SnackbarProps[]>([]);
 
   const showSnackbar = (props: SnackbarProps) => {
-    setSnackbarProps(props);
+    setSnackbarQueue(prev => [...prev, props]); // Agregar nuevo Snackbar a la cola
   };
 
   return (
     <SnackbarContext.Provider value={{ showSnackbar }}>
       {children}
-      {snackbarProps && <SnackbarWrapper {...snackbarProps} />}
+      {snackbarQueue.map((snackbarProps, index) => (
+        <SnackbarWrapper
+          key={index}
+          {...snackbarProps}
+        />
+      ))}
     </SnackbarContext.Provider>
   );
 };
