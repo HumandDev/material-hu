@@ -1,1 +1,1 @@
-export declare const initializeCheck: (init: () => void) => Promise<void>;
+export declare const initializeCheck: (init: () => void) => void;
