@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  Snackbar,
+  Snackbar as SnackbarMUI,
   SnackbarContent,
   IconButton,
   useTheme,
@@ -19,7 +19,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 
-type SnackbarProps = {
+export type SnackbarProps = {
   variant: 'success' | 'error' | 'warning' | 'info';
   title?: string;
   description?: string;
@@ -87,7 +87,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
   }, []);
 
   return (
-    <Snackbar
+    <SnackbarMUI
       open={open}
       autoHideDuration={10000}
       onClose={handleClose}
@@ -208,7 +208,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
           }}
         />
       </div>
-    </Snackbar>
+    </SnackbarMUI>
   );
 };
 
