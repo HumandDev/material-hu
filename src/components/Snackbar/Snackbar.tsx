@@ -122,7 +122,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
                 overlap="circular"
                 sx={{
                   mr: 2,
-                  mb: 2,
+                  mb: description ? 2 : 0,
                   '.MuiBadge-badge': {
                     backgroundColor: iconColor,
                     minWidth: 24,
@@ -199,7 +199,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
           variant="determinate"
           value={progress}
           sx={{
-            height: '10px',
+            height: '6px',
             backgroundColor: color,
             '& .MuiLinearProgress-bar': {
               backgroundColor: iconColor,
