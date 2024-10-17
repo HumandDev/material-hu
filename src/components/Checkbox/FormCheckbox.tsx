@@ -11,11 +11,12 @@ type Props = {
 const FormCheckbox = ({ name, checkBoxProps, rules }: Props) => {
   return (
     <Controller
-      render={({ field: { value, ...field }, fieldState: { error } }) => (
+      render={({ field: { value, ref, ...field }, fieldState: { error } }) => (
         <Checkbox
           checked={Boolean(value)}
           {...field}
           {...checkBoxProps}
+          inputRef={ref}
           error={!!error}
         />
       )}

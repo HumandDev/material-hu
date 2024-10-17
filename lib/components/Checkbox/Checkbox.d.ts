@@ -6,5 +6,6 @@ type CustomProps = {
     extraInfo?: string;
     error?: boolean;
 };
-declare const Checkbox: FC<CustomProps & CheckboxProps>;
+type OriginalProps = Pick<CheckboxProps, 'aria-describedby' | 'aria-label' | 'checked' | 'defaultChecked' | 'disabled' | 'indeterminate' | 'onChange' | 'onClick' | 'readOnly' | 'sx'>;
+declare const Checkbox: FC<CustomProps & OriginalProps>;
 export default Checkbox;

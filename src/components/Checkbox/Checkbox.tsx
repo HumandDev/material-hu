@@ -19,7 +19,22 @@ type CustomProps = {
   error?: boolean;
 };
 
-const Checkbox: FC<CustomProps & CheckboxProps> = ({
+type OriginalProps = Pick<
+  CheckboxProps,
+  | 'aria-describedby'
+  | 'aria-label'
+  | 'checked'
+  | 'defaultChecked'
+  | 'disabled'
+  | 'indeterminate'
+  | 'inputRef'
+  | 'onChange'
+  | 'onClick'
+  | 'readOnly'
+  | 'sx'
+>;
+
+const Checkbox: FC<CustomProps & OriginalProps> = ({
   description,
   error = false,
   extraInfo,
@@ -45,6 +60,8 @@ const Checkbox: FC<CustomProps & CheckboxProps> = ({
         indeterminateIcon={<IconIndeterminateCheckBox fontSize="medium" />}
         sx={{
           color: palette.textColors?.neutralTextLighter,
+          height: '24px',
+          padding: 0,
           ...(error && { color: palette.graphics?.errorText }),
           '&:hover': {
             color: primaryColor,
@@ -106,6 +123,7 @@ const Checkbox: FC<CustomProps & CheckboxProps> = ({
         <Typography
           variant="globalS"
           sx={{
+            lineHeight: '24px',
             ...(error && { color: palette.textColors?.errorText }),
           }}
         >
@@ -125,7 +143,7 @@ const Checkbox: FC<CustomProps & CheckboxProps> = ({
           variant="globalXS"
           sx={{
             color: palette.textColors?.neutralTextLighter,
-            ml: 0.5,
+            ml: 3.5,
           }}
         >
           {extraInfo}

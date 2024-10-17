@@ -6,11 +6,8 @@ import FormCheckbox from './FormCheckbox';
 
 const meta: Meta<typeof CustomCheckbox> = {
   component: CustomCheckbox,
-  title: 'Checkbox',
+  title: 'Input/Checkbox',
   tags: ['autodocs'],
-  args: {
-    disabled: false,
-  },
 };
 
 export default meta;
