@@ -3,14 +3,16 @@ import { IconCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 
 export type ButtonGroupProps = {
-  labels: string[];
+  labels: [string, string] | [string, string, string]; // Min 3 buttons - Max 3 buttons
+  onChange?: (index: number) => void;
 };
 
-const ButtonGroup = ({ labels }: ButtonGroupProps) => {
+const ButtonGroup = ({ labels, onChange }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
   const buttonSelection = (index: number) => {
     setSelectedButton(prevSelected => (prevSelected === index ? null : index));
+    onChange?.(index);
   };
 
   const {

@@ -30,3 +30,10 @@ export const Three: Story = {
     labels: ['Button 1', 'Button 2', 'Button 3'],
   },
 };
+
+export const WithOnChange: Story = {
+  args: {
+    labels: ['Button 1', 'Button 2', 'Button 3'],
+    onChange: () => alert('onChange function'),
+  },
+};
