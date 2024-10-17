@@ -42,6 +42,8 @@ export const SnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
     setVisibleSnackbars(prev => prev.filter((_, i) => i !== index));
   };
 
+  console.error(visibleSnackbars);
+
   return (
     <SnackbarContext.Provider value={{ enqueueSnackbar }}>
       {children}
