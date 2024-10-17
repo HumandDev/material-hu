@@ -125,7 +125,7 @@ const createBaseColors = () => {
 
   const shadows = {
     '4dp': base.greyTransparent['900p40'],
-    '8dp': base.grey[900],
+    '8dp': base.grey[400],
     inverted: base.grey[900],
   };
 
