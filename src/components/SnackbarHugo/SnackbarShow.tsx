@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import SnackbarWrapper, { SnackbarProps } from './SnackbarWrapper';
+import { Box } from '@mui/material';
 
 type SnackbarContextType = {
   enqueueSnackbar: (props: SnackbarProps) => void;
@@ -45,11 +46,18 @@ export const SnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
     <SnackbarContext.Provider value={{ enqueueSnackbar }}>
       {children}
       {visibleSnackbars.map((snackbarProps, index) => (
-        <SnackbarWrapper
+        <Box
           key={index}
-          onClose={() => closeSnackbar(index)}
-          {...snackbarProps}
-        />
+          sx={{
+            mb: 2, // Margen entre snackbars
+            transition: 'all 0.3s', // Transición suave
+          }}
+        >
+          <SnackbarWrapper
+            {...snackbarProps}
+            onClose={() => closeSnackbar(index)}
+          />
+        </Box>
       ))}
     </SnackbarContext.Provider>
   );
