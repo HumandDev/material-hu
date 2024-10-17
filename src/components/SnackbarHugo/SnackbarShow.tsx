@@ -25,18 +25,21 @@ export const SnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    // Si hay menos de 3 snackbars visibles, mostrar el siguiente en cola
-    if (visibleSnackbars.length < 3 && snackbarQueue.length > 0) {
-      setVisibleSnackbars(prev => [...prev, snackbarQueue[0]]);
-      setSnackbarQueue(prevQueue => prevQueue.slice(1));
-    }
+    if (snackbarQueue.length > 0) {
+      setVisibleSnackbars(prev => {
+        // Si ya hay 3 snackbars -> eliminar el más antiguo
+        if (prev.length >= 3) return [...prev.slice(1), snackbarQueue[0]];
 
-    // Si hay más de 3 snackbars, cerrar el más antiguo (el primero de la lista)
-    if (visibleSnackbars.length === 3 && snackbarQueue.length > 0) {
-      setVisibleSnackbars(prev => [...prev.slice(1), snackbarQueue[0]]);
+        // Si hay menos de 3 -> agregar uno nuevo
+        return [...prev, snackbarQueue[0]];
+      });
       setSnackbarQueue(prevQueue => prevQueue.slice(1));
     }
-  }, [snackbarQueue, visibleSnackbars]);
+  }, [snackbarQueue]);
+
+  const closeSnackbar = (index: number) => {
+    setVisibleSnackbars(prev => prev.filter((_, i) => i !== index));
+  };
 
   return (
     <SnackbarContext.Provider value={{ enqueueSnackbar }}>
@@ -44,6 +47,7 @@ export const SnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
       {visibleSnackbars.map((snackbarProps, index) => (
         <SnackbarWrapper
           key={index}
+          onClose={() => closeSnackbar(index)}
           {...snackbarProps}
         />
       ))}

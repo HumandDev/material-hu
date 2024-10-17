@@ -8,6 +8,7 @@ export type SnackbarProps = {
         text: string;
         onClick: () => void;
     };
+    onClose?: () => void;
 };
 declare const SnackbarWrapper: React.FC<SnackbarProps>;
 export default SnackbarWrapper;

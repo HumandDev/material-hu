@@ -96,4 +96,3 @@ export declare const PeopleExperience: {
 export { sanitizeInput } from './utils/validations';
 export * as animations from './utils/animations';
 export * from './huexports';
-export { useSnackbar, SnackbarProvider, } from './components/SnackbarHugo/SnackbarShow';

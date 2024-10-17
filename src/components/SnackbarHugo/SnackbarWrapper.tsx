@@ -28,6 +28,7 @@ export type SnackbarProps = {
     text: string;
     onClick: () => void;
   };
+  onClose?: () => void;
 };
 
 const SnackbarWrapper: React.FC<SnackbarProps> = ({
@@ -36,6 +37,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
   hasClose = true,
   cancelAction = null,
   variant,
+  onClose,
 }) => {
   const [open, setOpen] = useState(true);
   const { palette } = useTheme();
@@ -43,6 +45,7 @@ const SnackbarWrapper: React.FC<SnackbarProps> = ({
 
   const handleClose = () => {
     setOpen(false);
+    onClose?.();
   };
 
   const getProps = (): {
