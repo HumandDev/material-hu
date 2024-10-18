@@ -104,7 +104,7 @@ const Checkbox: FC<CustomProps & OriginalProps> = ({
           '&.Mui-disabled': {
             color: palette.shadows?.['8dp'],
           },
-          // Without these the stacking context would hide the hover and focus style on web and admin
+          // Without these the stacking order would hide the hover and focus style on web and admin
           'input[type="checkbox"]': {
             zIndex: 2,
           },
