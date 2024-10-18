@@ -34,6 +34,6 @@ export const Three: Story = {
 export const WithOnChange: Story = {
   args: {
     labels: ['Button 1', 'Button 2', 'Button 3'],
-    onChange: () => alert('onChange function'),
+    onChange: index => alert(`You have clicked ${index + 1}`),
   },
 };
