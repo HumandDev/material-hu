@@ -14,7 +14,7 @@ import { IconSquare } from '@tabler/icons-react';
 
 type CustomProps = {
   label: string;
-  description: string;
+  description?: string;
   extraInfo?: string;
   error?: boolean;
 };
@@ -73,7 +73,6 @@ const Checkbox: FC<CustomProps & OriginalProps> = ({
               height: '20px',
               position: 'absolute',
               width: '20px',
-              zIndex: '-1',
             },
           },
           '&:focus-within': {
@@ -85,7 +84,6 @@ const Checkbox: FC<CustomProps & OriginalProps> = ({
               height: '24px',
               position: 'absolute',
               width: '24px',
-              zIndex: '-1',
             },
           },
           '&.Mui-checked': {
@@ -105,6 +103,13 @@ const Checkbox: FC<CustomProps & OriginalProps> = ({
           },
           '&.Mui-disabled': {
             color: palette.shadows?.['8dp'],
+          },
+          // Without these the stacking context would hide the hover and focus style on web and admin
+          'input[type="checkbox"]': {
+            zIndex: 2,
+          },
+          '.tabler-icon, .MuiSvgIcon-root': {
+            zIndex: 1,
           },
         }}
         {...props}

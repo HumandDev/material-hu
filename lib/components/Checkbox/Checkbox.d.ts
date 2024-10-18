@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { CheckboxProps } from '@mui/material';
 type CustomProps = {
     label: string;
-    description: string;
+    description?: string;
     extraInfo?: string;
     error?: boolean;
 };
