@@ -1,6 +1,6 @@
 import {
   Avatar as AvatarMui,
-  AvatarProps,
+  AvatarProps as MuiAvatarProps,
   Palette,
   useTheme,
   SxProps,
@@ -9,7 +9,10 @@ import {
 import Badge, { BadgeProps } from '../Badge/Badge';
 import { TablerIcon } from '@tabler/icons-react';
 
-export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
+export type AvatarProps = Pick<
+  MuiAvatarProps,
+  'sx' | 'variant' | 'src' | 'alt'
+> & {
   size?: 'small' | 'medium' | 'large';
   color?: 'default' | 'primary' | 'highlight' | 'success' | 'error' | 'warning';
   withBadge?: boolean;
@@ -18,7 +21,7 @@ export type Props = Pick<AvatarProps, 'sx' | 'variant' | 'src' | 'alt'> & {
   Icon?: TablerIcon;
 };
 
-export const getSizeInPixels = (size: Props['size']): string => {
+export const getSizeInPixels = (size: AvatarProps['size']): string => {
   switch (size) {
     case 'small':
       return '32px';
@@ -29,7 +32,7 @@ export const getSizeInPixels = (size: Props['size']): string => {
   }
 };
 
-export const getIconSize = (size: Props['size']) => {
+export const getIconSize = (size: AvatarProps['size']) => {
   switch (size) {
     case 'small':
       return 24;
@@ -41,7 +44,7 @@ export const getIconSize = (size: Props['size']) => {
 };
 
 export const getColorsVariant = (
-  color: Props['color'],
+  color: AvatarProps['color'],
   palette: Palette,
 ): { backgroundColor: string; color: string } => {
   switch (color) {
@@ -79,7 +82,7 @@ export const getColorsVariant = (
 };
 
 const getOffset = (
-  size: Props['size'],
+  size: AvatarProps['size'],
   variant: BadgeProps['variant'],
 ): SxProps<Theme> => {
   if (variant === 'dot') {
@@ -105,7 +108,7 @@ const getOffset = (
   return {};
 };
 
-const Avatar = ({
+export const Avatar = ({
   size = 'medium',
   color = 'default',
   withBadge = false,
@@ -113,7 +116,7 @@ const Avatar = ({
   text,
   Icon,
   ...props
-}: Props) => {
+}: AvatarProps) => {
   const theme = useTheme();
   const sizeInPixels = getSizeInPixels(size);
   const colorsVariant = getColorsVariant(color, theme.palette);

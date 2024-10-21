@@ -45,7 +45,7 @@ const adjustedDescription: Record<
   S: 'globalXS',
 };
 
-type Props = {
+export type TitleProps = {
   copetin?: string;
   copetinTooltip?: string;
   description?: string;
@@ -56,7 +56,7 @@ type Props = {
   sx?: StackProps['sx'];
 };
 
-const Title = ({
+export const Title = ({
   centered = false,
   copetin = '',
   copetinTooltip = '',
@@ -65,7 +65,7 @@ const Title = ({
   title,
   variant,
   sx = {},
-}: Props) => {
+}: TitleProps) => {
   return (
     <Stack
       sx={{
