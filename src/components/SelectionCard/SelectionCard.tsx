@@ -24,13 +24,13 @@ const SelectionCard: FC<SelectionCardProps> = props => {
             ? theme.palette.hugoBackground?.primaryBgLighter
             : theme.palette.hugoBackground?.neutralBgTerciary,
           borderColor: checked
-            ? theme.palette.base?.blueBrand[400]
-            : theme.palette.border?.neutralBorder,
+            ? theme.palette.primary.main
+            : theme.palette.primary.lightest,
         },
         ...(!checked && {
           '&:hover': {
             backgroundColor: theme.palette.hugoBackground?.neutralBgTerciary,
-            borderColor: theme.palette.border?.primaryBorder,
+            borderColor: theme.palette.primary.light,
           },
         }),
       }}

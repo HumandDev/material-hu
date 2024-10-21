@@ -1,6 +1,6 @@
-import { alpha } from '@mui/material';
+import { alpha, darken } from '@mui/material';
 
-const createBaseColors = () => {
+export const createBaseColors = (primaryColor?: string) => {
   const preBaseColors = {
     white: '#FFFFFF',
     grey: {
@@ -138,6 +138,14 @@ const createBaseColors = () => {
   };
 
   return {
+    primary: {
+      contrastText: base.white,
+      lightest: primaryColor ? alpha(primaryColor, 0.5) : base.blueBrand['100'],
+      light: primaryColor ? alpha(primaryColor, 0.7) : base.blueBrand['200'],
+      main: primaryColor ? primaryColor : base.blueBrand['400'],
+      dark: primaryColor ? darken(primaryColor, 0.2) : base.blueBrand['600'],
+      darkest: primaryColor ? darken(primaryColor, 0.5) : base.blueBrand['800'],
+    },
     base,
     hugoBackground,
     border,
@@ -149,5 +157,5 @@ const createBaseColors = () => {
   };
 };
 
-export const colorPalette = createBaseColors();
+export const colorPalette = createBaseColors('#486FDC');
 export type BaseColorType = typeof colorPalette;

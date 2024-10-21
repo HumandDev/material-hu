@@ -26,7 +26,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
       <MuiTabs
         sx={{
           '.MuiTabs-indicator': {
-            backgroundColor: theme => theme.palette.base?.blueBrand[400],
+            backgroundColor: theme => theme.palette.primary.main,
             borderRadius: '4px 4px 0px 0px',
           },
         }}
@@ -57,7 +57,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
               textTransform: 'none',
               color: theme => theme.palette.textColors?.neutralText,
               '&.Mui-selected': {
-                color: theme => theme.palette.base?.blueBrand[400],
+                color: theme => theme.palette.primary.main,
               },
             }}
           />

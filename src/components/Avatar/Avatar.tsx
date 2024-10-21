@@ -47,8 +47,9 @@ export const getColorsVariant = (
   switch (color) {
     case 'primary':
       return {
-        backgroundColor: palette.base?.blueBrand[100]!,
-        color: palette.base?.blueBrand[800]!,
+        backgroundColor:
+          palette.primary.lightest! || palette.base?.blueBrand[100]!,
+        color: palette.primary.darkest! || palette.base?.blueBrand[800]!,
       };
     case 'highlight':
       return {

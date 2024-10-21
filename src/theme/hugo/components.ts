@@ -20,7 +20,7 @@ export const components: ThemeOptions['components'] = {
         color: theme.palette.base?.white,
       }),
       colorPrimary: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
+        backgroundColor: theme.palette.primary.main,
       }),
       colorSuccess: ({ theme }) => ({
         backgroundColor: theme.palette.base?.green[400],
@@ -66,9 +66,9 @@ export const components: ThemeOptions['components'] = {
         borderRadius: '8px',
       },
       contained: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
+        backgroundColor: theme.palette.primary.main,
         '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
+          backgroundColor: theme.palette.primary,
         },
         [`&.${buttonClasses.focusVisible}`]: {
           boxShadow: customShadow.containedFocusedVisible,
@@ -79,11 +79,11 @@ export const components: ThemeOptions['components'] = {
         },
       }),
       outlined: ({ theme }) => ({
-        color: theme.palette.base?.blueBrand[800],
-        borderColor: theme.palette.base?.blueBrand[200],
+        color: theme.palette.primary.darkest, //base?.blueBrand[800],
+        borderColor: theme.palette.primary.light, // base?.blueBrand[200],
         '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[100],
-          borderColor: theme.palette.base?.blueBrand[200],
+          backgroundColor: theme.palette.primary.lightest, //.base?.blueBrand[100],
+          borderColor: theme.palette.primary.light, //base?.blueBrand[200],
         },
         [`&.${buttonClasses.focusVisible}`]: {
           boxShadow: customShadow.outlinedFocusedVisible,
@@ -95,7 +95,7 @@ export const components: ThemeOptions['components'] = {
         },
       }),
       text: ({ theme }) => ({
-        color: theme.palette.base?.blueBrand[800],
+        color: theme.palette.primary.darkest, //base?.blueBrand[800],
         '&:hover': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
@@ -162,10 +162,10 @@ export const components: ThemeOptions['components'] = {
         borderRadius: '9999px',
       },
       primary: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
+        backgroundColor: theme.palette.primary.main, //.base?.blueBrand[400],
         color: theme.palette.base?.white,
         '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
+          backgroundColor: theme.palette.primary.dark, //base?.blueBrand[600],
         },
         '&:disabled': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
@@ -208,9 +208,9 @@ export const components: ThemeOptions['components'] = {
       }),
       colorSecondary: ({ theme }) => ({
         backgroundColor: theme.palette.base?.white,
-        borderColor: theme.palette.base?.blueBrand[200],
+        borderColor: theme.palette.primary.light, //.base?.blueBrand[200],
         svg: {
-          stroke: theme.palette.base?.blueBrand[800],
+          stroke: theme.palette.primary.darkest, // base?.blueBrand[800],
         },
         '&:hover': {
           backgroundColor: theme.palette.base?.lilac[100],
@@ -220,18 +220,18 @@ export const components: ThemeOptions['components'] = {
         },
       }),
       colorPrimary: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
+        backgroundColor: theme.palette.primary.main,
         svg: {
           stroke: theme.palette.base?.white,
         },
         '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
+          backgroundColor: theme.palette.primary.dark, //base?.blueBrand[600],
         },
         '&:disabled': {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
         },
         '&:focus-visible': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
+          backgroundColor: theme.palette.primary.dark, //base?.blueBrand[600],
           boxShadow: customShadow.containedFocusedVisible,
         },
       }),

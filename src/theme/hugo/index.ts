@@ -3,13 +3,13 @@ import {
   ThemeOptions,
   createTheme as createMuiTheme,
 } from '@mui/material';
-import { colorPalette } from './colors';
+import { createBaseColors } from './colors';
 import { typography } from './typography';
 import { shadows } from './shadows';
 import { components } from './components';
 
-const themeObject: ThemeOptions = {
-  palette: colorPalette as any,
+const createThemeObject = (primaryColor?: string): ThemeOptions => ({
+  palette: createBaseColors(primaryColor) as any,
   typography,
   shape: {
     borderRadius: 8,
@@ -18,9 +18,10 @@ const themeObject: ThemeOptions = {
   direction: 'ltr',
   shadows,
   components,
-};
+});
 
-export const createHuGoTheme = (): Theme => {
+export const createHuGoTheme = (primaryColor?: string): Theme => {
+  const themeObject = createThemeObject(primaryColor);
   let theme = createMuiTheme(themeObject);
 
   return theme;

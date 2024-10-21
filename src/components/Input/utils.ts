@@ -5,7 +5,7 @@ export const getBorderColor = (
   success?: boolean,
 ) => {
   if (focused) {
-    return theme.palette.base?.blueBrand[400];
+    return theme.palette.primary.main;
   }
   if (error) {
     return theme.palette.graphics?.errorText;

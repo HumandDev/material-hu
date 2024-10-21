@@ -19,7 +19,7 @@ const CenteredCircularProgress = ({
         color: theme =>
           darkBackground
             ? theme.palette.base?.white
-            : theme.palette.base?.blueBrand[400],
+            : theme.palette.primary.main,
       }}
       size={size}
       {...props}

@@ -38,7 +38,7 @@ const LinkBox = ({
               height: 16,
               color: darkBackground
                 ? theme.palette.base?.white
-                : theme.palette.base?.blueBrand[400],
+                : theme.palette.primary.main,
             },
           })
         : null}

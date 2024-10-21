@@ -6,7 +6,7 @@ import { createHuGoTheme } from '../src/theme/hugo';
 const preview: Preview = {
   decorators: [
     Story => {
-      const hugoTheme = createHuGoTheme();
+      const hugoTheme = createHuGoTheme('#FFA500');
       return (
         <ThemeProvider theme={hugoTheme}>
           <Story />
