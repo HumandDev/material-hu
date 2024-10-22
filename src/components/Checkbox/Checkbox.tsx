@@ -24,13 +24,11 @@ type OriginalProps = Pick<
   | 'aria-describedby'
   | 'aria-label'
   | 'checked'
-  | 'defaultChecked'
   | 'disabled'
   | 'indeterminate'
   | 'inputRef'
   | 'onChange'
   | 'onClick'
-  | 'readOnly'
   | 'sx'
 >;
 
