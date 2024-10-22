@@ -3,6 +3,8 @@ import { FormProvider, useForm } from 'react-hook-form';
 import DatePicker from './DatePicker';
 import FormDatePicker from './FormDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { LocalizationProvider as ProLocalizationProvider } from '@mui/x-date-pickers-pro/LocalizationProvider';
+import { AdapterDateFns as ProAdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 const meta: Meta<typeof DatePicker> = {
@@ -50,7 +52,7 @@ export const FormRangeDatePickerStory: Story = {
       },
     });
     return (
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <ProLocalizationProvider dateAdapter={ProAdapterDateFns}>
         <FormProvider {...form}>
           <FormDatePicker
             range
@@ -62,7 +64,7 @@ export const FormRangeDatePickerStory: Story = {
             name="myDatePicker"
           />
         </FormProvider>
-      </LocalizationProvider>
+      </ProLocalizationProvider>
     );
   },
 };

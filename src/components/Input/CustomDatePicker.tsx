@@ -6,7 +6,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import { DateRangePicker } from '@mui/x-date-pickers/DateRangePicker';
+import { DateRangePicker } from '@mui/x-date-pickers-pro';
 import { IconAlertCircle, IconCheck, IconX } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
 
