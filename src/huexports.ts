@@ -13,7 +13,4 @@ export { default as HuTabs } from './components/Tabs/Tabs';
 export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
-export {
-  useSnackbar as HuUseSnackbar,
-  SnackbarProvider as HuSnackbarProvider,
-} from './components/SnackbarHugo/SnackbarShow';
+export { useMySnackbar } from './components/SnackbarHugo/Snackbar2';
