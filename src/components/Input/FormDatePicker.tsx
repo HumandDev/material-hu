@@ -4,15 +4,11 @@ import { Controller, ControllerProps } from 'react-hook-form';
 
 type Props = {
   name: string;
-  range?: boolean;
-  inputProps: Pick<
-    ComponentProps<typeof DatePicker>,
-    'label' | 'placeholder' | 'sx' | 'helperText'
-  >;
+  inputProps: Pick<ComponentProps<typeof DatePicker>, 'label' | 'helperText'>;
   rules?: ControllerProps['rules'];
 };
 
-const FormDatePicker = ({ name, inputProps, rules, range = false }: Props) => {
+const FormDatePicker = ({ name, inputProps, rules }: Props) => {
   return (
     <Controller
       render={({ field: { ref, onBlur, ...field }, fieldState: { error } }) => (
@@ -22,7 +18,6 @@ const FormDatePicker = ({ name, inputProps, rules, range = false }: Props) => {
           inputRef={ref}
           error={!!error}
           errorText={error?.message}
-          range={range}
         />
       )}
       name={name}

@@ -1,11 +1,9 @@
 import { FormControl, FormControlProps } from '@mui/material';
 import CustomLabel from './CustomLabel';
-import CustomHelperText from './CustomHelperText';
 import CustomDatePicker, { CustomDatePickerProps } from './CustomDatePicker';
 
 export type DatePickerProps = Pick<FormControlProps, 'sx' | 'fullWidth'> & {
   label?: string;
-  range?: boolean;
   helperText?: string;
   errorText?: string;
   error?: boolean;
@@ -18,12 +16,10 @@ const DatePicker = ({
   helperText,
   errorText,
   onChange,
-  range = false,
-  placeholder,
   inputRef,
   error,
-  success,
   fullWidth = true,
+  ...props
 }: DatePickerProps) => {
   return (
     <FormControl
@@ -31,22 +27,13 @@ const DatePicker = ({
       error={error}
       fullWidth={fullWidth}
     >
-      <CustomLabel
-        label={label}
-        success={success}
-      />
+      <CustomLabel label={label} />
       <CustomDatePicker
         value={value}
         onChange={onChange}
-        placeholder={placeholder}
         inputRef={inputRef}
-        success={success}
-        range={range}
-      />
-      <CustomHelperText
         helperText={error ? errorText : helperText}
-        value={value}
-        success={success}
+        {...props}
       />
     </FormControl>
   );

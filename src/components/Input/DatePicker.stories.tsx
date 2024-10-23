@@ -3,17 +3,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import DatePicker from './DatePicker';
 import FormDatePicker from './FormDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { LocalizationProvider as ProLocalizationProvider } from '@mui/x-date-pickers-pro/LocalizationProvider';
-import { AdapterDateFns as ProAdapterDateFns } from '@mui/x-date-pickers-pro/AdapterDateFns';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
   title: 'DatePicker',
   tags: ['autodocs'],
-  args: {
-    value: 'value!',
-  },
 };
 
 export default meta;
@@ -24,7 +19,7 @@ export const FormDatePickerStory: Story = {
   render: () => {
     const form = useForm({
       defaultValues: {
-        myDatePicker: '',
+        myDatePicker: new Date(),
       },
     });
     return (
@@ -32,39 +27,13 @@ export const FormDatePickerStory: Story = {
         <FormProvider {...form}>
           <FormDatePicker
             inputProps={{
-              placeholder: 'Placeholder',
               label: 'Label',
-              helperText: 'HelperText',
+              helperText: 'Helper Text',
             }}
             name="myDatePicker"
           />
         </FormProvider>
       </LocalizationProvider>
-    );
-  },
-};
-
-export const FormRangeDatePickerStory: Story = {
-  render: () => {
-    const form = useForm({
-      defaultValues: {
-        myDatePicker: [],
-      },
-    });
-    return (
-      <ProLocalizationProvider dateAdapter={ProAdapterDateFns}>
-        <FormProvider {...form}>
-          <FormDatePicker
-            range
-            inputProps={{
-              placeholder: 'Placeholder',
-              label: 'Label',
-              helperText: 'HelperText',
-            }}
-            name="myDatePicker"
-          />
-        </FormProvider>
-      </ProLocalizationProvider>
     );
   },
 };

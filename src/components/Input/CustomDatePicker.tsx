@@ -1,43 +1,54 @@
 import { FC } from 'react';
+import { useTheme } from '@mui/material';
+import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
 import {
-  OutlinedInput,
-  OutlinedInputProps,
-  useFormControl,
-  useTheme,
-} from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
-import { DateRangePicker } from '@mui/x-date-pickers-pro';
-import { IconAlertCircle, IconCheck, IconX } from '@tabler/icons-react';
-import { getBorderColor } from './utils';
+  IconCalendarDue,
+  IconChevronLeft,
+  IconChevronRight,
+  IconChevronDown,
+} from '@tabler/icons-react';
 
-export type CustomDatePickerProps = Pick<
-  OutlinedInputProps,
-  'placeholder' | 'inputRef' | 'multiline'
-> & {
-  range?: boolean;
+export type CustomDatePickerProps = DatePickerProps<Date> & {
   value: string;
-  success?: boolean;
-  maxLength?: number;
-  onChange: (value: string) => void;
+  helperText?: string;
 };
 
 const CustomDatePicker: FC<CustomDatePickerProps> = ({
   value,
-  onChange,
-  placeholder,
-  inputRef,
-  range = false,
-  success,
+  helperText,
+  ...props
 }) => {
-  const { focused, error } = useFormControl() || {};
-  const hastEndAdornment = success || error || (focused && value.length > 0);
   const theme = useTheme();
 
-  if (range) {
-    return <DateRangePicker value={value} />;
-  }
-
-  return <DatePicker value={value} />;
+  return (
+    <DatePicker
+      value={value}
+      slotProps={{
+        textField: {
+          helperText,
+        },
+        day: {
+          sx: {
+            color: theme.palette.textColors?.primaryText,
+            borderRadius: '8px',
+            '&.Mui-selected': {
+              bgcolor: `${theme.palette.buttons?.buttonPrimaryEnabled} !important`,
+            },
+            '&.MuiPickersDay-today': {
+              borderColor: `${theme.palette.border?.primaryBorder} !important`,
+            },
+          },
+        },
+      }}
+      slots={{
+        openPickerIcon: IconCalendarDue,
+        leftArrowIcon: IconChevronLeft,
+        rightArrowIcon: IconChevronRight,
+        switchViewIcon: IconChevronDown,
+      }}
+      {...props}
+    />
+  );
 };
 
 export default CustomDatePicker;
