@@ -1,7 +1,6 @@
 import { AvatarGroup as AvatarGroupMui, useTheme } from '@mui/material';
-
 import Avatar, {
-  Props as AvatarProps,
+  AvatarProps,
   getColorsVariant,
   getSizeInPixels,
 } from '../Avatar/Avatar';
