@@ -87,7 +87,7 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
       pagination: {
         page: defaultPage,
         limit:
-          defaultLimit === limitOptions[0] ? defaultLimit : limitOptions[0],
+          defaultLimit === limitOptions[0] ? limitOptions[0] : defaultLimit,
       },
       order: defaultOrder,
       orderBy: defaultOrderBy,
