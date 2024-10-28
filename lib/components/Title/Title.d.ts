@@ -1,6 +1,6 @@
 import { StackProps } from '@mui/material';
 type TitleVariant = 'XL' | 'L' | 'M' | 'S';
-type Props = {
+export type TitleProps = {
     copetin?: string;
     copetinTooltip?: string;
     description?: string;
@@ -10,5 +10,5 @@ type Props = {
     variant: TitleVariant;
     sx?: StackProps['sx'];
 };
-declare const Title: ({ centered, copetin, copetinTooltip, description, descriptionTooltip, title, variant, sx, }: Props) => import("react/jsx-runtime").JSX.Element;
+export declare const Title: ({ centered, copetin, copetinTooltip, description, descriptionTooltip, title, variant, sx, }: TitleProps) => import("react/jsx-runtime").JSX.Element;
 export default Title;
