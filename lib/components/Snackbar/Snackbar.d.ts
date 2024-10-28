@@ -9,7 +9,7 @@ export type SnackbarProps = {
     };
     onClose?: () => void;
 };
-export declare const useMySnackbar: () => {
+export declare const useSnackbar: () => {
     myEnqueueSnackbar: (props: SnackbarProps) => void;
 };
-export default useMySnackbar;
+export default useSnackbar;
