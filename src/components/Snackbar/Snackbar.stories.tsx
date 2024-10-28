@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import SnackbarWrapper from './SnackbarWrapper';
-import { SnackbarProps } from './Snackbar2';
+import { SnackbarProps } from './Snackbar';
 import { SnackbarProvider } from 'notistack';
 
 const meta: Meta<typeof SnackbarWrapper> = {
