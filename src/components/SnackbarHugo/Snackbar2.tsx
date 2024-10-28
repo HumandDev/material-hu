@@ -14,7 +14,7 @@ import {
   IconAlertTriangle,
   IconInfoCircle,
 } from '@tabler/icons-react';
-import { useSnackbar } from 'notistack';
+import { useSnackbar as useNotistackSnackar } from 'notistack';
 import CloseIcon from '@mui/icons-material/Close';
 import { keyframes } from '@mui/system';
 import { colorPalette } from '../../theme/hugo/colors';
@@ -31,8 +31,8 @@ export type SnackbarProps = {
   onClose?: () => void;
 };
 
-export const useMySnackbar = () => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+export const useSnackbar = () => {
+  const { enqueueSnackbar, closeSnackbar } = useNotistackSnackar();
   const backgroundColor = colorPalette.textColors.neutralText;
 
   const getProps = (
@@ -209,4 +209,4 @@ export const useMySnackbar = () => {
   return { myEnqueueSnackbar };
 };
 
-export default useMySnackbar;
+export default useSnackbar;

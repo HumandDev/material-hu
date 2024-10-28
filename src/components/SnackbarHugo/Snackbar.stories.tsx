@@ -1,8 +1,11 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import Snackbar from './SnackbarWrapper';
+import SnackbarWrapper from './SnackbarWrapper';
+import { SnackbarProps } from './Snackbar2';
+import { SnackbarProvider } from 'notistack';
 
-const meta: Meta<typeof Snackbar> = {
-  component: Snackbar,
+const meta: Meta<typeof SnackbarWrapper> = {
+  component: SnackbarWrapper,
   title: 'Snackbar',
   tags: ['autodocs'],
   argTypes: {
@@ -15,9 +18,7 @@ const meta: Meta<typeof Snackbar> = {
       },
     },
     hasClose: { control: 'boolean' },
-    cancelAction: {
-      control: 'object',
-    },
+    cancelAction: { control: 'object' },
   },
   args: {
     title: 'Snackbar Title',
@@ -30,13 +31,22 @@ const meta: Meta<typeof Snackbar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Snackbar>;
+type Story = StoryObj<typeof SnackbarWrapper>;
+
+const SnackbarTemplate: React.FC<SnackbarProps> = args => {
+  return (
+    <SnackbarProvider>
+      <SnackbarWrapper {...args} />
+    </SnackbarProvider>
+  );
+};
 
 export const Default: Story = {
-  args: {},
+  render: args => <SnackbarTemplate {...args} />,
 };
 
 export const Success: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Success',
     description: 'This is a success message',
@@ -45,6 +55,7 @@ export const Success: Story = {
 };
 
 export const Error: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Error',
     description: 'This is an error message',
@@ -53,6 +64,7 @@ export const Error: Story = {
 };
 
 export const Warning: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Warning',
     description: 'This is a warning message',
@@ -61,6 +73,7 @@ export const Warning: Story = {
 };
 
 export const Info: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Info',
     description: 'This is an informational message',
@@ -69,6 +82,7 @@ export const Info: Story = {
 };
 
 export const WithCancelAction: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Action Required',
     description: 'This message has an action',
@@ -81,13 +95,14 @@ export const WithCancelAction: Story = {
 };
 
 export const WithLongText: Story = {
+  render: args => <SnackbarTemplate {...args} />,
   args: {
     title: 'Action Required',
     description:
       'This message has an action that is very descriptive and talkative and wow please stop writing',
     variant: 'warning',
     cancelAction: {
-      text: 'Cancel action because its important',
+      text: 'Cancel action because it’s important',
       onClick: () => alert('Undo action triggered!'),
     },
   },
