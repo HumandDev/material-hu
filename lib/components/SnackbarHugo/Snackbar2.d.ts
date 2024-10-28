@@ -1,4 +1,3 @@
-import React from 'react';
 export type SnackbarProps = {
     variant: 'success' | 'error' | 'warning' | 'info';
     title?: string;
@@ -10,10 +9,7 @@ export type SnackbarProps = {
     };
     onClose?: () => void;
 };
-declare const useMySnackbar: () => {
+export declare const useMySnackbar: () => {
     myEnqueueSnackbar: (props: SnackbarProps) => void;
 };
-declare const MySnackbarProvider: React.FC<{
-    children: React.ReactNode;
-}>;
-export { useMySnackbar, MySnackbarProvider };
+export default useMySnackbar;

@@ -14,7 +14,7 @@ import {
   IconAlertTriangle,
   IconInfoCircle,
 } from '@tabler/icons-react';
-import { SnackbarProvider, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import CloseIcon from '@mui/icons-material/Close';
 import { keyframes } from '@mui/system';
 import { colorPalette } from '../../theme/hugo/colors';
@@ -31,7 +31,7 @@ export type SnackbarProps = {
   onClose?: () => void;
 };
 
-const useMySnackbar = () => {
+export const useMySnackbar = () => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const backgroundColor = colorPalette.textColors.neutralText;
 
@@ -203,10 +203,4 @@ const useMySnackbar = () => {
   return { myEnqueueSnackbar };
 };
 
-const MySnackbarProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return <SnackbarProvider maxSnack={3}>{children}</SnackbarProvider>;
-};
-
-export { useMySnackbar, MySnackbarProvider };
+export default useMySnackbar;
