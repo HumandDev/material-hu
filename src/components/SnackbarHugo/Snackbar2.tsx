@@ -76,7 +76,7 @@ export const useMySnackbar = () => {
     const { Icon, color, iconColor } = getProps(variant);
     const progressAnimation = keyframes`from { width: 0%; } to { width: 100%; }`;
 
-    enqueueSnackbar(null, {
+    enqueueSnackbar('', {
       autoHideDuration: 10000,
       anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
       content: key => (
