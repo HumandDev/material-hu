@@ -17,6 +17,9 @@ type ServerPaginationOptions = {
     labelRowsPerPage?: string;
     defaultOrderBy?: string;
     defaultOrder?: string;
+    defaultPage?: number;
+    defaultLimit?: number;
+    defaultQuery?: string;
     limitOptions?: number[];
 };
 declare const useServerPagination: (options?: ServerPaginationOptions) => {
