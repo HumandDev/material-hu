@@ -1,4 +1,4 @@
-import { Props as AvatarProps } from '../Avatar/Avatar';
+import { AvatarProps } from '../Avatar/Avatar';
 export declare const formatSurplus: (surplus: number) => string;
 export type Props = {
     size?: AvatarProps['size'];
