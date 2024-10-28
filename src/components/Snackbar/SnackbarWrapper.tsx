@@ -2,10 +2,10 @@ import React from 'react';
 import { SnackbarProps, useSnackbar } from './Snackbar';
 
 const SnackbarWrapper: React.FC<SnackbarProps> = props => {
-  const { myEnqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   React.useEffect(() => {
-    myEnqueueSnackbar(props);
+    enqueueSnackbar(props);
   }, [props]);
 
   return null;

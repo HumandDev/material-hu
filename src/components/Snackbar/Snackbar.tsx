@@ -32,8 +32,10 @@ export type SnackbarProps = {
 };
 
 export const useSnackbar = () => {
-  const { enqueueSnackbar, closeSnackbar } = useNotistackSnackar();
-  const backgroundColor = colorPalette.textColors.neutralText;
+  const { enqueueSnackbar: enqueueNotistackSnackbar, closeSnackbar } =
+    useNotistackSnackar();
+  const { textColors, border, graphics } = colorPalette;
+  const backgroundColor = textColors.neutralText;
 
   const getProps = (
     variant: string,
@@ -46,32 +48,32 @@ export const useSnackbar = () => {
       case 'warning':
         return {
           Icon: IconAlertTriangle,
-          color: colorPalette.border.warningBorder,
-          iconColor: colorPalette.graphics.warningText,
+          color: border.warningBorder,
+          iconColor: graphics.warningText,
         };
       case 'info':
         return {
           Icon: IconInfoCircle,
-          color: colorPalette.border.infoBorder,
-          iconColor: colorPalette.graphics.infoText,
+          color: border.infoBorder,
+          iconColor: graphics.infoText,
         };
       case 'error':
         return {
           Icon: IconX,
-          color: colorPalette.border.errorBorder,
-          iconColor: colorPalette.graphics.errorText,
+          color: border.errorBorder,
+          iconColor: graphics.errorText,
         };
       default:
       case 'success':
         return {
           Icon: IconCheck,
-          color: colorPalette.border.successBorder,
-          iconColor: colorPalette.graphics.successText,
+          color: border.successBorder,
+          iconColor: graphics.successText,
         };
     }
   };
 
-  const myEnqueueSnackbar = (props: SnackbarProps) => {
+  const enqueueSnackbar = (props: SnackbarProps) => {
     const {
       title,
       description,
@@ -82,7 +84,7 @@ export const useSnackbar = () => {
     const { Icon, color, iconColor } = getProps(variant);
     const progressAnimation = keyframes`from { width: 0%; } to { width: 100%; }`;
 
-    enqueueSnackbar('', {
+    enqueueNotistackSnackbar('', {
       autoHideDuration: 10000,
       anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
       content: key => (
@@ -206,7 +208,7 @@ export const useSnackbar = () => {
     });
   };
 
-  return { myEnqueueSnackbar };
+  return { enqueueSnackbar };
 };
 
 export default useSnackbar;
