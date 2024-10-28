@@ -139,7 +139,10 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
     setPage(0);
   }, [debouncedQuery, pagination.limit]);
 
-  const Searchbar = useMemo(() => buildSearchbar({ control, setValue }), []);
+  const Searchbar = useMemo(
+    () => buildSearchbar({ control, setValue, defaultQuery }),
+    [],
+  );
 
   return {
     query: debouncedQuery,
