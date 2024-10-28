@@ -72,7 +72,13 @@ export const useMySnackbar = () => {
   };
 
   const myEnqueueSnackbar = (props: SnackbarProps) => {
-    const { title, description, hasClose, cancelAction, variant } = props;
+    const {
+      title,
+      description,
+      hasClose = true,
+      cancelAction,
+      variant,
+    } = props;
     const { Icon, color, iconColor } = getProps(variant);
     const progressAnimation = keyframes`from { width: 0%; } to { width: 100%; }`;
 
@@ -112,7 +118,7 @@ export const useMySnackbar = () => {
                     mr: 2,
                     mb: description ? 2 : 0,
                     '.MuiBadge-badge': {
-                      backgroundColor: 'orange',
+                      backgroundColor: iconColor,
                       minWidth: 24,
                       minHeight: 24,
                       borderRadius: '50%',
