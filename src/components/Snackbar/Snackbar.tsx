@@ -7,6 +7,7 @@ import {
   Stack,
   Badge,
   LinearProgress,
+  Box,
 } from '@mui/material';
 import {
   IconX,
@@ -114,7 +115,18 @@ export const useSnackbar = () => {
                 }}
               >
                 <Badge
-                  badgeContent={<Icon sx={{ fontSize: '10px !important' }} />}
+                  badgeContent={
+                    <Box
+                      sx={{
+                        width: 16,
+                        height: 16,
+                        display: 'flex',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Icon />
+                    </Box>
+                  }
                   overlap="circular"
                   sx={{
                     mr: 2,
@@ -168,7 +180,7 @@ export const useSnackbar = () => {
                   <Typography
                     variant="globalS"
                     color="white"
-                    fontWeight="regular"
+                    fontWeight="fontWeightRegular"
                     sx={{ textDecoration: 'underline', textTransform: 'none' }}
                   >
                     {cancelAction.text}
@@ -180,8 +192,9 @@ export const useSnackbar = () => {
                   color="inherit"
                   onClick={() => closeSnackbar(key)}
                   sx={{
-                    top: 4,
-                    right: 4,
+                    p: 0,
+                    top: 12,
+                    right: 12,
                     fontSize: '12px',
                     position: 'absolute',
                   }}
