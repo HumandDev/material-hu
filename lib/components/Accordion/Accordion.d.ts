@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import { AccordionProps as MuiAccordionProps } from '@mui/material';
 import { AvatarProps } from '../Avatar/Avatar';
 import { PillsProps } from '../Pills/Pills';
-export type AccordionProps = Partial<MuiAccordionProps> & {
+export type AccordionProps = Omit<MuiAccordionProps, 'children'> & {
     title: string;
     avatar?: AvatarProps;
     caption?: string;

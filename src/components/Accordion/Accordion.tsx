@@ -13,7 +13,7 @@ import { IconChevronDown, IconArrowRight } from '@tabler/icons-react';
 import Avatar, { AvatarProps } from '../Avatar/Avatar';
 import Pills, { PillsProps } from '../Pills/Pills';
 
-export type AccordionProps = Partial<MuiAccordionProps> & {
+export type AccordionProps = Omit<MuiAccordionProps, 'children'> & {
   title: string;
   avatar?: AvatarProps;
   caption?: string;
