@@ -19,3 +19,6 @@ export { default as HuTooltip } from './components/Tooltip/Tooltip';
 export { default as HuMenu } from './components/Menu/Menu';
 export { default as HuMenuItem } from './components/Menu/MenuItem';
 export { default as HuAccordion } from './components/Accordion/Accordion';
+export { default as HuList } from './components/List/List';
+export { default as HuListItem } from './components/List/ListItem';
+export { default as HuListItemSkeleton } from './components/List/ListItemSkeleton';
