@@ -52,7 +52,7 @@ const Toggle = ({ disabled }: MuiSwitchProps) => {
         },
         '& .MuiSwitch-track': {
           borderRadius: 20,
-          transition: theme.transitions.create(['background-color'], {
+          transition: theme.transitions.create('background-color', {
             duration: 200,
           }),
         },
