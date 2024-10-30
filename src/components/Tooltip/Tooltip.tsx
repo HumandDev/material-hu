@@ -16,11 +16,19 @@ const TooltipBody = ({ title, description }: TooltipBodyProps) => {
     <Stack sx={{ p: 1 }}>
       <Typography
         variant="globalS"
-        sx={{ fontWeight: 'semibold' }}
+        sx={{
+          fontWeight: 'semibold',
+          color: colorPalette.textColors.neutralTextInverted,
+        }}
       >
         {title}
       </Typography>
-      <Typography variant="globalXS">{description}</Typography>
+      <Typography
+        variant="globalXS"
+        sx={{ color: colorPalette.textColors.neutralTextInverted }}
+      >
+        {description}
+      </Typography>
     </Stack>
   );
 };
