@@ -18,3 +18,4 @@ export { default as HuFormCheckbox } from './components/Checkbox/FormCheckbox';
 export { default as HuTooltip } from './components/Tooltip/Tooltip';
 export { default as HuMenu } from './components/Menu/Menu';
 export { default as HuMenuItem } from './components/Menu/MenuItem';
+export { default as HuAccordion } from './components/Accordion/Accordion';
