@@ -13,7 +13,7 @@ export type MenuProps = Pick<
   'id' | 'anchorEl' | 'open' | 'onClose' | 'children' | 'sx'
 > & {
   'aria-labelledby': string;
-  footer: ReactNode;
+  footer?: ReactNode;
 };
 
 export const Menu = ({
