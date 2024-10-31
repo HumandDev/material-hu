@@ -12,6 +12,8 @@ export { default as HuTitle } from './components/Title/Title';
 export { default as HuTabs } from './components/Tabs/Tabs';
 export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
+export { default as HuRating } from './components/Rating/Rating';
+export { default as HuFormRating } from './components/Rating/FormRating';
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
 export { default as HuCheckbox } from './components/Checkbox/Checkbox';
 export { default as HuFormCheckbox } from './components/Checkbox/FormCheckbox';
