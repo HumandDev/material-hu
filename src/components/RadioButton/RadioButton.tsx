@@ -2,7 +2,7 @@ import {
   Radio,
   RadioProps,
   Stack,
-  StackProps,
+  SxProps,
   Typography,
   TypographyProps,
 } from '@mui/material';
@@ -14,9 +14,10 @@ type RadioButtonProps = {
   label: string;
   extraData?: string;
   description?: string;
-  stackProps?: StackProps; // Optional prop for styling the Stack (parent) component
+  onClick?: (param: boolean) => void;
+  stackSx?: SxProps; // Optional prop for styling the Stack (parent) component
   labelProps?: TypographyProps; // Optional prop for styling the label Typography component
-} & Omit<RadioProps, 'label'>;
+} & Omit<RadioProps, 'label' | 'onClick'>;
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   error = false,
@@ -25,7 +26,8 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   label,
   extraData,
   description,
-  stackProps = {},
+  onClick,
+  stackSx = {},
   labelProps = {},
   ...props
 }) => {
@@ -36,15 +38,27 @@ const RadioButton: React.FC<RadioButtonProps> = ({
 
   const hasHoverEffect = !disabled && !error;
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick(!isActive);
+    }
+  };
+
   return (
     <Stack
-      sx={{ alignItems: 'flex-start', flexDirection: 'row', gap: '4px' }}
-      {...stackProps}
+      sx={{
+        alignItems: 'flex-start',
+        flexDirection: 'row',
+        gap: '4px',
+        ...stackSx,
+      }}
     >
       <Radio
         {...props}
+        value={isActive}
         disabled={disabled}
         checked={isActive}
+        onClick={handleClick}
         sx={{
           padding: 0,
           color: radioBorderColor,
