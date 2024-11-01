@@ -34,6 +34,8 @@ export const Menu = ({
 }: MenuProps) => {
   const theme = useTheme();
 
+  console.error(height, width);
+
   return (
     <MuiMenu
       id={id}
