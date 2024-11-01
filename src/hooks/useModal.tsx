@@ -7,7 +7,7 @@ function useModal<T>(
   extraProps?: Partial<T>,
 ) {
   const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
+  const closeModal: () => void = () => setOpen(false);
   const [modalContentProps, setModalContentProps] = useState<Partial<T>>();
 
   return {
