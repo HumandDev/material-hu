@@ -14,6 +14,9 @@ export type MenuProps = Pick<
 > & {
   'aria-labelledby': string;
   footer?: ReactNode;
+  header?: ReactNode;
+  width?: number;
+  height?: number;
 };
 
 export const Menu = ({
@@ -25,6 +28,9 @@ export const Menu = ({
   sx,
   'aria-labelledby': labelledby,
   footer,
+  header,
+  width,
+  height,
 }: MenuProps) => {
   const theme = useTheme();
 
@@ -34,7 +40,11 @@ export const Menu = ({
       anchorEl={anchorEl}
       open={open}
       onClose={onClose}
-      sx={sx}
+      sx={{
+        ...sx,
+        width: width ? width : MAX_WIDTH,
+        height: 'auto',
+      }}
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'center',
@@ -48,39 +58,67 @@ export const Menu = ({
         'aria-labelledby': labelledby,
         sx: {
           p: 0,
-          maxHeight: MAX_HEIGHT,
-          maxWidth: MAX_WIDTH,
-          overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
+          maxWidth: width ? width : MAX_WIDTH,
+          maxHeight: height ? height : MAX_HEIGHT,
         },
       }}
       slotProps={{
         paper: {
           sx: {
-            maxHeight: MAX_HEIGHT,
-            maxWidth: MAX_WIDTH,
             boxShadow: theme.shadows[2],
             borderRadius: theme.spacing(2),
+            width: width ? width : 'inherit',
           },
         },
       }}
     >
+      {header && (
+        <Stack
+          sx={{
+            position: 'sticky',
+            top: 0,
+            zIndex: 1,
+            backgroundColor: 'background.paper',
+          }}
+        >
+          <Stack
+            sx={{
+              gap: 1,
+              p: 2,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
+            {header}
+          </Stack>
+          <Divider />
+        </Stack>
+      )}
       <Stack
         component="ul"
         sx={{
+          flex: 1,
+          overflowY: 'auto',
+          overflowX: 'hidden',
           py: 1,
           px: 0,
           m: 0,
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          flex: 1,
         }}
       >
         {children}
       </Stack>
       {footer && (
-        <Stack>
+        <Stack
+          sx={{
+            position: 'sticky',
+            bottom: 0,
+            zIndex: 1,
+            backgroundColor: 'background.paper',
+          }}
+        >
           <Divider />
           <Stack
             sx={{

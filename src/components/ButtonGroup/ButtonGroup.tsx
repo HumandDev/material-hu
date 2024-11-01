@@ -24,8 +24,6 @@ const ButtonGroup = ({
     palette: { base },
   } = useTheme();
 
-  console.error(fullWidth);
-
   return (
     <MUIButtonGroup
       variant="outlined"

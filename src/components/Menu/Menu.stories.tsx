@@ -25,7 +25,26 @@ const meta: Meta<typeof Menu> = {
   title: 'Menu',
   tags: ['autodocs'],
   args: {
-    open: false,
+    header: null,
+    footer: null,
+    height: undefined,
+    width: undefined,
+  },
+  argTypes: {
+    height: { control: 'number' },
+    width: { control: 'number' },
+    header: {
+      description: 'Contenido para el header del menu',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
+    footer: {
+      description: 'Contenido para el footer del menu',
+      table: {
+        type: { summary: 'ReactNode' },
+      },
+    },
   },
 };
 
@@ -106,6 +125,18 @@ const Footer = () => (
   </>
 );
 
+const Header = () => (
+  <>
+    <Typography
+      variant="globalS"
+      fontWeight={'fontWeightSemiBold'}
+      sx={{ mx: 'auto' }}
+    >
+      Header
+    </Typography>
+  </>
+);
+
 export const Default: Story = {
   render: renderStory(defaultOptions),
   args: {},
@@ -118,14 +149,32 @@ export const WithFooter: Story = {
   },
 };
 
+export const WithHeader: Story = {
+  render: renderStory(defaultOptions),
+  args: {
+    header: <Header />,
+    footer: <Footer />,
+  },
+};
+
 export const ManyOptions: Story = {
   render: renderStory(manyOptions),
   args: {},
 };
 
-export const WithFooterAndManyOptions: Story = {
+export const ManyOptionsAndFooter: Story = {
   render: renderStory(manyOptions),
   args: {
     footer: <Footer />,
+  },
+};
+
+export const WithAllAndCustomSize: Story = {
+  render: renderStory(manyOptions),
+  args: {
+    header: <Header />,
+    footer: <Footer />,
+    width: 500,
+    height: 600,
   },
 };
