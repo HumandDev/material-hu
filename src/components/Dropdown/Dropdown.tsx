@@ -6,21 +6,23 @@ import {
   Stack,
   SxProps,
 } from '@mui/material';
-import { FC, PropsWithChildren, useId, useState } from 'react';
+import { FC, PropsWithChildren, useId, useRef, useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { colorPalette } from '../../theme/hugo/colors';
 
 type Props = {
   label: string;
+  open?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
   buttonType?: 'secondary' | 'tertiary';
   buttonSize?: 'small' | 'medium' | 'large';
   position?: 'left' | 'right' | 'center';
   hasIcon?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onClose?: () => void;
-  containerSx?: SxProps;
+  sx?: SxProps;
   popoverSx?: SxProps;
-  buttonProps: ButtonProps;
+  buttonProps?: ButtonProps;
 };
 
 const positionMap = {
@@ -59,45 +61,68 @@ const positionMap = {
 const Dropdown: FC<PropsWithChildren<Props>> = ({
   children,
   label,
-  onClick,
+  open,
+  onOpen,
   onClose,
+  onClick,
   buttonType = 'secondary',
   position = 'left',
   buttonSize = 'medium',
   hasIcon = true,
-  containerSx = {},
+  sx = {},
   popoverSx = {},
   buttonProps = {},
 }) => {
   const id = useId();
+  const isControlled = open !== undefined;
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const open = Boolean(anchorEl);
-  const menuId = open ? id : undefined;
+  // Determine the open state and anchor element based on controlled mode
+  const isOpen = isControlled ? open : Boolean(anchorEl);
+  const menuId = isOpen ? id : undefined;
+  const anchorElement = isControlled ? buttonRef.current : anchorEl;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-    onClick && onClick(event);
+    if (isControlled) {
+      // In controlled mode, notify parent if open state should change
+      if (open === false && onOpen) {
+        onOpen();
+      }
+    } else {
+      // In uncontrolled mode, manage internal state
+      setAnchorEl(event.currentTarget);
+    }
+    // Call onClick prop if provided
+    if (onClick) {
+      onClick(event);
+    }
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
-    onClose && onClose();
+    if (isControlled) {
+      // In controlled mode, notify parent if open state should change
+      if (open === true && onClose) {
+        onClose();
+      }
+    } else {
+      // In uncontrolled mode, manage internal state
+      setAnchorEl(null);
+    }
+    // Call onClose prop if provided
+    if (onClose) {
+      onClose();
+    }
   };
 
   const buttonVariant = buttonType === 'secondary' ? 'contained' : 'text';
 
   const containedButtonSx = {
-    color: colorPalette.textColors.primaryText,
     backgroundColor: colorPalette.hugoBackground.neutralBgTerciary,
     border: `1px solid ${colorPalette.border.primaryBorder}`,
     '&:hover': {
       backgroundColor: colorPalette.buttons.buttonSecondaryHover,
     },
-  };
-
-  const textButtonSx = {
-    color: colorPalette.textColors.primaryText,
   };
 
   const positionValues = positionMap[position];
@@ -110,23 +135,25 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: '4px',
-        ...containerSx,
+        ...sx,
       }}
     >
       <Button
+        ref={buttonRef}
         size={buttonSize}
         aria-describedby={menuId}
         variant={buttonVariant}
         onClick={handleClick}
         sx={{
-          ...(buttonVariant === 'contained' ? containedButtonSx : textButtonSx),
+          color: colorPalette.textColors.primaryText,
+          ...(buttonVariant === 'contained' && containedButtonSx),
         }}
         endIcon={
           hasIcon ? (
             <KeyboardArrowDownIcon
               sx={{
                 color: colorPalette.textColors.primaryText,
-                transform: !open ? 'rotate(0deg)' : 'rotate(180deg)',
+                transform: !isOpen ? 'rotate(0deg)' : 'rotate(180deg)',
                 transition: 'transform 0.3s ease',
               }}
             />
@@ -138,8 +165,8 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
       </Button>
       <Popover
         id={menuId}
-        open={open}
-        anchorEl={anchorEl}
+        open={isOpen}
+        anchorEl={anchorElement}
         onClose={handleClose}
         sx={{
           mt: 1,

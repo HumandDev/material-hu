@@ -3,6 +3,7 @@ import Dropdown from './Dropdown';
 import { List, ListItem, Stack, Typography } from '@mui/material';
 import { IconBulb } from '@tabler/icons-react';
 import { colorPalette } from '../../theme/hugo/colors';
+import { useState } from 'react';
 
 const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
@@ -129,5 +130,22 @@ export const NoIcon: Story = {
     hasIcon: false,
     position: 'left',
     children: <BasicMenu />,
+  },
+};
+
+export const Controlled: Story = {
+  render: () => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    return (
+      <Dropdown
+        label="Controlled Dropdown"
+        open={dropdownOpen}
+        onOpen={() => setDropdownOpen(true)}
+        onClose={() => setDropdownOpen(false)}
+      >
+        <BasicMenu />
+      </Dropdown>
+    );
   },
 };
