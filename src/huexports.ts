@@ -24,3 +24,4 @@ export { default as HuListItem } from './components/List/ListItem';
 export { default as HuListItemSkeleton } from './components/List/ListItemSkeleton';
 export { default as HuButtonGroup } from './components/ButtonGroup/ButtonGroup';
 export { default as HuUseSnackbar } from './components/Snackbar/Snackbar';
+export { default as HuDialog } from './components/Dialog/Dialog';
