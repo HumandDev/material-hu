@@ -4,7 +4,7 @@ type Props = {
     hasIcon?: boolean;
     iconSize?: number;
     disabled?: boolean;
-    stackSx?: SxProps;
-} & LinkProps;
+    sx?: SxProps;
+} & Omit<LinkProps, 'sx'>;
 declare const Link: FC<PropsWithChildren<Props>>;
 export default Link;

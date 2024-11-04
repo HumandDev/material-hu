@@ -13,15 +13,15 @@ type Props = {
   hasIcon?: boolean;
   iconSize?: number;
   disabled?: boolean;
-  stackSx?: SxProps;
-} & LinkProps;
+  sx?: SxProps;
+} & Omit<LinkProps, 'sx'>;
 
 const Link: FC<PropsWithChildren<Props>> = ({
   children,
   hasIcon = false,
   iconSize = 16,
   disabled = false,
-  stackSx = {},
+  sx = {},
   ...props
 }) => {
   const theme = useTheme();
@@ -42,7 +42,7 @@ const Link: FC<PropsWithChildren<Props>> = ({
         flexDirection: 'row',
         alignItems: 'center',
         gap: '2px',
-        ...stackSx,
+        ...sx,
       }}
     >
       <MuiLink
@@ -53,13 +53,18 @@ const Link: FC<PropsWithChildren<Props>> = ({
           cursor: disabled ? 'not-allowed' : 'pointer',
         }}
         onClick={e => handleClick(e)}
+        aria-disabled={disabled}
         {...props}
       >
         {children}
       </MuiLink>
       {hasIcon && (
         <IconArrowNarrowRight
-          color={theme.palette.primary.main}
+          color={
+            disabled
+              ? colorPalette.textColors.neutralTextDisabled
+              : theme.palette.primary.main
+          }
           size={iconSize}
         />
       )}
