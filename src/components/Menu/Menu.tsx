@@ -85,18 +85,8 @@ export const Menu = ({
             backgroundColor: 'background.paper',
           }}
         >
-          <Stack
-            sx={{
-              gap: 1,
-              p: 2,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
-            {header}
-          </Stack>
-          <Divider />
+          {header}
+          <Divider sx={{ borderBottomWidth: 0.5, color: '#f0f0f0' }} />
         </Stack>
       )}
       <Stack
@@ -121,7 +111,7 @@ export const Menu = ({
             backgroundColor: 'background.paper',
           }}
         >
-          <Divider />
+          <Divider sx={{ borderBottomWidth: 0.5, color: '#f0f0f0' }} />
           <Stack
             sx={{
               gap: 1,

@@ -130,7 +130,7 @@ const Header = () => (
     <Typography
       variant="globalS"
       fontWeight={'fontWeightSemiBold'}
-      sx={{ mx: 'auto' }}
+      sx={{ mx: 'auto', p: 2 }}
     >
       Header
     </Typography>
