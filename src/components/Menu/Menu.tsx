@@ -5,15 +5,18 @@ import {
   Divider,
   Stack,
   useTheme,
+  PopoverOrigin,
 } from '@mui/material';
-import { MAX_HEIGHT, MAX_WIDTH } from './constants';
+import { MAX_HEIGHT, MAX_WIDTH, positionMap } from './constants';
 
 export type MenuProps = Pick<
   MuiMenuProps,
   'id' | 'anchorEl' | 'open' | 'onClose' | 'children' | 'sx'
 > & {
-  'aria-labelledby': string;
+  'aria-labelledby'?: string;
   footer?: ReactNode;
+  position?: 'left' | 'right' | 'center';
+  fixedDimensions?: boolean;
 };
 
 export const Menu = ({
@@ -23,10 +26,33 @@ export const Menu = ({
   onClose,
   children,
   sx,
+  position = 'center',
+  fixedDimensions = true,
   'aria-labelledby': labelledby,
   footer,
 }: MenuProps) => {
   const theme = useTheme();
+
+  const positionValues = positionMap[position];
+  const anchorOrigin: PopoverOrigin = positionValues.anchorOrigin;
+  const transformOrigin: PopoverOrigin = positionValues.transformOrigin;
+
+  const fixedDimensionsSx = {
+    maxHeight: MAX_HEIGHT,
+    maxWidth: MAX_WIDTH,
+    overflow: 'hidden',
+  };
+
+  const fixedDimensionsUlSx = {
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    py: 1,
+  };
+
+  const fixeDimensionsSlotSx = {
+    maxHeight: MAX_HEIGHT,
+    maxWidth: MAX_WIDTH,
+  };
 
   return (
     <MuiMenu
@@ -34,34 +60,25 @@ export const Menu = ({
       anchorEl={anchorEl}
       open={open}
       onClose={onClose}
-      sx={sx}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      transformOrigin={{
-        vertical: -8,
-        horizontal: 'center',
-      }}
+      sx={{ mt: 1, ...sx }}
+      anchorOrigin={anchorOrigin}
+      transformOrigin={transformOrigin}
       MenuListProps={{
         component: 'div',
         'aria-labelledby': labelledby,
         sx: {
           p: 0,
-          maxHeight: MAX_HEIGHT,
-          maxWidth: MAX_WIDTH,
-          overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
+          ...(fixedDimensions && fixedDimensionsSx),
         },
       }}
       slotProps={{
         paper: {
           sx: {
-            maxHeight: MAX_HEIGHT,
-            maxWidth: MAX_WIDTH,
             boxShadow: theme.shadows[2],
             borderRadius: theme.spacing(2),
+            ...(fixedDimensions && fixeDimensionsSlotSx),
           },
         },
       }}
@@ -69,12 +86,10 @@ export const Menu = ({
       <Stack
         component="ul"
         sx={{
-          py: 1,
           px: 0,
           m: 0,
-          overflowY: 'auto',
-          overflowX: 'hidden',
           flex: 1,
+          ...(fixedDimensions && fixedDimensionsUlSx),
         }}
       >
         {children}

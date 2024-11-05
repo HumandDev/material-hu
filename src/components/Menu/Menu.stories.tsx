@@ -129,3 +129,19 @@ export const WithFooterAndManyOptions: Story = {
     footer: <Footer />,
   },
 };
+
+export const LeftAlign: Story = {
+  render: renderStory(manyOptions),
+  args: {
+    footer: <Footer />,
+    position: 'left',
+  },
+};
+
+export const RightAlign: Story = {
+  render: renderStory(manyOptions),
+  args: {
+    footer: <Footer />,
+    position: 'right',
+  },
+};

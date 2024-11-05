@@ -1,14 +1,8 @@
-import {
-  Button,
-  ButtonProps,
-  Popover,
-  PopoverOrigin,
-  Stack,
-  SxProps,
-} from '@mui/material';
+import { Button, ButtonProps, Stack, SxProps } from '@mui/material';
 import { FC, PropsWithChildren, useId, useRef, useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { colorPalette } from '../../theme/hugo/colors';
+import Menu from '../Menu/Menu';
 
 type Props = {
   label: string;
@@ -21,41 +15,7 @@ type Props = {
   hasIcon?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   sx?: SxProps;
-  popoverSx?: SxProps;
   buttonProps?: ButtonProps;
-};
-
-const positionMap = {
-  left: {
-    anchorOrigin: {
-      vertical: 'bottom' as const,
-      horizontal: 'left' as const,
-    },
-    transformOrigin: {
-      vertical: 'top' as const,
-      horizontal: 'left' as const,
-    },
-  },
-  right: {
-    anchorOrigin: {
-      vertical: 'bottom' as const,
-      horizontal: 'right' as const,
-    },
-    transformOrigin: {
-      vertical: 'top' as const,
-      horizontal: 'right' as const,
-    },
-  },
-  center: {
-    anchorOrigin: {
-      vertical: 'bottom' as const,
-      horizontal: 'center' as const,
-    },
-    transformOrigin: {
-      vertical: 'top' as const,
-      horizontal: 'center' as const,
-    },
-  },
 };
 
 const Dropdown: FC<PropsWithChildren<Props>> = ({
@@ -70,7 +30,6 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
   buttonSize = 'medium',
   hasIcon = true,
   sx = {},
-  popoverSx = {},
   buttonProps = {},
 }) => {
   const id = useId();
@@ -125,10 +84,6 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
     },
   };
 
-  const positionValues = positionMap[position];
-  const anchorOrigin: PopoverOrigin = positionValues.anchorOrigin;
-  const transformOrigin: PopoverOrigin = positionValues.transformOrigin;
-
   return (
     <Stack
       sx={{
@@ -163,7 +118,17 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
       >
         {label}
       </Button>
-      <Popover
+      <Menu
+        id={menuId}
+        open={isOpen}
+        anchorEl={anchorElement}
+        onClose={handleClose}
+        position={position}
+        fixedDimensions={false}
+      >
+        {children}
+      </Menu>
+      {/* <Popover
         id={menuId}
         open={isOpen}
         anchorEl={anchorElement}
@@ -177,7 +142,7 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
         transformOrigin={transformOrigin}
       >
         <Stack>{children}</Stack>
-      </Popover>
+      </Popover> */}
     </Stack>
   );
 };

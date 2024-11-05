@@ -11,7 +11,6 @@ type Props = {
     hasIcon?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     sx?: SxProps;
-    popoverSx?: SxProps;
     buttonProps?: ButtonProps;
 };
 declare const Dropdown: FC<PropsWithChildren<Props>>;

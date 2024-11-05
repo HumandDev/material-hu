@@ -1,9 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Dropdown from './Dropdown';
-import { List, ListItem, Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 import { IconBulb } from '@tabler/icons-react';
 import { colorPalette } from '../../theme/hugo/colors';
 import { useState } from 'react';
+import List from '../List/List';
+import ListItem from '../List/ListItem';
 
 const meta: Meta<typeof Dropdown> = {
   component: Dropdown,
@@ -51,6 +53,14 @@ const BasicMenu = () => {
         {items.map(item => (
           <ListItem
             key={item}
+            avatar={{
+              Icon: IconBulb,
+              color: 'primary',
+            }}
+            text={{
+              title: `Option ${item}`,
+              description: `Description of the option ${item}`,
+            }}
             sx={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -60,18 +70,7 @@ const BasicMenu = () => {
                 backgroundColor: colorPalette.hugoBackground.neutralBgSecondary,
               },
             }}
-          >
-            <IconBulb
-              size={16}
-              color={colorPalette.textColors.primaryText}
-            />
-            <Typography
-              variant="globalM"
-              color={colorPalette.textColors.primaryText}
-            >
-              {`Item ${item}`}
-            </Typography>
-          </ListItem>
+          />
         ))}
       </List>
     </Stack>
