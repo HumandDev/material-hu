@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
   Alert as AlertMui,
+  AlertProps as AlertMuiProps,
   AlertTitle,
   IconButton,
   Typography,
@@ -27,6 +28,7 @@ type AlertProps = {
   severity: 'success' | 'error' | 'warning' | 'info' | 'highlight';
   title: string;
   onClose?: () => void;
+  sx?: AlertMuiProps['sx'];
 };
 
 const mapSeverityIcon = {
@@ -68,7 +70,7 @@ const mapSeverityIcon = {
 };
 
 const Alert = (props: AlertProps) => {
-  const { title, description, hasClose, onClose, action, severity } = props;
+  const { title, description, hasClose, onClose, action, severity, sx } = props;
   const [open, setOpen] = useState(true);
 
   if (!open) return null;
@@ -136,6 +138,7 @@ const Alert = (props: AlertProps) => {
         '& div': {
           py: 0,
         },
+        ...sx,
       }}
     >
       <AlertTitle sx={{ mb: description ? 0.25 : 0 }}>
