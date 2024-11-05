@@ -24,5 +24,6 @@ export { default as HuAccordion } from './components/Accordion/Accordion';
 export { default as HuList } from './components/List/List';
 export { default as HuListItem } from './components/List/ListItem';
 export { default as HuListItemSkeleton } from './components/List/ListItemSkeleton';
+export { default as HuLink } from './components/Link/Link';
 export { default as HuDialog } from './components/Dialog/Dialog';
 export { default as HuDropdown } from './components/Dropdown/Dropdown';
