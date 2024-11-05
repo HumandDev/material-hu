@@ -8,7 +8,8 @@ export type TitleProps = {
     title: string;
     centered?: boolean;
     variant: TitleVariant;
+    withEllipsis?: boolean;
     sx?: StackProps['sx'];
 };
-export declare const Title: ({ centered, copetin, copetinTooltip, description, descriptionTooltip, title, variant, sx, }: TitleProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Title: ({ centered, copetin, copetinTooltip, description, descriptionTooltip, title, variant, withEllipsis, sx, }: TitleProps) => import("react/jsx-runtime").JSX.Element;
 export default Title;
