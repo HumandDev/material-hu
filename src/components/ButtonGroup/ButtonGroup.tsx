@@ -5,9 +5,14 @@ import { useState } from 'react';
 export type ButtonGroupProps = {
   labels: [string, string] | [string, string, string]; // Min 3 buttons - Max 3 buttons
   onChange?: (index: number) => void;
+  fullWidth?: boolean;
 };
 
-const ButtonGroup = ({ labels, onChange }: ButtonGroupProps) => {
+const ButtonGroup = ({
+  labels,
+  onChange,
+  fullWidth = false,
+}: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
   const buttonSelection = (index: number) => {
@@ -20,7 +25,10 @@ const ButtonGroup = ({ labels, onChange }: ButtonGroupProps) => {
   } = useTheme();
 
   return (
-    <MUIButtonGroup variant="outlined">
+    <MUIButtonGroup
+      variant="outlined"
+      sx={{ display: 'flex', width: fullWidth ? '100%' : 'auto' }}
+    >
       {labels.map((label, index) => (
         <Button
           key={index}
@@ -32,6 +40,7 @@ const ButtonGroup = ({ labels, onChange }: ButtonGroupProps) => {
             borderWidth: 1,
             py: 1,
             px: 1.5,
+            flexGrow: fullWidth ? 1 : 'initial',
           }}
           startIcon={selectedButton === index ? <IconCheck size={16} /> : null}
         >
