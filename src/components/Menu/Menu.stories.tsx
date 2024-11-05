@@ -27,20 +27,21 @@ const meta: Meta<typeof Menu> = {
   args: {
     header: null,
     footer: null,
-    height: undefined,
-    width: undefined,
+    fixedDimensions: false,
   },
   argTypes: {
-    height: { control: 'number' },
-    width: { control: 'number' },
+    fixedDimensions: {
+      description: 'Fixed dimensions or taken from children',
+      control: 'boolean',
+    },
     header: {
-      description: 'Contenido para el header del menu',
+      description: 'Menu header content',
       table: {
         type: { summary: 'ReactNode' },
       },
     },
     footer: {
-      description: 'Contenido para el footer del menu',
+      description: 'Menu footer content',
       table: {
         type: { summary: 'ReactNode' },
       },
@@ -149,7 +150,7 @@ export const WithFooter: Story = {
   },
 };
 
-export const WithHeader: Story = {
+export const WithHeaderAndFooter: Story = {
   render: renderStory(defaultOptions),
   args: {
     header: <Header />,
@@ -169,12 +170,18 @@ export const ManyOptionsAndFooter: Story = {
   },
 };
 
-export const WithAllAndCustomSize: Story = {
+export const LeftAlign: Story = {
   render: renderStory(manyOptions),
   args: {
-    header: <Header />,
     footer: <Footer />,
-    width: 500,
-    height: 600,
+    position: 'left',
+  },
+};
+
+export const RightAlign: Story = {
+  render: renderStory(manyOptions),
+  args: {
+    footer: <Footer />,
+    position: 'right',
   },
 };
