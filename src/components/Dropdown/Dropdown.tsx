@@ -128,21 +128,6 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
       >
         {children}
       </Menu>
-      {/* <Popover
-        id={menuId}
-        open={isOpen}
-        anchorEl={anchorElement}
-        onClose={handleClose}
-        sx={{
-          mt: 1,
-          boxShadow: `-1px 8px 16px 0px ${colorPalette.shadows['8dp']}`,
-          ...popoverSx,
-        }}
-        anchorOrigin={anchorOrigin}
-        transformOrigin={transformOrigin}
-      >
-        <Stack>{children}</Stack>
-      </Popover> */}
     </Stack>
   );
 };
