@@ -15,6 +15,7 @@ export type MenuProps = Pick<
 > & {
   'aria-labelledby'?: string;
   footer?: ReactNode;
+  header?: ReactNode;
   position?: 'left' | 'right' | 'center';
   fixedDimensions?: boolean;
 };
@@ -30,6 +31,7 @@ export const Menu = ({
   fixedDimensions = true,
   'aria-labelledby': labelledby,
   footer,
+  header,
 }: MenuProps) => {
   const theme = useTheme();
 
@@ -83,20 +85,40 @@ export const Menu = ({
         },
       }}
     >
+      {header && (
+        <Stack
+          sx={{
+            position: 'sticky',
+            top: 0,
+            zIndex: 1,
+            backgroundColor: 'background.paper',
+          }}
+        >
+          {header}
+          <Divider sx={{ borderBottomWidth: 0.5, color: '#f0f0f0' }} />
+        </Stack>
+      )}
       <Stack
         component="ul"
         sx={{
+          flex: 1,
           px: 0,
           m: 0,
-          flex: 1,
           ...(fixedDimensions && fixedDimensionsUlSx),
         }}
       >
         {children}
       </Stack>
       {footer && (
-        <Stack>
-          <Divider />
+        <Stack
+          sx={{
+            position: 'sticky',
+            bottom: 0,
+            zIndex: 1,
+            backgroundColor: 'background.paper',
+          }}
+        >
+          <Divider sx={{ borderBottomWidth: 0.5, color: '#f0f0f0' }} />
           <Stack
             sx={{
               gap: 1,
