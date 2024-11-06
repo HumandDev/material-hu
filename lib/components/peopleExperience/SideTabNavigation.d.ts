@@ -16,6 +16,10 @@ type TabSidebarProps = {
     }>;
     slotProps?: Partial<{
         tabs: StackProps;
+        layout: {
+            skipFilters?: boolean;
+            skipComparisonFilter?: boolean;
+        };
     }>;
 };
 declare const SideTabNavigation: ({ selectedIndex, onChangeIndex, tabs, title, layout: Layout, slotProps, }: TabSidebarProps) => import("react/jsx-runtime").JSX.Element;
