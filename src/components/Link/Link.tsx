@@ -1,22 +1,20 @@
 import {
-  LinkProps,
+  LinkProps as MuiLinkProps,
   Link as MuiLink,
   Stack,
-  SxProps,
   useTheme,
 } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 import { IconArrowNarrowRight } from '@tabler/icons-react';
 import { colorPalette } from '../../theme/hugo/colors';
 
-type Props = {
+export type LinkProps = {
   hasIcon?: boolean;
   iconSize?: number;
   disabled?: boolean;
-  sx?: SxProps;
-} & Omit<LinkProps, 'sx'>;
+} & MuiLinkProps;
 
-const Link: FC<PropsWithChildren<Props>> = ({
+export const Link: FC<PropsWithChildren<LinkProps>> = ({
   children,
   hasIcon = false,
   iconSize = 16,
