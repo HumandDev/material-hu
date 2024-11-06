@@ -14,6 +14,8 @@ export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
 export { default as HuInputSelect } from './components/Input/InputSelect';
 export { default as HuFormInputSelect } from './components/Input/FormInputSelect';
+export { default as HuRating } from './components/Rating/Rating';
+export { default as HuFormRating } from './components/Rating/FormRating';
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
 export { default as HuCheckbox } from './components/Checkbox/Checkbox';
 export { default as HuFormCheckbox } from './components/Checkbox/FormCheckbox';
@@ -26,4 +28,7 @@ export { default as HuFormRadioButton } from './components/RadioButton/FormRadio
 export { default as HuList } from './components/List/List';
 export { default as HuListItem } from './components/List/ListItem';
 export { default as HuListItemSkeleton } from './components/List/ListItemSkeleton';
+export { default as HuButtonGroup } from './components/ButtonGroup/ButtonGroup';
+export { default as HuUseSnackbar } from './components/Snackbar/Snackbar';
+export { default as HuLink } from './components/Link/Link';
 export { default as HuDialog } from './components/Dialog/Dialog';
