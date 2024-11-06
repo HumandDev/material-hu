@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonGroup from './ButtonGroup';
+import { Stack } from '@mui/material';
 
 const meta: Meta<typeof ButtonGroup> = {
   component: ButtonGroup,
@@ -7,6 +8,7 @@ const meta: Meta<typeof ButtonGroup> = {
   tags: ['autodocs'],
   args: {
     labels: ['Button 1', 'Button 2'],
+    fullWidth: false,
   },
   argTypes: {},
 };
@@ -35,5 +37,17 @@ export const WithOnChange: Story = {
   args: {
     labels: ['Button 1', 'Button 2', 'Button 3'],
     onChange: index => alert(`You have clicked ${index + 1}`),
+  },
+};
+
+export const FullWidth: Story = {
+  render: args => (
+    <Stack>
+      <ButtonGroup {...args} />
+    </Stack>
+  ),
+  args: {
+    labels: ['Button 1', 'Button 2', 'Button 3'],
+    fullWidth: true,
   },
 };
