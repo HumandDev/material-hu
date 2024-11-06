@@ -1,7 +1,7 @@
 import { StackProps } from '@mui/material';
 type Props = {
-    current: number;
-    total: number;
+    current?: number;
+    total?: number;
     title?: string;
     description?: string;
     helper?: string;

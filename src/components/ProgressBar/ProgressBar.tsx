@@ -2,8 +2,8 @@ import { Stack, LinearProgress, Typography, StackProps } from '@mui/material';
 import Title from '../Title/Title';
 
 type Props = {
-  current: number;
-  total: number;
+  current?: number;
+  total?: number;
   title?: string;
   description?: string;
   helper?: string;
