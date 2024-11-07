@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ButtonProps } from '@mui/material';
+import { type LoadingButtonProps as ButtonProps } from '@mui/lab/LoadingButton';
 type Props = {
     title?: string;
     body?: ReactNode;
