@@ -9,6 +9,8 @@ type TooltipBodyProps = {
 export type TooltipProps = TooltipBodyProps & {
   direction?: 'top' | 'left' | 'right' | 'bottom';
   children: any;
+  disableTooltip?: boolean;
+  delay?: number;
 };
 
 const TooltipBody = ({ title, description }: TooltipBodyProps) => {
@@ -16,16 +18,31 @@ const TooltipBody = ({ title, description }: TooltipBodyProps) => {
     <Stack sx={{ p: 1 }}>
       <Typography
         variant="globalS"
-        sx={{ fontWeight: 'semibold' }}
+        sx={{
+          color: ({ palette }) => palette.textColors?.neutralTextInverted,
+          fontWeight: 'semiBold',
+        }}
       >
         {title}
       </Typography>
-      <Typography variant="globalXS">{description}</Typography>
+      <Typography
+        variant="globalXS"
+        sx={{
+          color: ({ palette }) => palette.textColors?.neutralTextInverted,
+        }}
+      >
+        {description}
+      </Typography>
     </Stack>
   );
 };
 
-const Tooltip = ({ children, ...props }: TooltipProps) => {
+const Tooltip = ({
+  children,
+  disableTooltip = false,
+  delay = 0,
+  ...props
+}: TooltipProps) => {
   const { title = '', description = '', direction = 'top' } = props;
   return (
     <MuiTooltip
@@ -46,11 +63,14 @@ const Tooltip = ({ children, ...props }: TooltipProps) => {
         },
       }}
       title={
-        <TooltipBody
-          title={title}
-          description={description}
-        />
+        !disableTooltip ? (
+          <TooltipBody
+            title={title}
+            description={description}
+          />
+        ) : null
       }
+      enterNextDelay={delay}
     >
       {children}
     </MuiTooltip>
