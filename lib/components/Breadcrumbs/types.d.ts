@@ -1,6 +1,6 @@
 /// <reference types="react" />
-export type BreadcrumbLink = {
+import { LinkProps } from '../Link/Link';
+export type BreadcrumbLink = Pick<LinkProps, 'href' | 'onClick'> & {
     title: string;
-    href: string;
     icon?: React.ElementType;
 };

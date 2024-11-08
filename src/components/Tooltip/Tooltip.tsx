@@ -19,17 +19,15 @@ const TooltipBody = ({ title, description }: TooltipBodyProps) => {
       <Typography
         variant="globalS"
         sx={{
-          color: ({ palette }) => palette.textColors?.neutralTextInverted,
           fontWeight: 'semiBold',
+          color: colorPalette.textColors.neutralTextInverted,
         }}
       >
         {title}
       </Typography>
       <Typography
         variant="globalXS"
-        sx={{
-          color: ({ palette }) => palette.textColors?.neutralTextInverted,
-        }}
+        sx={{ color: colorPalette.textColors.neutralTextInverted }}
       >
         {description}
       </Typography>
@@ -70,6 +68,7 @@ const Tooltip = ({
           />
         ) : null
       }
+      enterDelay={delay}
       enterNextDelay={delay}
     >
       {children}

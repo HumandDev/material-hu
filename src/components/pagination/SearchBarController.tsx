@@ -9,17 +9,20 @@ import { FormValues as ServerPaginationFormValues } from '../../hooks/useServerP
 type BuildSearchbarParams<T extends FieldValues> = {
   control: Control<T>;
   setValue: (name: keyof T, value: T[keyof T]) => void;
+  defaultQuery?: string;
 };
 
 const buildSearchbar = ({
   control,
   setValue,
+  defaultQuery = '',
 }: BuildSearchbarParams<ServerPaginationFormValues>) => {
   const SearchBarController: FC<TextFieldProps> = props => {
     return (
       <Controller
         control={control}
         name="query"
+        defaultValue={defaultQuery}
         render={({ field }) => (
           <TextField
             fullWidth
