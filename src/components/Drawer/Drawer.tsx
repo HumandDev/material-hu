@@ -7,21 +7,19 @@ import {
   IconButton,
   Typography,
   Button,
+  ButtonProps,
 } from '@mui/material';
 import { IconX } from '@tabler/icons-react';
 
-type DrawerProps = MuiDrawerProps & {
+export type DrawerProps = MuiDrawerProps & {
   title?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
-  primaryActionText?: string;
-  secondaryActionText?: string;
-  primaryAction?: () => void;
-  secondaryAction?: () => void;
-  extraFooterContent?: ReactNode;
-  withDoubleLayout?: boolean;
-  primaryLayoutContent?: ReactNode;
-  secondaryLayoutContent?: ReactNode;
+  primaryButtonProps?: ButtonProps;
+  secondaryButtonProps?: ButtonProps;
+  footer?: ReactNode;
+  primaryContent?: ReactNode;
+  secondaryContent?: ReactNode;
 };
 
 const sizeStyleMap = {
@@ -42,23 +40,22 @@ const Drawer = (props: DrawerProps) => {
     open = false,
     children,
     onClose,
-    primaryActionText,
-    secondaryActionText,
-    primaryAction = () => {},
-    secondaryAction = () => {},
-    extraFooterContent,
-    withDoubleLayout = false,
-    primaryLayoutContent,
-    secondaryLayoutContent,
+    primaryButtonProps,
+    secondaryButtonProps,
+    footer,
+    primaryContent,
+    secondaryContent,
   } = props;
+
+  const withDoubleLayout = !!primaryContent || !!secondaryContent;
 
   const realSize = withDoubleLayout ? 'large' : size;
 
   const stylesForSize = sizeStyleMap[realSize];
 
-  const hasExtraFooter = !!extraFooterContent;
+  const hasExtraFooter = !!footer;
 
-  const hasActions = primaryActionText || secondaryActionText;
+  const hasActions = !!primaryButtonProps || !!secondaryButtonProps;
 
   return (
     <MuiDrawer
@@ -66,6 +63,7 @@ const Drawer = (props: DrawerProps) => {
       open={open}
       PaperProps={{
         sx: {
+          borderRadius: '16px 0 0 16px',
           ...stylesForSize,
         },
       }}
@@ -99,7 +97,7 @@ const Drawer = (props: DrawerProps) => {
               width: '50%',
             }}
           >
-            {primaryLayoutContent}
+            {primaryContent}
           </Stack>
           <Stack
             sx={{
@@ -109,7 +107,7 @@ const Drawer = (props: DrawerProps) => {
               bgcolor: colorPalette.hugoBackground.neutralBgSecondary,
             }}
           >
-            {secondaryLayoutContent}
+            {secondaryContent}
           </Stack>
         </Stack>
       )}
@@ -132,7 +130,7 @@ const Drawer = (props: DrawerProps) => {
             borderTop: `1px solid ${colorPalette.border?.neutralDivider}`,
           }}
         >
-          {extraFooterContent}
+          {footer}
         </Stack>
       )}
       {hasActions && (
@@ -142,27 +140,23 @@ const Drawer = (props: DrawerProps) => {
             py: 2,
             gap: 1,
             flexDirection: 'row',
-            justifyContent: 'flex-end',
+            justifyContent: realSize === 'large' ? 'flex-end' : 'space-between',
             borderTop: `1px solid ${colorPalette.border?.neutralDivider}`,
           }}
         >
-          {secondaryActionText && (
+          {!!secondaryButtonProps && (
             <Button
-              onClick={secondaryAction}
               variant="text"
-              size={size}
-            >
-              {secondaryActionText}
-            </Button>
+              size="large"
+              {...secondaryButtonProps}
+            />
           )}
-          {primaryActionText && (
+          {!!primaryButtonProps && (
             <Button
-              onClick={primaryAction}
-              variant="outlined"
-              size={size}
-            >
-              {primaryActionText}
-            </Button>
+              variant="contained"
+              size="large"
+              {...primaryButtonProps}
+            />
           )}
         </Stack>
       )}

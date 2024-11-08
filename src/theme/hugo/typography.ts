@@ -4,7 +4,7 @@ import { colorPalette } from './colors';
 
 const typographyWeight = {
   fontWeightRegular: 400,
-  fontWeightSemiBold: 600,
+  fontWeightSemiBold: 500,
 };
 
 export const typography: ThemeOptions['typography'] = {

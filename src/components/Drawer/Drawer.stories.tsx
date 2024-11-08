@@ -21,13 +21,17 @@ type Story = StoryObj<typeof Drawer>;
 
 export const Default: Story = {
   args: {
-    title: 'Drawer Title',
+    title: 'Soy un título del Drawer',
     size: 'medium',
-    primaryActionText: 'Primary Action',
-    secondaryActionText: 'Secondary Action',
+    primaryButtonProps: {
+      children: 'Primary Action',
+    },
+    secondaryButtonProps: {
+      children: 'Secondary Action',
+    },
   },
   render: props => {
-    const { title, size, primaryActionText, secondaryActionText } = props;
+    const { title, size, primaryButtonProps, secondaryButtonProps } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
@@ -46,8 +50,8 @@ export const Default: Story = {
           size={size}
           open={isOpen}
           onClose={onClose}
-          primaryActionText={primaryActionText}
-          secondaryActionText={secondaryActionText}
+          primaryButtonProps={primaryButtonProps}
+          secondaryButtonProps={secondaryButtonProps}
         >
           <Typography>
             Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi. Turpis
@@ -103,11 +107,15 @@ export const DrawerWithExtraFooter: Story = {
   args: {
     title: 'Drawer Title',
     size: 'medium',
-    primaryActionText: 'Primary Action',
-    secondaryActionText: 'Secondary Action',
+    primaryButtonProps: {
+      children: 'Primary Action',
+    },
+    secondaryButtonProps: {
+      children: 'Secondary Action',
+    },
   },
   render: props => {
-    const { title, size, primaryActionText, secondaryActionText } = props;
+    const { title, size, primaryButtonProps, secondaryButtonProps } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
@@ -126,9 +134,9 @@ export const DrawerWithExtraFooter: Story = {
           size={size}
           open={isOpen}
           onClose={onClose}
-          primaryActionText={primaryActionText}
-          secondaryActionText={secondaryActionText}
-          extraFooterContent={
+          primaryButtonProps={primaryButtonProps}
+          secondaryButtonProps={secondaryButtonProps}
+          footer={
             <Stack sx={{ alignItems: 'center', gap: 2 }}>
               <Typography>
                 Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
@@ -183,18 +191,15 @@ export const DrawerWithDoubleLayout: Story = {
   args: {
     title: 'Drawer Title',
     size: 'large',
-    primaryActionText: 'Primary Action',
-    secondaryActionText: 'Secondary Action',
-    withDoubleLayout: true,
+    primaryButtonProps: {
+      children: 'Primary Action',
+    },
+    secondaryButtonProps: {
+      children: 'Secondary Action',
+    },
   },
   render: props => {
-    const {
-      title,
-      size,
-      primaryActionText,
-      secondaryActionText,
-      withDoubleLayout,
-    } = props;
+    const { title, size, primaryButtonProps, secondaryButtonProps } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
@@ -213,10 +218,9 @@ export const DrawerWithDoubleLayout: Story = {
           size={size}
           open={isOpen}
           onClose={onClose}
-          withDoubleLayout={withDoubleLayout}
-          primaryActionText={primaryActionText}
-          secondaryActionText={secondaryActionText}
-          primaryLayoutContent={
+          primaryButtonProps={primaryButtonProps}
+          secondaryButtonProps={secondaryButtonProps}
+          primaryContent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
               Turpis eu ut egestas pharetra bibendum nunc enim velit lectus.
@@ -260,7 +264,7 @@ export const DrawerWithDoubleLayout: Story = {
               Vitae risus sed pharetra dui gravida. Proin tellus condimentum
             </Typography>
           }
-          secondaryLayoutContent={
+          secondaryContent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
               Turpis eu ut egestas pharetra bibendum nunc enim velit lectus.
@@ -299,18 +303,15 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
   args: {
     title: 'Drawer Title',
     size: 'large',
-    primaryActionText: 'Primary Action',
-    secondaryActionText: 'Secondary Action',
-    withDoubleLayout: true,
+    primaryButtonProps: {
+      children: 'Primary Action',
+    },
+    secondaryButtonProps: {
+      children: 'Secondary Action',
+    },
   },
   render: props => {
-    const {
-      title,
-      size,
-      primaryActionText,
-      secondaryActionText,
-      withDoubleLayout,
-    } = props;
+    const { title, size, primaryButtonProps, secondaryButtonProps } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
@@ -329,10 +330,9 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
           size={size}
           open={isOpen}
           onClose={onClose}
-          withDoubleLayout={withDoubleLayout}
-          primaryActionText={primaryActionText}
-          secondaryActionText={secondaryActionText}
-          primaryLayoutContent={
+          primaryButtonProps={primaryButtonProps}
+          secondaryButtonProps={secondaryButtonProps}
+          primaryContent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
               Turpis eu ut egestas pharetra bibendum nunc enim velit lectus.
@@ -376,7 +376,7 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
               Vitae risus sed pharetra dui gravida. Proin tellus condimentum
             </Typography>
           }
-          secondaryLayoutContent={
+          secondaryContent={
             <Typography>
               Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
               Turpis eu ut egestas pharetra bibendum nunc enim velit lectus.
@@ -405,7 +405,7 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
               consectetur. In sed ut elit nisi. Turpis eu ut egestas pharetra
             </Typography>
           }
-          extraFooterContent={
+          footer={
             <Stack sx={{ alignItems: 'center', gap: 2 }}>
               <Typography>
                 Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi.
