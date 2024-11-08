@@ -85,6 +85,10 @@ export declare const PeopleExperience: {
         }> | undefined;
         slotProps?: Partial<{
             tabs: import("@mui/material").StackProps;
+            layout: {
+                skipFilters?: boolean | undefined;
+                skipComparisonFilter?: boolean | undefined;
+            };
         }> | undefined;
     }) => import("react/jsx-runtime").JSX.Element;
     TabPanel: ({ children, value }: {

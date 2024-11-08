@@ -5,6 +5,8 @@ type TooltipBodyProps = {
 export type TooltipProps = TooltipBodyProps & {
     direction?: 'top' | 'left' | 'right' | 'bottom';
     children: any;
+    disableTooltip?: boolean;
+    delay?: number;
 };
-declare const Tooltip: ({ children, ...props }: TooltipProps) => import("react/jsx-runtime").JSX.Element;
+declare const Tooltip: ({ children, disableTooltip, delay, ...props }: TooltipProps) => import("react/jsx-runtime").JSX.Element;
 export default Tooltip;

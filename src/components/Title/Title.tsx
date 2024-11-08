@@ -53,6 +53,7 @@ export type TitleProps = {
   title: string;
   centered?: boolean;
   variant: TitleVariant;
+  withEllipsis?: boolean;
   sx?: StackProps['sx'];
 };
 
@@ -64,6 +65,7 @@ export const Title = ({
   descriptionTooltip = '',
   title,
   variant,
+  withEllipsis,
   sx = {},
 }: TitleProps) => {
   return (
@@ -78,9 +80,13 @@ export const Title = ({
           variant={adjustedCopetin[variant]}
           sx={{
             color: colorPalette.textColors.neutralTextLighter,
-            display: 'flex',
             alignItems: 'center',
             gap: 0.5,
+            ...(withEllipsis && {
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+            }),
           }}
         >
           {copetin}
@@ -101,6 +107,11 @@ export const Title = ({
         variant={`global${variant}`}
         sx={{
           color: colorPalette.textColors.neutralText,
+          ...(withEllipsis && {
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+          }),
         }}
         fontWeight={'fontWeightSemiBold'}
       >
@@ -110,10 +121,15 @@ export const Title = ({
         <Typography
           variant={adjustedDescription[variant]}
           sx={{
-            display: 'flex',
+            color: colorPalette.textColors.neutralTextLighter,
             alignItems: 'center',
             gap: 0.5,
-            color: colorPalette.textColors.neutralTextLighter,
+            ...(withEllipsis && {
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 2,
+              overflow: 'hidden',
+            }),
           }}
         >
           {description}

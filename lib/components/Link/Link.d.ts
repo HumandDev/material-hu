@@ -1,10 +1,9 @@
-import { LinkProps, SxProps } from '@mui/material';
+import { LinkProps as MuiLinkProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
-type Props = {
+export type LinkProps = {
     hasIcon?: boolean;
     iconSize?: number;
     disabled?: boolean;
-    sx?: SxProps;
-} & Omit<LinkProps, 'sx'>;
-declare const Link: FC<PropsWithChildren<Props>>;
+} & MuiLinkProps;
+export declare const Link: FC<PropsWithChildren<LinkProps>>;
 export default Link;
