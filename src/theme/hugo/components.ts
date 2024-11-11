@@ -108,7 +108,7 @@ export const components: ThemeOptions['components'] = {
         },
       }),
       sizeLarge: ({ theme }) => ({
-        minWidth: '256px',
+        minWidth: '200px',
         paddingTop: theme.spacing(1.5),
         paddingBottom: theme.spacing(1.5),
         paddingLeft: theme.spacing(2),
