@@ -34,3 +34,4 @@ export { default as HuUseSnackbar } from './components/Snackbar/Snackbar';
 export { default as HuLink } from './components/Link/Link';
 export { default as HuDialog } from './components/Dialog/Dialog';
 export { default as HuDropdown } from './components/Dropdown/Dropdown';
+export { default as HuSwitcher } from './components/Switcher/Switcher';
