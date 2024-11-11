@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
 import {
-  Button,
-  ButtonProps,
   DialogActions,
   DialogContent,
   IconButton,
   Stack,
   Typography,
 } from '@mui/material';
+import {
+  default as Button,
+  type LoadingButtonProps as ButtonProps,
+} from '@mui/lab/LoadingButton';
 import { IconX, IconInfoCircle } from '@tabler/icons-react';
 import { colorPalette } from '../../theme/hugo/colors';
 
