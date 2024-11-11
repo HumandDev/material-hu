@@ -9,6 +9,7 @@ const meta: Meta<typeof ButtonGroup> = {
   args: {
     labels: ['Button 1', 'Button 2'],
     fullWidth: false,
+    disableUnselect: false,
   },
   argTypes: {},
 };
@@ -30,6 +31,14 @@ export const Two: Story = {
 export const Three: Story = {
   args: {
     labels: ['Button 1', 'Button 2', 'Button 3'],
+  },
+};
+
+export const DisabledUnselect: Story = {
+  args: {
+    labels: ['Button 1', 'Button 2', 'Button 3'],
+    disableUnselect: true,
+    onChange: index => alert(`You have clicked ${index + 1}`),
   },
 };
 
