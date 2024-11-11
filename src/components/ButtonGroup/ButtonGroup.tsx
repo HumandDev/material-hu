@@ -6,23 +6,29 @@ export type ButtonGroupProps = {
   labels: [string, string] | [string, string, string]; // Min 3 buttons - Max 3 buttons
   onChange?: (index: number) => void;
   fullWidth?: boolean;
-  disableDoubleClick?: boolean;
+  disableUnselect?: boolean;
 };
 
 const ButtonGroup = ({
   labels,
   onChange,
   fullWidth = false,
-  disableDoubleClick = false,
+  disableUnselect = false,
 }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
   const buttonSelection = (index: number) => {
-    setSelectedButton(prevSelected => {
-      if (disableDoubleClick) return index;
-      return prevSelected === index ? null : index;
-    });
-    onChange?.(index);
+    const newIndex = selectedButton === index ? null : index;
+    const newSelected = disableUnselect ? index : newIndex;
+    setSelectedButton(newSelected);
+
+    // Execute onChange if its enabled Unselect or if its a different button
+    if (
+      !disableUnselect ||
+      (disableUnselect && newSelected !== selectedButton)
+    ) {
+      onChange?.(index);
+    }
   };
 
   const {
