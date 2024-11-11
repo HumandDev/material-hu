@@ -9,6 +9,7 @@ const meta: Meta<typeof ButtonGroup> = {
   args: {
     labels: ['Button 1', 'Button 2'],
     fullWidth: false,
+    disableDoubleClick: false,
   },
   argTypes: {},
 };
@@ -30,6 +31,13 @@ export const Two: Story = {
 export const Three: Story = {
   args: {
     labels: ['Button 1', 'Button 2', 'Button 3'],
+  },
+};
+
+export const DisabledDoubleClick: Story = {
+  args: {
+    labels: ['Button 1', 'Button 2', 'Button 3'],
+    disableDoubleClick: true,
   },
 };
 

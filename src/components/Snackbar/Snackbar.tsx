@@ -111,7 +111,7 @@ export const useSnackbar = () => {
                   alignItems: 'center',
                   gap: 1,
                   ml: 1,
-                  maxWidth: 360,
+                  maxWidth: cancelAction ? 400 : '98%',
                 }}
               >
                 <Badge
@@ -130,7 +130,7 @@ export const useSnackbar = () => {
                   overlap="circular"
                   sx={{
                     mr: 2,
-                    mb: description ? 2 : 0,
+                    mb: title && description ? 2 : 0,
                     '.MuiBadge-badge': {
                       backgroundColor: iconColor,
                       minWidth: 24,
@@ -174,7 +174,7 @@ export const useSnackbar = () => {
                     mr: 4,
                     color: 'white',
                     minWidth: 'auto',
-                    maxWidth: 150,
+                    maxWidth: 130,
                   }}
                 >
                   <Typography
