@@ -17,7 +17,7 @@ const Toggle = ({ disabled, checked, onChange }: ToggleProps) => {
       disableRipple
       disabled={disabled}
       checked={checked}
-      onChange={() => onChange!(!checked)}
+      onChange={() => onChange(!checked)}
       sx={{
         width: 52,
         height: 32,
