@@ -5,16 +5,19 @@ import {
 } from '@mui/material';
 import { colorPalette } from '../../theme/hugo/colors';
 
-export type ChipProps = Pick<MuiSwitchProps, 'disabled' | 'defaultChecked'>;
+export type ToggleProps = Pick<MuiSwitchProps, 'disabled' | 'checked'> & {
+  onChange: (value: boolean) => void;
+};
 
-const Toggle = ({ disabled, defaultChecked }: ChipProps) => {
+const Toggle = ({ disabled, checked, onChange }: ToggleProps) => {
   const { hugoBackground, buttons, border, ilustrations } = colorPalette;
   const theme = useTheme();
   return (
     <MuiSwitch
       disableRipple
       disabled={disabled}
-      defaultChecked={defaultChecked}
+      checked={checked}
+      onChange={() => onChange(!checked)}
       sx={{
         width: 52,
         height: 32,

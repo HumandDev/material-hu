@@ -81,6 +81,7 @@ export const components: ThemeOptions['components'] = {
       outlined: ({ theme }) => ({
         color: theme.palette.base?.blueBrand[800],
         borderColor: theme.palette.base?.blueBrand[200],
+        backgroundColor: theme.palette.base?.white,
         '&:hover': {
           backgroundColor: theme.palette.base?.blueBrand[100],
           borderColor: theme.palette.base?.blueBrand[200],
