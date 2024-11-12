@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react/*';
 import Switcher from './Switcher';
+import { FormProvider, useForm } from 'react-hook-form';
+import FormSwitcher from './FormSwitcher';
 
 const meta: Meta<typeof Switcher> = {
   component: Switcher,
@@ -33,8 +35,35 @@ export const Checked: Story = {
   args: {
     title: exampleTitle,
     description: exampleDescription,
-    toggleProps: {
-      defaultChecked: true,
-    },
+    value: true,
+  },
+};
+
+export const FormSwitcherStory: Story = {
+  render: () => {
+    const form = useForm({
+      defaultValues: {
+        mySwitch1: false,
+        mySwitch2: true,
+      },
+    });
+    return (
+      <FormProvider {...form}>
+        <FormSwitcher
+          name="mySwitch1"
+          switcherProps={{
+            title: 'My title 1',
+            description: 'My description 1',
+          }}
+        />
+        <FormSwitcher
+          name="mySwitch2"
+          switcherProps={{
+            title: 'My title 2',
+            description: 'My description 2',
+          }}
+        />
+      </FormProvider>
+    );
   },
 };
