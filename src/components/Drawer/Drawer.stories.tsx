@@ -23,6 +23,7 @@ export const Default: Story = {
   args: {
     title: 'Soy un título del Drawer',
     size: 'medium',
+    disableEscapeKeyDown: false,
     primaryButtonProps: {
       children: 'Primary Action',
     },
@@ -31,7 +32,13 @@ export const Default: Story = {
     },
   },
   render: props => {
-    const { title, size, primaryButtonProps, secondaryButtonProps } = props;
+    const {
+      title,
+      size,
+      primaryButtonProps,
+      secondaryButtonProps,
+      disableEscapeKeyDown,
+    } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => setIsOpen(false);
@@ -52,6 +59,7 @@ export const Default: Story = {
           onClose={onClose}
           primaryButtonProps={primaryButtonProps}
           secondaryButtonProps={secondaryButtonProps}
+          disableEscapeKeyDown={disableEscapeKeyDown}
         >
           <Typography>
             Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi. Turpis
