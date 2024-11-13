@@ -118,7 +118,12 @@ export const Menu = ({
             backgroundColor: 'background.paper',
           }}
         >
-          <Divider sx={{ borderBottomWidth: 0.5, color: '#f0f0f0' }} />
+          <Divider
+            sx={{
+              borderBottomWidth: 0.5,
+              color: th => th.palette.border?.neutralDivider,
+            }}
+          />
           <Stack
             sx={{
               gap: 1,
@@ -126,6 +131,7 @@ export const Menu = ({
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
+              minHeight: 68,
             }}
           >
             {footer}
