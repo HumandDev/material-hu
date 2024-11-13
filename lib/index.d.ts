@@ -22,6 +22,7 @@ export { useDebounce } from './hooks/useDebounce';
 export { useServerPagination, TableSortingHeaderProps, } from './hooks/useServerPagination';
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
+export { useDrawer } from './hooks/useDrawer';
 export { createHuGoTheme } from './theme/hugo';
 export declare const PeopleExperience: {
     DisplayGroup: <TData extends {

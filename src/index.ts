@@ -64,6 +64,7 @@ export {
 } from './hooks/useServerPagination';
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
+export { useDrawer } from './hooks/useDrawer';
 export { createHuGoTheme } from './theme/hugo';
 export const PeopleExperience = {
   DisplayGroup,

@@ -5,8 +5,9 @@ type Props = {
     title?: string;
     description?: string;
     helper?: string;
+    hasPercentage?: boolean;
     variant?: 'determinate' | 'indeterminate';
     sx?: StackProps['sx'];
 };
-declare const ProgressBar: ({ title, description, helper, variant, current, total, sx, }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const ProgressBar: ({ title, description, helper, variant, current, total, hasPercentage, sx, }: Props) => import("react/jsx-runtime").JSX.Element;
 export default ProgressBar;

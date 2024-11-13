@@ -7,6 +7,7 @@ type Props = {
   title?: string;
   description?: string;
   helper?: string;
+  hasPercentage?: boolean;
   variant?: 'determinate' | 'indeterminate';
   sx?: StackProps['sx'];
 };
@@ -18,6 +19,7 @@ const ProgressBar = ({
   variant = 'indeterminate',
   current = 0,
   total = 100,
+  hasPercentage = false,
   sx,
 }: Props) => {
   const progress = (100 * current) / total;
@@ -41,7 +43,7 @@ const ProgressBar = ({
           variant={variant}
           value={Math.min(progress, 100)}
         />
-        {variant === 'determinate' && (
+        {hasPercentage && (
           <Typography
             variant="globalXS"
             sx={{

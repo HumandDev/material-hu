@@ -3,7 +3,7 @@ import CustomLabel from './CustomLabel';
 import CustomHelperText from './CustomHelperText';
 import CustomSelect, { CustomSelectProps } from './CustomSelect';
 
-export type Props = Pick<FormControlProps, 'sx' | 'fullWidth'> &
+export type Props = Pick<FormControlProps, 'sx' | 'fullWidth' | 'disabled'> &
   CustomSelectProps & {
     label?: string;
     helperText?: string;
@@ -23,12 +23,14 @@ const InputSelect = ({
   error,
   fullWidth = true,
   options,
+  disabled,
 }: Props) => {
   return (
     <FormControl
       sx={sx}
       error={error}
       fullWidth={fullWidth}
+      disabled={disabled}
     >
       <CustomLabel label={label} />
       <CustomSelect

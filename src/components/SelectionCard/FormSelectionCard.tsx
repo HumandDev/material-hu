@@ -1,15 +1,16 @@
 import { FC, PropsWithChildren } from 'react';
 import { Controller, ControllerProps, useFormContext } from 'react-hook-form';
-import SelectionCard from './SelectionCard';
+import SelectionCard, { SelectionCardProps } from './SelectionCard';
 
 type FormSelectionCardProps = PropsWithChildren<{
   name: string;
   rules?: ControllerProps['rules'];
   isOnlyOption?: boolean;
+  sx?: SelectionCardProps['sx'];
 }>;
 
 const FormSelectionCard: FC<FormSelectionCardProps> = props => {
-  const { name, rules, children, isOnlyOption = false } = props;
+  const { name, rules, children, isOnlyOption = false, sx } = props;
 
   const { getValues, setValue } = useFormContext();
 
@@ -37,6 +38,7 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
         <SelectionCard
           onClick={param => handleOnClick(onChange, param)}
           checked={valueInput}
+          sx={sx}
         >
           {children}
         </SelectionCard>
