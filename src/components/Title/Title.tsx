@@ -81,8 +81,11 @@ export const Title = ({
           variant={adjustedCopetin[variant]}
           sx={{
             color: colorPalette.textColors.neutralTextLighter,
+            display: 'flex',
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: 0.5,
+            justifyContent: 'flex-start',
+            gap: 1,
             ...(withEllipsis && {
               overflow: 'hidden',
               whiteSpace: 'nowrap',
@@ -123,8 +126,11 @@ export const Title = ({
           variant={adjustedDescription[variant]}
           sx={{
             color: colorPalette.textColors.neutralTextLighter,
+            display: 'flex',
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: 0.5,
+            justifyContent: 'flex-start',
+            gap: 1,
             ...(withEllipsis && {
               display: '-webkit-box',
               WebkitBoxOrient: 'vertical',
