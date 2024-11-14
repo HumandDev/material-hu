@@ -7,6 +7,7 @@ export type ButtonGroupProps = {
   onChange?: (index: number) => void;
   fullWidth?: boolean;
   disableUnselect?: boolean;
+  fixedCheck?: boolean;
 };
 
 const ButtonGroup = ({
@@ -14,6 +15,7 @@ const ButtonGroup = ({
   onChange,
   fullWidth = false,
   disableUnselect = false,
+  fixedCheck = false,
 }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
@@ -35,6 +37,13 @@ const ButtonGroup = ({
     palette: { base },
   } = useTheme();
 
+  const noIcon = fixedCheck ? (
+    <IconCheck
+      size={16}
+      color="none"
+    />
+  ) : null;
+
   return (
     <MUIButtonGroup
       variant="outlined"
@@ -52,8 +61,12 @@ const ButtonGroup = ({
             py: 1,
             px: 1.5,
             flexGrow: fullWidth ? 1 : 'initial',
+            textTransform: 'none',
           }}
-          startIcon={selectedButton === index ? <IconCheck size={16} /> : null}
+          startIcon={
+            selectedButton === index ? <IconCheck size={16} /> : noIcon
+          }
+          endIcon={noIcon}
         >
           {label}
         </Button>
