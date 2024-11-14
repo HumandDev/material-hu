@@ -145,11 +145,19 @@ const Alert = (props: AlertProps) => {
         <Typography
           variant="globalS"
           fontWeight={'semiBold'}
+          sx={{ color: data.color }}
         >
           {title}
         </Typography>
       </AlertTitle>
-      {description && <Typography variant="globalXS">{description}</Typography>}
+      {description && (
+        <Typography
+          sx={{ color: data.color }}
+          variant="globalXS"
+        >
+          {description}
+        </Typography>
+      )}
     </AlertMui>
   );
 };
