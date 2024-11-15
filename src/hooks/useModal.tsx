@@ -1,4 +1,5 @@
 import { useState, FC } from 'react';
+import { colorPalette } from '../theme/hugo/colors';
 import { Dialog, DialogProps } from '@mui/material';
 
 function useModal<T>(
@@ -15,6 +16,12 @@ function useModal<T>(
       <Dialog
         open={open}
         onClose={dialogProps?.disableEscapeKeyDown ? undefined : closeModal}
+        PaperProps={{
+          sx: {
+            border: `1px solid ${colorPalette.border.neutralBorder}`,
+            borderRadius: '16px',
+          },
+        }}
         {...dialogProps}
       >
         <ModalContentComponent
