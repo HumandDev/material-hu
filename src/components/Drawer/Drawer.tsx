@@ -15,6 +15,7 @@ export type DrawerProps = MuiDrawerProps & {
   title?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
+  disableEscapeKeyDown?: boolean;
   primaryButtonProps?: ButtonProps;
   secondaryButtonProps?: ButtonProps;
   footer?: ReactNode;
@@ -45,6 +46,10 @@ const Drawer = (props: DrawerProps) => {
     footer,
     primaryContent,
     secondaryContent,
+    disableEscapeKeyDown,
+    sx,
+    PaperProps,
+    ...drawerProps
   } = props;
 
   const withDoubleLayout = !!primaryContent || !!secondaryContent;
@@ -61,12 +66,20 @@ const Drawer = (props: DrawerProps) => {
     <MuiDrawer
       anchor="right"
       open={open}
+      onClose={disableEscapeKeyDown ? undefined : onClose}
       PaperProps={{
         sx: {
           borderRadius: '16px 0 0 16px',
           ...stylesForSize,
+          ...PaperProps?.sx,
         },
+        ...PaperProps,
       }}
+      sx={{
+        zIndex: 1300,
+        ...sx,
+      }}
+      {...drawerProps}
     >
       <Stack
         sx={{

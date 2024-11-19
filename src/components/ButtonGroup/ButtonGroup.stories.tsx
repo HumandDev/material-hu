@@ -42,6 +42,13 @@ export const DisabledUnselect: Story = {
   },
 };
 
+export const FixedTextIcon: Story = {
+  args: {
+    labels: ['Button 1', 'Button 2', 'Button 3'],
+    fixedCheck: true,
+  },
+};
+
 export const WithOnChange: Story = {
   args: {
     labels: ['Button 1', 'Button 2', 'Button 3'],
