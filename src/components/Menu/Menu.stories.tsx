@@ -100,7 +100,7 @@ const renderStory = (options: string[]) =>
         </Menu>
         <Button
           onClick={handleOpen}
-          variant="outlined"
+          variant="secondary"
           size="medium"
         >
           Open menu
@@ -111,14 +111,9 @@ const renderStory = (options: string[]) =>
 
 const Footer = () => (
   <>
+    <Button size="medium">Delete</Button>
     <Button
-      variant="text"
-      size="medium"
-    >
-      Delete
-    </Button>
-    <Button
-      variant="contained"
+      variant="primary"
       size="medium"
     >
       Apply

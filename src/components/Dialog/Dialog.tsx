@@ -97,7 +97,6 @@ const Dialog = ({
             {secondaryButtonProps && (
               <Button
                 color="primary"
-                variant="text"
                 size="medium"
                 {...secondaryButtonProps}
               />
@@ -106,7 +105,7 @@ const Dialog = ({
               <Button
                 size="medium"
                 color="primary"
-                variant="contained"
+                variant="primary"
                 {...primaryButtonProps}
               />
             )}

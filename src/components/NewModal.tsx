@@ -70,7 +70,6 @@ const NewModal = ({
       {secondaryButtonProps && (
         <Button
           color="humand"
-          variant="text"
           {...secondaryButtonProps}
           sx={{ mr: 2, ...secondaryButtonProps.sx }}
         />
@@ -78,7 +77,7 @@ const NewModal = ({
       {primaryButtonProps && (
         <Button
           color="humand"
-          variant="contained"
+          variant="primary"
           {...primaryButtonProps}
         />
       )}

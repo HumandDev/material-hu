@@ -55,58 +55,73 @@ export const components: ThemeOptions['components'] = {
     defaultProps: {
       size: 'large',
       disableRipple: true,
+      variant: 'tertiary',
     },
     styleOverrides: {
-      root: {
+      root: ({ theme }) => ({
         textTransform: 'capitalize',
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
         },
         borderRadius: '8px',
-      },
-      contained: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
-        '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
-        },
-        [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: customShadow.containedFocusedVisible,
-        },
-        [`&.${buttonClasses.disabled}`]: {
-          color: theme.palette.base?.grey[600],
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-        },
-      }),
-      outlined: ({ theme }) => ({
-        color: theme.palette.base?.blueBrand[800],
-        borderColor: theme.palette.base?.blueBrand[200],
-        backgroundColor: theme.palette.base?.white,
-        '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[100],
-          borderColor: theme.palette.base?.blueBrand[200],
-        },
-        [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: customShadow.outlinedFocusedVisible,
-        },
-        [`&.${buttonClasses.disabled}`]: {
-          color: theme.palette.base?.grey[600],
-          backgroundColor: theme.palette.base?.white,
-          borderColor: theme.palette.base?.grey[300],
-        },
-      }),
-      text: ({ theme }) => ({
-        color: theme.palette.base?.blueBrand[800],
-        '&:hover': {
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-        },
-        [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: customShadow.outlinedFocusedVisible,
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-        },
-        [`&.${buttonClasses.disabled}`]: {
-          color: theme.palette.base?.grey[600],
-        },
+        variants: [
+          {
+            props: { variant: 'primary' },
+            style: {
+              color: theme.palette.base?.white,
+              backgroundColor: theme.palette.base?.blueBrand[400],
+              '&:hover': {
+                backgroundColor: theme.palette.base?.blueBrand[600],
+              },
+              [`&.${buttonClasses.focusVisible}`]: {
+                boxShadow: customShadow.containedFocusedVisible,
+              },
+              [`&.${buttonClasses.disabled}`]: {
+                color: theme.palette.base?.grey[600],
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+              },
+            },
+          },
+          {
+            props: { variant: 'secondary' },
+            style: {
+              color: theme.palette.base?.blueBrand[800],
+              borderStyle: 'solid',
+              borderWidth: 1,
+              borderColor: theme.palette.base?.blueBrand[200],
+              backgroundColor: theme.palette.base?.white,
+              '&:hover': {
+                backgroundColor: theme.palette.base?.blueBrand[100],
+                borderColor: theme.palette.base?.blueBrand[200],
+              },
+              [`&.${buttonClasses.focusVisible}`]: {
+                boxShadow: customShadow.outlinedFocusedVisible,
+              },
+              [`&.${buttonClasses.disabled}`]: {
+                color: theme.palette.base?.grey[600],
+                backgroundColor: theme.palette.base?.white,
+                borderColor: theme.palette.base?.grey[300],
+              },
+            },
+          },
+          {
+            props: { variant: 'tertiary' },
+            style: {
+              color: theme.palette.base?.blueBrand[800],
+              '&:hover': {
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+              },
+              [`&.${buttonClasses.focusVisible}`]: {
+                boxShadow: customShadow.outlinedFocusedVisible,
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+              },
+              [`&.${buttonClasses.disabled}`]: {
+                color: theme.palette.base?.grey[600],
+              },
+            },
+          },
+        ],
       }),
       sizeLarge: ({ theme }) => ({
         minWidth: '200px',

@@ -116,7 +116,7 @@ export const CroppingModal: FC<CroppingModalProps> = props => {
       <DialogActions>
         <Button onClick={onClose}>{cancelLabel}</Button>
         <Button
-          variant="contained"
+          variant="primary"
           onClick={handleSave}
           loading={loading}
         >

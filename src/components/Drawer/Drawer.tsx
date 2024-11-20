@@ -159,14 +159,13 @@ const Drawer = (props: DrawerProps) => {
         >
           {!!secondaryButtonProps && (
             <Button
-              variant="text"
               size="large"
               {...secondaryButtonProps}
             />
           )}
           {!!primaryButtonProps && (
             <Button
-              variant="contained"
+              variant="primary"
               size="large"
               {...primaryButtonProps}
             />

@@ -96,6 +96,12 @@ declare module '@mui/material/styles' {
     globalXL?: React.CSSProperties;
     globalXXL?: React.CSSProperties;
   }
+
+  interface ButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
 }
 
 // Update the Typography's variant prop options
@@ -114,6 +120,14 @@ declare module '@mui/material/Typography' {
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     humand: true;
+  }
+  interface ButtonPropsVariantOverrides {
+    primary: true;
+    secondary: true;
+    tertiary: true;
+    outlined: false;
+    contained: false;
+    text: false;
   }
 }
 

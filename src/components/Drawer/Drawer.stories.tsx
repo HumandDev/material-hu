@@ -47,7 +47,7 @@ export const Default: Story = {
       <div>
         <Button
           size="small"
-          variant="contained"
+          variant="primary"
           onClick={() => setIsOpen(true)}
         >
           Open
@@ -132,7 +132,7 @@ export const DrawerWithExtraFooter: Story = {
       <div>
         <Button
           size="small"
-          variant="contained"
+          variant="primary"
           onClick={() => setIsOpen(true)}
         >
           Open
@@ -151,7 +151,7 @@ export const DrawerWithExtraFooter: Story = {
               </Typography>
               <Button
                 size="large"
-                variant="contained"
+                variant="primary"
               >
                 Extra Footer Button
               </Button>
@@ -216,7 +216,7 @@ export const DrawerWithDoubleLayout: Story = {
       <div>
         <Button
           size="small"
-          variant="contained"
+          variant="primary"
           onClick={() => setIsOpen(true)}
         >
           Open
@@ -328,7 +328,7 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
       <div>
         <Button
           size="small"
-          variant="contained"
+          variant="primary"
           onClick={() => setIsOpen(true)}
         >
           Open
@@ -420,7 +420,7 @@ export const DrawerWithDoubleLayoutAndExtraFooter: Story = {
               </Typography>
               <Button
                 size="large"
-                variant="contained"
+                variant="primary"
               >
                 Extra Footer Button
               </Button>

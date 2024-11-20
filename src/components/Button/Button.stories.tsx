@@ -12,9 +12,9 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'radio',
-      options: ['contained', 'outlined', 'text'],
+      options: ['primary', 'secondary', 'tertiary'],
       table: {
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'tertiary' },
       },
     },
     size: {
@@ -49,6 +49,6 @@ export const Icons: Story = {
   args: {
     startIcon: <IconInfoCircle />,
     endIcon: <IconInfoCircle />,
-    variant: 'contained',
+    variant: 'primary',
   },
 };

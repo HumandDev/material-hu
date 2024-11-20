@@ -341,7 +341,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
         {!!nextStep && !!nextButton && (
           <Button
             id="horizontal-stepper-next-button"
-            variant="contained"
+            variant="primary"
             onClick={nextButton.onClick}
             disabled={disabled || nextButton.disabled}
             sx={{ ml: 'auto' }}
@@ -352,7 +352,7 @@ export const HorizontalStepper: FC<HorizontalStepperProps> = props => {
         {!nextStep && !!finishButton && (
           <Button
             id="horizontal-stepper-finish-button"
-            variant="contained"
+            variant="primary"
             onClick={finishButton.onClick}
             disabled={disabled || finishButton.disabled}
             sx={{ ml: 'auto' }}

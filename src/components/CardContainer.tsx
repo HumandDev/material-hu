@@ -102,14 +102,9 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
   if ('action2' in footer) {
     return (
       <>
+        <Button {...footer.action2}>{footer.action2.title}</Button>
         <Button
-          variant="text"
-          {...footer.action2}
-        >
-          {footer.action2.title}
-        </Button>
-        <Button
-          variant="contained"
+          variant="primary"
           {...footer.action1}
         >
           {footer.action1.title}
@@ -125,8 +120,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
         >
           {footer.text}
         </Typography>
-        <Button // update to new buttons
-          variant="text"
+        <Button
           {...footer.action1}
           endIcon={<ChevronRight fontSize="small" />}
         >

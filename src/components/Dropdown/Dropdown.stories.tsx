@@ -80,7 +80,7 @@ const BasicMenu = () => {
 export const DefaultStory: Story = {
   args: {
     label: 'Open',
-    buttonType: 'secondary',
+    buttonVariant: 'secondary',
     position: 'left',
     children: <TemplateContent />,
   },
@@ -89,7 +89,7 @@ export const DefaultStory: Story = {
 export const Left: Story = {
   args: {
     label: 'Open',
-    buttonType: 'secondary',
+    buttonVariant: 'secondary',
     position: 'left',
     children: <BasicMenu />,
   },
@@ -98,7 +98,7 @@ export const Left: Story = {
 export const Right: Story = {
   args: {
     label: 'Open',
-    buttonType: 'secondary',
+    buttonVariant: 'secondary',
     position: 'right',
     children: <BasicMenu />,
   },
@@ -107,7 +107,7 @@ export const Right: Story = {
 export const Center: Story = {
   args: {
     label: 'Open',
-    buttonType: 'secondary',
+    buttonVariant: 'secondary',
     position: 'center',
     children: <BasicMenu />,
   },
@@ -116,7 +116,7 @@ export const Center: Story = {
 export const TertiaryButton: Story = {
   args: {
     label: 'Open',
-    buttonType: 'tertiary',
+    buttonVariant: 'tertiary',
     position: 'left',
     children: <BasicMenu />,
   },
@@ -125,7 +125,7 @@ export const TertiaryButton: Story = {
 export const NoIcon: Story = {
   args: {
     label: 'Open',
-    buttonType: 'tertiary',
+    buttonVariant: 'tertiary',
     hasIcon: false,
     position: 'left',
     children: <BasicMenu />,

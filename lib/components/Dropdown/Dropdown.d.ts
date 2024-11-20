@@ -5,7 +5,7 @@ type Props = {
     open?: boolean;
     onOpen?: () => void;
     onClose?: () => void;
-    buttonType?: 'secondary' | 'tertiary';
+    buttonVariant?: Extract<ButtonProps['variant'], 'secondary' | 'tertiary'>;
     buttonSize?: 'small' | 'medium' | 'large';
     position?: 'left' | 'right' | 'center';
     hasIcon?: boolean;

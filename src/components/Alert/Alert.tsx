@@ -84,7 +84,6 @@ const Alert = (props: AlertProps) => {
         <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
           {action && (
             <Button
-              variant="text"
               onClick={action.onClick}
               sx={{
                 color: data.color,
