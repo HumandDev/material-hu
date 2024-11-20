@@ -125,9 +125,9 @@ declare module '@mui/material/Button' {
     primary: true;
     secondary: true;
     tertiary: true;
-    outlined: false;
-    contained: false;
-    text: false;
+    // outlined: false;
+    // contained: false;
+    // text: false;
   }
 }
 
