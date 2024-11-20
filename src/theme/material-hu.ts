@@ -125,9 +125,11 @@ declare module '@mui/material/Button' {
     primary: true;
     secondary: true;
     tertiary: true;
-    // outlined: false;
-    // contained: false;
-    // text: false;
+    /* TODO: uncomment when the HuGo is applied in all Humand
+    outlined: false;
+    contained: false;
+    text: false;
+    */
   }
 }
 
