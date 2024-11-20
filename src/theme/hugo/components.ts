@@ -58,7 +58,7 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: {
-        textTransform: 'capitalize',
+        textTransform: 'none',
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
