@@ -8,6 +8,7 @@ export type CustomSelectProps = Pick<SelectProps, 'placeholder' | 'inputRef'> & 
         label: string;
         value: string | number;
     }[];
+    allowClear?: boolean;
 };
 declare const CustomSelect: FC<CustomSelectProps>;
 export default CustomSelect;
