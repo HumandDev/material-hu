@@ -12,10 +12,8 @@ const meta: Meta<typeof SnackbarWrapper> = {
     title: { control: 'text' },
     description: { control: 'text' },
     variant: {
-      control: {
-        type: 'select',
-        options: ['success', 'error', 'warning', 'info'],
-      },
+      control: 'radio',
+      options: ['success', 'error', 'warning', 'info'],
     },
     hasClose: { control: 'boolean' },
     cancelAction: { control: 'object' },
@@ -77,6 +75,15 @@ export const Info: Story = {
   args: {
     title: 'Info',
     description: 'This is an informational message',
+    variant: 'info',
+  },
+};
+
+export const OnlyTitle: Story = {
+  render: args => <SnackbarTemplate {...args} />,
+  args: {
+    title: 'Title very descriptive itself',
+    description: undefined,
     variant: 'info',
   },
 };
