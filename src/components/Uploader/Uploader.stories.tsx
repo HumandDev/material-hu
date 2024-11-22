@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Uploader from './Uploader';
 import FormUploader from './FormUploader';
+import { mockFile } from '../FileCard/FileCard.stories';
 
 const meta: Meta<typeof Uploader> = {
   component: Uploader,
@@ -31,21 +32,15 @@ export const WithUploads: Story = {
     value: [
       {
         status: 'success',
-        file: new File([], 'file1.pdf', {
-          type: 'application/pdf',
-        }),
+        file: mockFile,
       },
       {
         status: 'error',
-        file: new File([], 'file1.pdf', {
-          type: 'application/pdf',
-        }),
+        file: mockFile,
       },
       {
         status: 'uploading',
-        file: new File([], 'file1.pdf', {
-          type: 'application/pdf',
-        }),
+        file: mockFile,
       },
     ],
   },
