@@ -39,3 +39,4 @@ export { default as HuDialog } from './components/Dialog/Dialog';
 export { default as HuDropdown } from './components/Dropdown/Dropdown';
 export { default as HuSwitcher } from './components/Switcher/Switcher';
 export { default as HuFormSwitcher } from './components/Switcher/FormSwitcher';
+export { default as HuFormRadioButtonGroup } from './components//RadioButton/FormRadioButtonGroup';
