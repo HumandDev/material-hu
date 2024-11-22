@@ -1,10 +1,10 @@
 import {
-  Box,
-  Link,
+  Stack,
   Breadcrumbs as MuiBreadcrumbs,
   Typography,
   useTheme,
 } from '@mui/material';
+import Link from '../Link/Link';
 import { useMemo } from 'react';
 import { CustomCollapsedIcon } from './CustomCollapsedIcon';
 import { BreadcrumbLink } from './types';
@@ -15,6 +15,7 @@ type LinkBoxProps = {
   darkBackground?: boolean;
   breadcrumbIcon?: BreadcrumbLink['icon'];
 };
+
 const LinkBox = ({
   children,
   darkBackground,
@@ -22,9 +23,9 @@ const LinkBox = ({
 }: LinkBoxProps) => {
   const theme = useTheme();
   return (
-    <Box
+    <Stack
       sx={{
-        display: 'flex',
+        flexDirection: 'row',
         alignItems: 'center',
       }}
     >
@@ -42,7 +43,7 @@ const LinkBox = ({
             },
           })
         : null}
-    </Box>
+    </Stack>
   );
 };
 
@@ -93,16 +94,18 @@ const BreadCrumbs = ({ links, darkBackground }: Props) => {
           breadcrumbIcon={link.icon}
           darkBackground={darkBackground}
         >
-          {index < links.length - 1 ? (
+          {index < links.length - 1 && (
             <Link
               color={
                 darkBackground ? theme.palette.base?.white : 'primary.main'
               }
               href={link.href}
+              onClick={link.onClick}
             >
               {link.title}
             </Link>
-          ) : (
+          )}
+          {index === links.length - 1 && (
             <Typography
               variant="globalS"
               color={

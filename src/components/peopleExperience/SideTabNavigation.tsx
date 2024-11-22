@@ -39,6 +39,7 @@ type TabSidebarProps = {
   layout?: ComponentType<{ children: ReactNode }>;
   slotProps?: Partial<{
     tabs: StackProps;
+    layout: { skipFilters?: boolean; skipComparisonFilter?: boolean };
   }>;
 };
 
@@ -99,7 +100,7 @@ const SideTabNavigation = ({
         </List>
       </Stack>
       <Stack sx={{ height: '100%', flex: 1, minWidth: 0, maxWidth: '100%' }}>
-        <Layout>
+        <Layout {...slotProps?.layout}>
           <TabPanel value={selectedIndex}>
             {tabs.map(({ id, element }, index) => (
               <TabPanelItem

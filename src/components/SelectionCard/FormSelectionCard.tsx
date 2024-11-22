@@ -1,15 +1,17 @@
 import { FC, PropsWithChildren } from 'react';
 import { Controller, ControllerProps, useFormContext } from 'react-hook-form';
-import SelectionCard from './SelectionCard';
+import SelectionCard, { SelectionCardProps } from './SelectionCard';
 
 type FormSelectionCardProps = PropsWithChildren<{
   name: string;
   rules?: ControllerProps['rules'];
   isOnlyOption?: boolean;
+  sx?: SelectionCardProps['sx'];
 }>;
 
+// this component can work either as a checkbox or a radio button, depending on the isOnlyOption prop.
 const FormSelectionCard: FC<FormSelectionCardProps> = props => {
-  const { name, rules, children, isOnlyOption = false } = props;
+  const { name, rules, children, isOnlyOption = false, sx } = props;
 
   const { getValues, setValue } = useFormContext();
 
@@ -18,6 +20,7 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
   const handleOnClick = (onChange: Function, param: boolean) => {
     onChange(param);
     if (isOnlyOption) {
+      // deselect all other options
       const nameParts = name.split('.');
       const baseRoute = nameParts.slice(0, -1).join('.');
       const currentProperty = nameParts[nameParts.length - 1];
@@ -31,12 +34,16 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
     }
   };
 
+  // can't change value if it is the only option and it is already selected
+  const canChange = !(isOnlyOption && valueInput);
+
   return (
     <Controller
       render={({ field: { onChange } }) => (
         <SelectionCard
-          onClick={param => handleOnClick(onChange, param)}
+          onClick={param => canChange && handleOnClick(onChange, param)}
           checked={valueInput}
+          sx={sx}
         >
           {children}
         </SelectionCard>

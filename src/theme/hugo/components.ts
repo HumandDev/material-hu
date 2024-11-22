@@ -58,7 +58,7 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: {
-        textTransform: 'capitalize',
+        textTransform: 'none',
         boxShadow: 'none',
         '&:hover': {
           boxShadow: 'none',
@@ -81,6 +81,7 @@ export const components: ThemeOptions['components'] = {
       outlined: ({ theme }) => ({
         color: theme.palette.base?.blueBrand[800],
         borderColor: theme.palette.base?.blueBrand[200],
+        backgroundColor: theme.palette.base?.white,
         '&:hover': {
           backgroundColor: theme.palette.base?.blueBrand[100],
           borderColor: theme.palette.base?.blueBrand[200],
@@ -108,7 +109,7 @@ export const components: ThemeOptions['components'] = {
         },
       }),
       sizeLarge: ({ theme }) => ({
-        minWidth: '256px',
+        minWidth: '200px',
         paddingTop: theme.spacing(1.5),
         paddingBottom: theme.spacing(1.5),
         paddingLeft: theme.spacing(2),

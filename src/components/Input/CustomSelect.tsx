@@ -3,18 +3,37 @@ import {
   InputAdornment,
   MenuItem,
   Select,
+  SelectProps,
   useFormControl,
   useTheme,
 } from '@mui/material';
 import { IconAlertCircle, IconChevronDown } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
-import { Props } from './InputSelect';
+import { useTranslation } from './i18n';
 
-const CustomSelect: FC<
-  Pick<Props, 'value' | 'onChange' | 'inputRef' | 'placeholder' | 'options'>
-> = ({ value, onChange, inputRef, placeholder, options }) => {
+export type CustomSelectProps = Pick<
+  SelectProps,
+  'placeholder' | 'inputRef'
+> & {
+  value: string;
+  success?: boolean;
+  onChange: (value: string) => void;
+  options: { label: string; value: string | number }[];
+  allowClear?: boolean;
+};
+
+const CustomSelect: FC<CustomSelectProps> = ({
+  value,
+  onChange,
+  inputRef,
+  placeholder,
+  options,
+  allowClear,
+}) => {
   const { focused, error } = useFormControl() || {};
   const theme = useTheme();
+  const { t } = useTranslation();
+
   return (
     <Select
       value={value || ''}
@@ -46,6 +65,14 @@ const CustomSelect: FC<
         },
       }}
     >
+      {allowClear && (
+        <MenuItem
+          key="clear"
+          value=""
+        >
+          <em>{t('SELECT')}</em>
+        </MenuItem>
+      )}
       {options.map(option => (
         <MenuItem
           key={option.value}

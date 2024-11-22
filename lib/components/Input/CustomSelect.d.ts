@@ -1,4 +1,14 @@
 import { FC } from 'react';
-import { Props } from './InputSelect';
-declare const CustomSelect: FC<Pick<Props, 'value' | 'onChange' | 'inputRef' | 'placeholder' | 'options'>>;
+import { SelectProps } from '@mui/material';
+export type CustomSelectProps = Pick<SelectProps, 'placeholder' | 'inputRef'> & {
+    value: string;
+    success?: boolean;
+    onChange: (value: string) => void;
+    options: {
+        label: string;
+        value: string | number;
+    }[];
+    allowClear?: boolean;
+};
+declare const CustomSelect: FC<CustomSelectProps>;
 export default CustomSelect;

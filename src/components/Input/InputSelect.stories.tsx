@@ -61,6 +61,7 @@ export const FormInputClassicStory: Story = {
             label: 'Label',
             helperText: 'HelperText',
             options,
+            allowClear: true,
           }}
           name="myInput"
         />

@@ -45,7 +45,7 @@ const adjustedDescription: Record<
   S: 'globalXS',
 };
 
-type Props = {
+export type TitleProps = {
   copetin?: string;
   copetinTooltip?: string;
   description?: string;
@@ -53,10 +53,11 @@ type Props = {
   title: string;
   centered?: boolean;
   variant: TitleVariant;
+  withEllipsis?: boolean;
   sx?: StackProps['sx'];
 };
 
-const Title = ({
+export const Title = ({
   centered = false,
   copetin = '',
   copetinTooltip = '',
@@ -64,12 +65,14 @@ const Title = ({
   descriptionTooltip = '',
   title,
   variant,
+  withEllipsis,
   sx = {},
-}: Props) => {
+}: TitleProps) => {
   return (
     <Stack
       sx={{
         textAlign: centered ? 'center' : 'left',
+        alignItems: centered ? 'center' : 'flex-start',
         ...sx,
       }}
     >
@@ -79,8 +82,15 @@ const Title = ({
           sx={{
             color: colorPalette.textColors.neutralTextLighter,
             display: 'flex',
+            flexDirection: 'row',
             alignItems: 'center',
-            gap: 0.5,
+            justifyContent: 'flex-start',
+            gap: 1,
+            ...(withEllipsis && {
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+            }),
           }}
         >
           {copetin}
@@ -101,6 +111,11 @@ const Title = ({
         variant={`global${variant}`}
         sx={{
           color: colorPalette.textColors.neutralText,
+          ...(withEllipsis && {
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+          }),
         }}
         fontWeight={'fontWeightSemiBold'}
       >
@@ -110,10 +125,18 @@ const Title = ({
         <Typography
           variant={adjustedDescription[variant]}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0.5,
             color: colorPalette.textColors.neutralTextLighter,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            gap: 1,
+            ...(withEllipsis && {
+              display: '-webkit-box',
+              WebkitBoxOrient: 'vertical',
+              WebkitLineClamp: 2,
+              overflow: 'hidden',
+            }),
           }}
         >
           {description}

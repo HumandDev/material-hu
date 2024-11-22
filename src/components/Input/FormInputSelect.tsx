@@ -6,7 +6,13 @@ type Props = {
   name: string;
   inputProps: Pick<
     ComponentProps<typeof InputSelect>,
-    'label' | 'placeholder' | 'sx' | 'helperText' | 'options'
+    | 'label'
+    | 'placeholder'
+    | 'sx'
+    | 'helperText'
+    | 'options'
+    | 'disabled'
+    | 'allowClear'
   >;
   rules?: ControllerProps['rules'];
 };

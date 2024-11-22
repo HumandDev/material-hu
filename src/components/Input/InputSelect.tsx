@@ -1,20 +1,15 @@
-import { FormControl, SelectProps } from '@mui/material';
+import { FormControl, FormControlProps } from '@mui/material';
 import CustomLabel from './CustomLabel';
 import CustomHelperText from './CustomHelperText';
-import CustomSelect from './CustomSelect';
+import CustomSelect, { CustomSelectProps } from './CustomSelect';
 
-export type Props = Pick<
-  SelectProps<'outlined'>,
-  'placeholder' | 'sx' | 'inputRef' | 'fullWidth'
-> & {
-  label?: string;
-  helperText?: string;
-  errorText?: string;
-  value: string;
-  onChange: (v: string) => void;
-  error?: boolean;
-  options: { label: string; value: string | number }[];
-};
+export type Props = Pick<FormControlProps, 'sx' | 'fullWidth' | 'disabled'> &
+  CustomSelectProps & {
+    label?: string;
+    helperText?: string;
+    errorText?: string;
+    error?: boolean;
+  };
 
 const InputSelect = ({
   sx = {},
@@ -28,12 +23,15 @@ const InputSelect = ({
   error,
   fullWidth = true,
   options,
+  disabled,
+  allowClear,
 }: Props) => {
   return (
     <FormControl
       sx={sx}
       error={error}
       fullWidth={fullWidth}
+      disabled={disabled}
     >
       <CustomLabel label={label} />
       <CustomSelect
@@ -42,6 +40,7 @@ const InputSelect = ({
         inputRef={inputRef}
         placeholder={placeholder}
         options={options}
+        allowClear={allowClear}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}
