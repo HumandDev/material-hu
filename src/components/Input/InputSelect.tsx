@@ -24,6 +24,7 @@ const InputSelect = ({
   fullWidth = true,
   options,
   disabled,
+  allowClear,
 }: Props) => {
   return (
     <FormControl
@@ -39,6 +40,7 @@ const InputSelect = ({
         inputRef={inputRef}
         placeholder={placeholder}
         options={options}
+        allowClear={allowClear}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}
