@@ -18,6 +18,8 @@ export { default as HuDatePicker } from './components/Input/DatePicker';
 export { default as HuFormDatePicker } from './components/Input/FormDatePicker';
 export { default as HuInputSelect } from './components/Input/InputSelect';
 export { default as HuFormInputSelect } from './components/Input/FormInputSelect';
+export { default as HuUploader } from './components/Uploader/Uploader';
+export { default as HuFormUploader } from './components/Uploader/FormUploader';
 export { default as HuRating } from './components/Rating/Rating';
 export { default as HuFormRating } from './components/Rating/FormRating';
 export { default as HuFormSelectionCard } from './components/SelectionCard/FormSelectionCard';
