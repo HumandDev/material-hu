@@ -10,7 +10,7 @@ type Props = {
   onOpen?: () => void;
   onClose?: () => void;
   buttonVariant?: Extract<ButtonProps['variant'], 'secondary' | 'tertiary'>;
-  buttonSize?: 'small' | 'medium' | 'large';
+  buttonSize?: ButtonProps['size'];
   position?: 'left' | 'right' | 'center';
   hasIcon?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -27,7 +27,7 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
   onClick,
   buttonVariant = 'secondary',
   position = 'left',
-  buttonSize = 'medium',
+  buttonSize = 'large',
   hasIcon = true,
   sx = {},
   buttonProps = {},

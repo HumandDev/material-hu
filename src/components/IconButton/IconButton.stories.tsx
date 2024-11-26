@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconInfoCircle } from '@tabler/icons-react';
-import { Button } from '@mui/material';
+import { IconButton } from '@mui/material';
 
-const meta: Meta<typeof Button> = {
-  title: 'Button',
-  component: Button,
+const meta: Meta<typeof IconButton> = {
+  title: 'IconButton',
+  component: IconButton,
   tags: ['autodocs'],
   args: {
-    children: 'Button',
+    children: <IconInfoCircle />,
   },
   argTypes: {
     variant: {
       control: 'radio',
       options: ['primary', 'secondary', 'tertiary'],
       table: {
-        defaultValue: { summary: 'tertiary' },
+        defaultValue: { summary: 'primary' },
       },
     },
     size: {
@@ -24,14 +24,11 @@ const meta: Meta<typeof Button> = {
         defaultValue: { summary: 'large' },
       },
     },
-    startIcon: {
+    disabled: {
+      control: 'boolean',
+      options: ['true', 'false'],
       table: {
-        type: { summary: 'ReactNode' },
-      },
-    },
-    endIcon: {
-      table: {
-        type: { summary: 'ReactNode' },
+        defaultValue: { summary: 'false' },
       },
     },
   },
@@ -43,12 +40,4 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
-};
-
-export const Icons: Story = {
-  args: {
-    startIcon: <IconInfoCircle />,
-    endIcon: <IconInfoCircle />,
-    variant: 'primary',
-  },
 };

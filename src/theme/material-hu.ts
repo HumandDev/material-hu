@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import {
+  ButtonProps,
   Theme,
   createTheme as createMuiTheme,
   responsiveFontSizes,
@@ -102,6 +103,12 @@ declare module '@mui/material/styles' {
     secondary: React.CSSProperties;
     tertiary: React.CSSProperties;
   }
+
+  interface IconButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
 }
 
 // Update the Typography's variant prop options
@@ -131,6 +138,13 @@ declare module '@mui/material/Button' {
     text: false;
     */
   }
+
+  interface ButtonPropsSizeOverrides {
+    /* TODO: uncomment when the HuGo is applied in all Humand
+    medium: false;
+    */
+    medium: false;
+  }
 }
 
 declare module '@mui/material/SvgIcon' {
@@ -142,6 +156,23 @@ declare module '@mui/material/SvgIcon' {
 declare module '@mui/material/IconButton' {
   interface IconButtonPropsColorOverrides {
     humand: true;
+  }
+  interface IconButtonPropsSizeOverrides {
+    /* TODO: uncomment when the HuGo is applied in all Humand
+    medium: false;
+    */
+  }
+
+  interface IconButtonOwnProps {
+    variant?: ButtonProps['variant'];
+  }
+}
+
+declare module '@mui/material/Fab' {
+  interface FabPropsSizeOverrides {
+    /* TODO: uncomment when the HuGo is applied in all Humand
+    medium: false;
+    */
   }
 }
 

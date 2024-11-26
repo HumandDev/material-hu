@@ -96,15 +96,14 @@ const Dialog = ({
           <Stack sx={{ flexDirection: 'row', gap: '8px' }}>
             {secondaryButtonProps && (
               <Button
-                color="primary"
-                size="medium"
+                variant="tertiary"
+                size="small"
                 {...secondaryButtonProps}
               />
             )}
             {primaryButtonProps && (
               <Button
-                size="medium"
-                color="primary"
+                size="small"
                 variant="primary"
                 {...primaryButtonProps}
               />

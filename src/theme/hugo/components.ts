@@ -130,7 +130,7 @@ export const components: ThemeOptions['components'] = {
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
       }),
-      sizeMedium: ({ theme }) => ({
+      sizeSmall: ({ theme }) => ({
         minWidth: '104px',
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
@@ -200,6 +200,7 @@ export const components: ThemeOptions['components'] = {
     defaultProps: {
       size: 'large',
       disableRipple: true,
+      variant: 'primary',
     },
     styleOverrides: {
       root: ({ theme }) => ({
@@ -210,7 +211,7 @@ export const components: ThemeOptions['components'] = {
           stroke: theme.palette.base?.grey[800],
         },
         '&:hover': {
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+          backgroundColor: theme.palette.base?.blueBrand[100],
         },
         '&:disabled': {
           svg: {
@@ -221,41 +222,78 @@ export const components: ThemeOptions['components'] = {
           backgroundColor: theme.palette.base?.greyTransparent['300p50'],
           boxShadow: customShadow.outlinedFocusedVisible,
         },
+        variants: [
+          {
+            props: { variant: 'primary' },
+            style: {
+              backgroundColor: theme.palette.base?.blueBrand[400],
+              svg: {
+                stroke: theme.palette.base?.white,
+              },
+              '&:hover': {
+                backgroundColor: theme.palette.base?.blueBrand[600],
+              },
+              '&:disabled': {
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+                svg: {
+                  stroke: theme.palette.base?.grey[600],
+                },
+              },
+              '&:focus-visible': {
+                backgroundColor: theme.palette.base?.blueBrand[600],
+                boxShadow: customShadow.containedFocusedVisible,
+              },
+            },
+          },
+          {
+            props: { variant: 'secondary' },
+            style: {
+              backgroundColor: theme.palette.base?.white,
+              borderColor: theme.palette.base?.blueBrand[200],
+              svg: {
+                stroke: theme.palette.base?.blueBrand[800],
+              },
+              '&:hover': {
+                backgroundColor: theme.palette.base?.lilac[100],
+              },
+              '&:disabled': {
+                borderColor: theme.palette.base?.grey[300],
+              },
+            },
+          },
+          {
+            props: { variant: 'tertiary' },
+            style: {
+              color: theme.palette.base?.blueBrand[800],
+              '&:hover': {
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+              },
+              [`&.${buttonClasses.focusVisible}`]: {
+                boxShadow: customShadow.outlinedFocusedVisible,
+                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+              },
+              [`&.${buttonClasses.disabled}`]: {
+                color: theme.palette.base?.grey[600],
+              },
+            },
+          },
+        ],
       }),
-      colorSecondary: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.white,
-        borderColor: theme.palette.base?.blueBrand[200],
-        svg: {
-          stroke: theme.palette.base?.blueBrand[800],
-        },
-        '&:hover': {
-          backgroundColor: theme.palette.base?.lilac[100],
-        },
-        '&:disabled': {
-          borderColor: theme.palette.base?.grey[300],
-        },
-      }),
-      colorPrimary: ({ theme }) => ({
-        backgroundColor: theme.palette.base?.blueBrand[400],
-        svg: {
-          stroke: theme.palette.base?.white,
-        },
-        '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
-        },
-        '&:disabled': {
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-        },
-        '&:focus-visible': {
-          backgroundColor: theme.palette.base?.blueBrand[600],
-          boxShadow: customShadow.containedFocusedVisible,
-        },
-      }),
+      // colorSecondary: ({ theme }) => ({
+
+      // }),
+      // colorPrimary: ({ theme }) => ({
+
+      // }),
       sizeLarge: ({ theme }) => ({
         padding: theme.spacing(1),
       }),
-      sizeMedium: ({ theme }) => ({
+      sizeSmall: ({ theme }) => ({
         padding: theme.spacing(0.5),
+        svg: {
+          width: '16px',
+          height: '16px',
+        },
       }),
     },
   },

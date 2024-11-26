@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Theme } from '@mui/material';
+import { ButtonProps, Theme } from '@mui/material';
 import { BaseColorType } from './hugo/colors';
 declare module '@mui/material/styles/createPalette' {
     interface ColorRange {
@@ -82,6 +82,11 @@ declare module '@mui/material/styles' {
         secondary: React.CSSProperties;
         tertiary: React.CSSProperties;
     }
+    interface IconButtonVariantsOptions {
+        primary: React.CSSProperties;
+        secondary: React.CSSProperties;
+        tertiary: React.CSSProperties;
+    }
 }
 declare module '@mui/material/Typography' {
     interface TypographyPropsVariantOverrides {
@@ -103,6 +108,9 @@ declare module '@mui/material/Button' {
         secondary: true;
         tertiary: true;
     }
+    interface ButtonPropsSizeOverrides {
+        medium: false;
+    }
 }
 declare module '@mui/material/SvgIcon' {
     interface SvgIconPropsColorOverrides {
@@ -112,6 +120,15 @@ declare module '@mui/material/SvgIcon' {
 declare module '@mui/material/IconButton' {
     interface IconButtonPropsColorOverrides {
         humand: true;
+    }
+    interface IconButtonPropsSizeOverrides {
+    }
+    interface IconButtonOwnProps {
+        variant?: ButtonProps['variant'];
+    }
+}
+declare module '@mui/material/Fab' {
+    interface FabPropsSizeOverrides {
     }
 }
 declare module '@mui/material/Radio' {
