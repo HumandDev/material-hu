@@ -33,7 +33,7 @@ const CustomHelperText: FC<
         mx: 0,
         mt: 0.5,
         '& *': {
-          color: getHelperColor(),
+          color: `${getHelperColor()} !important`,
         },
       }}
     >
