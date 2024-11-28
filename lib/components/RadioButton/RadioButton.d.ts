@@ -6,7 +6,7 @@ type RadioButtonProps = {
     label: string;
     extraData?: string;
     description?: string;
-    onClick: (param: boolean) => void;
+    onClick?: (param: boolean) => void;
     stackSx?: SxProps;
     labelProps?: TypographyProps;
 } & Omit<RadioProps, 'label' | 'onClick'>;
