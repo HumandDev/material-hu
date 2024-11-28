@@ -1,10 +1,86 @@
-import { ThemeOptions, buttonClasses, alpha } from '@mui/material';
+import { ThemeOptions, buttonClasses, alpha, Theme } from '@mui/material';
 import { colorPalette } from './colors';
 
 const customShadow = {
   outlinedFocusedVisible: '0px -4px 4px 0px #AAAABA73 inset',
   containedFocusedVisible: '0px -4px 4px 0px #00000040 inset',
 };
+
+const commonButtonRootStyle = (theme: Theme) => ({
+  boxShadow: 'none',
+  borderRadius: '8px',
+  border: '1px solid',
+  borderColor: 'transparent',
+  '&:hover': {
+    boxShadow: 'none',
+  },
+  [`&.${buttonClasses.disabled}`]: {
+    svg: {
+      stroke: theme.palette.base?.grey[600],
+    },
+    color: theme.palette.base?.grey[600],
+  },
+});
+
+const buttonVariants = (theme: Theme) => [
+  {
+    props: { variant: 'primary' },
+    style: {
+      color: theme.palette.base?.white,
+      backgroundColor: theme.palette.base?.blueBrand[400],
+      svg: {
+        stroke: theme.palette.base?.white,
+      },
+      '&:hover': {
+        backgroundColor: theme.palette.base?.blueBrand[600],
+      },
+      [`&.${buttonClasses.focusVisible}`]: {
+        backgroundColor: theme.palette.base?.blueBrand[600],
+        boxShadow: customShadow.containedFocusedVisible,
+      },
+      [`&.${buttonClasses.disabled}`]: {
+        color: theme.palette.base?.grey[600],
+        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+      },
+    },
+  },
+  {
+    props: { variant: 'secondary' },
+    style: {
+      color: theme.palette.base?.blueBrand[800],
+      borderColor: theme.palette.base?.blueBrand[200],
+      backgroundColor: theme.palette.base?.white,
+      svg: {
+        stroke: theme.palette.base?.blueBrand[800],
+      },
+      '&:hover': {
+        backgroundColor: theme.palette.base?.blueBrand[100],
+      },
+      [`&.${buttonClasses.focusVisible}`]: {
+        boxShadow: customShadow.outlinedFocusedVisible,
+        backgroundColor: theme.palette.base?.blueBrand[100],
+      },
+      [`&.${buttonClasses.disabled}`]: {
+        color: theme.palette.base?.grey[600],
+        backgroundColor: theme.palette.base?.white,
+        borderColor: theme.palette.base?.grey[300],
+      },
+    },
+  },
+  {
+    props: { variant: 'tertiary' },
+    style: {
+      color: theme.palette.base?.blueBrand[800],
+      '&:hover': {
+        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+      },
+      [`&.${buttonClasses.focusVisible}`]: {
+        boxShadow: customShadow.outlinedFocusedVisible,
+        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+      },
+    },
+  },
+];
 
 export const components: ThemeOptions['components'] = {
   MuiTypography: {
@@ -60,68 +136,8 @@ export const components: ThemeOptions['components'] = {
     styleOverrides: {
       root: ({ theme }) => ({
         textTransform: 'capitalize',
-        boxShadow: 'none',
-        borderRadius: '8px',
-        '&:hover': {
-          boxShadow: 'none',
-        },
-        variants: [
-          {
-            props: { variant: 'primary' },
-            style: {
-              color: theme.palette.base?.white,
-              backgroundColor: theme.palette.base?.blueBrand[400],
-              '&:hover': {
-                backgroundColor: theme.palette.base?.blueBrand[600],
-              },
-              [`&.${buttonClasses.focusVisible}`]: {
-                boxShadow: customShadow.containedFocusedVisible,
-              },
-              [`&.${buttonClasses.disabled}`]: {
-                color: theme.palette.base?.grey[600],
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-              },
-            },
-          },
-          {
-            props: { variant: 'secondary' },
-            style: {
-              color: theme.palette.base?.blueBrand[800],
-              borderStyle: 'solid',
-              borderWidth: 1,
-              borderColor: theme.palette.base?.blueBrand[200],
-              backgroundColor: theme.palette.base?.white,
-              '&:hover': {
-                backgroundColor: theme.palette.base?.blueBrand[100],
-                borderColor: theme.palette.base?.blueBrand[200],
-              },
-              [`&.${buttonClasses.focusVisible}`]: {
-                boxShadow: customShadow.outlinedFocusedVisible,
-              },
-              [`&.${buttonClasses.disabled}`]: {
-                color: theme.palette.base?.grey[600],
-                backgroundColor: theme.palette.base?.white,
-                borderColor: theme.palette.base?.grey[300],
-              },
-            },
-          },
-          {
-            props: { variant: 'tertiary' },
-            style: {
-              color: theme.palette.base?.blueBrand[800],
-              '&:hover': {
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-              },
-              [`&.${buttonClasses.focusVisible}`]: {
-                boxShadow: customShadow.outlinedFocusedVisible,
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-              },
-              [`&.${buttonClasses.disabled}`]: {
-                color: theme.palette.base?.grey[600],
-              },
-            },
-          },
-        ],
+        ...commonButtonRootStyle(theme),
+        variants: buttonVariants(theme),
       }),
       sizeLarge: ({ theme }) => ({
         minWidth: '200px',
@@ -227,80 +243,8 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        borderRadius: '8px',
-        border: '1px solid',
-        borderColor: 'transparent',
-        svg: {
-          stroke: theme.palette.base?.grey[800],
-        },
-        '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[100],
-        },
-        '&:disabled': {
-          svg: {
-            stroke: theme.palette.base?.grey[600],
-          },
-        },
-        ':focus-visible': {
-          backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-          boxShadow: customShadow.outlinedFocusedVisible,
-        },
-        variants: [
-          {
-            props: { variant: 'primary' },
-            style: {
-              backgroundColor: theme.palette.base?.blueBrand[400],
-              svg: {
-                stroke: theme.palette.base?.white,
-              },
-              '&:hover': {
-                backgroundColor: theme.palette.base?.blueBrand[600],
-              },
-              '&:disabled': {
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-                svg: {
-                  stroke: theme.palette.base?.grey[600],
-                },
-              },
-              '&:focus-visible': {
-                backgroundColor: theme.palette.base?.blueBrand[600],
-                boxShadow: customShadow.containedFocusedVisible,
-              },
-            },
-          },
-          {
-            props: { variant: 'secondary' },
-            style: {
-              backgroundColor: theme.palette.base?.white,
-              borderColor: theme.palette.base?.blueBrand[200],
-              svg: {
-                stroke: theme.palette.base?.blueBrand[800],
-              },
-              '&:hover': {
-                backgroundColor: theme.palette.base?.lilac[100],
-              },
-              '&:disabled': {
-                borderColor: theme.palette.base?.grey[300],
-              },
-            },
-          },
-          {
-            props: { variant: 'tertiary' },
-            style: {
-              color: theme.palette.base?.blueBrand[800],
-              '&:hover': {
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-              },
-              [`&.${buttonClasses.focusVisible}`]: {
-                boxShadow: customShadow.outlinedFocusedVisible,
-                backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-              },
-              [`&.${buttonClasses.disabled}`]: {
-                color: theme.palette.base?.grey[600],
-              },
-            },
-          },
-        ],
+        ...commonButtonRootStyle(theme),
+        variants: buttonVariants(theme),
       }),
       sizeLarge: ({ theme }) => ({
         padding: theme.spacing(1),
