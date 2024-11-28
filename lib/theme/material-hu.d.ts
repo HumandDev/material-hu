@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ButtonProps, Theme } from '@mui/material';
+import { Theme } from '@mui/material';
 import { BaseColorType } from './hugo/colors';
 declare module '@mui/material/styles/createPalette' {
     interface ColorRange {
@@ -107,7 +107,6 @@ declare module '@mui/material/Button' {
         primary: true;
         secondary: true;
         tertiary: true;
-        text: false;
     }
     interface ButtonPropsSizeOverrides {
     }
@@ -124,7 +123,7 @@ declare module '@mui/material/IconButton' {
     interface IconButtonPropsSizeOverrides {
     }
     interface IconButtonOwnProps {
-        variant?: ButtonProps['variant'];
+        variant?: 'primary' | 'secondary' | 'tertiary';
     }
 }
 declare module '@mui/material/Fab' {

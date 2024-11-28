@@ -8,6 +8,7 @@ const meta: Meta<typeof IconButton> = {
   tags: ['autodocs'],
   args: {
     children: <IconInfoCircle />,
+    disabled: false,
   },
   argTypes: {
     variant: {
@@ -22,13 +23,6 @@ const meta: Meta<typeof IconButton> = {
       options: ['small', 'large'],
       table: {
         defaultValue: { summary: 'large' },
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      options: ['true', 'false'],
-      table: {
-        defaultValue: { summary: 'false' },
       },
     },
   },

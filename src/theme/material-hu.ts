@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 import {
-  ButtonProps,
   Theme,
   createTheme as createMuiTheme,
   responsiveFontSizes,
@@ -137,7 +136,6 @@ declare module '@mui/material/Button' {
     contained: false;
     text: false;
     */
-    text: false;
   }
 
   interface ButtonPropsSizeOverrides {
@@ -164,7 +162,7 @@ declare module '@mui/material/IconButton' {
   }
 
   interface IconButtonOwnProps {
-    variant?: ButtonProps['variant'];
+    variant?: 'primary' | 'secondary' | 'tertiary';
   }
 }
 
