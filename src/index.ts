@@ -18,10 +18,11 @@ export * from '@mui/material';
 export * from '@mui/x-date-pickers';
 export * from '@mui/x-date-pickers/AdapterDateFns';
 export * from '@mui/x-date-pickers/internals/hooks/useDesktopPicker';
-export {
-  default as Button,
-  type LoadingButtonProps as ButtonProps,
-} from '@mui/lab/LoadingButton';
+// export {
+//   default as Button,
+//   type LoadingButtonProps as ButtonProps,
+// } from '@mui/lab/LoadingButton';
+export { Button, ButtonProps } from '@mui/material';
 export { TreeView, TreeItem } from '@mui/lab';
 export { createNewTheme } from './theme/material-hu';
 export { default as IconsMenu } from './components/IconsMenu';
