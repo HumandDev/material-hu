@@ -137,6 +137,7 @@ declare module '@mui/material/Button' {
     contained: false;
     text: false;
     */
+    text: false;
   }
 
   interface ButtonPropsSizeOverrides {

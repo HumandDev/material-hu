@@ -107,6 +107,7 @@ declare module '@mui/material/Button' {
         primary: true;
         secondary: true;
         tertiary: true;
+        text: false;
     }
     interface ButtonPropsSizeOverrides {
     }
