@@ -40,7 +40,7 @@ const FormRadioButtonGroup: FC<Props> = props => {
               onClick={() => {
                 // Prevent triggering selection when user is selecting text
                 if (window.getSelection()?.type !== 'Range') {
-                  setValue(name, option.value);
+                  setValue(name, option.value, { shouldDirty: true });
                 }
               }}
             >
@@ -48,7 +48,7 @@ const FormRadioButtonGroup: FC<Props> = props => {
                 {...radioProps}
                 label={option.label}
                 onClick={() => {
-                  setValue(name, option.value);
+                  setValue(name, option.value, { shouldDirty: true });
                 }}
                 description={option.helperText}
                 value={option.value}
