@@ -109,7 +109,6 @@ declare module '@mui/material/Button' {
         tertiary: true;
     }
     interface ButtonPropsSizeOverrides {
-        medium: false;
     }
 }
 declare module '@mui/material/SvgIcon' {
@@ -129,6 +128,7 @@ declare module '@mui/material/IconButton' {
 }
 declare module '@mui/material/Fab' {
     interface FabPropsSizeOverrides {
+        large: true;
     }
 }
 declare module '@mui/material/Radio' {

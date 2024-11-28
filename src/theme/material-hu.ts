@@ -143,7 +143,6 @@ declare module '@mui/material/Button' {
     /* TODO: uncomment when the HuGo is applied in all Humand
     medium: false;
     */
-    medium: false;
   }
 }
 
@@ -173,6 +172,7 @@ declare module '@mui/material/Fab' {
     /* TODO: uncomment when the HuGo is applied in all Humand
     medium: false;
     */
+    large: true;
   }
 }
 

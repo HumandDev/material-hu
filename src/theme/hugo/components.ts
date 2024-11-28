@@ -61,10 +61,10 @@ export const components: ThemeOptions['components'] = {
       root: ({ theme }) => ({
         textTransform: 'capitalize',
         boxShadow: 'none',
+        borderRadius: '8px',
         '&:hover': {
           boxShadow: 'none',
         },
-        borderRadius: '8px',
         variants: [
           {
             props: { variant: 'primary' },
@@ -151,7 +151,7 @@ export const components: ThemeOptions['components'] = {
       disableRipple: true,
     },
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: ({ theme, ownerState }) => ({
         textTransform: 'capitalize',
         boxShadow: 'none',
         maxWidth: '224px',
@@ -160,22 +160,45 @@ export const components: ThemeOptions['components'] = {
         padding: theme.spacing(2),
         fontSize: '18px',
         lineHeight: 1,
+        gap: 8,
         '&:hover': {
           boxShadow: 'none',
+          backgroundColor: theme.palette.base?.blueBrand[600],
         },
-        '& > svg': {
-          marginLeft: theme.spacing(0.5),
+        [`&.${buttonClasses.focusVisible}`]: {
+          boxShadow: customShadow.outlinedFocusedVisible,
+          backgroundColor: theme.palette.base?.blueBrand[600],
         },
+        [`&.${buttonClasses.disabled}`]: {
+          svg: {
+            stroke: theme.palette.base?.grey[600],
+          },
+        },
+        ...(ownerState.size === 'large' && {
+          maxWidth: '224px',
+          padding: theme.spacing(2),
+          fontSize: '18px',
+          height: '52px',
+          '& > svg': {
+            height: 24,
+            width: 24,
+          },
+        }),
       }),
-      sizeMedium: ({ theme }) => ({
+      sizeSmall: ({ theme }) => ({
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
         fontSize: '14px',
+        height: '36px',
+        '& > svg': {
+          height: 16,
+          width: 16,
+        },
       }),
       circular: {
-        borderRadius: '9999px',
+        borderRadius: '32px',
       },
       primary: ({ theme }) => ({
         backgroundColor: theme.palette.base?.blueBrand[400],
@@ -279,12 +302,6 @@ export const components: ThemeOptions['components'] = {
           },
         ],
       }),
-      // colorSecondary: ({ theme }) => ({
-
-      // }),
-      // colorPrimary: ({ theme }) => ({
-
-      // }),
       sizeLarge: ({ theme }) => ({
         padding: theme.spacing(1),
       }),
