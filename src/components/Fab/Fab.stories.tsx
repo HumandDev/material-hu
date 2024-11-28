@@ -14,6 +14,7 @@ const meta: Meta<typeof Fab> = {
   tags: ['autodocs'],
   args: {
     children,
+    disabled: false,
   },
   argTypes: {
     variant: {
@@ -30,13 +31,6 @@ const meta: Meta<typeof Fab> = {
         defaultValue: { summary: 'large' },
       },
     },
-    disabled: {
-      control: 'boolean',
-      options: ['true', 'false'],
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
   },
 };
 
@@ -46,4 +40,32 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {},
+};
+
+export const NoTextSmall: Story = {
+  args: {
+    children: <IconPlus />,
+    size: 'small',
+  },
+};
+
+export const NoTextSmallDisabled: Story = {
+  args: {
+    children: <IconPlus />,
+    size: 'small',
+    disabled: true,
+  },
+};
+
+export const NoTextLarge: Story = {
+  args: {
+    children: <IconPlus />,
+  },
+};
+
+export const NoTextLargeDisabled: Story = {
+  args: {
+    children: <IconPlus />,
+    disabled: true,
+  },
 };
