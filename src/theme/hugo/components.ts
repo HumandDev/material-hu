@@ -22,63 +22,84 @@ const commonButtonRootStyle = (theme: Theme) => ({
   },
 });
 
+const primaryVariantStyle = (theme: Theme) => ({
+  color: theme.palette.base?.white,
+  backgroundColor: theme.palette.base?.blueBrand[400],
+  svg: {
+    stroke: theme.palette.base?.white,
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.base?.blueBrand[600],
+  },
+  [`&.${buttonClasses.focusVisible}`]: {
+    backgroundColor: theme.palette.base?.blueBrand[600],
+    boxShadow: customShadow.containedFocusedVisible,
+  },
+  [`&.${buttonClasses.disabled}`]: {
+    color: theme.palette.base?.grey[600],
+    backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+  },
+});
+
+const secondaryVariantStyle = (theme: Theme) => ({
+  color: theme.palette.base?.blueBrand[800],
+  borderColor: theme.palette.base?.blueBrand[200],
+  backgroundColor: theme.palette.base?.white,
+  svg: {
+    stroke: theme.palette.base?.blueBrand[800],
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.base?.blueBrand[100],
+  },
+  [`&.${buttonClasses.focusVisible}`]: {
+    boxShadow: customShadow.outlinedFocusedVisible,
+    backgroundColor: theme.palette.base?.blueBrand[100],
+  },
+  [`&.${buttonClasses.disabled}`]: {
+    color: theme.palette.base?.grey[600],
+    backgroundColor: theme.palette.base?.white,
+    borderColor: theme.palette.base?.grey[300],
+  },
+});
+
+const tertiaryVariantStyle = (theme: Theme) => ({
+  color: theme.palette.base?.blueBrand[800],
+  '&:hover': {
+    backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+  },
+  [`&.${buttonClasses.focusVisible}`]: {
+    boxShadow: customShadow.outlinedFocusedVisible,
+    backgroundColor: theme.palette.base?.greyTransparent['300p50'],
+  },
+});
+
 const buttonVariants = (theme: Theme) => [
   {
     props: { variant: 'primary' },
-    style: {
-      color: theme.palette.base?.white,
-      backgroundColor: theme.palette.base?.blueBrand[400],
-      svg: {
-        stroke: theme.palette.base?.white,
-      },
-      '&:hover': {
-        backgroundColor: theme.palette.base?.blueBrand[600],
-      },
-      [`&.${buttonClasses.focusVisible}`]: {
-        backgroundColor: theme.palette.base?.blueBrand[600],
-        boxShadow: customShadow.containedFocusedVisible,
-      },
-      [`&.${buttonClasses.disabled}`]: {
-        color: theme.palette.base?.grey[600],
-        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-      },
-    },
+    style: primaryVariantStyle(theme),
+  },
+  {
+    // TODO: remove when HuGo button is applied
+    props: { variant: 'contained' },
+    style: primaryVariantStyle(theme),
   },
   {
     props: { variant: 'secondary' },
-    style: {
-      color: theme.palette.base?.blueBrand[800],
-      borderColor: theme.palette.base?.blueBrand[200],
-      backgroundColor: theme.palette.base?.white,
-      svg: {
-        stroke: theme.palette.base?.blueBrand[800],
-      },
-      '&:hover': {
-        backgroundColor: theme.palette.base?.blueBrand[100],
-      },
-      [`&.${buttonClasses.focusVisible}`]: {
-        boxShadow: customShadow.outlinedFocusedVisible,
-        backgroundColor: theme.palette.base?.blueBrand[100],
-      },
-      [`&.${buttonClasses.disabled}`]: {
-        color: theme.palette.base?.grey[600],
-        backgroundColor: theme.palette.base?.white,
-        borderColor: theme.palette.base?.grey[300],
-      },
-    },
+    style: secondaryVariantStyle(theme),
+  },
+  {
+    // TODO: remove when HuGo button is applied
+    props: { variant: 'outlined' },
+    style: secondaryVariantStyle(theme),
   },
   {
     props: { variant: 'tertiary' },
-    style: {
-      color: theme.palette.base?.blueBrand[800],
-      '&:hover': {
-        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-      },
-      [`&.${buttonClasses.focusVisible}`]: {
-        boxShadow: customShadow.outlinedFocusedVisible,
-        backgroundColor: theme.palette.base?.greyTransparent['300p50'],
-      },
-    },
+    style: tertiaryVariantStyle(theme),
+  },
+  {
+    // TODO: remove when HuGo button is applied
+    props: { variant: 'text' },
+    style: tertiaryVariantStyle(theme),
   },
 ];
 
