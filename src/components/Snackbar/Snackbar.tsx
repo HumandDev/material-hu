@@ -111,7 +111,7 @@ export const useSnackbar = () => {
                   alignItems: 'center',
                   gap: 1,
                   ml: 1,
-                  maxWidth: cancelAction ? 400 : '98%',
+                  maxWidth: cancelAction ? 400 : '99%',
                 }}
               >
                 <Badge
@@ -144,7 +144,7 @@ export const useSnackbar = () => {
                   {title && (
                     <Typography
                       variant="globalS"
-                      fontWeight="semiBold"
+                      fontWeight="fontWeightSemiBold"
                       color="white"
                     >
                       {title}
@@ -153,7 +153,7 @@ export const useSnackbar = () => {
                   {description && (
                     <Typography
                       variant="globalXS"
-                      fontWeight="regular"
+                      fontWeight="fontWeightRegular"
                       color="white"
                     >
                       {description}
@@ -174,7 +174,7 @@ export const useSnackbar = () => {
                     mr: 4,
                     color: 'white',
                     minWidth: 'auto',
-                    maxWidth: 130,
+                    maxWidth: 120,
                   }}
                 >
                   <Typography

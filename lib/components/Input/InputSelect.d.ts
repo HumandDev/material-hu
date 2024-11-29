@@ -6,5 +6,5 @@ export type Props = Pick<FormControlProps, 'sx' | 'fullWidth' | 'disabled'> & Cu
     errorText?: string;
     error?: boolean;
 };
-declare const InputSelect: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, fullWidth, options, disabled, }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const InputSelect: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, fullWidth, options, disabled, allowClear, }: Props) => import("react/jsx-runtime").JSX.Element;
 export default InputSelect;
