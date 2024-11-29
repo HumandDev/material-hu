@@ -103,6 +103,12 @@ declare module '@mui/material/styles' {
     tertiary: React.CSSProperties;
   }
 
+  interface LoadingButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
+
   interface IconButtonVariantsOptions {
     primary: React.CSSProperties;
     secondary: React.CSSProperties;
