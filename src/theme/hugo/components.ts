@@ -79,11 +79,23 @@ const buttonVariants = (theme: Theme) => [
     style: primaryVariantStyle(theme),
   },
   {
+    props: { variant: 'contained' },
+    style: primaryVariantStyle(theme),
+  },
+  {
     props: { variant: 'secondary' },
     style: secondaryVariantStyle(theme),
   },
   {
+    props: { variant: 'outlined' },
+    style: secondaryVariantStyle(theme),
+  },
+  {
     props: { variant: 'tertiary' },
+    style: tertiaryVariantStyle(theme),
+  },
+  {
+    props: { variant: 'text' },
     style: tertiaryVariantStyle(theme),
   },
 ];
@@ -143,35 +155,35 @@ export const components: ThemeOptions['components'] = {
       root: ({ theme }) => ({
         textTransform: 'capitalize',
         ...commonButtonRootStyle(theme),
-        // variants: buttonVariants(theme),
+        variants: buttonVariants(theme),
       }),
       /* TODO: remove when HuGo button is applied ↓ */
-      contained: ({ theme }) => ({
-        ...primaryVariantStyle(theme),
-      }),
-      outlined: ({ theme }) => ({
-        color: theme.palette.base?.blueBrand[800],
-        borderColor: theme.palette.base?.blueBrand[200],
-        backgroundColor: theme.palette.base?.white,
-        svg: {
-          stroke: theme.palette.base?.blueBrand[800],
-        },
-        '&:hover': {
-          backgroundColor: theme.palette.base?.blueBrand[100],
-        },
-        [`&.${buttonClasses.focusVisible}`]: {
-          boxShadow: customShadow.outlinedFocusedVisible,
-          backgroundColor: theme.palette.base?.blueBrand[100],
-        },
-        [`&.${buttonClasses.disabled}`]: {
-          color: theme.palette.base?.grey[600],
-          backgroundColor: theme.palette.base?.white,
-          borderColor: theme.palette.base?.grey[300],
-        },
-      }),
-      text: ({ theme }) => ({
-        ...tertiaryVariantStyle(theme),
-      }),
+      // contained: ({ theme }) => ({
+      //   ...primaryVariantStyle(theme),
+      // }),
+      // outlined: ({ theme }) => ({
+      //   color: theme.palette.base?.blueBrand[800],
+      //   borderColor: theme.palette.base?.blueBrand[200],
+      //   backgroundColor: theme.palette.base?.white,
+      //   svg: {
+      //     stroke: theme.palette.base?.blueBrand[800],
+      //   },
+      //   '&:hover': {
+      //     backgroundColor: theme.palette.base?.blueBrand[100],
+      //   },
+      //   [`&.${buttonClasses.focusVisible}`]: {
+      //     boxShadow: customShadow.outlinedFocusedVisible,
+      //     backgroundColor: theme.palette.base?.blueBrand[100],
+      //   },
+      //   [`&.${buttonClasses.disabled}`]: {
+      //     color: theme.palette.base?.grey[600],
+      //     backgroundColor: theme.palette.base?.white,
+      //     borderColor: theme.palette.base?.grey[300],
+      //   },
+      // }),
+      // text: ({ theme }) => ({
+      //   ...tertiaryVariantStyle(theme),
+      // }),
       /* TODO: remove when HuGo button is applied */
       sizeLarge: ({ theme }) => ({
         minWidth: '200px',
