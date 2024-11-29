@@ -13,7 +13,14 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'radio',
-      options: ['primary', 'secondary', 'tertiary'],
+      options: [
+        'primary',
+        'secondary',
+        'tertiary',
+        'contained',
+        'outlined',
+        'text',
+      ],
       table: {
         defaultValue: { summary: 'tertiary' },
       },

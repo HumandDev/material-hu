@@ -79,26 +79,11 @@ const buttonVariants = (theme: Theme) => [
     style: primaryVariantStyle(theme),
   },
   {
-    // TODO: remove when HuGo button is applied
-    props: { variant: 'contained' },
-    style: primaryVariantStyle(theme),
-  },
-  {
     props: { variant: 'secondary' },
     style: secondaryVariantStyle(theme),
   },
   {
-    // TODO: remove when HuGo button is applied
-    props: { variant: 'outlined' },
-    style: secondaryVariantStyle(theme),
-  },
-  {
     props: { variant: 'tertiary' },
-    style: tertiaryVariantStyle(theme),
-  },
-  {
-    // TODO: remove when HuGo button is applied
-    props: { variant: 'text' },
     style: tertiaryVariantStyle(theme),
   },
 ];
@@ -152,7 +137,7 @@ export const components: ThemeOptions['components'] = {
     defaultProps: {
       size: 'large',
       disableRipple: true,
-      variant: 'tertiary',
+      variant: 'text', // TODO: change this with tertiary when HuGo button is applied
     },
     styleOverrides: {
       root: ({ theme }) => ({
@@ -160,6 +145,17 @@ export const components: ThemeOptions['components'] = {
         ...commonButtonRootStyle(theme),
         variants: buttonVariants(theme),
       }),
+      /* TODO: remove when HuGo button is applied ↓ */
+      contained: ({ theme }) => ({
+        ...primaryVariantStyle(theme),
+      }),
+      outlined: ({ theme }) => ({
+        ...secondaryVariantStyle(theme),
+      }),
+      text: ({ theme }) => ({
+        ...tertiaryVariantStyle(theme),
+      }),
+      /* TODO: remove when HuGo button is applied */
       sizeLarge: ({ theme }) => ({
         minWidth: '200px',
         paddingTop: theme.spacing(1.5),
