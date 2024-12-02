@@ -251,6 +251,7 @@ export const components: ThemeOptions['components'] = {
       size: 'large',
       disableRipple: true,
       variant: 'primary',
+      color: 'primary',
     },
     styleOverrides: {
       root: ({ theme }) => ({
