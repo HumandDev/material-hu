@@ -8,7 +8,7 @@ import { IconX, IconCheck } from '@tabler/icons-react';
 
 export type ChipProps = Pick<
   MuiChipProps,
-  'size' | 'disabled' | 'onDelete' | 'onClick'
+  'size' | 'disabled' | 'onDelete' | 'onClick' | 'sx'
 > & {
   label: string;
   isSelected?: boolean;
@@ -21,6 +21,7 @@ const Chip = ({
   onDelete,
   isSelected,
   onClick,
+  sx,
 }: ChipProps) => {
   const theme = useTheme();
   const isSmall = size === 'small';
@@ -85,6 +86,7 @@ const Chip = ({
           pl: 0.5,
         },
         px: isSmall ? 0.5 : 1,
+        ...sx,
       }}
       deleteIcon={onDelete && <IconX style={iconStyle} />}
     />
