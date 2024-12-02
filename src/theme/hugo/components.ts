@@ -250,8 +250,8 @@ export const components: ThemeOptions['components'] = {
     defaultProps: {
       size: 'large',
       disableRipple: true,
-      variant: 'primary',
-      color: 'primary',
+      variant: 'tertiary',
+      color: 'default',
     },
     styleOverrides: {
       root: ({ theme }) => ({
@@ -265,6 +265,11 @@ export const components: ThemeOptions['components'] = {
       sizeLarge: ({ theme }) => ({
         padding: theme.spacing(1),
       }),
+      /* TODO: remove when HuGo Button is applied ↓ */
+      sizeMedium: ({ theme }) => ({
+        padding: theme.spacing(1),
+      }),
+      /* TODO: remove when HuGo Button is applied */
       sizeSmall: ({ theme }) => ({
         padding: theme.spacing(0.5),
         svg: {
