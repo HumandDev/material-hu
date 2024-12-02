@@ -251,11 +251,13 @@ export const components: ThemeOptions['components'] = {
       size: 'large',
       disableRipple: true,
       variant: 'tertiary',
-      color: 'secondary',
     },
     styleOverrides: {
       root: ({ theme }) => ({
         ...commonButtonRootStyle(theme),
+        /* TODO: remove when HuGo Button is applied ↓ */
+        ...tertiaryVariantStyle(theme),
+        /* TODO: remove when HuGo Button is applied */
         variants: buttonVariants(theme),
       }),
       /* TODO: remove when HuGo Button is applied ↓ */
