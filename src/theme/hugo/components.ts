@@ -9,7 +9,6 @@ const customShadow = {
 const commonButtonRootStyle = (theme: Theme) => ({
   boxShadow: 'none',
   borderRadius: '8px',
-  border: '1px solid',
   borderColor: 'transparent',
   '&:hover': {
     boxShadow: 'none',
@@ -42,6 +41,7 @@ const primaryVariantStyle = (theme: Theme) => ({
 });
 
 const secondaryVariantStyle = (theme: Theme) => ({
+  border: '1px solid',
   color: theme.palette.base?.blueBrand[800],
   borderColor: theme.palette.base?.blueBrand[200],
   backgroundColor: theme.palette.base?.white,
@@ -50,6 +50,7 @@ const secondaryVariantStyle = (theme: Theme) => ({
   },
   '&:hover': {
     backgroundColor: theme.palette.base?.blueBrand[100],
+    borderColor: theme.palette.base?.blueBrand[200],
   },
   [`&.${buttonClasses.focusVisible}`]: {
     boxShadow: customShadow.outlinedFocusedVisible,

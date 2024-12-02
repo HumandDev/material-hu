@@ -32,6 +32,13 @@ const meta: Meta<typeof Button> = {
         defaultValue: { summary: 'large' },
       },
     },
+    color: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'tertiary'],
+      table: {
+        defaultValue: { summary: 'primary' },
+      },
+    },
     startIcon: {
       table: {
         type: { summary: 'ReactNode' },

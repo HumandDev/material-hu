@@ -15,7 +15,7 @@ const meta: Meta<typeof IconButton> = {
       control: 'radio',
       options: ['primary', 'secondary', 'tertiary'],
       table: {
-        defaultValue: { summary: 'primary' },
+        defaultValue: { summary: 'tertiary' },
       },
     },
     size: {
