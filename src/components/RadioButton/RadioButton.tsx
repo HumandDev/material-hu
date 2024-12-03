@@ -14,7 +14,7 @@ type RadioButtonProps = {
   label: string;
   extraData?: string;
   description?: string;
-  onClick: (param: boolean) => void;
+  onClick?: (param: boolean) => void;
   stackSx?: SxProps; // Optional prop for styling the Stack (parent) component
   labelProps?: TypographyProps; // Optional prop for styling the label Typography component
 } & Omit<RadioProps, 'label' | 'onClick'>;
@@ -26,7 +26,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   label,
   extraData,
   description,
-  onClick,
+  onClick = () => {},
   stackSx = {},
   labelProps = {},
   ...props

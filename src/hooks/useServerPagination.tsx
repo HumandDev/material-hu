@@ -112,8 +112,8 @@ const useServerPagination = (options?: ServerPaginationOptions) => {
   );
   const setOrder = useCallback(
     (newOrder?: string) =>
-      setValue('order', newOrder || order === 'DESC' ? 'ASC' : 'DESC'),
-    [setValue],
+      setValue('order', newOrder || (order === 'DESC' ? 'ASC' : 'DESC')),
+    [setValue, order],
   );
   const setQuery = useCallback(
     (newQuery: string) => setValue('query', newQuery),
