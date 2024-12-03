@@ -5,8 +5,8 @@ type Props = {
     open?: boolean;
     onOpen?: () => void;
     onClose?: () => void;
-    buttonType?: 'secondary' | 'tertiary';
-    buttonSize?: 'small' | 'medium' | 'large';
+    buttonVariant?: Extract<ButtonProps['variant'], 'secondary' | 'tertiary'>;
+    buttonSize?: ButtonProps['size'];
     position?: 'left' | 'right' | 'center';
     hasIcon?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;

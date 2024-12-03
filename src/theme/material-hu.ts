@@ -96,6 +96,24 @@ declare module '@mui/material/styles' {
     globalXL?: React.CSSProperties;
     globalXXL?: React.CSSProperties;
   }
+
+  interface ButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
+
+  interface LoadingButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
+
+  interface IconButtonVariantsOptions {
+    primary: React.CSSProperties;
+    secondary: React.CSSProperties;
+    tertiary: React.CSSProperties;
+  }
 }
 
 // Update the Typography's variant prop options
@@ -115,6 +133,23 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     humand: true;
   }
+
+  interface ButtonPropsVariantOverrides {
+    primary: true;
+    secondary: true;
+    tertiary: true;
+    /* TODO: uncomment when the HuGo Button is applied in all Humand
+    outlined: false;
+    contained: false;
+    text: false;
+    */
+  }
+
+  interface ButtonPropsSizeOverrides {
+    /* TODO: uncomment when the HuGo Button is applied in all Humand
+    medium: false;
+    */
+  }
 }
 
 declare module '@mui/material/SvgIcon' {
@@ -126,6 +161,25 @@ declare module '@mui/material/SvgIcon' {
 declare module '@mui/material/IconButton' {
   interface IconButtonPropsColorOverrides {
     humand: true;
+  }
+
+  interface IconButtonPropsSizeOverrides {
+    /* TODO: uncomment when the HuGo IconButton is applied in all Humand
+    medium: false;
+    */
+  }
+
+  interface IconButtonOwnProps {
+    variant?: 'primary' | 'secondary' | 'tertiary';
+  }
+}
+
+declare module '@mui/material/Fab' {
+  interface FabPropsSizeOverrides {
+    /* TODO: uncomment when the Fab HuGo is applied in all Humand
+    medium: false;
+    */
+    large: true;
   }
 }
 
