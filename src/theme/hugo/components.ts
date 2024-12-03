@@ -144,7 +144,7 @@ export const components: ThemeOptions['components'] = {
   },
   MuiButton: {
     defaultProps: {
-      size: 'large',
+      size: 'medium', // TODO: change this with large when HuGo Button is applied
       disableRipple: true,
       variant: 'text', // TODO: change this with tertiary when HuGo Button is applied
     },
@@ -166,6 +166,15 @@ export const components: ThemeOptions['components'] = {
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
       }),
+      /* TODO: remove when HuGo Button is applied ↓ */
+      sizeMedium: ({ theme }) => ({
+        minWidth: '104px',
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+        paddingLeft: theme.spacing(1.5),
+        paddingRight: theme.spacing(1.5),
+      }),
+      /* TODO: remove when HuGo Button is applied */
       sizeSmall: ({ theme }) => ({
         minWidth: '104px',
         paddingTop: theme.spacing(1),
