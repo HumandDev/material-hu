@@ -32,7 +32,7 @@ type AutocompleteProps<TValue = unknown> = BaseProps<TValue> & {
   helperText?: string;
   canCreate?: boolean;
   renderCreatableOption?: BaseProps<TValue>['renderOption'];
-  onLoadMoreOptions?: BaseProps<TValue>['onChange'];
+  onCreate?: BaseProps<TValue>['onChange'];
   renderLoadElementTrigger?: BaseProps<TValue>['renderOption'];
   getCreatableOption?: (
     options: TValue[],
@@ -66,7 +66,7 @@ const Autocomplete = <TValue extends BaseOption = {}>(
     helperText,
     getCreatableOption,
     renderCreatableOption,
-    onLoadMoreOptions,
+    onCreate,
     renderLoadElementTrigger,
     ...props
   }: AutocompleteProps<TValue>,
@@ -112,7 +112,7 @@ const Autocomplete = <TValue extends BaseOption = {}>(
   );
 
   const filterOptions = props.filterOptions ?? createFilterOptions();
-  const hasExtendedFeatures = canCreate || onLoadMoreOptions;
+  const hasExtendedFeatures = canCreate || onCreate;
 
   const extendedFeaturesProps: Partial<AutocompleteProps<TValue>> = {
     filterOptions: (options, state) => {
@@ -133,15 +133,15 @@ const Autocomplete = <TValue extends BaseOption = {}>(
       return concat(
         option.isCreatable && renderCreatableOption?.(...args),
         optionElement,
-        onLoadMoreOptions && renderLoadElementTrigger?.(...args),
+        renderLoadElementTrigger?.(...args),
       );
     },
-    onChange: onLoadMoreOptions
+    onChange: onCreate
       ? (...args) => {
           const [, nextValue] = args;
 
           if ((nextValue as TValue)?.isCreatable) {
-            onLoadMoreOptions?.(...args);
+            onCreate?.(...args);
           } else {
             props.onChange?.(...args);
           }
