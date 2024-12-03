@@ -32,9 +32,8 @@ const CustomHelperText: FC<
       sx={{
         mx: 0,
         mt: 0.5,
-        color: getHelperColor(),
-        '&.Mui-error': {
-          color: getHelperColor(),
+        '& *': {
+          color: `${getHelperColor()} !important`,
         },
       }}
     >
