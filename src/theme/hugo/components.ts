@@ -62,7 +62,6 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: ({ theme }) => ({
-        textTransform: 'capitalize',
         ...commonButtonRootStyle(theme),
         variants: buttonVariants(theme),
       }),
