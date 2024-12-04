@@ -37,7 +37,14 @@ const CustomHelperText: FC<
         },
       }}
     >
-      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 0.5 }}>
+      <Stack
+        component="span"
+        sx={{
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 0.5,
+        }}
+      >
         {error && <IconExclamationCircle size={13} />}
         <Typography variant="globalS">{helperText}</Typography>
         {showCounter && (
