@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardProps,
@@ -43,6 +44,7 @@ export type CardContainerProps = CardProps & {
         };
       };
   hasShadow?: boolean;
+  onClick?: () => void;
 };
 
 type BadgeProps = {
@@ -137,17 +139,22 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
   }
 };
 
+const EmptyWrapper = ({ children }: { children: React.ReactNode }) => children;
+
 const CardContainer = ({
   badge = undefined,
   footer = undefined,
   hasShadow,
   children,
   sx,
+  onClick,
   ...props
 }: CardContainerProps) => {
   const theme = useTheme();
   const badgeProps = getBadgeProps(badge?.type, theme.palette);
   const footerActions = getFooterActions(footer);
+
+  const OptionalCardArea = onClick ? CardActionArea : EmptyWrapper;
 
   return (
     <Card
@@ -160,56 +167,58 @@ const CardContainer = ({
       }}
       {...props}
     >
-      <CardContent
-        sx={{
-          p: 2,
-          ':last-child': {
-            pb: 2,
-          },
-        }}
-      >
-        {children}
-      </CardContent>
-      {footer && (
-        <CardActions
+      <OptionalCardArea onClick={onClick}>
+        <CardContent
           sx={{
-            justifyContent: 'space-between',
-            borderTop: '1px solid #E9E9F4',
-            p: '8px 16px 8px 16px',
+            p: 2,
+            ':last-child': {
+              pb: 2,
+            },
           }}
         >
-          {footerActions}
-        </CardActions>
-      )}
-      {badge && badgeProps && (
-        <Box
-          sx={{
-            padding: '4px 16px 4px 16px',
-            borderBottomLeftRadius: '16px',
-            borderBottomRightRadius: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '25px',
-            backgroundColor: badgeProps.backgroundColor,
-            border: `1px solid ${badgeProps.borderColor}`,
-          }}
-        >
-          <badgeProps.icon
+          {children}
+        </CardContent>
+        {footer && (
+          <CardActions
             sx={{
-              color: badgeProps.fontColor,
-              fontSize: 'small',
-              mr: 0.5,
+              justifyContent: 'space-between',
+              borderTop: '1px solid #E9E9F4',
+              p: '8px 16px 8px 16px',
             }}
-          />
-          <Typography
-            sx={{ color: badgeProps.fontColor }}
-            variant="globalXXS"
           >
-            {badge.label}
-          </Typography>
-        </Box>
-      )}
+            {footerActions}
+          </CardActions>
+        )}
+        {badge && badgeProps && (
+          <Box
+            sx={{
+              padding: '4px 16px 4px 16px',
+              borderBottomLeftRadius: '16px',
+              borderBottomRightRadius: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '25px',
+              backgroundColor: badgeProps.backgroundColor,
+              border: `1px solid ${badgeProps.borderColor}`,
+            }}
+          >
+            <badgeProps.icon
+              sx={{
+                color: badgeProps.fontColor,
+                fontSize: 'small',
+                mr: 0.5,
+              }}
+            />
+            <Typography
+              sx={{ color: badgeProps.fontColor }}
+              variant="globalXXS"
+            >
+              {badge.label}
+            </Typography>
+          </Box>
+        )}
+      </OptionalCardArea>
     </Card>
   );
 };
