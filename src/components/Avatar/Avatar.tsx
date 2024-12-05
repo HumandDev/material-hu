@@ -115,6 +115,7 @@ export const Avatar = ({
   badgeProps = { variant: 'standard', color: 'primary' },
   text,
   Icon,
+  sx,
   ...props
 }: AvatarProps) => {
   const theme = useTheme();
@@ -125,7 +126,7 @@ export const Avatar = ({
   const avatar = (
     <AvatarMui
       sx={{
-        ...props.sx,
+        ...sx,
         ...colorsVariant,
         height: sizeInPixels,
         width: sizeInPixels,

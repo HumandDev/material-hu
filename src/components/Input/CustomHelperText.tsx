@@ -32,13 +32,19 @@ const CustomHelperText: FC<
       sx={{
         mx: 0,
         mt: 0.5,
-        color: getHelperColor(),
-        '&.Mui-error': {
-          color: getHelperColor(),
+        '& *': {
+          color: `${getHelperColor()} !important`,
         },
       }}
     >
-      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 0.5 }}>
+      <Stack
+        component="span"
+        sx={{
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 0.5,
+        }}
+      >
         {error && <IconExclamationCircle size={13} />}
         <Typography variant="globalS">{helperText}</Typography>
         {showCounter && (
