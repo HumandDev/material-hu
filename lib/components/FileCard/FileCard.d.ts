@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { CardContainerProps } from '../CardContainer';
+import { CardContainerProps } from '../CardContainer/CardContainer';
 export type FileCardType = {
     status: 'uploading' | 'success' | 'error';
     file: File;

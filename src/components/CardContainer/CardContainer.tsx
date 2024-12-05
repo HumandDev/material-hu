@@ -44,6 +44,7 @@ export type CardContainerProps = CardProps & {
         };
       };
   hasShadow?: boolean;
+  fullWidth?: boolean;
   onClick?: () => void;
 };
 
@@ -106,12 +107,14 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
       <>
         <Button
           variant="text"
+          sx={{ py: 1, px: 1.5, minWidth: '50%' }}
           {...footer.action2}
         >
           {footer.action2.title}
         </Button>
         <Button
           variant="contained"
+          sx={{ py: 1, px: 1.5, minWidth: '50%' }}
           {...footer.action1}
         >
           {footer.action1.title}
@@ -129,6 +132,7 @@ const getFooterActions = (footer: CardContainerProps['footer']) => {
         </Typography>
         <Button // update to new buttons
           variant="text"
+          sx={{ py: 1, px: 1.5, minWidth: '50%' }}
           {...footer.action1}
           endIcon={<ChevronRight fontSize="small" />}
         >
@@ -145,6 +149,7 @@ const CardContainer = ({
   badge = undefined,
   footer = undefined,
   hasShadow,
+  fullWidth,
   children,
   sx,
   onClick,
@@ -160,7 +165,7 @@ const CardContainer = ({
     <Card
       sx={{
         borderRadius: '16px',
-        width: 328,
+        width: fullWidth ? '100%' : 328,
         border: '1px solid #E9E9F4',
         boxShadow: hasShadow ? '-1px 4px 8px 0px #E9E9F4' : 'none',
         ...sx,
@@ -183,7 +188,8 @@ const CardContainer = ({
             sx={{
               justifyContent: 'space-between',
               borderTop: '1px solid #E9E9F4',
-              p: '8px 16px 8px 16px',
+              py: 1,
+              px: 2,
             }}
           >
             {footerActions}
