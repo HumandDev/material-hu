@@ -8,20 +8,35 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   args: {
     children: 'Button',
+    disabled: false,
   },
   argTypes: {
     variant: {
       control: 'radio',
-      options: ['contained', 'outlined', 'text'],
+      options: [
+        'primary',
+        'secondary',
+        'tertiary',
+        'contained',
+        'outlined',
+        'text',
+      ],
       table: {
-        defaultValue: { summary: 'text' },
+        defaultValue: { summary: 'tertiary' },
       },
     },
     size: {
       control: 'radio',
-      options: ['medium', 'large'],
+      options: ['small', 'large'],
       table: {
         defaultValue: { summary: 'large' },
+      },
+    },
+    color: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'tertiary'],
+      table: {
+        defaultValue: { summary: 'primary' },
       },
     },
     startIcon: {
@@ -49,6 +64,6 @@ export const Icons: Story = {
   args: {
     startIcon: <IconInfoCircle />,
     endIcon: <IconInfoCircle />,
-    variant: 'contained',
+    variant: 'primary',
   },
 };

@@ -46,8 +46,7 @@ const renderStory = (customProps: any = {}, dialogProps: any = {}) =>
       <Stack>
         {modal}
         <Button
-          color="primary"
-          variant="contained"
+          variant="primary"
           size="large"
           sx={{ width: 'fit-content' }}
           onClick={() => showModal()}
