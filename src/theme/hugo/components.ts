@@ -248,7 +248,7 @@ export const components: ThemeOptions['components'] = {
     styleOverrides: {
       root: () => ({
         borderWidth: '1px',
-        color: colorPalette.border.neutralDivider,
+        backgroundColor: colorPalette.border.neutralDivider,
         height: 'auto',
       }),
     },

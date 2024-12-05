@@ -22,6 +22,7 @@ export type CardContainerProps = CardProps & {
         };
     };
     hasShadow?: boolean;
+    onClick?: () => void;
 };
-declare const CardContainer: ({ badge, footer, hasShadow, children, sx, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
+declare const CardContainer: ({ badge, footer, hasShadow, children, sx, onClick, ...props }: CardContainerProps) => import("react/jsx-runtime").JSX.Element;
 export default CardContainer;
