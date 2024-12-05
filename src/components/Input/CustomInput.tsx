@@ -77,7 +77,7 @@ const CustomInput: FC<CustomInputProps> = ({
           borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',
         },
-        input: {
+        'input, textarea': {
           '&::placeholder': {
             color: theme.palette.textColors?.neutralTextLighter,
             opacity: 1,
