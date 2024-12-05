@@ -27,3 +27,9 @@ export default meta;
 type Story = StoryObj<typeof AvatarGroup>;
 
 export const Default: Story = { args: {} };
+
+export const CustomTotalAvatars: Story = {
+  args: {
+    totalAvatars: 2000,
+  },
+};
