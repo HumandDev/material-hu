@@ -1,7 +1,7 @@
 export { default as HuAlert } from './components/Alert/Alert';
 export { default as HuAvatar } from './components/Avatar/Avatar';
 export { default as HuAvatarGroup } from './components/AvatarGroup/AvatarGroup';
-export { default as HuCardContainer } from './components/CardContainer';
+export { default as HuCardContainer } from './components/CardContainer/CardContainer';
 export { default as HuBadge } from './components/Badge/Badge';
 export { default as HuBreadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 export { default as HuChips } from './components/Chip/Chip';

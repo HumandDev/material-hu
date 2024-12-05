@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react';
-import { CardContainerProps } from '../CardContainer';
+import { CardContainerProps } from '../CardContainer/CardContainer';
 export type SelectionCardProps = PropsWithChildren<{
     onClick: (param: boolean) => void;
     checked: boolean;
