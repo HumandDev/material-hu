@@ -97,6 +97,20 @@ export const Info: Story = {
   },
 };
 
+export const FullWidth: Story = {
+  args: {
+    badge: {
+      label: 'Info Badge',
+      type: 'info',
+      hasIcon: true,
+    },
+    fullWidth: true,
+    children: (
+      <Typography variant="body1">Container with an info badge.</Typography>
+    ),
+  },
+};
+
 export const Highlight: Story = {
   args: {
     badge: {

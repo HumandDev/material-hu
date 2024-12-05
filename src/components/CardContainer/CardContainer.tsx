@@ -44,6 +44,7 @@ export type CardContainerProps = CardProps & {
         };
       };
   hasShadow?: boolean;
+  fullWidth?: boolean;
   onClick?: () => void;
 };
 
@@ -148,6 +149,7 @@ const CardContainer = ({
   badge = undefined,
   footer = undefined,
   hasShadow,
+  fullWidth,
   children,
   sx,
   onClick,
@@ -163,7 +165,7 @@ const CardContainer = ({
     <Card
       sx={{
         borderRadius: '16px',
-        width: 328,
+        width: fullWidth ? '100%' : 328,
         border: '1px solid #E9E9F4',
         boxShadow: hasShadow ? '-1px 4px 8px 0px #E9E9F4' : 'none',
         ...sx,
