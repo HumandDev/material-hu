@@ -62,6 +62,7 @@ export const components: ThemeOptions['components'] = {
     },
     styleOverrides: {
       root: ({ theme }) => ({
+        textTransform: 'none',
         ...commonButtonRootStyle(theme),
         variants: buttonVariants(theme),
       }),
