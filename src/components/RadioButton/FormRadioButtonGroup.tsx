@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Controller, ControllerProps, useFormContext } from 'react-hook-form';
 import { RadioGroup, RadioGroupProps, RadioProps } from '@mui/material';
-import CardContainer from '../CardContainer';
+import CardContainer from '../CardContainer/CardContainer';
 import RadioButton from './RadioButton';
 
 type Option = {

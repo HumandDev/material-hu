@@ -11,7 +11,9 @@ import {
 } from '@tabler/icons-react';
 import Title from '../Title/Title';
 import Avatar from '../Avatar/Avatar';
-import CardContainer, { CardContainerProps } from '../CardContainer';
+import CardContainer, {
+  CardContainerProps,
+} from '../CardContainer/CardContainer';
 import { downloadFile } from '../../utils/files';
 import { bytesToSize } from '../../utils/bytes';
 
