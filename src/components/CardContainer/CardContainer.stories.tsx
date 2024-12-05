@@ -35,6 +35,19 @@ export const Default: Story = {
   },
 };
 
+export const WithOnClick: Story = {
+  args: {
+    badge: undefined,
+    children: (
+      <Typography variant="body1">
+        You can click me! But this is also a default CardContainer with no badge
+        or footer.
+      </Typography>
+    ),
+    onClick: () => alert('Default clicking'),
+  },
+};
+
 export const WithBadge: Story = {
   args: {
     badge: {
