@@ -52,11 +52,11 @@ import 'tinymce/plugins/wordcount';
 // importing plugin resources
 import 'tinymce/plugins/emoticons/js/emojis';
 
-// Content styles, including inline UI like fake cursors
-// @ts-ignore
-import contentCss from '!!css-loader!tinymce/skins/content/default/content.min.css';
-// @ts-ignore
-import contentUiCss from '!!css-loader!tinymce/skins/ui/oxide/content.min.css';
+// Content styles, including inline UI like fake cursors. We need this to resize images
+// we can't use css-loader in vite, so we copied the content of the files here
+//import contentCss from '!!css-loader!tinymce/skins/content/default/content.min.css';
+//import contentUiCss from '!!css-loader!tinymce/skins/ui/oxide/content.min.css'
+import { contentCss, contentUiCss } from '../constants/tinymce';
 
 type Props = UseControllerProps & {
   editorProps?: IAllProps;
