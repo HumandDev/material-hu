@@ -36,6 +36,13 @@ export const Determinate: Story = {
   },
 };
 
+export const DeterminateHeight: Story = {
+  args: {
+    variant: 'determinate',
+    progressHeight: 8,
+  },
+};
+
 export const Percentage: Story = {
   args: {
     hasPercentage: true,
