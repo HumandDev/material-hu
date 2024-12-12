@@ -74,6 +74,14 @@ export const useSnackbar = () => {
     }
   };
 
+  const globalXSBase = {
+    fontFamily: 'Roboto',
+    lineHeight: '140%',
+    fontWeight: 400,
+    letterSpacing: 0.2,
+    fontSize: 14,
+  };
+
   const enqueueSnackbar = (props: SnackbarProps) => {
     const {
       title,
@@ -143,9 +151,13 @@ export const useSnackbar = () => {
                 <Stack>
                   {title && (
                     <Typography
-                      variant="globalS"
-                      fontWeight="fontWeightSemiBold"
                       color="white"
+                      sx={{
+                        // Temporally use manual style for -> globalS
+                        ...globalXSBase,
+                        fontSize: 16,
+                        fontWeight: 500,
+                      }}
                     >
                       {title}
                     </Typography>
@@ -155,6 +167,10 @@ export const useSnackbar = () => {
                       variant="globalXS"
                       fontWeight="fontWeightRegular"
                       color="white"
+                      sx={{
+                        // Temporally use manual style for -> globalXS
+                        ...globalXSBase,
+                      }}
                     >
                       {description}
                     </Typography>
