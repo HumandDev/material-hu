@@ -164,8 +164,6 @@ export const useSnackbar = () => {
                   )}
                   {description && (
                     <Typography
-                      variant="globalXS"
-                      fontWeight="fontWeightRegular"
                       color="white"
                       sx={{
                         // Temporally use manual style for -> globalXS
