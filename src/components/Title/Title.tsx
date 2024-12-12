@@ -112,9 +112,10 @@ export const Title = ({
         sx={{
           color: colorPalette.textColors.neutralText,
           ...(withEllipsis && {
+            display: '-webkit-box',
+            WebkitBoxOrient: 'vertical',
+            WebkitLineClamp: 1,
             overflow: 'hidden',
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
           }),
         }}
         fontWeight={'fontWeightSemiBold'}
