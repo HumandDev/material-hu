@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SelectProps } from '@mui/material';
-export type CustomSelectProps = Pick<SelectProps, 'placeholder' | 'inputRef'> & {
+export type CustomSelectProps = Pick<SelectProps, 'placeholder' | 'inputRef' | 'disabled'> & {
     value: string;
     success?: boolean;
     onChange: (value: string) => void;
