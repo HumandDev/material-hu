@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Tabs from './Tabs';
+import { Typography } from '@mui/material';
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
@@ -92,5 +94,29 @@ export const SevenTabs: Story = {
       { label: 'Item 6', value: 'ITEM_6' },
       { label: 'Item 7', value: 'ITEM_7' },
     ],
+  },
+};
+
+export const ControlledValueStory: Story = {
+  render: () => {
+    const [currentTab, setCurrentTab] = useState('ITEM_1');
+
+    const handleTabChange = (value: string) => {
+      setCurrentTab(value);
+    };
+
+    return (
+      <>
+        <Typography>{`Seleccionado: ${currentTab}`}</Typography>
+        <Tabs
+          value={currentTab}
+          tabs={[
+            { label: 'Item 1', value: 'ITEM_1' },
+            { label: 'Item 2', value: 'ITEM_2' },
+          ]}
+          onTabChange={handleTabChange}
+        />
+      </>
+    );
   },
 };

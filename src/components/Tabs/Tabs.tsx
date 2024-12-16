@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
+type Props = Pick<TabsProps, 'sx' | 'defaultValue' | 'value'> & {
   tabs: {
     label: string;
     value: string;
@@ -16,7 +16,7 @@ type Props = Pick<TabsProps, 'sx' | 'defaultValue'> & {
   onTabChange?: (value: string, index: number) => void;
 };
 
-const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
+const Tabs = ({ tabs, sx, onTabChange, defaultValue, value }: Props) => {
   const [currentTab, setCurrentTab] = useState(
     defaultValue || tabs?.[0]?.value,
   );
@@ -30,7 +30,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue }: Props) => {
             borderRadius: '4px 4px 0px 0px',
           },
         }}
-        value={currentTab}
+        value={value || currentTab}
         onChange={(e, v) => {
           onTabChange?.(
             v,
