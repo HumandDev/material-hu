@@ -8,6 +8,11 @@ const meta: Meta<typeof SnackbarWrapper> = {
   component: SnackbarWrapper,
   title: 'Snackbar',
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      story: { height: '80px' },
+    },
+  },
   argTypes: {
     title: { control: 'text' },
     description: { control: 'text' },
@@ -112,5 +117,15 @@ export const WithLongText: Story = {
       text: 'Cancel action because it’s important',
       onClick: () => alert('Undo action triggered!'),
     },
+  },
+};
+
+export const CustomAutoHide: Story = {
+  render: args => <SnackbarTemplate {...args} />,
+  args: {
+    title: 'Will close in 5s',
+    autoHideDuration: 5000,
+    description: 'Instead of having the default value this will close sooner',
+    variant: 'success',
   },
 };

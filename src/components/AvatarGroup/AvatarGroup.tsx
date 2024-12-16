@@ -7,15 +7,8 @@ import Avatar, {
 
 const MAX_AVATARS = 4;
 
-export const formatSurplus = (surplus: number) => {
-  const thousandFraction = surplus / 1000;
-  if (surplus > 9999 || surplus % 1000 === 0) {
-    return `+${Math.trunc(thousandFraction).toString()}K`;
-  }
-  return surplus > 999
-    ? `+${(Math.trunc(thousandFraction * 10) / 10).toString()}K`
-    : `+${surplus}`;
-};
+export const formatSurplus = (surplus: number) =>
+  surplus > 999 ? `+${Math.trunc(surplus / 1000)}K` : `+${surplus}`;
 
 export type Props = {
   size?: AvatarProps['size'];

@@ -30,7 +30,10 @@ export type SnackbarProps = {
     onClick: () => void;
   };
   onClose?: () => void;
+  autoHideDuration?: number;
 };
+
+const DEFAULT_HIDE_DURATION = 10000;
 
 export const useSnackbar = () => {
   const { enqueueSnackbar: enqueueNotistackSnackbar, closeSnackbar } =
@@ -89,12 +92,13 @@ export const useSnackbar = () => {
       hasClose = true,
       cancelAction,
       variant,
+      autoHideDuration = DEFAULT_HIDE_DURATION,
     } = props;
     const { Icon, color, iconColor } = getProps(variant);
     const progressAnimation = keyframes`from { width: 0%; } to { width: 100%; }`;
 
     enqueueNotistackSnackbar('', {
-      autoHideDuration: 10000,
+      autoHideDuration,
       anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
       content: key => (
         <div
@@ -226,7 +230,7 @@ export const useSnackbar = () => {
               backgroundColor: color,
               '& .MuiLinearProgress-bar': {
                 backgroundColor: iconColor,
-                animation: `${progressAnimation} 8s linear`,
+                animation: `${progressAnimation} ${autoHideDuration / 1000}s linear`,
               },
             }}
           />

@@ -30,8 +30,8 @@ const Skeleton: FC<PropsWithChildren<Props>> = ({
     <MuiSkeleton
       animation={'wave'}
       sx={{
-        ...sx,
         borderRadius: getBorderRadius(variant),
+        ...sx,
       }}
       variant={variant}
       {...skeletonProps}
