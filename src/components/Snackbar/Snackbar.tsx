@@ -230,7 +230,7 @@ export const useSnackbar = () => {
               backgroundColor: color,
               '& .MuiLinearProgress-bar': {
                 backgroundColor: iconColor,
-                animation: `${progressAnimation} 8s linear`,
+                animation: `${progressAnimation} ${autoHideDuration / 1000}s linear`,
               },
             }}
           />
