@@ -8,6 +8,7 @@ export type SnackbarProps = {
         onClick: () => void;
     };
     onClose?: () => void;
+    autoHideDuration?: number;
 };
 export declare const useSnackbar: () => {
     enqueueSnackbar: (props: SnackbarProps) => void;
