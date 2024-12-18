@@ -46,6 +46,7 @@ export type CardContainerProps = CardProps & {
   hasShadow?: boolean;
   fullWidth?: boolean;
   onClick?: () => void;
+  padding?: 16 | 24;
 };
 
 type BadgeProps = {
@@ -153,6 +154,7 @@ const CardContainer = ({
   children,
   sx,
   onClick,
+  padding = 16,
   ...props
 }: CardContainerProps) => {
   const theme = useTheme();
@@ -160,6 +162,8 @@ const CardContainer = ({
   const footerActions = getFooterActions(footer);
 
   const OptionalCardArea = onClick ? CardActionArea : EmptyWrapper;
+
+  const realPadding = padding / 8;
 
   return (
     <Card
@@ -175,9 +179,9 @@ const CardContainer = ({
       <OptionalCardArea onClick={onClick}>
         <CardContent
           sx={{
-            p: 2,
+            p: realPadding,
             ':last-child': {
-              pb: 2,
+              pb: realPadding,
             },
           }}
         >
@@ -189,7 +193,7 @@ const CardContainer = ({
               justifyContent: 'space-between',
               borderTop: '1px solid #E9E9F4',
               py: 1,
-              px: 2,
+              px: realPadding,
             }}
           >
             {footerActions}

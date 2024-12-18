@@ -19,6 +19,7 @@ const DatePicker = ({
   inputRef,
   error,
   fullWidth = true,
+  disabled,
   ...props
 }: DatePickerProps) => {
   return (
@@ -26,6 +27,7 @@ const DatePicker = ({
       sx={sx}
       error={error}
       fullWidth={fullWidth}
+      disabled={disabled}
     >
       <CustomLabel label={label} />
       <CustomDatePicker
@@ -33,6 +35,7 @@ const DatePicker = ({
         onChange={onChange}
         inputRef={inputRef}
         helperText={error ? errorText : helperText}
+        disabled={disabled}
         {...props}
       />
     </FormControl>
