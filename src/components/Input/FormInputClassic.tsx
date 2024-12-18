@@ -13,6 +13,8 @@ type Props = {
     | 'maxLength'
     | 'hasCounter'
     | 'multiline'
+    | 'startAdornment'
+    | 'sxInput'
   >;
   rules?: ControllerProps['rules'];
 };

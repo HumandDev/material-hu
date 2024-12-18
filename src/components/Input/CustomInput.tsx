@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import {
   InputAdornment,
   OutlinedInput,
   OutlinedInputProps,
+  SxProps,
   useFormControl,
   useTheme,
 } from '@mui/material';
@@ -17,6 +18,8 @@ export type CustomInputProps = Pick<
   success?: boolean;
   maxLength?: number;
   onChange: (value: string) => void;
+  startAdornment?: ReactNode;
+  sxInput?: SxProps;
 };
 
 const CustomInput: FC<CustomInputProps> = ({
@@ -27,9 +30,11 @@ const CustomInput: FC<CustomInputProps> = ({
   maxLength,
   success,
   multiline = false,
+  startAdornment,
+  sxInput,
 }) => {
   const { focused, error } = useFormControl() || {};
-  const hastEndAdornment = success || error || (focused && value.length > 0);
+  const hastEndAdornment = true;
   const theme = useTheme();
 
   return (
@@ -38,22 +43,24 @@ const CustomInput: FC<CustomInputProps> = ({
       inputProps={{ maxLength }}
       multiline={multiline}
       minRows={5}
+      startAdornment={startAdornment}
       endAdornment={
         hastEndAdornment && (
           <InputAdornment
-            sx={{ alignSelf: multiline ? 'flex-start' : 'center' }}
+            sx={{
+              alignSelf: multiline ? 'flex-start' : 'center',
+            }}
             position="end"
           >
-            {focused && (
-              <IconX
-                size={20}
-                onMouseDown={e => {
-                  onChange?.('');
-                  e.preventDefault();
-                }}
-                style={{ cursor: 'pointer' }}
-              />
-            )}
+            <IconX
+              size={20}
+              onMouseDown={e => {
+                onChange?.('');
+                e.preventDefault();
+              }}
+              style={{ cursor: 'pointer' }}
+            />
+
             {error && (
               <IconAlertCircle
                 size={20}
@@ -73,6 +80,7 @@ const CustomInput: FC<CustomInputProps> = ({
       value={value}
       onChange={e => onChange(e.target.value)}
       sx={{
+        ...sxInput,
         '& fieldset': {
           borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',

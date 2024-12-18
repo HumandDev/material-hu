@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 import InputClassic from './InputClassic';
 import FormInputClassic from './FormInputClassic';
+import { IconSearch } from '@tabler/icons-react';
+import { Stack } from '@mui/material';
 
 const meta: Meta<typeof InputClassic> = {
   component: InputClassic,
@@ -91,6 +93,36 @@ export const FormInputClassicMultilineStory: Story = {
             helperText: 'HelperText',
             hasCounter: true,
             multiline: true,
+          }}
+          name="myInput"
+        />
+      </FormProvider>
+    );
+  },
+};
+
+export const FormInputClassicWithStartAdorment: Story = {
+  render: () => {
+    const form = useForm({
+      defaultValues: {
+        myInput: '',
+      },
+    });
+    return (
+      <FormProvider {...form}>
+        <FormInputClassic
+          inputProps={{
+            placeholder: 'Placeholder',
+            label: 'Label',
+            helperText: 'HelperText',
+            sxInput: {
+              background: 'gray',
+            },
+            startAdornment: (
+              <Stack sx={{ mr: 1 }}>
+                <IconSearch />
+              </Stack>
+            ),
           }}
           name="myInput"
         />
