@@ -6,10 +6,9 @@ import {
   Stack,
   IconButton,
   Typography,
-  Button,
 } from '@mui/material';
 import { IconX } from '@tabler/icons-react';
-import { LoadingButtonProps } from '@mui/lab';
+import { LoadingButton, LoadingButtonProps } from '@mui/lab';
 
 export type DrawerProps = MuiDrawerProps & {
   title?: string;
@@ -158,14 +157,14 @@ const Drawer = (props: DrawerProps) => {
           }}
         >
           {!!secondaryButtonProps && (
-            <Button
+            <LoadingButton
               variant="text"
               size="large"
               {...secondaryButtonProps}
             />
           )}
           {!!primaryButtonProps && (
-            <Button
+            <LoadingButton
               variant="contained"
               size="large"
               {...primaryButtonProps}
