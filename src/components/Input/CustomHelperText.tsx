@@ -15,7 +15,7 @@ const CustomHelperText: FC<
     'helperText' | 'hasCounter' | 'maxLength' | 'value' | 'success'
   >
 > = ({ helperText, hasCounter, maxLength, value, success }) => {
-  const { error, focused } = useFormControl() || {};
+  const { error, focused, disabled } = useFormControl() || {};
   const theme = useTheme();
   const showCounter = hasCounter && (focused || error);
   const getHelperColor = () => {
@@ -25,6 +25,9 @@ const CustomHelperText: FC<
     if (success) {
       return theme.palette.textColors?.successText;
     }
+    if (disabled) {
+      return theme.palette.textColors?.neutralTextLighter;
+    }
     return theme.palette.textColors?.neutralTextLighter;
   };
   return (
@@ -32,13 +35,19 @@ const CustomHelperText: FC<
       sx={{
         mx: 0,
         mt: 0.5,
-        color: getHelperColor(),
-        '&.Mui-error': {
-          color: getHelperColor(),
+        '& *': {
+          color: `${getHelperColor()} !important`,
         },
       }}
     >
-      <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 0.5 }}>
+      <Stack
+        component="span"
+        sx={{
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 0.5,
+        }}
+      >
         {error && <IconExclamationCircle size={13} />}
         <Typography variant="globalS">{helperText}</Typography>
         {showCounter && (

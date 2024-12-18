@@ -77,6 +77,21 @@ declare module '@mui/material/styles' {
         globalXL?: React.CSSProperties;
         globalXXL?: React.CSSProperties;
     }
+    interface ButtonVariantsOptions {
+        primary: React.CSSProperties;
+        secondary: React.CSSProperties;
+        tertiary: React.CSSProperties;
+    }
+    interface LoadingButtonVariantsOptions {
+        primary: React.CSSProperties;
+        secondary: React.CSSProperties;
+        tertiary: React.CSSProperties;
+    }
+    interface IconButtonVariantsOptions {
+        primary: React.CSSProperties;
+        secondary: React.CSSProperties;
+        tertiary: React.CSSProperties;
+    }
 }
 declare module '@mui/material/Typography' {
     interface TypographyPropsVariantOverrides {
@@ -93,6 +108,13 @@ declare module '@mui/material/Button' {
     interface ButtonPropsColorOverrides {
         humand: true;
     }
+    interface ButtonPropsVariantOverrides {
+        primary: true;
+        secondary: true;
+        tertiary: true;
+    }
+    interface ButtonPropsSizeOverrides {
+    }
 }
 declare module '@mui/material/SvgIcon' {
     interface SvgIconPropsColorOverrides {
@@ -102,6 +124,16 @@ declare module '@mui/material/SvgIcon' {
 declare module '@mui/material/IconButton' {
     interface IconButtonPropsColorOverrides {
         humand: true;
+    }
+    interface IconButtonPropsSizeOverrides {
+    }
+    interface IconButtonOwnProps {
+        variant?: 'primary' | 'secondary' | 'tertiary';
+    }
+}
+declare module '@mui/material/Fab' {
+    interface FabPropsSizeOverrides {
+        large: true;
     }
 }
 declare module '@mui/material/Radio' {

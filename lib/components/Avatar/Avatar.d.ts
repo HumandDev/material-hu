@@ -15,5 +15,5 @@ export declare const getColorsVariant: (color: AvatarProps['color'], palette: Pa
     backgroundColor: string;
     color: string;
 };
-export declare const Avatar: ({ size, color, withBadge, badgeProps, text, Icon, ...props }: AvatarProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Avatar: ({ size, color, withBadge, badgeProps, text, Icon, sx, ...props }: AvatarProps) => import("react/jsx-runtime").JSX.Element;
 export default Avatar;

@@ -54,6 +54,17 @@ export const Success: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    placeholder: 'Placeholder',
+    label: 'Label',
+    helperText: 'HelperText',
+    errorText: 'Error text',
+    value: 'value!',
+    disabled: true,
+  },
+};
+
 export const FormInputClassicStory: Story = {
   render: () => {
     const form = useForm({

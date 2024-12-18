@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import {
+  alpha,
   InputAdornment,
   OutlinedInput,
   OutlinedInputProps,
@@ -9,10 +10,11 @@ import {
 } from '@mui/material';
 import { IconAlertCircle, IconCheck, IconX } from '@tabler/icons-react';
 import { getBorderColor } from './utils';
+import { colorPalette } from '../../theme/hugo/colors';
 
 export type CustomInputProps = Pick<
   OutlinedInputProps,
-  'placeholder' | 'inputRef' | 'multiline'
+  'placeholder' | 'inputRef' | 'multiline' | 'disabled'
 > & {
   value: string;
   success?: boolean;
@@ -32,6 +34,7 @@ const CustomInput: FC<CustomInputProps> = ({
   multiline = false,
   startAdornment,
   sxInput,
+  disabled,
 }) => {
   const { focused, error } = useFormControl() || {};
   const hastEndAdornment = true;
@@ -77,6 +80,7 @@ const CustomInput: FC<CustomInputProps> = ({
         )
       }
       placeholder={placeholder}
+      disabled={disabled}
       value={value}
       onChange={e => onChange(e.target.value)}
       sx={{
@@ -84,13 +88,18 @@ const CustomInput: FC<CustomInputProps> = ({
         '& fieldset': {
           borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',
+          backgroundColor: disabled
+            ? alpha(colorPalette.border.neutralBorder, 0.5)
+            : colorPalette.hugoBackground.neutralBgTerciary,
+          zIndex: 0,
         },
-        input: {
+        'input, textarea': {
           '&::placeholder': {
             color: theme.palette.textColors?.neutralTextLighter,
             opacity: 1,
           },
           color: theme.palette.textColors?.neutralText,
+          zIndex: 1,
         },
       }}
     />

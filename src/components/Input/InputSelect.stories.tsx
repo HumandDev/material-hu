@@ -36,6 +36,14 @@ export const DefaultWithHelper: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    label: 'Label',
+    value: '',
+    disabled: true,
+  },
+};
+
 export const Error: Story = {
   args: {
     label: 'Label',
@@ -61,7 +69,7 @@ export const FormInputClassicStory: Story = {
             label: 'Label',
             helperText: 'HelperText',
             options,
-            disabled: true,
+            allowClear: true,
           }}
           name="myInput"
         />

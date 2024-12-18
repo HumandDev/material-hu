@@ -4,7 +4,10 @@ import CustomLabel from './CustomLabel';
 import CustomInput, { CustomInputProps } from './CustomInput';
 import CustomHelperText from './CustomHelperText';
 
-export type InputProps = Pick<FormControlProps, 'sx' | 'fullWidth'> & {
+export type InputProps = Pick<
+  FormControlProps,
+  'sx' | 'fullWidth' | 'disabled'
+> & {
   label?: string;
   helperText?: string;
   errorText?: string;
@@ -31,12 +34,14 @@ const InputClassic = ({
   multiline,
   startAdornment,
   sxInput = null,
+  disabled = false,
 }: InputProps) => {
   return (
     <FormControl
       sx={sx}
       error={error}
       fullWidth={fullWidth}
+      disabled={disabled}
     >
       <CustomLabel
         label={label}
@@ -52,6 +57,7 @@ const InputClassic = ({
         multiline={multiline}
         startAdornment={startAdornment}
         sxInput={sxInput}
+        disabled={disabled}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}

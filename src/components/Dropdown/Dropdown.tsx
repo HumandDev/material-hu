@@ -9,8 +9,8 @@ type Props = {
   open?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-  buttonType?: 'secondary' | 'tertiary';
-  buttonSize?: 'small' | 'medium' | 'large';
+  buttonVariant?: Extract<ButtonProps['variant'], 'secondary' | 'tertiary'>;
+  buttonSize?: ButtonProps['size'];
   position?: 'left' | 'right' | 'center';
   hasIcon?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -25,9 +25,9 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
   onOpen,
   onClose,
   onClick,
-  buttonType = 'secondary',
+  buttonVariant = 'secondary',
   position = 'left',
-  buttonSize = 'medium',
+  buttonSize = 'small',
   hasIcon = true,
   sx = {},
   buttonProps = {},
@@ -74,16 +74,6 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
     }
   };
 
-  const buttonVariant = buttonType === 'secondary' ? 'contained' : 'text';
-
-  const containedButtonSx = {
-    backgroundColor: colorPalette.hugoBackground.neutralBgTerciary,
-    border: `1px solid ${colorPalette.border.primaryBorder}`,
-    '&:hover': {
-      backgroundColor: colorPalette.buttons.buttonSecondaryHover,
-    },
-  };
-
   return (
     <Stack
       sx={{
@@ -99,10 +89,6 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
         aria-describedby={menuId}
         variant={buttonVariant}
         onClick={handleClick}
-        sx={{
-          color: colorPalette.textColors.primaryText,
-          ...(buttonVariant === 'contained' && containedButtonSx),
-        }}
         endIcon={
           hasIcon ? (
             <KeyboardArrowDownIcon

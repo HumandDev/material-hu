@@ -1,8 +1,9 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import RadioButton from './RadioButton';
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
-import FormRadioButton from './FormRadioButton';
 import { Stack } from '@mui/material';
+import FormRadioButtonGroup from './FormRadioButtonGroup';
+import FormRadioButton from './FormRadioButton';
+import RadioButton from './RadioButton';
 
 type Story = StoryObj<typeof RadioButton>;
 
@@ -237,6 +238,51 @@ export const FormSelectionCardOnlyOneOptionStory: Story = {
       description: {
         story:
           'La prop isOnlyOption deshabilita todas las opciónes marcadas, menos la clickeada. Para su uso correcto es necesario aplicarlo para cada elemento (FormRadioButton)',
+      },
+    },
+  },
+};
+
+export const FormRadioGroup: Story = {
+  render: () => {
+    const OPTIONS = [
+      {
+        value: 'ninguna',
+        label: 'Ninguna',
+        helperText: '',
+      },
+      {
+        value: 'opcion-1',
+        label: 'Opción 1',
+      },
+      {
+        value: 'opcion-2',
+        label: 'Opción 2',
+        helperText: 'Lorem ipsum',
+      },
+    ];
+
+    const form = useForm({
+      defaultValues: {
+        selection: 'ninguna',
+      },
+    });
+
+    return (
+      <FormProvider {...form}>
+        <FormRadioButtonGroup
+          name="selection"
+          options={OPTIONS}
+          sx={{ gap: 2 }}
+        />
+      </FormProvider>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'El valor de la opción seleccionada se setea bajo el "name" del field indicado',
       },
     },
   },

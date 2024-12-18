@@ -9,6 +9,7 @@ type Props = {
   helper?: string;
   hasPercentage?: boolean;
   variant?: 'determinate' | 'indeterminate';
+  progressHeight?: number;
   sx?: StackProps['sx'];
 };
 
@@ -20,11 +21,12 @@ const ProgressBar = ({
   current = 0,
   total = 100,
   hasPercentage = false,
+  progressHeight = 4,
   sx,
 }: Props) => {
   const progress = (100 * current) / total;
   return (
-    <Stack sx={sx}>
+    <Stack sx={{ gap: 0.5, ...sx }}>
       {(title || description) && (
         <Title
           variant="S"
@@ -39,6 +41,8 @@ const ProgressBar = ({
             backgroundColor: theme => theme.palette.border?.neutralDivider,
             width: '100%',
             borderRadius: 1,
+            my: 1,
+            height: progressHeight,
           }}
           variant={variant}
           value={Math.min(progress, 100)}

@@ -42,8 +42,7 @@ const Dialog = ({
           flexDirection: 'row',
           gap: '8px',
           justifyContent: title ? 'space-between' : 'flex-end',
-          px: 3,
-          py: 2,
+          p: 3,
         }}
       >
         {title && (
@@ -62,27 +61,16 @@ const Dialog = ({
           <IconX color={colorPalette.textColors.neutralText} />
         </IconButton>
       </Stack>
-
       <DialogContent
         sx={{ px: 3, py: 2, maxHeight: '400px', overflowY: 'auto' }}
       >
-        {textBody && (
-          <Typography
-            variant={'globalS'}
-            sx={{
-              color: colorPalette.textColors.neutralText,
-            }}
-          >
-            {textBody}
-          </Typography>
-        )}
+        {textBody && <Typography variant={'globalS'}>{textBody}</Typography>}
         {body}
       </DialogContent>
       {hasFooter && (
         <DialogActions
           sx={{
-            px: 3,
-            py: 2,
+            p: 3,
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: actionInfo ? 'space-between' : 'flex-end',

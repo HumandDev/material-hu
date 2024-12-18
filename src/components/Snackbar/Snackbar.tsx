@@ -30,7 +30,10 @@ export type SnackbarProps = {
     onClick: () => void;
   };
   onClose?: () => void;
+  autoHideDuration?: number;
 };
+
+const DEFAULT_HIDE_DURATION = 10000;
 
 export const useSnackbar = () => {
   const { enqueueSnackbar: enqueueNotistackSnackbar, closeSnackbar } =
@@ -74,6 +77,14 @@ export const useSnackbar = () => {
     }
   };
 
+  const globalXSBase = {
+    fontFamily: 'Roboto',
+    lineHeight: '140%',
+    fontWeight: 400,
+    letterSpacing: 0.2,
+    fontSize: 14,
+  };
+
   const enqueueSnackbar = (props: SnackbarProps) => {
     const {
       title,
@@ -81,12 +92,13 @@ export const useSnackbar = () => {
       hasClose = true,
       cancelAction,
       variant,
+      autoHideDuration = DEFAULT_HIDE_DURATION,
     } = props;
     const { Icon, color, iconColor } = getProps(variant);
     const progressAnimation = keyframes`from { width: 0%; } to { width: 100%; }`;
 
     enqueueNotistackSnackbar('', {
-      autoHideDuration: 10000,
+      autoHideDuration,
       anchorOrigin: { vertical: 'bottom', horizontal: 'center' },
       content: key => (
         <div
@@ -111,7 +123,7 @@ export const useSnackbar = () => {
                   alignItems: 'center',
                   gap: 1,
                   ml: 1,
-                  maxWidth: cancelAction ? 400 : '98%',
+                  maxWidth: cancelAction ? 400 : '99%',
                 }}
               >
                 <Badge
@@ -143,18 +155,24 @@ export const useSnackbar = () => {
                 <Stack>
                   {title && (
                     <Typography
-                      variant="globalS"
-                      fontWeight="semiBold"
                       color="white"
+                      sx={{
+                        // Temporally use manual style for -> globalS
+                        ...globalXSBase,
+                        fontSize: 16,
+                        fontWeight: 500,
+                      }}
                     >
                       {title}
                     </Typography>
                   )}
                   {description && (
                     <Typography
-                      variant="globalXS"
-                      fontWeight="regular"
                       color="white"
+                      sx={{
+                        // Temporally use manual style for -> globalXS
+                        ...globalXSBase,
+                      }}
                     >
                       {description}
                     </Typography>
@@ -165,6 +183,7 @@ export const useSnackbar = () => {
             action={[
               cancelAction && (
                 <Button
+                  key={'cancelButton'}
                   onClick={() => {
                     cancelAction?.onClick();
                     closeSnackbar(key);
@@ -174,7 +193,7 @@ export const useSnackbar = () => {
                     mr: 4,
                     color: 'white',
                     minWidth: 'auto',
-                    maxWidth: 130,
+                    maxWidth: 120,
                   }}
                 >
                   <Typography
@@ -189,6 +208,7 @@ export const useSnackbar = () => {
               ),
               hasClose && (
                 <IconButton
+                  key={'closeButton'}
                   color="inherit"
                   onClick={() => closeSnackbar(key)}
                   sx={{
@@ -212,7 +232,7 @@ export const useSnackbar = () => {
               backgroundColor: color,
               '& .MuiLinearProgress-bar': {
                 backgroundColor: iconColor,
-                animation: `${progressAnimation} 8s linear`,
+                animation: `${progressAnimation} ${autoHideDuration / 1000}s linear`,
               },
             }}
           />
