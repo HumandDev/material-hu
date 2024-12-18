@@ -6,5 +6,5 @@ export type DatePickerProps = Pick<FormControlProps, 'sx' | 'fullWidth'> & {
     errorText?: string;
     error?: boolean;
 } & CustomDatePickerProps;
-declare const DatePicker: ({ sx, label, value, helperText, errorText, onChange, inputRef, error, fullWidth, ...props }: DatePickerProps) => import("react/jsx-runtime").JSX.Element;
+declare const DatePicker: ({ sx, label, value, helperText, errorText, onChange, inputRef, error, fullWidth, disabled, ...props }: DatePickerProps) => import("react/jsx-runtime").JSX.Element;
 export default DatePicker;

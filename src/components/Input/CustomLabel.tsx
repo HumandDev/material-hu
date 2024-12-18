@@ -6,7 +6,7 @@ const CustomLabel: FC<Pick<InputProps, 'label' | 'success'>> = ({
   label,
   success,
 }) => {
-  const { error } = useFormControl() || {};
+  const { error, disabled } = useFormControl() || {};
   const theme = useTheme();
   if (!label) return null;
   const getLabelColor = () => {
@@ -15,6 +15,9 @@ const CustomLabel: FC<Pick<InputProps, 'label' | 'success'>> = ({
     }
     if (success) {
       return theme.palette.textColors?.successText;
+    }
+    if (disabled) {
+      return theme.palette.textColors?.neutralTextDisabled;
     }
     return theme.palette.textColors?.neutralText;
   };

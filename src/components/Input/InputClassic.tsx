@@ -36,6 +36,7 @@ const InputClassic = ({
       sx={sx}
       error={error}
       fullWidth={fullWidth}
+      disabled={disabled}
     >
       <CustomLabel
         label={label}
