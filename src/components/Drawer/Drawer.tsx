@@ -7,17 +7,17 @@ import {
   IconButton,
   Typography,
   Button,
-  ButtonProps,
 } from '@mui/material';
 import { IconX } from '@tabler/icons-react';
+import { LoadingButtonProps } from '@mui/lab';
 
 export type DrawerProps = MuiDrawerProps & {
   title?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
   disableEscapeKeyDown?: boolean;
-  primaryButtonProps?: ButtonProps;
-  secondaryButtonProps?: ButtonProps;
+  primaryButtonProps?: LoadingButtonProps;
+  secondaryButtonProps?: LoadingButtonProps;
   footer?: ReactNode;
   primaryContent?: ReactNode;
   secondaryContent?: ReactNode;
