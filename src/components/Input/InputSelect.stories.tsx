@@ -36,6 +36,14 @@ export const DefaultWithHelper: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    label: 'Label',
+    value: '',
+    disabled: true,
+  },
+};
+
 export const Error: Story = {
   args: {
     label: 'Label',

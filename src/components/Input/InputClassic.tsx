@@ -3,7 +3,10 @@ import CustomLabel from './CustomLabel';
 import CustomInput, { CustomInputProps } from './CustomInput';
 import CustomHelperText from './CustomHelperText';
 
-export type InputProps = Pick<FormControlProps, 'sx' | 'fullWidth'> & {
+export type InputProps = Pick<
+  FormControlProps,
+  'sx' | 'fullWidth' | 'disabled'
+> & {
   label?: string;
   helperText?: string;
   errorText?: string;
@@ -26,6 +29,7 @@ const InputClassic = ({
   hasCounter = true,
   fullWidth = true,
   multiline,
+  disabled = false,
 }: InputProps) => {
   return (
     <FormControl
@@ -45,6 +49,7 @@ const InputClassic = ({
         maxLength={maxLength}
         success={success}
         multiline={multiline}
+        disabled={disabled}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}
