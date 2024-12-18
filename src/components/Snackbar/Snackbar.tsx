@@ -183,6 +183,7 @@ export const useSnackbar = () => {
             action={[
               cancelAction && (
                 <Button
+                  key={'cancelButton'}
                   onClick={() => {
                     cancelAction?.onClick();
                     closeSnackbar(key);
@@ -207,6 +208,7 @@ export const useSnackbar = () => {
               ),
               hasClose && (
                 <IconButton
+                  key={'closeButton'}
                   color="inherit"
                   onClick={() => closeSnackbar(key)}
                   sx={{
