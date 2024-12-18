@@ -37,7 +37,7 @@ const CustomInput: FC<CustomInputProps> = ({
   disabled,
 }) => {
   const { focused, error } = useFormControl() || {};
-  const hastEndAdornment = true;
+  const hastEndAdornment = success || error || (focused && value.length > 0);
   const theme = useTheme();
 
   return (
@@ -55,15 +55,16 @@ const CustomInput: FC<CustomInputProps> = ({
             }}
             position="end"
           >
-            <IconX
-              size={20}
-              onMouseDown={e => {
-                onChange?.('');
-                e.preventDefault();
-              }}
-              style={{ cursor: 'pointer' }}
-            />
-
+            {focused && (
+              <IconX
+                size={20}
+                onMouseDown={e => {
+                  onChange?.('');
+                  e.preventDefault();
+                }}
+                style={{ cursor: 'pointer' }}
+              />
+            )}
             {error && (
               <IconAlertCircle
                 size={20}
