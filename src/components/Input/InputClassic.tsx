@@ -1,4 +1,5 @@
-import { FormControl, FormControlProps } from '@mui/material';
+import { ReactNode } from 'react';
+import { FormControl, FormControlProps, SxProps } from '@mui/material';
 import CustomLabel from './CustomLabel';
 import CustomInput, { CustomInputProps } from './CustomInput';
 import CustomHelperText from './CustomHelperText';
@@ -12,6 +13,8 @@ export type InputProps = Pick<
   errorText?: string;
   error?: boolean;
   hasCounter?: boolean;
+  startAdornment?: ReactNode;
+  sxInput?: SxProps;
 } & CustomInputProps;
 
 const InputClassic = ({
@@ -29,6 +32,8 @@ const InputClassic = ({
   hasCounter = true,
   fullWidth = true,
   multiline,
+  startAdornment,
+  sxInput = null,
   disabled = false,
 }: InputProps) => {
   return (
@@ -50,6 +55,8 @@ const InputClassic = ({
         maxLength={maxLength}
         success={success}
         multiline={multiline}
+        startAdornment={startAdornment}
+        sxInput={sxInput}
         disabled={disabled}
       />
       <CustomHelperText

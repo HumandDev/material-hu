@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import {
   alpha,
   InputAdornment,
   OutlinedInput,
   OutlinedInputProps,
+  SxProps,
   useFormControl,
   useTheme,
 } from '@mui/material';
@@ -19,6 +20,8 @@ export type CustomInputProps = Pick<
   success?: boolean;
   maxLength?: number;
   onChange: (value: string) => void;
+  startAdornment?: ReactNode;
+  sxInput?: SxProps;
 };
 
 const CustomInput: FC<CustomInputProps> = ({
@@ -29,6 +32,8 @@ const CustomInput: FC<CustomInputProps> = ({
   maxLength,
   success,
   multiline = false,
+  startAdornment,
+  sxInput,
   disabled,
 }) => {
   const { focused, error } = useFormControl() || {};
@@ -41,6 +46,7 @@ const CustomInput: FC<CustomInputProps> = ({
       inputProps={{ maxLength }}
       multiline={multiline}
       minRows={5}
+      startAdornment={startAdornment}
       endAdornment={
         hastEndAdornment && (
           <InputAdornment
@@ -77,6 +83,7 @@ const CustomInput: FC<CustomInputProps> = ({
       value={value}
       onChange={e => onChange(e.target.value)}
       sx={{
+        ...sxInput,
         '& fieldset': {
           borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',
