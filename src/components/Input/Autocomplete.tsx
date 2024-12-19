@@ -68,6 +68,7 @@ const Autocomplete = <TValue extends BaseOption = {}>(
     renderCreatableOption,
     onCreate,
     renderLoadElementTrigger,
+    filterOptions = createFilterOptions(),
     ...props
   }: AutocompleteProps<TValue>,
   ref: AutocompleteProps['ref'],
@@ -111,7 +112,6 @@ const Autocomplete = <TValue extends BaseOption = {}>(
     helperTextTitle
   );
 
-  const filterOptions = props.filterOptions ?? createFilterOptions();
   const hasExtendedFeatures = canCreate || onCreate;
 
   const extendedFeaturesProps: Partial<AutocompleteProps<TValue>> = {
@@ -127,21 +127,21 @@ const Autocomplete = <TValue extends BaseOption = {}>(
       ) as TValue[];
     },
     renderOption: (...args) => {
-      const optionElement = props.renderOption?.(...args);
       const [, option] = args;
 
-      return concat(
-        option.isCreatable && renderCreatableOption?.(...args),
-        optionElement,
+      return [
+        option.isCreatable
+          ? renderCreatableOption?.(...args)
+          : props.renderOption?.(...args),
         renderLoadElementTrigger?.(...args),
-      );
+      ];
     },
     onChange: onCreate
       ? (...args) => {
           const [, nextValue] = args;
 
           if ((nextValue as TValue)?.isCreatable) {
-            onCreate?.(...args);
+            onCreate(...args);
           } else {
             props.onChange?.(...args);
           }
