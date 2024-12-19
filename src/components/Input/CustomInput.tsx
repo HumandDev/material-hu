@@ -83,13 +83,12 @@ const CustomInput: FC<CustomInputProps> = ({
       value={value}
       onChange={e => onChange(e.target.value)}
       sx={{
-        ...sxInput,
         '& fieldset': {
           borderColor: getBorderColor(theme, focused, error, success),
           borderWidth: '1px !important',
           backgroundColor: disabled
             ? alpha(colorPalette.border.neutralBorder, 0.5)
-            : colorPalette.hugoBackground.neutralBgTerciary,
+            : 'initial',
           zIndex: 0,
         },
         'input, textarea': {
@@ -100,6 +99,7 @@ const CustomInput: FC<CustomInputProps> = ({
           color: theme.palette.textColors?.neutralText,
           zIndex: 1,
         },
+        ...sxInput,
       }}
     />
   );
