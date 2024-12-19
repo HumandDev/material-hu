@@ -88,7 +88,7 @@ const CustomInput: FC<CustomInputProps> = ({
           borderWidth: '1px !important',
           backgroundColor: disabled
             ? alpha(colorPalette.border.neutralBorder, 0.5)
-            : 'initial',
+            : 'transparent',
           zIndex: 0,
         },
         'input, textarea': {
