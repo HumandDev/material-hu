@@ -15,7 +15,7 @@ const CustomHelperText: FC<
     'helperText' | 'hasCounter' | 'maxLength' | 'value' | 'success'
   >
 > = ({ helperText, hasCounter, maxLength, value, success }) => {
-  const { error, focused } = useFormControl() || {};
+  const { error, focused, disabled } = useFormControl() || {};
   const theme = useTheme();
   const showCounter = hasCounter && (focused || error);
   const getHelperColor = () => {
@@ -24,6 +24,9 @@ const CustomHelperText: FC<
     }
     if (success) {
       return theme.palette.textColors?.successText;
+    }
+    if (disabled) {
+      return theme.palette.textColors?.neutralTextLighter;
     }
     return theme.palette.textColors?.neutralTextLighter;
   };

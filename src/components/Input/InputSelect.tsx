@@ -41,6 +41,7 @@ const InputSelect = ({
         placeholder={placeholder}
         options={options}
         allowClear={allowClear}
+        disabled={disabled}
       />
       <CustomHelperText
         helperText={error ? errorText : helperText}

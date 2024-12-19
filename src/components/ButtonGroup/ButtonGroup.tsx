@@ -40,7 +40,7 @@ const ButtonGroup = ({
   const noIcon = fixedCheck ? (
     <IconCheck
       size={16}
-      color="none"
+      style={{ stroke: 'transparent' }}
     />
   ) : null;
 

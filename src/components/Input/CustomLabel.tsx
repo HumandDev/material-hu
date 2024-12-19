@@ -19,6 +19,9 @@ const CustomLabel: FC<Pick<InputProps, 'label' | 'success'>> = ({
     if (success) {
       return theme.palette.textColors?.successText;
     }
+    if (disabled) {
+      return theme.palette.textColors?.neutralTextDisabled;
+    }
     return theme.palette.textColors?.neutralText;
   };
   return (

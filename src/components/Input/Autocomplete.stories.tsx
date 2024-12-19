@@ -90,7 +90,6 @@ export const Creatable: Story = {
           style={{ fontSize: '14px', fontWeight: '500' }}
         >
           {(option as any).label}
-          Hola
         </li>
       );
     },

@@ -1,6 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
 import { useTheme } from '@mui/material';
-import CardContainer, { CardContainerProps } from '../CardContainer';
+import CardContainer, {
+  CardContainerProps,
+} from '../CardContainer/CardContainer';
 
 export type SelectionCardProps = PropsWithChildren<{
   onClick: (param: boolean) => void;
