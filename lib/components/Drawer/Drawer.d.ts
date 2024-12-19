@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
-import { DrawerProps as MuiDrawerProps, ButtonProps } from '@mui/material';
+import { DrawerProps as MuiDrawerProps } from '@mui/material';
+import { LoadingButtonProps } from '@mui/lab';
 export type DrawerProps = MuiDrawerProps & {
     title?: string;
     size?: 'medium' | 'large';
     onClose: () => void;
     disableEscapeKeyDown?: boolean;
-    primaryButtonProps?: ButtonProps;
-    secondaryButtonProps?: ButtonProps;
+    primaryButtonProps?: LoadingButtonProps;
+    secondaryButtonProps?: LoadingButtonProps;
     footer?: ReactNode;
     primaryContent?: ReactNode;
     secondaryContent?: ReactNode;
