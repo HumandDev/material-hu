@@ -10,6 +10,9 @@ const CustomLabel: FC<Pick<InputProps, 'label' | 'success'>> = ({
   const theme = useTheme();
   if (!label) return null;
   const getLabelColor = () => {
+    if (disabled) {
+      return theme.palette.textColors?.neutralTextDisabled;
+    }
     if (error) {
       return theme.palette.textColors?.errorText;
     }
