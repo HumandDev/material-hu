@@ -91,6 +91,9 @@ const CustomInput: FC<CustomInputProps> = ({
             : 'initial',
           zIndex: 0,
         },
+        '> svg:first-of-type': {
+          marginRight: 1,
+        },
         'input, textarea': {
           '&::placeholder': {
             color: theme.palette.textColors?.neutralTextLighter,
