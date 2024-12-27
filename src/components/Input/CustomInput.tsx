@@ -92,7 +92,7 @@ const CustomInput: FC<CustomInputProps> = ({
           zIndex: 0,
         },
         '> svg:first-of-type': {
-          marginRight: 1,
+          mr: 1,
         },
         'input, textarea': {
           '&::placeholder': {
