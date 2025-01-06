@@ -56,6 +56,8 @@ export const ListItem: FC<ListItemProps> = ({
     callback && callback(event);
   };
 
+  const { Icon: ActionIcon, ...actionRest } = action || {};
+
   return (
     <Stack
       id={id}
@@ -105,10 +107,16 @@ export const ListItem: FC<ListItemProps> = ({
               <MuiIconButton
                 edge="end"
                 size="small"
-                {...action}
+                sx={{
+                  svg: {
+                    width: 'inherit',
+                    height: 'inherit',
+                  },
+                }}
+                {...actionRest}
                 onClick={handleClick(action.onClick)}
               >
-                <action.Icon />
+                {ActionIcon && <ActionIcon size={24} />}
               </MuiIconButton>
             )}
           </Stack>
