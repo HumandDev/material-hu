@@ -5,6 +5,7 @@ export type DrawerProps = MuiDrawerProps & {
     title?: string;
     size?: 'medium' | 'large';
     onClose: () => void;
+    hasBackButton?: boolean;
     disableEscapeKeyDown?: boolean;
     primaryButtonProps?: LoadingButtonProps;
     secondaryButtonProps?: LoadingButtonProps;

@@ -7,13 +7,14 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { IconX } from '@tabler/icons-react';
+import { IconArrowLeft, IconX } from '@tabler/icons-react';
 import { LoadingButton, LoadingButtonProps } from '@mui/lab';
 
 export type DrawerProps = MuiDrawerProps & {
   title?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
+  hasBackButton?: boolean;
   disableEscapeKeyDown?: boolean;
   primaryButtonProps?: LoadingButtonProps;
   secondaryButtonProps?: LoadingButtonProps;
@@ -48,6 +49,7 @@ const Drawer = (props: DrawerProps) => {
     disableEscapeKeyDown,
     sx,
     PaperProps,
+    hasBackButton,
     ...drawerProps
   } = props;
 
@@ -90,9 +92,14 @@ const Drawer = (props: DrawerProps) => {
           borderBottom: `1px solid ${colorPalette.border?.neutralDivider}`,
         }}
       >
+        {hasBackButton && (
+          <IconButton onClick={onClose}>
+            <IconArrowLeft />
+          </IconButton>
+        )}
         <Typography
           variant="globalS"
-          sx={{ fontWeight: 'semiBold' }}
+          sx={{ fontWeight: 'semiBold', flex: 1 }}
         >
           {title}
         </Typography>
