@@ -7,7 +7,7 @@ import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
 import { useTranslation } from './i18n';
 import { getInitials } from '../../utils/user';
 
-export type FieldValues = {
+type FieldValues = {
   text: string;
 };
 

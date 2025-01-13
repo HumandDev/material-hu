@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-export type FieldValues = {
+type FieldValues = {
     text: string;
 };
 export type CreatePostProps = {
