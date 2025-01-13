@@ -30,6 +30,7 @@ export const Default: Story = {
     secondaryButtonProps: {
       children: 'Secondary Action',
     },
+    hasBackButton: false,
   },
   render: props => {
     const {
@@ -38,6 +39,7 @@ export const Default: Story = {
       primaryButtonProps,
       secondaryButtonProps,
       disableEscapeKeyDown,
+      hasBackButton,
     } = props;
     const [isOpen, setIsOpen] = useState(false);
 
@@ -60,6 +62,7 @@ export const Default: Story = {
           primaryButtonProps={primaryButtonProps}
           secondaryButtonProps={secondaryButtonProps}
           disableEscapeKeyDown={disableEscapeKeyDown}
+          hasBackButton={hasBackButton}
         >
           <Typography>
             Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi. Turpis

@@ -125,9 +125,6 @@ export const FormInputClassicWithStartAdorment: Story = {
             placeholder: 'Placeholder',
             label: 'Label',
             helperText: 'HelperText',
-            sxInput: {
-              background: 'gray',
-            },
             startAdornment: <IconSearch />,
           }}
           name="myInput"
