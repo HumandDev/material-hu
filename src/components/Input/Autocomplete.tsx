@@ -1,6 +1,10 @@
 import { forwardRef, Fragment } from 'react';
 import { assign, concat, merge } from 'lodash';
-import { IconChevronDown, IconExclamationCircle } from '@tabler/icons-react';
+import {
+  IconChevronDown,
+  IconExclamationCircle,
+  IconX,
+} from '@tabler/icons-react';
 import {
   createFilterOptions,
   FilterOptionsState,
@@ -13,6 +17,7 @@ import {
   useTheme,
 } from '@mui/material';
 import CustomLabel from './CustomLabel';
+import CustomHelperText from './CustomHelperText';
 
 type BaseProps<TValue> = MUIAutocompleteProps<
   TValue,
@@ -50,6 +55,7 @@ const defaultProps: Partial<AutocompleteProps> = {
     sx: { maxHeight: 240 },
   },
   popupIcon: <IconChevronDown size={20} />,
+  clearIcon: <IconX size={20} />,
   fullWidth: true,
 };
 
@@ -63,7 +69,7 @@ const Autocomplete = <TValue extends BaseOption = {}>(
     canCreate,
     placeholder,
     label,
-    helperText,
+    helperText = '',
     getCreatableOption,
     renderCreatableOption,
     onCreate,
@@ -85,32 +91,6 @@ const Autocomplete = <TValue extends BaseOption = {}>(
   };
 
   const statusTextColor = getStatusTextColor();
-
-  const helperTextTitle = (
-    <Typography
-      variant="globalS"
-      sx={{
-        color: statusTextColor,
-      }}
-    >
-      {helperText}
-    </Typography>
-  );
-
-  const helperTextMessage = hasError ? (
-    <Stack
-      component="span"
-      sx={{ gap: 0.5, flexDirection: 'row', alignItems: 'center' }}
-    >
-      <ErrorIcon
-        size={16}
-        style={{ color: statusTextColor }}
-      />
-      {helperTextTitle}
-    </Stack>
-  ) : (
-    helperTextTitle
-  );
 
   const hasExtendedFeatures = canCreate || onCreate;
 
@@ -169,7 +149,13 @@ const Autocomplete = <TValue extends BaseOption = {}>(
           <TextField
             {...params}
             error={hasError}
-            helperText={helperTextMessage}
+            helperText={
+              <CustomHelperText
+                helperText={helperText}
+                value=""
+                hasCounter={false}
+              />
+            }
             placeholder={placeholder}
             InputProps={{
               ...params.InputProps,
