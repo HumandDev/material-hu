@@ -3,7 +3,6 @@ import { FormProvider, useForm } from 'react-hook-form';
 import InputClassic from './InputClassic';
 import FormInputClassic from './FormInputClassic';
 import { IconSearch } from '@tabler/icons-react';
-import { Stack } from '@mui/material';
 
 const meta: Meta<typeof InputClassic> = {
   component: InputClassic,
@@ -126,14 +125,7 @@ export const FormInputClassicWithStartAdorment: Story = {
             placeholder: 'Placeholder',
             label: 'Label',
             helperText: 'HelperText',
-            sxInput: {
-              background: 'gray',
-            },
-            startAdornment: (
-              <Stack sx={{ mr: 1 }}>
-                <IconSearch />
-              </Stack>
-            ),
+            startAdornment: <IconSearch />,
           }}
           name="myInput"
         />

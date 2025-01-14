@@ -5,9 +5,10 @@ import {
   useTheme,
   SxProps,
   Theme,
+  Typography,
 } from '@mui/material';
 import Badge, { BadgeProps } from '../Badge/Badge';
-import { TablerIcon } from '@tabler/icons-react';
+import { IconUser, TablerIcon } from '@tabler/icons-react';
 
 export type AvatarProps = Pick<
   MuiAvatarProps,
@@ -108,13 +109,14 @@ const getOffset = (
   return {};
 };
 
+// shows src then text then icon
 export const Avatar = ({
   size = 'medium',
   color = 'default',
   withBadge = false,
   badgeProps = { variant: 'standard', color: 'primary' },
   text,
-  Icon,
+  Icon = IconUser,
   sx,
   ...props
 }: AvatarProps) => {
@@ -136,19 +138,18 @@ export const Avatar = ({
         ...(props.variant === 'square' && {
           borderRadius: 1,
         }),
-        ...(!props.src && {
-          // text style globalXS
-          fontFamily: 'Roboto',
-          fontSize: 14,
-          lineHeight: '140%',
-          fontWeight: 600,
-          letterSpacing: 0.2,
-        }),
       }}
       {...props}
     >
-      {text}
-      {Icon && <Icon size={getIconSize(size)} />}
+      {!props.src && (
+        <Typography
+          variant="globalXS"
+          fontWeight="semiBold"
+        >
+          {text}
+        </Typography>
+      )}
+      {!props.src && !text && Icon && <Icon size={getIconSize(size)} />}
     </AvatarMui>
   );
   const forcedVariant =

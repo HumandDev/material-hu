@@ -6,18 +6,18 @@ import {
   Stack,
   IconButton,
   Typography,
-  Button,
-  ButtonProps,
 } from '@mui/material';
-import { IconX } from '@tabler/icons-react';
+import { IconArrowLeft, IconX } from '@tabler/icons-react';
+import { LoadingButton, LoadingButtonProps } from '@mui/lab';
 
 export type DrawerProps = MuiDrawerProps & {
   title?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
+  hasBackButton?: boolean;
   disableEscapeKeyDown?: boolean;
-  primaryButtonProps?: ButtonProps;
-  secondaryButtonProps?: ButtonProps;
+  primaryButtonProps?: LoadingButtonProps;
+  secondaryButtonProps?: LoadingButtonProps;
   footer?: ReactNode;
   primaryContent?: ReactNode;
   secondaryContent?: ReactNode;
@@ -49,6 +49,7 @@ const Drawer = (props: DrawerProps) => {
     disableEscapeKeyDown,
     sx,
     PaperProps,
+    hasBackButton,
     ...drawerProps
   } = props;
 
@@ -91,9 +92,14 @@ const Drawer = (props: DrawerProps) => {
           borderBottom: `1px solid ${colorPalette.border?.neutralDivider}`,
         }}
       >
+        {hasBackButton && (
+          <IconButton onClick={onClose}>
+            <IconArrowLeft />
+          </IconButton>
+        )}
         <Typography
           variant="globalS"
-          sx={{ fontWeight: 'semiBold' }}
+          sx={{ fontWeight: 'semiBold', flex: 1 }}
         >
           {title}
         </Typography>
@@ -158,14 +164,14 @@ const Drawer = (props: DrawerProps) => {
           }}
         >
           {!!secondaryButtonProps && (
-            <Button
+            <LoadingButton
               variant="text"
               size="large"
               {...secondaryButtonProps}
             />
           )}
           {!!primaryButtonProps && (
-            <Button
+            <LoadingButton
               variant="contained"
               size="large"
               {...primaryButtonProps}

@@ -14,7 +14,6 @@ type Props = {
     | 'hasCounter'
     | 'multiline'
     | 'startAdornment'
-    | 'sxInput'
   >;
   rules?: ControllerProps['rules'];
 };
