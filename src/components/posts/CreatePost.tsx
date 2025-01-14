@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Stack, Button, Typography } from '@mui/material';
-import CardContainer from '../CardContainer/CardContainer';
+import CardContainer, {
+  CardContainerProps,
+} from '../CardContainer/CardContainer';
 import Avatar from '../Avatar/Avatar';
 import FormInputClassic from '../Input/FormInputClassic';
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form';
@@ -15,12 +17,14 @@ export type CreatePostProps = {
   profilePicture?: string;
   fullName: string;
   handlePost: SubmitHandler<FieldValues>;
+  sx: CardContainerProps['sx'];
 };
 
 export const CreatePost: FC<CreatePostProps> = ({
   profilePicture,
   fullName,
   handlePost,
+  sx,
 }) => {
   const { t } = useTranslation();
 
@@ -32,7 +36,10 @@ export const CreatePost: FC<CreatePostProps> = ({
 
   return (
     <FormProvider {...form}>
-      <CardContainer fullWidth>
+      <CardContainer
+        fullWidth
+        sx={sx}
+      >
         <Stack>
           <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 1 }}>
             <Avatar
