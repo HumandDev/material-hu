@@ -10,6 +10,7 @@ type Props = {
   hasPercentage?: boolean;
   variant?: 'determinate' | 'indeterminate';
   progressHeight?: number;
+  decimalPrecision?: 0 | 1 | 2;
   sx?: StackProps['sx'];
 };
 
@@ -22,6 +23,7 @@ const ProgressBar = ({
   total = 100,
   hasPercentage = false,
   progressHeight = 4,
+  decimalPrecision = 0,
   sx,
 }: Props) => {
   const progress = (100 * current) / total;
@@ -55,7 +57,7 @@ const ProgressBar = ({
               ml: 0.5,
             }}
           >
-            {`${Math.round(progress)}%`}
+            {`${Number(progress).toFixed(decimalPrecision)}%`}
           </Typography>
         )}
       </Stack>
