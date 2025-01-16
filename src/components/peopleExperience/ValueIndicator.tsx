@@ -55,7 +55,7 @@ const ValueIndicator = ({
         />
       )}
       {!loading && (
-        <Stack sx={{ gap: 1, flexDirection: 'row' }}>
+        <Stack sx={{ gap: 1, flexDirection: 'row', alignItems: 'center' }}>
           <Typography
             variant="h5"
             component="p"
