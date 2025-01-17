@@ -3,7 +3,7 @@ import { CardContainerProps } from '../CardContainer/CardContainer';
 export type PostProps = {
     profilePicture?: string;
     fullName: string;
-    text: string;
+    body: string;
     publicationDatetime: string;
     sx?: CardContainerProps['sx'];
 };

@@ -12,7 +12,7 @@ import { useTranslation } from './i18n';
 export type PostProps = {
   profilePicture?: string;
   fullName: string;
-  text: string;
+  body: string;
   publicationDatetime: string;
   sx?: CardContainerProps['sx'];
 };
@@ -20,7 +20,7 @@ export type PostProps = {
 export const Post: FC<PostProps> = ({
   profilePicture,
   fullName,
-  text,
+  body,
   publicationDatetime,
   sx,
 }) => {
@@ -43,7 +43,7 @@ export const Post: FC<PostProps> = ({
           sx={{ '.MuiListItem-root': { p: 0 } }}
         />
         <SeeMoreText
-          text={text}
+          text={body}
           lines={6}
         />
       </Stack>
