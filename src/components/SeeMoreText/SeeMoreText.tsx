@@ -36,13 +36,9 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
 
   const { t } = useTranslation();
 
-  const handleSeeMore = () => {
-    setShow(true);
-  };
+  const handleSeeMore = () => setShow(true);
 
-  const handleSeeLess = () => {
-    setShow(false);
-  };
+  const handleSeeLess = () => setShow(false);
 
   const formatedText = useMemo(() => mapNewLines(text), [text]);
 
@@ -57,22 +53,22 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
   }
 
   const renderText = () => {
-    const sx = {
-      '&.clamp': {
-        width: '100%',
-        display: '-webkit-box',
-        overflow: 'hidden',
-        WebkitBoxOrient: 'vertical',
-        WebkitLineClamp: `${lines}`,
-        WebkitBoxFlex: '1',
-      },
-    };
+    const sx = !show
+      ? ({
+          width: '100%',
+          display: '-webkit-box',
+          overflow: 'hidden',
+          WebkitBoxOrient: 'vertical',
+          WebkitLineClamp: `${lines}`,
+          WebkitBoxFlex: '1',
+        } as const)
+      : {};
 
     return (
       <Typography
         ref={textRef}
         {...typographyProps}
-        sx={{ sx, ...typographyProps?.sx }}
+        sx={{ ...sx, ...typographyProps?.sx }}
         {...(isHtmlText ? { __html: text } : { children: formatedText })}
       />
     );
