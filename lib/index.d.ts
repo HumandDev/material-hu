@@ -19,6 +19,7 @@ export { default as CroppingModal, CroppingModalProps, } from './components/Crop
 export { default as DocumentItem, DocumentItemProps, } from './components/DocumentItem';
 export { default as FormRadioCustomGroup, FormRadioCustomGroupProps, } from './components/FormRadioCustomGroup';
 export { useDebounce } from './hooks/useDebounce';
+export { SearchControllerProps, PaginationControllerProps, PaginationParams, useHuPagination, } from './hooks/useHuPagination';
 export { useServerPagination, TableSortingHeaderProps, } from './hooks/useServerPagination';
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
