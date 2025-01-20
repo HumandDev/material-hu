@@ -46,6 +46,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue, value }: Props) => {
               <Typography
                 variant="globalXS"
                 fontWeight={'fontWeightSemiBold'}
+                sx={{ color: 'inherit' }}
               >
                 {tab.label}
               </Typography>
@@ -63,7 +64,7 @@ const Tabs = ({ tabs, sx, onTabChange, defaultValue, value }: Props) => {
           />
         ))}
       </MuiTabs>
-      <Divider />
+      <Divider sx={{ borderBottom: 0 }} />
     </Stack>
   );
 };

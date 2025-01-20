@@ -3,11 +3,14 @@ import {
   Skeleton,
   Stack,
   StackProps,
+  Theme,
   Tooltip,
   TooltipProps,
   Typography,
+  TypographyProps,
 } from '@mui/material';
-import { merge } from 'lodash';
+import { merge, omit } from 'lodash';
+import { ReactNode } from 'react';
 
 type ValueIndicatorProps = {
   value: number | string;
@@ -17,6 +20,12 @@ type ValueIndicatorProps = {
   slotProps?: Partial<{
     container: StackProps;
     description: Partial<TooltipProps>;
+    value: Partial<
+      TypographyProps & {
+        endAdornment: ReactNode;
+      }
+    >;
+    label: Partial<TypographyProps>;
   }>;
 };
 
@@ -27,7 +36,13 @@ const ValueIndicator = ({
   description,
   slotProps = {},
 }: ValueIndicatorProps) => {
-  const { container } = slotProps;
+  const {
+    container,
+    value: valueProps,
+    label: labelProps,
+    description: descriptionProps,
+  } = slotProps;
+
   return (
     <Stack
       {...container}
@@ -40,17 +55,26 @@ const ValueIndicator = ({
         />
       )}
       {!loading && (
-        <Typography
-          variant="h5"
-          component="p"
-        >
-          {value}
-        </Typography>
+        <Stack sx={{ gap: 1, flexDirection: 'row', alignItems: 'center' }}>
+          <Typography
+            variant="h5"
+            component="p"
+            {...omit(valueProps, 'endAdornment')}
+          >
+            {value}
+          </Typography>
+          {valueProps?.endAdornment}
+        </Stack>
       )}
       <Stack sx={{ flexDirection: 'row', gap: 0.5, alignItems: 'center' }}>
         <Typography
           variant="overline"
-          sx={{ color: theme => theme.palette.secondary.main }}
+          {...merge(
+            {
+              sx: { color: (theme: Theme) => theme.palette.secondary.main },
+            },
+            labelProps,
+          )}
         >
           {label}
         </Typography>
@@ -62,7 +86,7 @@ const ValueIndicator = ({
                 placement: 'right-end',
                 slotProps: { tooltip: { sx: { maxWidth: '135px' } } },
               },
-              slotProps.description,
+              descriptionProps,
             )}
           >
             <InfoOutlined

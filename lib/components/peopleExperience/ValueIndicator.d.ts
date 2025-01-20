@@ -1,4 +1,5 @@
-import { StackProps, TooltipProps } from '@mui/material';
+import { StackProps, TooltipProps, TypographyProps } from '@mui/material';
+import { ReactNode } from 'react';
 type ValueIndicatorProps = {
     value: number | string;
     label: string;
@@ -7,6 +8,10 @@ type ValueIndicatorProps = {
     slotProps?: Partial<{
         container: StackProps;
         description: Partial<TooltipProps>;
+        value: Partial<TypographyProps & {
+            endAdornment: ReactNode;
+        }>;
+        label: Partial<TypographyProps>;
     }>;
 };
 declare const ValueIndicator: ({ value, label, loading, description, slotProps, }: ValueIndicatorProps) => import("react/jsx-runtime").JSX.Element;
