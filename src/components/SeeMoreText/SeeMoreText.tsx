@@ -2,6 +2,7 @@ import { FC, useState, useRef, useMemo, useEffect } from 'react';
 import {
   Button,
   ButtonProps,
+  Stack,
   Typography,
   TypographyProps,
 } from '@mui/material';
@@ -46,14 +47,14 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
     if (textRef.current) {
       setIsCroped(isTextClamped(textRef));
     }
-  }, [textRef.current, show]);
+  }, [textRef.current, show, text]);
 
   if (lines < 1) {
     return <Typography {...typographyProps}>{formatedText}</Typography>;
   }
 
   const renderText = () => {
-    const sx = !show
+    const clippedSx = !show
       ? ({
           width: '100%',
           display: '-webkit-box',
@@ -68,14 +69,23 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
       <Typography
         ref={textRef}
         {...typographyProps}
-        sx={{ ...sx, ...typographyProps?.sx }}
+        sx={{ ...clippedSx, ...typographyProps?.sx }}
         {...(isHtmlText ? { __html: text } : { children: formatedText })}
       />
     );
   };
 
   return (
-    <>
+    <Stack
+      sx={{
+        '.MuiButton-root': {
+          p: 0,
+          minWidth: 0,
+        },
+        alignItems: 'flex-start',
+        gap: 1,
+      }}
+    >
       {renderText()}
       {show && (
         <Button
@@ -93,7 +103,7 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
           {seeMoreText || t('SEE_MORE')}
         </Button>
       )}
-    </>
+    </Stack>
   );
 };
 
