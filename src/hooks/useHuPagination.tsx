@@ -101,6 +101,8 @@ export const useHuPagination = (options?: UseHuPaginationOptions) => {
   useEffect(() => {
     if (search.length >= SEARCH_MIN_LENGTH && search !== urlSearch) {
       setParams({ search, pagination: { page: FIRST_PAGE, limit } });
+    } else {
+      setUrlParams();
     }
   }, [search]);
 
