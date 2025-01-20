@@ -1,12 +1,7 @@
 import { TableContainer, TableContainerProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-type Props = {
-  hasToolbar?: boolean;
-};
-
-const TableContainerHu: FC<PropsWithChildren<TableContainerProps & Props>> = ({
-  hasToolbar = false,
+const TableContainerHu: FC<PropsWithChildren<TableContainerProps>> = ({
   children,
   sx,
   ...props

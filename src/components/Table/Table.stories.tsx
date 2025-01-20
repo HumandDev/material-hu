@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paper, Stack, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import TableContainerHu from './TableContainerHu';
 import TableHu from './TableHu';
 import TableHeadHu from './TableHeadHu';

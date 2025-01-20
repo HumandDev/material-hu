@@ -1,6 +1,5 @@
-import { TableRow, TableRowProps, Theme, useTheme } from '@mui/material';
-import { he } from 'date-fns/locale';
 import { FC, PropsWithChildren } from 'react';
+import { TableRow, TableRowProps, Theme, useTheme } from '@mui/material';
 
 type Props = { headerRow?: boolean };
 
