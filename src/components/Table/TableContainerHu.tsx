@@ -1,7 +1,12 @@
 import { TableContainer, TableContainerProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
 
-const TableContainerHu: FC<PropsWithChildren<TableContainerProps>> = ({
+type Props = {
+  hasToolbar?: boolean;
+};
+
+const TableContainerHu: FC<PropsWithChildren<TableContainerProps & Props>> = ({
+  hasToolbar = false,
   children,
   sx,
   ...props
@@ -9,7 +14,7 @@ const TableContainerHu: FC<PropsWithChildren<TableContainerProps>> = ({
   return (
     <TableContainer
       sx={{
-        border: '1px solid #E9E9F4',
+        border: theme => `1px solid ${theme.palette.border?.neutralBorder}`,
         borderRadius: '16px',
         ...sx,
       }}

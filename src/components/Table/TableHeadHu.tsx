@@ -3,16 +3,9 @@ import { TableHead, TableHeadProps } from '@mui/material';
 
 const TableHeadHu: FC<PropsWithChildren<TableHeadProps>> = ({
   children,
-  ...rest
+  ...props
 }) => {
-  return (
-    <TableHead
-      sx={{ backgroundColor: '' }}
-      {...rest}
-    >
-      {children}
-    </TableHead>
-  );
+  return <TableHead {...props}>{children}</TableHead>;
 };
 
 export default TableHeadHu;

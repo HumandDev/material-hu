@@ -1,16 +1,23 @@
 import { TableCell, TableCellProps, Typography } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
+import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 
 type Props = {
   headerCell?: boolean;
   actionable?: boolean;
+  selectionCell?: boolean;
+  tooltip?: string;
+  tooltipProps?: Omit<TooltipProps, 'children'>;
 };
 
 const TableCellHu: FC<PropsWithChildren<TableCellProps & Props>> = ({
   children,
   sx,
+  tooltip,
+  tooltipProps = {},
   headerCell = false,
   actionable = false,
+  selectionCell = false,
   ...props
 }) => {
   const hoverStyles = actionable
@@ -23,27 +30,41 @@ const TableCellHu: FC<PropsWithChildren<TableCellProps & Props>> = ({
     : {};
 
   return (
-    <TableCell
-      align="left"
-      sx={{
-        py: 2,
-        px: 3,
-        ...hoverStyles,
-        ...sx,
-      }}
-      {...props}
+    <Tooltip
+      title={tooltip}
+      disableTooltip={!tooltip}
+      direction="bottom"
+      {...tooltipProps}
     >
-      {headerCell && (
-        <Typography
-          variant="globalS"
-          fontWeight="semibold"
-          sx={{ color: theme => theme.palette.textColors?.neutralText }}
-        >
-          {children}
-        </Typography>
-      )}
-      {!headerCell && children}
-    </TableCell>
+      <TableCell
+        align={selectionCell ? 'center' : 'left'}
+        sx={{
+          py: 2,
+          px: 3,
+          ...(selectionCell
+            ? {
+                borderRight: theme =>
+                  `4px solid ${theme.palette.border?.neutralBorder}`,
+                p: 1,
+              }
+            : {}),
+          ...hoverStyles,
+          ...sx,
+        }}
+        {...props}
+      >
+        {headerCell && (
+          <Typography
+            variant="globalS"
+            fontWeight="semibold"
+            sx={{ color: theme => theme.palette.textColors?.neutralText }}
+          >
+            {children}
+          </Typography>
+        )}
+        {!headerCell && children}
+      </TableCell>
+    </Tooltip>
   );
 };
 
