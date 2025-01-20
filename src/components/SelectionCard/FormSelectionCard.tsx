@@ -7,11 +7,12 @@ type FormSelectionCardProps = PropsWithChildren<{
   rules?: ControllerProps['rules'];
   isOnlyOption?: boolean;
   sx?: SelectionCardProps['sx'];
+  disabled?: boolean;
 }>;
 
 // this component can work either as a checkbox or a radio button, depending on the isOnlyOption prop.
 const FormSelectionCard: FC<FormSelectionCardProps> = props => {
-  const { name, rules, children, isOnlyOption = false, sx } = props;
+  const { name, rules, children, isOnlyOption = false, sx, disabled } = props;
 
   const { getValues, setValue } = useFormContext();
 
@@ -35,7 +36,7 @@ const FormSelectionCard: FC<FormSelectionCardProps> = props => {
   };
 
   // can't change value if it is the only option and it is already selected
-  const canChange = !(isOnlyOption && valueInput);
+  const canChange = !(isOnlyOption && valueInput) && !disabled;
 
   return (
     <Controller
