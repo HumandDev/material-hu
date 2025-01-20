@@ -59,6 +59,12 @@ export {
 } from './components/FormRadioCustomGroup';
 export { useDebounce } from './hooks/useDebounce';
 export {
+  SearchControllerProps,
+  PaginationControllerProps,
+  PaginationParams,
+  useHuPagination,
+} from './hooks/useHuPagination';
+export {
   useServerPagination,
   TableSortingHeaderProps,
 } from './hooks/useServerPagination';
