@@ -1,3 +1,7 @@
 import { FC } from 'react';
-export declare const ListItemSkeleton: FC;
+import { StackProps } from '@mui/material';
+type ListItemSkeletonProps = {
+    sx?: StackProps['sx'];
+};
+export declare const ListItemSkeleton: FC<ListItemSkeletonProps>;
 export default ListItemSkeleton;

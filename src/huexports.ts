@@ -1,3 +1,4 @@
+export * as HuPosts from './components/posts';
 export { default as HuAlert } from './components/Alert/Alert';
 export { default as HuAvatar } from './components/Avatar/Avatar';
 export { default as HuAvatarGroup } from './components/AvatarGroup/AvatarGroup';
