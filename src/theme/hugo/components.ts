@@ -216,6 +216,7 @@ export const components: ThemeOptions['components'] = {
       root: () => ({
         borderWidth: '1px',
         backgroundColor: colorPalette.border.neutralDivider,
+        borderColor: colorPalette.border.neutralDivider,
         height: 'auto',
       }),
     },
