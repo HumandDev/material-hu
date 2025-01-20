@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Paper, Typography } from '@mui/material';
+import { Paper, Stack, Typography } from '@mui/material';
 import TableContainerHu from './TableContainerHu';
 import TableHu from './TableHu';
 import TableHeadHu from './TableHeadHu';
@@ -370,3 +370,97 @@ export const Toolbar: Story = {
     );
   },
 };
+
+export const Tooltips: Story = {
+  render: () => {
+    return (
+      <TableContainerHu component={Paper}>
+        <TableHu sx={{ minWidth: 650 }}>
+          <TableHeadHu>
+            <TableRowHu headerRow>
+              <TableCellHu
+                headerCell
+                tooltip="Dessert column"
+              >
+                Dessert
+              </TableCellHu>
+              <TableCellHu
+                headerCell
+                tooltip="Calories column"
+              >
+                Calories
+              </TableCellHu>
+              <TableCellHu
+                headerCell
+                tooltip={'Fat column'}
+              >
+                Fat&nbsp;(g)
+              </TableCellHu>
+              <TableCellHu
+                headerCell
+                tooltip={'Carbohydrates column'}
+              >
+                Carbs&nbsp;(g)
+              </TableCellHu>
+              <TableCellHu
+                headerCell
+                tooltip={'Protein column'}
+              >
+                Protein&nbsp;(g)
+              </TableCellHu>
+            </TableRowHu>
+          </TableHeadHu>
+          <TableBodyHu>
+            {rows.map(row => (
+              <TableRowHu key={row.name}>
+                <TableCellHu
+                  tooltip="Content"
+                  component="th"
+                  align="left"
+                >
+                  <Content />
+                </TableCellHu>
+                <TableCellHu
+                  tooltip={'Amount of calories per serving'}
+                  align="center"
+                >
+                  {row.calories}
+                </TableCellHu>
+                <TableCellHu
+                  align="center"
+                  tooltip={'Amount of fat per serving'}
+                >
+                  {row.fat}
+                </TableCellHu>
+                <TableCellHu
+                  align="center"
+                  tooltip={'Amount of carbohydrates per serving'}
+                >
+                  {row.carbs}
+                </TableCellHu>
+                <TableCellHu
+                  align="center"
+                  tooltip={'Amount of protein per serving'}
+                >
+                  {row.protein}
+                </TableCellHu>
+              </TableRowHu>
+            ))}
+          </TableBodyHu>
+        </TableHu>
+      </TableContainerHu>
+    );
+  },
+};
+
+const Content = () => (
+  <Stack
+    sx={{
+      width: 1,
+      height: '33px',
+      border: '1px dashed #CAD5FE',
+      backgroundColor: '#EFF2FF',
+      borderRadius: '8px',
+    }}
+  />
+);
