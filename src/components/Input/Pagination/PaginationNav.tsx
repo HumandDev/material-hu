@@ -34,6 +34,8 @@ export const PaginationNav: FC<PaginationNavProps> = ({
             flexDirection: 'row',
             gap: 1,
             alignItems: 'center',
+            m: 0,
+            p: 0,
           }}
         >
           {items?.map((item, index) => (
