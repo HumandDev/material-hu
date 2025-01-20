@@ -7,7 +7,7 @@ const meta: Meta<typeof CreatePost> = {
   tags: ['autodocs'],
   args: {
     fullName: 'Juane Algebra',
-    handlePost: data => console.log(data),
+    handlePost: data => alert(JSON.stringify(data)),
   },
 };
 
