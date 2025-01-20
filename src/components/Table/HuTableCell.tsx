@@ -1,5 +1,5 @@
-import { TableCell, TableCellProps, Typography } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
+import { TableCell, TableCellProps, Typography } from '@mui/material';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   tooltipProps?: Omit<TooltipProps, 'children'>;
 };
 
-const TableCellHu: FC<PropsWithChildren<TableCellProps & Props>> = ({
+const HuTableCell: FC<PropsWithChildren<TableCellProps & Props>> = ({
   children,
   sx,
   tooltip,
@@ -68,4 +68,4 @@ const TableCellHu: FC<PropsWithChildren<TableCellProps & Props>> = ({
   );
 };
 
-export default TableCellHu;
+export default HuTableCell;

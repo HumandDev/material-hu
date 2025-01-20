@@ -1,7 +1,7 @@
-import { Stack, StackProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
+import { Stack, StackProps } from '@mui/material';
 
-const TableToolbarHu: FC<PropsWithChildren<StackProps>> = ({
+const HuTableToolbar: FC<PropsWithChildren<StackProps>> = ({
   children,
   sx = {},
   ...props
@@ -23,4 +23,4 @@ const TableToolbarHu: FC<PropsWithChildren<StackProps>> = ({
   );
 };
 
-export default TableToolbarHu;
+export default HuTableToolbar;

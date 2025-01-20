@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Paper, Stack, Typography } from '@mui/material';
-import TableContainerHu from './TableContainerHu';
-import TableHu from './TableHu';
-import TableHeadHu from './TableHeadHu';
-import TableRowHu from './TableRowHu';
-import TableCellHu from './TableCellHu';
-import TableBodyHu from './TableBodyHu';
+import TableContainerHu from './HuTableContainer';
+import HuTable from './HuTable';
+import TableHeadHu from './HuTableHead';
+import TableRowHu from './HuTableRow';
+import HuTableCell from './HuTableCell';
+import TableBodyHu from './HuTableBody';
 import { useState } from 'react';
 import rows from './mockData.json';
 import Skeleton from '../Skeleton/Skeleton';
 import Checkbox from '../Checkbox/Checkbox';
 import IconsMenu from '../IconsMenu';
 import { DeleteOutline, EditOutlined } from '@mui/icons-material';
-import TableToolbarHu from './TableToolbarHu';
+import TableToolbarHu from './HuTableToolbar';
 
 const meta: Meta = {
-  component: TableHu,
+  component: HuTable,
   title: 'Table',
   tags: ['autodocs'],
   argTypes: {},
@@ -23,39 +23,39 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof TableHu>;
+type Story = StoryObj<typeof HuTable>;
 
 export const Default: Story = {
   render: () => {
     return (
       <TableContainerHu component={Paper}>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu headerCell>Dessert</TableCellHu>
-              <TableCellHu headerCell>Calories</TableCellHu>
-              <TableCellHu headerCell>Fat&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Carbs&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Protein&nbsp;(g)</TableCellHu>
+              <HuTableCell headerCell>Dessert</HuTableCell>
+              <HuTableCell headerCell>Calories</HuTableCell>
+              <HuTableCell headerCell>Fat&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Carbs&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Protein&nbsp;(g)</HuTableCell>
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
             {rows.map(row => (
               <TableRowHu key={row.name}>
-                <TableCellHu
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
                   {row.name}
-                </TableCellHu>
-                <TableCellHu>{row.calories}</TableCellHu>
-                <TableCellHu>{row.fat}</TableCellHu>
-                <TableCellHu>{row.carbs}</TableCellHu>
-                <TableCellHu>{row.protein}</TableCellHu>
+                </HuTableCell>
+                <HuTableCell>{row.calories}</HuTableCell>
+                <HuTableCell>{row.fat}</HuTableCell>
+                <HuTableCell>{row.carbs}</HuTableCell>
+                <HuTableCell>{row.protein}</HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },
@@ -84,10 +84,10 @@ export const SelectionTable: Story = {
 
     return (
       <TableContainerHu component={Paper}>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu
+              <HuTableCell
                 headerCell
                 selectionCell
               >
@@ -98,18 +98,18 @@ export const SelectionTable: Story = {
                     handleSelectAll();
                   }}
                 />
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip="Desert column"
               >
                 Dessert
-              </TableCellHu>
+              </HuTableCell>
 
-              <TableCellHu headerCell>Calories</TableCellHu>
-              <TableCellHu headerCell>Fat&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Carbs&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Protein&nbsp;(g)</TableCellHu>
+              <HuTableCell headerCell>Calories</HuTableCell>
+              <HuTableCell headerCell>Fat&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Carbs&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Protein&nbsp;(g)</HuTableCell>
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
@@ -118,28 +118,28 @@ export const SelectionTable: Story = {
                 key={row.name}
                 selected={selectedRows.includes(index)}
               >
-                <TableCellHu selectionCell>
+                <HuTableCell selectionCell>
                   <Checkbox
                     sx={{ zIndex: 100 }}
                     disabled={false}
                     checked={selectedRows.includes(index)}
                     onClick={() => handleSelection(index)}
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
                   {row.name}
-                </TableCellHu>
-                <TableCellHu>{row.calories}</TableCellHu>
-                <TableCellHu>{row.fat}</TableCellHu>
-                <TableCellHu>{row.carbs}</TableCellHu>
-                <TableCellHu>{row.protein}</TableCellHu>
+                </HuTableCell>
+                <HuTableCell>{row.calories}</HuTableCell>
+                <HuTableCell>{row.fat}</HuTableCell>
+                <HuTableCell>{row.carbs}</HuTableCell>
+                <HuTableCell>{row.protein}</HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },
@@ -149,20 +149,20 @@ export const Loading: Story = {
   render: () => {
     return (
       <TableContainerHu component={Paper}>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu headerCell>Dessert</TableCellHu>
-              <TableCellHu headerCell>Calories</TableCellHu>
-              <TableCellHu headerCell>Fat&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Carbs&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Protein&nbsp;(g)</TableCellHu>
+              <HuTableCell headerCell>Dessert</HuTableCell>
+              <HuTableCell headerCell>Calories</HuTableCell>
+              <HuTableCell headerCell>Fat&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Carbs&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Protein&nbsp;(g)</HuTableCell>
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
             {rows.map(row => (
               <TableRowHu key={row.name}>
-                <TableCellHu
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
@@ -172,8 +172,8 @@ export const Loading: Story = {
                     height={33}
                     variant="rounded"
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
@@ -183,8 +183,8 @@ export const Loading: Story = {
                     height={33}
                     variant="rounded"
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
@@ -194,8 +194,8 @@ export const Loading: Story = {
                     height={33}
                     variant="rounded"
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
@@ -205,8 +205,8 @@ export const Loading: Story = {
                     height={33}
                     variant="rounded"
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
@@ -216,11 +216,11 @@ export const Loading: Story = {
                     height={33}
                     variant="rounded"
                   />
-                </TableCellHu>
+                </HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },
@@ -230,31 +230,31 @@ export const ActionsMenu: Story = {
   render: () => {
     return (
       <TableContainerHu component={Paper}>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu headerCell>Dessert</TableCellHu>
-              <TableCellHu headerCell>Calories</TableCellHu>
-              <TableCellHu headerCell>Fat&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Carbs&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Protein&nbsp;(g)</TableCellHu>
-              <TableCellHu aria-label={'actions'} />
+              <HuTableCell headerCell>Dessert</HuTableCell>
+              <HuTableCell headerCell>Calories</HuTableCell>
+              <HuTableCell headerCell>Fat&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Carbs&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Protein&nbsp;(g)</HuTableCell>
+              <HuTableCell aria-label={'actions'} />
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
             {rows.map(row => (
               <TableRowHu key={row.name}>
-                <TableCellHu
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
                   {row.name}
-                </TableCellHu>
-                <TableCellHu>{row.calories}</TableCellHu>
-                <TableCellHu>{row.fat}</TableCellHu>
-                <TableCellHu>{row.carbs}</TableCellHu>
-                <TableCellHu>{row.protein}</TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell>{row.calories}</HuTableCell>
+                <HuTableCell>{row.fat}</HuTableCell>
+                <HuTableCell>{row.carbs}</HuTableCell>
+                <HuTableCell>{row.protein}</HuTableCell>
+                <HuTableCell
                   variant="shortField"
                   align="right"
                   sx={{
@@ -275,11 +275,11 @@ export const ActionsMenu: Story = {
                       },
                     ]}
                   />
-                </TableCellHu>
+                </HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },
@@ -311,10 +311,10 @@ export const Toolbar: Story = {
         <TableToolbarHu>
           <Typography variant="globalS">{`Selected rows: ${selectedRows.length}`}</Typography>
         </TableToolbarHu>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu
+              <HuTableCell
                 headerCell
                 selectionCell
               >
@@ -325,17 +325,17 @@ export const Toolbar: Story = {
                     handleSelectAll();
                   }}
                 />
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip="Desert column"
               >
                 Dessert
-              </TableCellHu>
-              <TableCellHu headerCell>Calories</TableCellHu>
-              <TableCellHu headerCell>Fat&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Carbs&nbsp;(g)</TableCellHu>
-              <TableCellHu headerCell>Protein&nbsp;(g)</TableCellHu>
+              </HuTableCell>
+              <HuTableCell headerCell>Calories</HuTableCell>
+              <HuTableCell headerCell>Fat&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Carbs&nbsp;(g)</HuTableCell>
+              <HuTableCell headerCell>Protein&nbsp;(g)</HuTableCell>
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
@@ -344,28 +344,28 @@ export const Toolbar: Story = {
                 key={row.name}
                 selected={selectedRows.includes(index)}
               >
-                <TableCellHu selectionCell>
+                <HuTableCell selectionCell>
                   <Checkbox
                     sx={{ zIndex: 100 }}
                     disabled={false}
                     checked={selectedRows.includes(index)}
                     onClick={() => handleSelection(index)}
                   />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   component="th"
                   scope="row"
                 >
                   {row.name}
-                </TableCellHu>
-                <TableCellHu>{row.calories}</TableCellHu>
-                <TableCellHu>{row.fat}</TableCellHu>
-                <TableCellHu>{row.carbs}</TableCellHu>
-                <TableCellHu>{row.protein}</TableCellHu>
+                </HuTableCell>
+                <HuTableCell>{row.calories}</HuTableCell>
+                <HuTableCell>{row.fat}</HuTableCell>
+                <HuTableCell>{row.carbs}</HuTableCell>
+                <HuTableCell>{row.protein}</HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },
@@ -375,79 +375,79 @@ export const Tooltips: Story = {
   render: () => {
     return (
       <TableContainerHu component={Paper}>
-        <TableHu sx={{ minWidth: 650 }}>
+        <HuTable sx={{ minWidth: 650 }}>
           <TableHeadHu>
             <TableRowHu headerRow>
-              <TableCellHu
+              <HuTableCell
                 headerCell
                 tooltip="Dessert column"
               >
                 Dessert
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip="Calories column"
               >
                 Calories
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip={'Fat column'}
               >
                 Fat&nbsp;(g)
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip={'Carbohydrates column'}
               >
                 Carbs&nbsp;(g)
-              </TableCellHu>
-              <TableCellHu
+              </HuTableCell>
+              <HuTableCell
                 headerCell
                 tooltip={'Protein column'}
               >
                 Protein&nbsp;(g)
-              </TableCellHu>
+              </HuTableCell>
             </TableRowHu>
           </TableHeadHu>
           <TableBodyHu>
             {rows.map(row => (
               <TableRowHu key={row.name}>
-                <TableCellHu
+                <HuTableCell
                   tooltip="Content"
                   component="th"
                   align="left"
                 >
                   <Content />
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   tooltip={'Amount of calories per serving'}
                   align="center"
                 >
                   {row.calories}
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   align="center"
                   tooltip={'Amount of fat per serving'}
                 >
                   {row.fat}
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   align="center"
                   tooltip={'Amount of carbohydrates per serving'}
                 >
                   {row.carbs}
-                </TableCellHu>
-                <TableCellHu
+                </HuTableCell>
+                <HuTableCell
                   align="center"
                   tooltip={'Amount of protein per serving'}
                 >
                   {row.protein}
-                </TableCellHu>
+                </HuTableCell>
               </TableRowHu>
             ))}
           </TableBodyHu>
-        </TableHu>
+        </HuTable>
       </TableContainerHu>
     );
   },

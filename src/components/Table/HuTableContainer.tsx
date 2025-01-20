@@ -1,7 +1,7 @@
-import { TableContainer, TableContainerProps } from '@mui/material';
 import { FC, PropsWithChildren } from 'react';
+import { TableContainer, TableContainerProps } from '@mui/material';
 
-const TableContainerHu: FC<PropsWithChildren<TableContainerProps>> = ({
+const HuTableContainer: FC<PropsWithChildren<TableContainerProps>> = ({
   children,
   sx,
   ...props
@@ -20,4 +20,4 @@ const TableContainerHu: FC<PropsWithChildren<TableContainerProps>> = ({
   );
 };
 
-export default TableContainerHu;
+export default HuTableContainer;
