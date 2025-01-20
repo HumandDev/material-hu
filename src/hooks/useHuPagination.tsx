@@ -99,10 +99,10 @@ export const useHuPagination = (options?: UseHuPaginationOptions) => {
   }, [limit]);
 
   useEffect(() => {
-    if (search.length >= SEARCH_MIN_LENGTH && search !== urlSearch) {
-      setParams({ search, pagination: { page: FIRST_PAGE, limit } });
-    } else {
+    if (search.length < SEARCH_MIN_LENGTH) {
       setUrlParams();
+    } else if (search !== urlSearch) {
+      setParams({ search, pagination: { page: FIRST_PAGE, limit } });
     }
   }, [search]);
 
@@ -136,7 +136,7 @@ export const useHuPagination = (options?: UseHuPaginationOptions) => {
   }, []);
 
   return {
-    hasSearch: search?.length > 0,
+    hasSearch: search?.length >= SEARCH_MIN_LENGTH,
     form,
     params,
     setParams,
