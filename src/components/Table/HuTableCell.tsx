@@ -6,6 +6,7 @@ type Props = {
   headerCell?: boolean;
   actionable?: boolean;
   selectionCell?: boolean;
+  test?: string;
   tooltip?: string;
   tooltipProps?: Omit<TooltipProps, 'children'>;
 };
