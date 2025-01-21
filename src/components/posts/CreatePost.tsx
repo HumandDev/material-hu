@@ -61,6 +61,7 @@ export const CreatePost: FC<CreatePostProps> = ({
                 mt: 2,
                 mb: 1,
               },
+              multiline: true,
               placeholder: t('WRITE_SOMETHING'),
             }}
           />
