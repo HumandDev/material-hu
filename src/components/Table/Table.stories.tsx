@@ -7,12 +7,77 @@ import TableRowHu from './HuTableRow';
 import HuTableCell from './HuTableCell';
 import TableBodyHu from './HuTableBody';
 import { useState } from 'react';
-import rows from './mockData.json';
 import Skeleton from '../Skeleton/Skeleton';
 import Checkbox from '../Checkbox/Checkbox';
 import IconsMenu from '../IconsMenu';
 import { DeleteOutline, EditOutlined } from '@mui/icons-material';
 import TableToolbarHu from './HuTableToolbar';
+
+const rows = [
+  {
+    name: 'Frozen yoghurt',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+  },
+  {
+    name: 'Ice cream sandwich',
+    calories: 237,
+    fat: 9.0,
+    carbs: 37,
+    protein: 4.3,
+  },
+  {
+    name: 'Eclair',
+    calories: 262,
+    fat: 16.0,
+    carbs: 24,
+    protein: 6.0,
+  },
+  {
+    name: 'Cupcake',
+    calories: 305,
+    fat: 3.7,
+    carbs: 67,
+    protein: 4.3,
+  },
+  {
+    name: 'Gingerbread',
+    calories: 356,
+    fat: 16.0,
+    carbs: 49,
+    protein: 3.9,
+  },
+  {
+    name: 'Cheesecake',
+    calories: 320,
+    fat: 22.0,
+    carbs: 25,
+    protein: 5.0,
+  },
+  {
+    name: 'Chocolate brownie',
+    calories: 432,
+    fat: 20.0,
+    carbs: 52,
+    protein: 5.0,
+  },
+  {
+    name: 'Fruit tart',
+    calories: 298,
+    fat: 12.0,
+    carbs: 41,
+    protein: 2.8,
+  },
+  {
+    name: 'Carrot cake',
+    calories: 508,
+    fat: 13.0,
+    carbs: 61,
+    protein: 1.8,
+  },
+];
 
 const meta: Meta = {
   component: HuTable,
