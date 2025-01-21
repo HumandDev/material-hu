@@ -30,7 +30,7 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
     typographyProps,
   } = props;
 
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState(false);
   const [isCroped, setIsCroped] = useState(false);
 
   const textRef = useRef(null);
