@@ -47,7 +47,7 @@ export const ShowMoreText: FC<ShowMoreTextProps> = props => {
     if (textRef.current) {
       setIsCroped(isTextClamped(textRef));
     }
-  }, [textRef.current, show, text]);
+  }, [show, text]);
 
   if (lines < 1) {
     return <Typography {...typographyProps}>{formatedText}</Typography>;
