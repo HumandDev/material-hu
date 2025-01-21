@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Stack, Button, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Stack, Typography } from '@mui/material';
 import CardContainer, {
   CardContainerProps,
 } from '../CardContainer/CardContainer';
@@ -34,6 +35,11 @@ export const CreatePost: FC<CreatePostProps> = ({
     },
   });
 
+  const submit = form.handleSubmit(async values => {
+    await handlePost(values);
+    form.reset();
+  });
+
   return (
     <FormProvider {...form}>
       <CardContainer
@@ -58,15 +64,16 @@ export const CreatePost: FC<CreatePostProps> = ({
               placeholder: t('WRITE_SOMETHING'),
             }}
           />
-          <Button
+          <LoadingButton
             variant="primary"
             sx={{ alignSelf: 'flex-end' }}
-            onClick={form.handleSubmit(handlePost)}
+            onClick={submit}
             disabled={!form.watch('body')}
+            loading={form.formState.isSubmitting}
             size="large"
           >
             {t('PUBLISH')}
-          </Button>
+          </LoadingButton>
         </Stack>
       </CardContainer>
     </FormProvider>
