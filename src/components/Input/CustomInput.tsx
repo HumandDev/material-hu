@@ -51,7 +51,10 @@ const CustomInput: FC<CustomInputProps> = ({
       endAdornment={
         hastEndAdornment && (
           <InputAdornment
-            sx={{ alignSelf: multiline ? 'flex-start' : 'center' }}
+            sx={{
+              alignSelf: multiline ? 'flex-start' : 'center',
+              height: '20px',
+            }}
             position="end"
           >
             {focused && (
