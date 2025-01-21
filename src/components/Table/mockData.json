@@ -54,5 +54,12 @@
     "fat": 12.0,
     "carbs": 41,
     "protein": 2.8
+  },
+  {
+    "name": "Carrot cake",
+    "calories": 508,
+    "fat": 13.0,
+    "carbs": 61,
+    "protein": 1.8
   }
 ]
