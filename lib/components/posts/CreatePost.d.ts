@@ -8,7 +8,7 @@ export type CreatePostProps = {
     profilePicture?: string;
     fullName: string;
     handlePost: SubmitHandler<FieldValues>;
-    sx: CardContainerProps['sx'];
+    sx?: CardContainerProps['sx'];
 };
 export declare const CreatePost: FC<CreatePostProps>;
 export default CreatePost;
