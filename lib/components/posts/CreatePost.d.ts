@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { CardContainerProps } from '../CardContainer/CardContainer';
 import { SubmitHandler } from 'react-hook-form';
 type FieldValues = {
-    text: string;
+    body: string;
 };
 export type CreatePostProps = {
     profilePicture?: string;

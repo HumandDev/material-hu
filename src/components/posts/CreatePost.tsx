@@ -10,7 +10,7 @@ import { useTranslation } from './i18n';
 import { getInitials } from '../../utils/user';
 
 type FieldValues = {
-  text: string;
+  body: string;
 };
 
 export type CreatePostProps = {
@@ -30,7 +30,7 @@ export const CreatePost: FC<CreatePostProps> = ({
 
   const form = useForm<FieldValues>({
     defaultValues: {
-      text: '',
+      body: '',
     },
   });
 
@@ -49,7 +49,7 @@ export const CreatePost: FC<CreatePostProps> = ({
             <Typography sx={{ flex: 1 }}>{fullName}</Typography>
           </Stack>
           <FormInputClassic
-            name="text"
+            name="body"
             inputProps={{
               sx: {
                 mt: 2,
@@ -62,7 +62,7 @@ export const CreatePost: FC<CreatePostProps> = ({
             variant="primary"
             sx={{ alignSelf: 'flex-end' }}
             onClick={form.handleSubmit(handlePost)}
-            disabled={!form.watch('text')}
+            disabled={!form.watch('body')}
             size="large"
           >
             {t('PUBLISH')}
