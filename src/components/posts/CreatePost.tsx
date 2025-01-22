@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Stack, Button, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Stack, Typography } from '@mui/material';
 import CardContainer, {
   CardContainerProps,
 } from '../CardContainer/CardContainer';
@@ -10,14 +11,14 @@ import { useTranslation } from './i18n';
 import { getInitials } from '../../utils/user';
 
 type FieldValues = {
-  text: string;
+  body: string;
 };
 
 export type CreatePostProps = {
   profilePicture?: string;
   fullName: string;
   handlePost: SubmitHandler<FieldValues>;
-  sx: CardContainerProps['sx'];
+  sx?: CardContainerProps['sx'];
 };
 
 export const CreatePost: FC<CreatePostProps> = ({
@@ -30,8 +31,13 @@ export const CreatePost: FC<CreatePostProps> = ({
 
   const form = useForm<FieldValues>({
     defaultValues: {
-      text: '',
+      body: '',
     },
+  });
+
+  const submit = form.handleSubmit(async values => {
+    await handlePost(values);
+    form.reset();
   });
 
   return (
@@ -49,24 +55,27 @@ export const CreatePost: FC<CreatePostProps> = ({
             <Typography sx={{ flex: 1 }}>{fullName}</Typography>
           </Stack>
           <FormInputClassic
-            name="text"
+            name="body"
             inputProps={{
               sx: {
                 mt: 2,
                 mb: 1,
               },
+              multiline: true,
+              minRows: 1,
               placeholder: t('WRITE_SOMETHING'),
             }}
           />
-          <Button
+          <LoadingButton
             variant="primary"
             sx={{ alignSelf: 'flex-end' }}
-            onClick={form.handleSubmit(handlePost)}
-            disabled={!form.watch('text')}
+            onClick={submit}
+            disabled={!form.watch('body')}
+            loading={form.formState.isSubmitting}
             size="large"
           >
             {t('PUBLISH')}
-          </Button>
+          </LoadingButton>
         </Stack>
       </CardContainer>
     </FormProvider>

@@ -31,6 +31,7 @@ const InputClassic = ({
   hasCounter = true,
   fullWidth = true,
   multiline,
+  minRows,
   startAdornment,
   disabled = false,
 }: InputProps) => {
@@ -53,6 +54,7 @@ const InputClassic = ({
         maxLength={maxLength}
         success={success}
         multiline={multiline}
+        minRows={minRows}
         startAdornment={startAdornment}
         disabled={disabled}
       />

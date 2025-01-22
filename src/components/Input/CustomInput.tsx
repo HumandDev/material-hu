@@ -14,7 +14,7 @@ import { colorPalette } from '../../theme/hugo/colors';
 
 export type CustomInputProps = Pick<
   OutlinedInputProps,
-  'placeholder' | 'inputRef' | 'multiline' | 'disabled'
+  'placeholder' | 'inputRef' | 'multiline' | 'disabled' | 'minRows'
 > & {
   value: string;
   success?: boolean;
@@ -34,6 +34,7 @@ const CustomInput: FC<CustomInputProps> = ({
   multiline = false,
   startAdornment,
   sxInput,
+  minRows = 5,
   disabled,
 }) => {
   const { focused, error } = useFormControl() || {};
@@ -45,12 +46,15 @@ const CustomInput: FC<CustomInputProps> = ({
       inputRef={inputRef}
       inputProps={{ maxLength }}
       multiline={multiline}
-      minRows={5}
+      minRows={minRows}
       startAdornment={startAdornment}
       endAdornment={
         hastEndAdornment && (
           <InputAdornment
-            sx={{ alignSelf: multiline ? 'flex-start' : 'center' }}
+            sx={{
+              alignSelf: multiline ? 'flex-start' : 'center',
+              height: '20px',
+            }}
             position="end"
           >
             {focused && (
