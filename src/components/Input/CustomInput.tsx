@@ -14,7 +14,7 @@ import { colorPalette } from '../../theme/hugo/colors';
 
 export type CustomInputProps = Pick<
   OutlinedInputProps,
-  'placeholder' | 'inputRef' | 'multiline' | 'disabled' | 'minRows'
+  'placeholder' | 'inputRef' | 'multiline' | 'disabled' | 'minRows' | 'type'
 > & {
   value: string;
   success?: boolean;
@@ -36,9 +36,10 @@ const CustomInput: FC<CustomInputProps> = ({
   sxInput,
   minRows = 5,
   disabled,
+  type,
 }) => {
   const { focused, error } = useFormControl() || {};
-  const hastEndAdornment = success || error || (focused && value.length > 0);
+  const hasEndAdornment = success || error || (focused && value.length > 0);
   const theme = useTheme();
 
   return (
@@ -48,8 +49,9 @@ const CustomInput: FC<CustomInputProps> = ({
       multiline={multiline}
       minRows={minRows}
       startAdornment={startAdornment}
+      type={type}
       endAdornment={
-        hastEndAdornment && (
+        hasEndAdornment && (
           <InputAdornment
             sx={{
               alignSelf: multiline ? 'flex-start' : 'center',
@@ -85,7 +87,9 @@ const CustomInput: FC<CustomInputProps> = ({
       placeholder={placeholder}
       disabled={disabled}
       value={value}
-      onChange={e => onChange(e.target.value)}
+      onChange={(e) => {
+        onChange?.(e.target.value);
+      }}
       sx={{
         backgroundColor: disabled
           ? alpha(colorPalette.border.neutralBorder, 0.5)
