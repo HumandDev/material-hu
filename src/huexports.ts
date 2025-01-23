@@ -48,3 +48,5 @@ export { default as HuSwitcher } from './components/Switcher/Switcher';
 export { default as HuFormSwitcher } from './components/Switcher/FormSwitcher';
 export { default as HuFormRadioButtonGroup } from './components//RadioButton/FormRadioButtonGroup';
 export { default as HuStateCard } from './components/StateCard/StateCard';
+export { default as HuInputPhone } from './components/Input/InputPhone';
+export { default as HuFormInputPhone } from './components/Input/FormInputPhone';
