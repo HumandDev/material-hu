@@ -214,6 +214,7 @@ export const components: ThemeOptions['components'] = {
   MuiDivider: {
     styleOverrides: {
       root: ({ ownerState: { orientation } }) => ({
+        backgroundColor: colorPalette.border.neutralDivider,
         borderColor: colorPalette.border.neutralDivider,
         height: orientation === 'vertical' ? 'auto' : 0,
       }),
