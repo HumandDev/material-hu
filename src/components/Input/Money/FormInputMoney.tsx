@@ -7,17 +7,13 @@ type Props = {
   name: string;
   inputProps: Pick<
     ComponentProps<typeof InputMoney>,
-    | 'label'
-    | 'placeholder'
-    | 'sx'
-    | 'helperText'
-    | 'maxLength'
+    'label' | 'placeholder' | 'sx' | 'helperText' | 'maxLength'
   >;
   rules?: ControllerProps['rules'];
   transform?: {
     input?: (value: string) => string;
     output?: (value: string) => string;
-  }
+  };
 };
 
 const FormInputMoney = ({ name, inputProps, rules, transform }: Props) => {

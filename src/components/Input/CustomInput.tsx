@@ -87,7 +87,7 @@ const CustomInput: FC<CustomInputProps> = ({
       placeholder={placeholder}
       disabled={disabled}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={e => onChange(e.target.value)}
       sx={{
         backgroundColor: disabled
           ? alpha(colorPalette.border.neutralBorder, 0.5)

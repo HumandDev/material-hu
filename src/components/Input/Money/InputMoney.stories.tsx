@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { defaultTransformNumberToCurrencyOptions, transformCurrencyToNumber, transformNumberToCurrency } from './InputMoney.utils';
+import {
+  defaultTransformNumberToCurrencyOptions,
+  transformCurrencyToNumber,
+  transformNumberToCurrency,
+} from './InputMoney.utils';
 import FormInputMoney from './FormInputMoney';
 import InputMoney from './InputMoney';
 
@@ -29,10 +33,16 @@ export const Default: Story = {
     placeholder: 'Placeholder',
     transform: {
       output: (value: string) => {
-        return transformNumberToCurrency(value, defaultTransformNumberToCurrencyOptions);
+        return transformNumberToCurrency(
+          value,
+          defaultTransformNumberToCurrencyOptions,
+        );
       },
-      input: (value) => {
-        return transformCurrencyToNumber(value, defaultTransformNumberToCurrencyOptions);
+      input: value => {
+        return transformCurrencyToNumber(
+          value,
+          defaultTransformNumberToCurrencyOptions,
+        );
       },
     },
   },
@@ -61,7 +71,7 @@ export const FormInputMoneyStory: Story = {
             output: (value: string) => {
               return transformNumberToCurrency(value, localeOptions);
             },
-            input: (value) => {
+            input: value => {
               return transformCurrencyToNumber(value, localeOptions);
             },
           }}

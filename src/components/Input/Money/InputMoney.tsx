@@ -16,7 +16,7 @@ export type InputProps = Pick<
   transform?: {
     input?: (value: string) => string;
     output?: (value: string) => string;
-  }
+  };
 } & CustomInputProps;
 
 const InputMoney = ({
@@ -48,7 +48,7 @@ const InputMoney = ({
       inputRef={inputRef}
       label={label}
       maxLength={maxLength}
-      onChange={(inputValue) => {
+      onChange={inputValue => {
         onChange?.(transform?.input ? transform.input(inputValue) : inputValue);
       }}
       placeholder={placeholder}
@@ -63,7 +63,7 @@ const InputMoney = ({
             mr: 1,
           }}
         >
-        {currency}
+          {currency}
         </Typography>
       }
     />
