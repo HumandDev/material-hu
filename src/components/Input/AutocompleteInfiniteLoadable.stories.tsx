@@ -77,6 +77,7 @@ const AutocompleteInfiniteLoadable = () => {
 
 const meta: Meta<typeof AutocompleteInfiniteLoadable> = {
   component: AutocompleteInfiniteLoadable,
+  title: 'Autocomplete infinite loadable',
   tags: ['autodocs'],
   args: {},
 };

@@ -181,13 +181,7 @@ const Autocomplete = <
           return content;
         }}
         disableCloseOnSelect={fieldProps.multiple}
-        onInputChange={(_event, value, reason) => {
-          // eslint-disable-next-line no-console
-          console.log({ value, reason });
-        }}
         onChange={(event, nextValue, reason) => {
-          // eslint-disable-next-line no-console
-          console.log({ nextValue, reason });
           if (reason === 'selectOption' && (nextValue as any).isCreatable) {
             onCreate?.((nextValue as any).inputValue);
           } else {

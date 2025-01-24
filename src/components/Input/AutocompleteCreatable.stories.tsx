@@ -53,6 +53,7 @@ const AutocompleteCreatable = () => {
 
 const meta: Meta<typeof AutocompleteCreatable> = {
   component: AutocompleteCreatable,
+  title: 'Autocomplete cretable',
   tags: ['autodocs'],
   args: {},
 };
