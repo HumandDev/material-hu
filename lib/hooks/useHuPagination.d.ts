@@ -5,7 +5,7 @@ export type SearchControllerProps = Omit<FormSearchProps, 'name'> & {
     inputProps?: Omit<FormSearchProps['inputProps'], 'onChange'>;
 };
 export type PaginationControllerProps = Omit<FormPaginationProps, 'name'> & {
-    inputProps?: Omit<FormPaginationProps, 'onChangeLimit' | 'onChangePage' | 'limitOptions'>;
+    inputProps?: Omit<FormPaginationProps['inputProps'], 'onChangeLimit' | 'onChangePage' | 'limitOptions'>;
 };
 export type PaginationParams = {
     search: string;
