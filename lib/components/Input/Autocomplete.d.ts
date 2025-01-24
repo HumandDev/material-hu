@@ -1,21 +1,18 @@
-/// <reference types="react" />
-import { FilterOptionsState, AutocompleteProps as MUIAutocompleteProps } from '@mui/material';
-type BaseProps<TValue> = MUIAutocompleteProps<TValue, boolean, boolean, boolean>;
-type BaseOption = Record<string, unknown> & {
-    isCreatable?: boolean;
-};
-type AutocompleteProps<TValue = unknown> = BaseProps<TValue> & {
-    noOptionsPrimary: string;
-    noOptionsSecondary: string;
-    error?: boolean;
+import { ReactNode } from 'react';
+import { AutocompleteProps as MUIAutocompleteProps } from '@mui/material';
+export declare const isEqualText: (textA: string, textB: string) => boolean;
+type ExtraProps<TValue> = {
+    noOptionsTitle?: string;
+    noOptionsDescription?: string;
+    hasError?: boolean;
     helperText?: string;
-    canCreate?: boolean;
-    renderCreatableOption?: BaseProps<TValue>['renderOption'];
-    onCreate?: BaseProps<TValue>['onChange'];
-    renderLoadElementTrigger?: BaseProps<TValue>['renderOption'];
-    getCreatableOption?: (options: TValue[], state: FilterOptionsState<TValue>) => TValue;
     placeholder?: string;
     label?: string;
+    fieldRef?: any;
+    onCreate?: (inputValue: string) => void;
+    getCreatableOption?: (input: string) => TValue;
+    loadMoreElem?: ReactNode;
 };
-declare const _default: import("react").ForwardRefExoticComponent<Omit<AutocompleteProps<BaseOption>, "ref"> & import("react").RefAttributes<unknown>>;
-export default _default;
+export type AutocompleteProps<TValue extends Record<string, unknown>, TMultiple extends boolean | undefined = false> = Omit<MUIAutocompleteProps<TValue, TMultiple, boolean, false>, 'ref' | 'renderInput' | 'onChange' | 'value' | 'getOptionLabel' | 'getOptionKey' | 'filterOptions'> & Required<Pick<MUIAutocompleteProps<TValue, TMultiple, boolean, false>, 'onChange' | 'value' | 'getOptionLabel' | 'getOptionKey'>> & ExtraProps<TValue>;
+declare const Autocomplete: <TValue extends Record<string, unknown>, TMultiple extends boolean | undefined = false>(props: AutocompleteProps<TValue, TMultiple>) => import("react/jsx-runtime").JSX.Element;
+export default Autocomplete;

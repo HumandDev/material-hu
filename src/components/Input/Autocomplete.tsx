@@ -141,12 +141,12 @@ const Autocomplete = <
 
           return filtered;
         }}
-        renderOption={(optionProps, option, state) => {
+        renderOption={({ key, ...optionProps }, option, state) => {
           const { index } = state;
 
           const content = [
             <Stack
-              key={fieldProps.getOptionKey(option)}
+              key={key}
               component="li"
               {...optionProps}
               sx={{
