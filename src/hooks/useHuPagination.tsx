@@ -10,11 +10,16 @@ import { formatSearchParams } from '../utils/pagination';
 const SEARCH_MIN_LENGTH = 3;
 const FIRST_PAGE = 1;
 
-export type SearchControllerProps = Omit<FormSearchProps, 'name' | 'onChange'>;
-export type PaginationControllerProps = Omit<
-  FormPaginationProps,
-  'name' | 'onChangeLimit' | 'onChangePage' | 'limitOptions'
->;
+export type SearchControllerProps = Omit<FormSearchProps, 'name'> & {
+  inputProps?: Omit<FormSearchProps['inputProps'], 'onChange'>;
+};
+
+export type PaginationControllerProps = Omit<FormPaginationProps, 'name'> & {
+  inputProps?: Omit<
+    FormPaginationProps['inputProps'],
+    'onChangeLimit' | 'onChangePage' | 'limitOptions'
+  >;
+};
 
 export type PaginationParams = {
   search: string;
