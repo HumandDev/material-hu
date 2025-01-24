@@ -8,6 +8,7 @@ import SeeMoreText from '../SeeMoreText/SeeMoreText';
 import ListItem from '../List/ListItem';
 import { getDistanceToNow } from '../../utils/time';
 import { useTranslation } from './i18n';
+import { IconDots } from '@tabler/icons-react';
 
 export type PostProps = {
   profilePicture?: string;
@@ -15,6 +16,7 @@ export type PostProps = {
   body: string;
   publicationDatetime: string;
   sx?: CardContainerProps['sx'];
+  showActions?: boolean;
 };
 
 export const Post: FC<PostProps> = ({
@@ -23,6 +25,7 @@ export const Post: FC<PostProps> = ({
   body,
   publicationDatetime,
   sx,
+  showActions,
 }) => {
   const { t } = useTranslation();
   return (
@@ -40,6 +43,7 @@ export const Post: FC<PostProps> = ({
               distance: getDistanceToNow(publicationDatetime),
             }),
           }}
+          action={showActions ? { Icon: IconDots, color: 'red' } : undefined}
           sx={{ '.MuiListItem-root': { p: 0 } }}
         />
         <SeeMoreText
