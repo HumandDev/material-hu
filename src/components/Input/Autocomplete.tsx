@@ -1,13 +1,11 @@
-import { forwardRef, Fragment } from 'react';
-import { assign, concat, merge } from 'lodash';
+import { Fragment, ReactNode, RefObject } from 'react';
 import {
   IconChevronDown,
   IconExclamationCircle,
   IconX,
 } from '@tabler/icons-react';
 import {
-  createFilterOptions,
-  FilterOptionsState,
+  autocompleteClasses,
   FormControl,
   Autocomplete as MUIAutocomplete,
   AutocompleteProps as MUIAutocompleteProps,
@@ -18,71 +16,82 @@ import {
 } from '@mui/material';
 import CustomLabel from './CustomLabel';
 import CustomHelperText from './CustomHelperText';
+import Title from '../Title/Title';
+import { useTranslation } from './i18n';
 
-type BaseProps<TValue> = MUIAutocompleteProps<
-  TValue,
-  boolean,
-  boolean,
-  boolean
->;
-
-type BaseOption = Record<string, unknown> & {
-  isCreatable?: boolean;
+const normalizeText = (text: string) => {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 };
 
-type AutocompleteProps<TValue = unknown> = BaseProps<TValue> & {
-  noOptionsPrimary: string;
-  noOptionsSecondary: string;
-  error?: boolean;
+export const isEqualText = (textA: string, textB: string) => {
+  return normalizeText(textA) === normalizeText(textB);
+};
+
+type ExtraProps<TValue> = {
+  noOptionsTitle?: string;
+  noOptionsDescription?: string;
+  hasError?: boolean;
   helperText?: string;
-  canCreate?: boolean;
-  renderCreatableOption?: BaseProps<TValue>['renderOption'];
-  onCreate?: BaseProps<TValue>['onChange'];
-  renderLoadElementTrigger?: BaseProps<TValue>['renderOption'];
-  getCreatableOption?: (
-    options: TValue[],
-    state: FilterOptionsState<TValue>,
-  ) => TValue;
   placeholder?: string;
   label?: string;
-};
-
-const defaultProps: Partial<AutocompleteProps> = {
-  selectOnFocus: true,
-  handleHomeEndKeys: true,
-  clearOnBlur: true,
-  ListboxProps: {
-    sx: { maxHeight: 240 },
-  },
-  popupIcon: <IconChevronDown size={20} />,
-  clearIcon: <IconX size={20} />,
-  fullWidth: true,
+  fieldRef?: any;
+  onCreate?: (inputValue: string) => void;
+  getCreatableOption?: (input: string) => TValue;
+  loadMoreElem?: ReactNode;
 };
 
 const ErrorIcon = IconExclamationCircle;
 
-const Autocomplete = <TValue extends BaseOption = {}>(
-  {
-    error: hasError,
-    noOptionsPrimary,
-    noOptionsSecondary,
-    canCreate,
-    placeholder,
-    label,
-    helperText = '',
-    getCreatableOption,
-    renderCreatableOption,
-    onCreate,
-    renderLoadElementTrigger,
-    filterOptions = createFilterOptions(),
-    ...props
-  }: AutocompleteProps<TValue>,
-  ref: AutocompleteProps['ref'],
+export type AutocompleteProps<
+  TValue extends Record<string, unknown>,
+  TMultiple extends boolean | undefined = false,
+> = Omit<
+  MUIAutocompleteProps<TValue, TMultiple, boolean, false>,
+  | 'ref'
+  | 'renderInput'
+  | 'onChange'
+  | 'value'
+  | 'getOptionLabel'
+  | 'getOptionKey'
+  | 'filterOptions'
+> &
+  Required<
+    Pick<
+      MUIAutocompleteProps<TValue, TMultiple, boolean, false>,
+      'onChange' | 'value' | 'getOptionLabel' | 'getOptionKey'
+    >
+  > &
+  ExtraProps<TValue>;
+
+const Autocomplete = <
+  TValue extends Record<string, unknown>,
+  TMultiple extends boolean | undefined = false,
+>(
+  props: AutocompleteProps<TValue, TMultiple>,
 ) => {
   const theme = useTheme();
+  const { t } = useTranslation();
+  const {
+    noOptionsTitle = t('NO_RESULTS_FOUND') as string,
+    noOptionsDescription = t('SELECT_OPTION_IN_LIST') as string,
+    hasError,
+    helperText,
+    placeholder,
+    label,
+    fieldRef,
+    getCreatableOption,
+    onCreate,
+    onChange,
+    loadMoreElem,
+    getOptionLabel: fieldGetOptionLabel,
+    ...fieldProps
+  } = props;
 
   const getStatusTextColor = () => {
-    if (props.disabled) {
+    if (fieldProps.disabled) {
       return theme.palette.textColors?.neutralTextDisabled;
     }
     return hasError
@@ -91,60 +100,105 @@ const Autocomplete = <TValue extends BaseOption = {}>(
   };
 
   const statusTextColor = getStatusTextColor();
-
-  const hasExtendedFeatures = canCreate || onCreate;
-
-  const extendedFeaturesProps: Partial<AutocompleteProps<TValue>> = {
-    filterOptions: (options, state) => {
-      const filteredOptions = filterOptions(options, state);
-      const creatableOption = assign(getCreatableOption?.(options, state), {
-        isCreatable: true,
-      });
-
-      return concat(
-        canCreate ? creatableOption : [],
-        filteredOptions,
-      ) as TValue[];
-    },
-    renderOption: (...args) => {
-      const [, option] = args;
-
-      return [
-        option.isCreatable
-          ? renderCreatableOption?.(...args)
-          : props.renderOption?.(...args),
-        renderLoadElementTrigger?.(...args),
-      ];
-    },
-    onChange: onCreate
-      ? (...args) => {
-          const [, nextValue] = args;
-
-          if ((nextValue as TValue)?.isCreatable) {
-            onCreate(...args);
-          } else {
-            props.onChange?.(...args);
-          }
-        }
-      : props.onChange,
-  };
-
-  const baseProps = merge(
-    defaultProps,
-    hasExtendedFeatures && extendedFeaturesProps,
-    props,
-  );
+  const hasCreatableFeat = onCreate;
 
   return (
     <FormControl
       error={hasError}
-      fullWidth={baseProps.fullWidth}
-      disabled={baseProps.disabled}
+      fullWidth={fieldProps.fullWidth ?? true}
+      disabled={fieldProps.disabled}
     >
       {label && <CustomLabel label={label} />}
       <MUIAutocomplete
-        {...baseProps}
-        ref={ref}
+        fullWidth
+        selectOnFocus
+        handleHomeEndKeys
+        clearOnBlur
+        ListboxProps={{
+          sx: { maxHeight: 240 },
+        }}
+        popupIcon={<IconChevronDown size={20} />}
+        clearIcon={<IconX size={20} />}
+        filterOptions={(options, params) => {
+          const filtered = Array.from(options);
+
+          if (hasCreatableFeat) {
+            const { inputValue, getOptionLabel } = params;
+            const trimmedInput = inputValue.trim();
+
+            const isExisting = filtered.some(option =>
+              isEqualText(inputValue, getOptionLabel(option)),
+            );
+
+            if (!isExisting && trimmedInput) {
+              filtered.unshift({
+                ...(getCreatableOption?.(trimmedInput) as any),
+                isCreatable: true,
+                inputValue: trimmedInput,
+              } as any);
+            }
+          }
+
+          return filtered;
+        }}
+        renderOption={(optionProps, option, state) => {
+          const { index } = state;
+
+          const content = [
+            <Stack
+              key={fieldProps.getOptionKey(option)}
+              component="li"
+              {...optionProps}
+              sx={{
+                flexDirection: 'row',
+                [`&.${autocompleteClasses.option}`]: {
+                  padding: theme.spacing(2),
+                },
+              }}
+            >
+              <Typography variant="globalS">
+                {fieldGetOptionLabel(option)}
+              </Typography>
+            </Stack>,
+          ];
+
+          const optionsLen = onCreate
+            ? fieldProps.options.length
+            : fieldProps.options.length - 1;
+
+          const shouldRenderTrigger = index === optionsLen && loadMoreElem;
+
+          if (shouldRenderTrigger) {
+            content.push(
+              <Stack
+                component="li"
+                {...optionProps}
+              >
+                {loadMoreElem}
+              </Stack>,
+            );
+          }
+          return content;
+        }}
+        disableCloseOnSelect={fieldProps.multiple}
+        onInputChange={(_event, value, reason) => {
+          // eslint-disable-next-line no-console
+          console.log({ value, reason });
+        }}
+        onChange={(event, nextValue, reason) => {
+          // eslint-disable-next-line no-console
+          console.log({ nextValue, reason });
+          if (reason === 'selectOption' && (nextValue as any).isCreatable) {
+            onCreate?.((nextValue as any).inputValue);
+          } else {
+            onChange(event, nextValue, reason);
+          }
+        }}
+        getOptionLabel={option => {
+          return (option.inputValue ?? fieldGetOptionLabel(option)) as string;
+        }}
+        {...fieldProps}
+        ref={fieldRef}
         renderInput={params => (
           <TextField
             {...params}
@@ -173,7 +227,7 @@ const Autocomplete = <TValue extends BaseOption = {}>(
                 </Fragment>
               ),
               sx: {
-                ...(props.disabled && {
+                ...(fieldProps.disabled && {
                   bgcolor: theme.palette.base?.greyTransparent['300p50'],
                   border: `1px solid ${theme.palette.border?.neutralBorder}`,
                 }),
@@ -181,27 +235,25 @@ const Autocomplete = <TValue extends BaseOption = {}>(
                 fontSize: 'globalS',
               },
             }}
+            InputLabelProps={{
+              shrink:
+                (params.inputProps.ref as RefObject<HTMLInputElement>)
+                  .current === document.activeElement ||
+                !!params.inputProps.value ||
+                fieldProps.loading,
+            }}
           />
         )}
         noOptionsText={
-          <Stack>
-            <Typography
-              variant="globalS"
-              fontWeight="semiBold"
-            >
-              {noOptionsPrimary}
-            </Typography>
-            <Typography
-              variant="globalXS"
-              color="neutralTextLighter"
-            >
-              {noOptionsSecondary}
-            </Typography>
-          </Stack>
+          <Title
+            variant="S"
+            title={noOptionsTitle}
+            description={noOptionsDescription}
+          />
         }
       />
     </FormControl>
   );
 };
 
-export default forwardRef(Autocomplete);
+export default Autocomplete;
