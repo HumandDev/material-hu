@@ -9,5 +9,5 @@ export type InputProps = Pick<FormControlProps, 'sx' | 'fullWidth' | 'disabled'>
     hasCounter?: boolean;
     startAdornment?: ReactNode;
 } & CustomInputProps;
-declare const InputClassic: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, success, maxLength, hasCounter, fullWidth, multiline, startAdornment, disabled, }: InputProps) => import("react/jsx-runtime").JSX.Element;
+declare const InputClassic: ({ sx, label, value, helperText, errorText, onChange, placeholder, inputRef, error, success, maxLength, hasCounter, fullWidth, multiline, minRows, startAdornment, disabled, }: InputProps) => import("react/jsx-runtime").JSX.Element;
 export default InputClassic;

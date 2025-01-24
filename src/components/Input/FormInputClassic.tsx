@@ -13,6 +13,7 @@ type Props = {
     | 'maxLength'
     | 'hasCounter'
     | 'multiline'
+    | 'minRows'
     | 'startAdornment'
   >;
   rules?: ControllerProps['rules'];

@@ -1,8 +1,12 @@
 import { FC } from 'react';
-import { Stack, useTheme } from '@mui/material';
+import { Stack, StackProps, useTheme } from '@mui/material';
 import Skeleton from '../Skeleton/Skeleton';
 
-export const ListItemSkeleton: FC = () => {
+type ListItemSkeletonProps = {
+  sx?: StackProps['sx'];
+};
+
+export const ListItemSkeleton: FC<ListItemSkeletonProps> = ({ sx }) => {
   const theme = useTheme();
 
   return (
@@ -14,6 +18,7 @@ export const ListItemSkeleton: FC = () => {
         width: '100%',
         gap: 0.5,
         p: 2,
+        ...sx,
       }}
     >
       <Skeleton
