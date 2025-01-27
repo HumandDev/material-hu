@@ -60,12 +60,20 @@ const ButtonGroup = ({
             borderWidth: 1,
             py: 1,
             px: 1.5,
+            fontSize: '14px',
             flexGrow: fullWidth ? 1 : 'initial',
             flexBasis: fullWidth ? 1 : 'auto',
             textTransform: 'none',
           }}
           startIcon={
-            selectedButton === index ? <IconCheck size={16} /> : noIcon
+            selectedButton === index ? (
+              <IconCheck
+                size={16}
+                style={{ display: 'hidden' }}
+              />
+            ) : (
+              noIcon
+            )
           }
           endIcon={noIcon}
         >
