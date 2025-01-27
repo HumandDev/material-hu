@@ -8,7 +8,8 @@ import SeeMoreText from '../SeeMoreText/SeeMoreText';
 import ListItem from '../List/ListItem';
 import { getDistanceToNow } from '../../utils/time';
 import { useTranslation } from './i18n';
-import { IconDots } from '@tabler/icons-react';
+import { IconDots, IconEdit, IconTrash } from '@tabler/icons-react';
+import { MenuList } from '../Menu/MenuList';
 
 export type PostProps = {
   profilePicture?: string;
@@ -16,7 +17,10 @@ export type PostProps = {
   body: string;
   publicationDatetime: string;
   sx?: CardContainerProps['sx'];
-  showActions?: boolean;
+  actions?: {
+    onEdit: () => void;
+    onDelete: () => void;
+  };
 };
 
 export const Post: FC<PostProps> = ({
@@ -25,9 +29,22 @@ export const Post: FC<PostProps> = ({
   body,
   publicationDatetime,
   sx,
-  showActions,
+  actions,
 }) => {
   const { t } = useTranslation();
+
+  const editAction = {
+    title: t('EDIT'),
+    Icon: IconEdit,
+    onClick: actions?.onEdit!,
+  };
+
+  const deleteAction = {
+    title: t('DELETE'),
+    Icon: IconTrash,
+    onClick: actions?.onDelete!,
+  };
+
   return (
     <CardContainer
       fullWidth
@@ -43,7 +60,14 @@ export const Post: FC<PostProps> = ({
               distance: getDistanceToNow(publicationDatetime),
             }),
           }}
-          action={showActions ? { Icon: IconDots, color: 'red' } : undefined}
+          actionMenuList={
+            actions ? (
+              <MenuList
+                Icon={IconDots}
+                options={[editAction, deleteAction]}
+              />
+            ) : undefined
+          }
           sx={{ '.MuiListItem-root': { p: 0 } }}
         />
         <SeeMoreText

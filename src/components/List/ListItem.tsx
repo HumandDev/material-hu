@@ -28,6 +28,7 @@ export type ListItemProps = Omit<ContainerProps, 'children' | 'sx'> &
     > & {
       Icon: TablerIcon;
     };
+    actionMenuList?: ReactNode;
     sideContent?: ReactNode;
   };
 
@@ -39,6 +40,7 @@ export const ListItem: FC<ListItemProps> = ({
   text,
   avatar,
   action,
+  actionMenuList,
   divider,
   sideContent,
 }) => {
@@ -119,6 +121,7 @@ export const ListItem: FC<ListItemProps> = ({
                 {ActionIcon && <ActionIcon size={24} />}
               </MuiIconButton>
             )}
+            {actionMenuList}
           </Stack>
         </Container>
       )}
