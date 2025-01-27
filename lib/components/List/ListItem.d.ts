@@ -12,6 +12,7 @@ export type ListItemProps = Omit<ContainerProps, 'children' | 'sx'> & Pick<Stack
     action?: Pick<MuiIconButtonProps, 'id' | 'color' | 'disabled' | 'onClick' | 'aria-label'> & {
         Icon: TablerIcon;
     };
+    actionMenuList?: ReactNode;
     sideContent?: ReactNode;
 };
 export declare const ListItem: FC<ListItemProps>;
