@@ -66,14 +66,7 @@ const ButtonGroup = ({
             textTransform: 'none',
           }}
           startIcon={
-            selectedButton === index ? (
-              <IconCheck
-                size={16}
-                style={{ display: 'hidden' }}
-              />
-            ) : (
-              noIcon
-            )
+            selectedButton === index ? <IconCheck size={16} /> : noIcon
           }
           endIcon={noIcon}
         >
