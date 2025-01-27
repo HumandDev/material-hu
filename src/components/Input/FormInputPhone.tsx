@@ -1,15 +1,18 @@
 import { FC, useState, useEffect } from 'react';
-import { CountryCode } from 'libphonenumber-js/types';
-import { TextFieldProps } from '@mui/material';
 import {
   Controller,
   ControllerProps,
   UseControllerProps,
   useFormContext,
 } from 'react-hook-form';
-import InputPhone from './InputPhone';
-import { isPossiblePhoneNumber } from 'libphonenumber-js';
 import { useTranslation } from './i18n';
+import { TextFieldProps } from '@mui/material';
+import {
+  getCountryCallingCode,
+  isPossiblePhoneNumber,
+} from 'libphonenumber-js';
+import { CountryCode } from 'libphonenumber-js/types';
+import InputPhone from './InputPhone';
 
 export type FormPhoneNumberProps = TextFieldProps &
   Omit<UseControllerProps, 'rules'> & {
@@ -48,7 +51,9 @@ const FormInputPhone: FC<FormPhoneNumberProps> = props => {
     helperText: helperTextProp,
   } = props;
 
-  const [code, setCode] = useState<string>('54');
+  const [code, setCode] = useState<string>(
+    getCountryCallingCode(defaultCountry),
+  );
   const {
     control,
     trigger,
@@ -59,6 +64,7 @@ const FormInputPhone: FC<FormPhoneNumberProps> = props => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    // Re-validate number when countryCode changes
     if (isSubmitted) {
       trigger(name);
     }

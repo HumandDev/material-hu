@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import InputPhone from './InputPhone';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import FormInputPhone from './FormInputPhone';
 import { Button } from '@mui/material';
+import InputPhone from './InputPhone';
+import FormInputPhone from './FormInputPhone';
 
 const meta = {
   title: 'Components/Input/InputPhone',
@@ -66,7 +66,7 @@ const meta = {
       <InputPhone
         {...args}
         value={value}
-        onChange={(newValue, _countryCode) => setValue(newValue)}
+        onChange={newValue => setValue(newValue)}
       />
     );
   },
@@ -122,13 +122,9 @@ export const WithFormControl: Story = {
     const form = useForm({
       defaultValues: {
         phoneNumber: '',
+        countryCode: '',
       },
     });
-
-    const phoneNumber = form.watch('phoneNumber');
-    useEffect(() => {
-      console.log('phoneNumber', phoneNumber);
-    }, [phoneNumber]);
 
     const onSubmit = form.handleSubmit(() => {});
 
