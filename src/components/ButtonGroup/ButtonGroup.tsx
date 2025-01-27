@@ -60,6 +60,7 @@ const ButtonGroup = ({
             borderWidth: 1,
             py: 1,
             px: 1.5,
+            fontSize: '14px',
             flexGrow: fullWidth ? 1 : 'initial',
             flexBasis: fullWidth ? 1 : 'auto',
             textTransform: 'none',
