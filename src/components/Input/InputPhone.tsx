@@ -62,6 +62,11 @@ const InputPhone: FC<InputPhoneProps> = ({
       label: {
         color: colorPalette.textColors?.errorText,
       },
+      helperText: {
+        color: colorPalette.textColors?.errorText,
+        icon: <IconAlertCircle size={16} />,
+        marginLeft: '17px',
+      },
     },
     valid: {
       phoneInputIcon: {
@@ -73,6 +78,11 @@ const InputPhone: FC<InputPhoneProps> = ({
       focusedBorder: colorPalette.graphics?.successText,
       label: {
         color: colorPalette.textColors?.successText,
+      },
+      helperText: {
+        color: colorPalette.textColors?.successText,
+        icon: <IconCheck size={16} />,
+        marginLeft: '17px',
       },
     },
     default: {
@@ -90,6 +100,11 @@ const InputPhone: FC<InputPhoneProps> = ({
       focusedBorder: colorPalette.base?.blueBrand[400],
       label: {
         color: colorPalette.textColors?.neutralText,
+      },
+      helperText: {
+        color: colorPalette.textColors?.neutralTextLighter,
+        icon: null,
+        marginLeft: 0,
       },
     },
   };
@@ -130,6 +145,25 @@ const InputPhone: FC<InputPhoneProps> = ({
     </Stack>
   );
 
+  const helperTextIcon = values.helperText.icon && (
+    <Stack
+      sx={{
+        position: 'absolute',
+        bottom: 3,
+        left: 0,
+        width: 16,
+        height: 16,
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1,
+        color: values.helperText.color,
+        cursor: 'inherit',
+      }}
+    >
+      {values.helperText.icon}
+    </Stack>
+  );
+
   return (
     <Stack>
       {label && (
@@ -146,6 +180,7 @@ const InputPhone: FC<InputPhoneProps> = ({
       <Stack sx={{ position: 'relative' }}>
         {countryCodeIcon}
         {phoneInputIcon}
+        {helperTextIcon}
         <MuiTelInput
           value={value}
           onChange={handleChange}
@@ -206,7 +241,8 @@ const InputPhone: FC<InputPhoneProps> = ({
             },
 
             '& .MuiFormHelperText-root': {
-              marginLeft: 0,
+              marginLeft: values.helperText.marginLeft,
+              color: values.helperText.color,
             },
           }}
           helperText={helperText}

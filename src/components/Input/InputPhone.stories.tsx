@@ -76,50 +76,42 @@ export default meta;
 type Story = StoryObj<typeof InputPhone>;
 
 export const Default: Story = {
-  args: {
-    label: 'Phone Number',
-  },
+  args: {},
 };
 
 export const WithDefaultValue: Story = {
   args: {
-    label: 'Phone Number',
-    value: '+5491123456789',
-    defaultCountry: 'AR',
+    value: '2111111111',
+    defaultCountry: 'MX',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    label: 'Phone Number',
     disabled: true,
   },
 };
 
 export const WithError: Story = {
   args: {
-    label: 'Phone Number',
+    label: 'Enter your phone number',
     error: true,
     helperText: 'Invalid phone number',
   },
 };
 
-export const DifferentCountry: Story = {
-  args: {
-    label: 'Phone Number',
-    defaultCountry: 'MX',
-  },
-};
-
-export const WithLabel: Story = {
-  args: {
-    label: 'Enter your phone number',
-  },
-};
-
 export const Valid: Story = {
   args: {
+    label: 'Enter your phone number',
     valid: true,
+    helperText: 'Valid phone number',
+  },
+};
+
+export const WithLabelAndHelperText: Story = {
+  args: {
+    label: 'Enter your phone number',
+    helperText: "Make sure it's yours, don't lie!",
   },
 };
 
@@ -140,8 +132,6 @@ export const WithFormControl: Story = {
           <FormInputPhone
             name="phoneNumber"
             codeName="countryCode"
-            label="Phone Number"
-            defaultCountry="AR"
             showErrors
             rules={{ required: 'Phone number is required' }}
           />
