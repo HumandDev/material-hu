@@ -121,6 +121,7 @@ const FormInputPhone: FC<FormPhoneNumberProps> = props => {
           sx={sx}
           helperText={helperTextProp || showErrors ? error?.message : undefined}
           value={valueProp || value}
+          valid={isSubmitted ? !error : undefined}
         />
       )}
       name={name}

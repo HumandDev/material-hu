@@ -6,6 +6,8 @@ export type InputPhoneProps = Omit<TextFieldProps, 'onChange'> & {
     onChange?: (value: string, countryCallingCode?: string) => void;
     defaultCountry?: CountryCode;
     ariaLabel?: string;
+    preferredCountries?: CountryCode[];
+    valid?: boolean;
 };
 declare const InputPhone: FC<InputPhoneProps>;
 export default InputPhone;

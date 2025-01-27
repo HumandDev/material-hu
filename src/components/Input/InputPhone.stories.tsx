@@ -117,6 +117,12 @@ export const WithLabel: Story = {
   },
 };
 
+export const Valid: Story = {
+  args: {
+    valid: true,
+  },
+};
+
 export const WithFormControl: Story = {
   render: () => {
     const form = useForm({
