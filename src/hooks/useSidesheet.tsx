@@ -8,7 +8,7 @@ function useSidesheet<T>(
 ) {
   const [open, setOpen] = useState(false);
   const closeDrawer = () => {
-    setOpen(false);
+    //  setOpen(false);
     drawerProps?.onClose?.();
   };
 
