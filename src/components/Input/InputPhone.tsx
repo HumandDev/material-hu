@@ -187,6 +187,7 @@ const InputPhone: FC<InputPhoneProps> = props => {
           {...telInputProps}
           onChange={handleChange}
           defaultCountry={defaultCountry}
+          disableFormatting
           preferredCountries={preferredCountries}
           disabled={disabled}
           fullWidth={fullWidth}
