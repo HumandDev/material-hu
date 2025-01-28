@@ -32,17 +32,6 @@ const meta = {
         'VE',
       ],
     },
-    variant: {
-      type: 'string',
-      description: 'The variant of the input',
-      control: 'select',
-      options: ['outlined'], //, 'filled', 'standard'],
-    },
-    ariaLabel: {
-      table: {
-        disable: true,
-      },
-    },
     fullWidth: {
       table: {
         disable: true,
@@ -108,7 +97,7 @@ export const WithError: Story = {
 export const Valid: Story = {
   args: {
     label: 'Enter your phone number',
-    valid: true,
+    success: true,
     helperText: 'Valid phone number',
   },
 };
@@ -125,7 +114,6 @@ export const WithFormControl: Story = {
     const form = useForm({
       defaultValues: {
         phoneNumber: '',
-        countryCode: '',
       },
     });
 
@@ -136,7 +124,6 @@ export const WithFormControl: Story = {
         <form onSubmit={onSubmit}>
           <FormInputPhone
             name="phoneNumber"
-            codeName="countryCode"
             showErrors
             rules={{ required: 'Número requerido' }}
           />

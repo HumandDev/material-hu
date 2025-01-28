@@ -10,40 +10,42 @@ import { MuiTelInput } from 'mui-tel-input';
 import { CountryCode } from 'libphonenumber-js/types';
 import { colorPalette } from '../../theme/hugo/colors';
 
-export type InputPhoneProps = Omit<TextFieldProps, 'onChange'> & {
-  value?: string;
-  onChange?: (value: string, countryCallingCode?: string) => void;
+export type InputPhoneProps = Pick<
+  TextFieldProps,
+  | 'sx'
+  | 'label'
+  | 'value'
+  | 'helperText'
+  | 'placeholder'
+  | 'error'
+  | 'fullWidth'
+  | 'disabled'
+  | 'onClick'
+  | 'margin'
+  | 'inputProps'
+  | 'onPaste'
+  | 'onKeyDown'
+  | 'autoFocus'
+> & {
+  value: string;
+  onChange: (value: string, countryCallingCode?: string) => void;
   defaultCountry?: CountryCode;
-  ariaLabel?: string;
   preferredCountries?: CountryCode[];
-  valid?: boolean;
+  success?: boolean;
 };
 
-const InputPhone: FC<InputPhoneProps> = ({
-  defaultCountry = 'AR',
-  value,
-  onChange,
-  disabled,
-  fullWidth = true,
-  maxRows,
-  minRows,
-  placeholder,
-  size,
-  label,
-  autoFocus,
-  ariaLabel,
-  variant = 'outlined',
-  onKeyDown,
-  onPaste,
-  inputProps,
-  sx,
-  margin,
-  onClick,
-  helperText,
-  error,
-  preferredCountries = ['AR', 'MX'],
-  valid = false,
-}) => {
+const InputPhone: FC<InputPhoneProps> = props => {
+  const {
+    label,
+    onChange,
+    success,
+    fullWidth = true,
+    disabled = false,
+    sx = {},
+    defaultCountry = 'AR',
+    preferredCountries = ['AR', 'MX'],
+    ...telInputProps
+  } = props;
   const handleChange = (newValue: string, country: any) => {
     onChange?.(newValue, country?.countryCallingCode);
   };
@@ -69,7 +71,7 @@ const InputPhone: FC<InputPhoneProps> = ({
         marginLeft: '17px',
       },
     },
-    valid: {
+    success: {
       phoneInputIcon: {
         display: 'flex',
         color: colorPalette.textColors?.successText,
@@ -89,7 +91,7 @@ const InputPhone: FC<InputPhoneProps> = ({
     },
     default: {
       phoneInputIcon: {
-        display: value ? 'flex' : 'none',
+        display: telInputProps.value ? 'flex' : 'none',
         color: colorPalette.textColors?.neutralText,
         clickable: true,
         icon: (
@@ -113,8 +115,8 @@ const InputPhone: FC<InputPhoneProps> = ({
   };
 
   const uiValues =
-    (error && valuesStrategies.error) ||
-    (valid && valuesStrategies.valid) ||
+    (telInputProps.error && valuesStrategies.error) ||
+    (success && valuesStrategies.success) ||
     valuesStrategies.default;
 
   const countryCodeIcon = (
@@ -152,7 +154,7 @@ const InputPhone: FC<InputPhoneProps> = ({
   const helperTextIcon = uiValues.helperText.icon && (
     <Stack
       sx={{
-        display: helperText ? 'flex' : 'none',
+        display: telInputProps.helperText ? 'flex' : 'none',
         position: 'absolute',
         bottom: 3,
         left: 0,
@@ -187,27 +189,13 @@ const InputPhone: FC<InputPhoneProps> = ({
         {phoneInputIcon}
         {helperTextIcon}
         <MuiTelInput
-          value={value}
+          {...telInputProps}
           onChange={handleChange}
-          disableFormatting
           defaultCountry={defaultCountry}
           preferredCountries={preferredCountries}
-          error={error}
-          size={size}
           disabled={disabled}
           fullWidth={fullWidth}
-          maxRows={maxRows}
-          minRows={minRows}
-          placeholder={placeholder}
-          autoFocus={autoFocus}
-          aria-label={ariaLabel}
           forceCallingCode
-          variant={variant}
-          onKeyDown={onKeyDown}
-          onPaste={onPaste}
-          margin={margin}
-          onClick={onClick}
-          inputProps={inputProps}
           sx={{
             ...sx,
 
@@ -253,7 +241,6 @@ const InputPhone: FC<InputPhoneProps> = ({
               color: uiValues.helperText.color,
             },
           }}
-          helperText={helperText}
         />
       </Stack>
     </Stack>
