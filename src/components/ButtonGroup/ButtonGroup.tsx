@@ -17,7 +17,7 @@ const ButtonGroup = ({
   fullWidth = false,
   disableUnselect = false,
   fixedCheck = false,
-  showCheckIcon = true
+  showCheckIcon = true,
 }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
@@ -26,7 +26,7 @@ const ButtonGroup = ({
     const newSelected = disableUnselect ? index : newIndex;
     setSelectedButton(newSelected);
 
-   // Execute onChange if its enabled Unselect or if its a different button
+    // Execute onChange if its enabled Unselect or if its a different button
     if (
       !disableUnselect ||
       (disableUnselect && newSelected !== selectedButton)
@@ -65,12 +65,14 @@ const ButtonGroup = ({
             fontSize: '14px',
             flexGrow: fullWidth ? 1 : 'initial',
             flexBasis: fullWidth ? 1 : 'auto',
-            textTransform: 'none'
+            textTransform: 'none',
           }}
           startIcon={
-            showCheckIcon && selectedButton === index
-              ? <IconCheck size={16} />
-              : noIcon
+            showCheckIcon && selectedButton === index ? (
+              <IconCheck size={16} />
+            ) : (
+              noIcon
+            )
           }
           endIcon={noIcon}
         >

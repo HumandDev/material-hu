@@ -6,5 +6,5 @@ export type ButtonGroupProps = {
     fixedCheck?: boolean;
     showCheckIcon?: boolean;
 };
-declare const ButtonGroup: ({ labels, onChange, fullWidth, disableUnselect, fixedCheck, showCheckIcon }: ButtonGroupProps) => import("react/jsx-runtime").JSX.Element;
+declare const ButtonGroup: ({ labels, onChange, fullWidth, disableUnselect, fixedCheck, showCheckIcon, }: ButtonGroupProps) => import("react/jsx-runtime").JSX.Element;
 export default ButtonGroup;
