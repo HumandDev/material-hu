@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { FormSearchProps } from '../components/Input/FormSearch';
 import { FormPaginationProps } from '../components/Input/FormPagination';
-export type SearchControllerProps = Omit<FormSearchProps, 'name' | 'inputProps'> & {
+export type SearchControllerProps = Omit<FormSearchProps, 'name'> & {
     inputProps?: Omit<FormSearchProps['inputProps'], 'onChange'>;
 };
-export type PaginationControllerProps = Omit<FormPaginationProps, 'name' | 'inputProps'> & {
+export type PaginationControllerProps = Omit<FormPaginationProps, 'name'> & {
     inputProps?: Omit<FormPaginationProps['inputProps'], 'onChangeLimit' | 'onChangePage' | 'limitOptions'>;
 };
 export type PaginationParams = {
