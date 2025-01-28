@@ -1,13 +1,11 @@
 import { FC } from 'react';
 import { TextFieldProps } from '@mui/material';
 import { CountryCode } from 'libphonenumber-js/types';
-export type InputPhoneProps = Pick<TextFieldProps, 'sx' | 'value' | 'helperText' | 'placeholder' | 'error' | 'fullWidth' | 'disabled' | 'onClick' | 'margin' | 'inputProps' | 'onPaste' | 'onKeyDown' | 'autoFocus'> & {
-    label?: string;
-    value: string;
+import { InputProps } from './InputClassic';
+export type InputPhoneProps = Pick<TextFieldProps, 'onPaste' | 'autoFocus' | 'onKeyDown' | 'margin' | 'onClick' | 'inputProps'> & Pick<InputProps, 'label' | 'success' | 'fullWidth' | 'disabled' | 'sx' | 'helperText' | 'disabled' | 'placeholder' | 'error' | 'value'> & {
     onChange: (value: string, countryCallingCode?: string) => void;
     defaultCountry?: CountryCode;
     preferredCountries?: CountryCode[];
-    success?: boolean;
 };
 declare const InputPhone: FC<InputPhoneProps>;
 export default InputPhone;

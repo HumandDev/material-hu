@@ -10,30 +10,29 @@ import { MuiTelInput } from 'mui-tel-input';
 import { CountryCode } from 'libphonenumber-js/types';
 import { colorPalette } from '../../theme/hugo/colors';
 import CustomLabel from './CustomLabel';
+import { InputProps } from './InputClassic';
 
 export type InputPhoneProps = Pick<
   TextFieldProps,
-  | 'sx'
-  | 'value'
-  | 'helperText'
-  | 'placeholder'
-  | 'error'
-  | 'fullWidth'
-  | 'disabled'
-  | 'onClick'
-  | 'margin'
-  | 'inputProps'
-  | 'onPaste'
-  | 'onKeyDown'
-  | 'autoFocus'
-> & {
-  label?: string;
-  value: string;
-  onChange: (value: string, countryCallingCode?: string) => void;
-  defaultCountry?: CountryCode;
-  preferredCountries?: CountryCode[];
-  success?: boolean;
-};
+  'onPaste' | 'autoFocus' | 'onKeyDown' | 'margin' | 'onClick' | 'inputProps'
+> &
+  Pick<
+    InputProps,
+    | 'label'
+    | 'success'
+    | 'fullWidth'
+    | 'disabled'
+    | 'sx'
+    | 'helperText'
+    | 'disabled'
+    | 'placeholder'
+    | 'error'
+    | 'value'
+  > & {
+    onChange: (value: string, countryCallingCode?: string) => void;
+    defaultCountry?: CountryCode;
+    preferredCountries?: CountryCode[];
+  };
 
 const InputPhone: FC<InputPhoneProps> = props => {
   const {
@@ -194,7 +193,6 @@ const InputPhone: FC<InputPhoneProps> = props => {
           forceCallingCode
           sx={{
             ...sx,
-
             '&.MuiFormControl-root > div': {
               p: 0,
               '& fieldset': {
