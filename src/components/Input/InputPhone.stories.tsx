@@ -124,7 +124,9 @@ export const WithFormControl: Story = {
         <form onSubmit={onSubmit}>
           <FormInputPhone
             name="phoneNumber"
-            showErrors
+            inputProps={{
+              showErrors: true,
+            }}
             rules={{ required: 'Número requerido' }}
           />
           <Button type="submit">Submit empty to see required error</Button>
