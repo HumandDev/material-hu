@@ -7,7 +7,8 @@ function useSidesheet<T>(
   extraProps?: Partial<T>,
 ) {
   const [open, setOpen] = useState(false);
-  const closeDrawer: () => void = () => setOpen(false);
+  const closeDrawer: () => void = () =>
+    drawerProps?.onClose?.() || setOpen(false);
   const [drawerContentProps, setDrawerContentProps] = useState<Partial<T>>();
   const drawerWidth = drawerProps?.drawerWidth || 200;
   const containerStyles = useMemo(
