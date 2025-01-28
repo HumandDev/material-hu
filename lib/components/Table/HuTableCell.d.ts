@@ -5,7 +5,7 @@ type Props = {
     headerCell?: boolean;
     actionable?: boolean;
     selectionCell?: boolean;
-    tooltip?: string;
+    tooltipTitle?: string;
     tooltipProps?: Omit<TooltipProps, 'children'>;
 };
 declare const HuTableCell: FC<PropsWithChildren<TableCellProps & Props>>;

@@ -1,19 +1,20 @@
 import { FC, PropsWithChildren } from 'react';
 import { TableCell, TableCellProps, Typography } from '@mui/material';
 import Tooltip, { TooltipProps } from '../Tooltip/Tooltip';
+import { colorPalette } from '../../theme/hugo/colors';
 
 type Props = {
   headerCell?: boolean;
   actionable?: boolean;
   selectionCell?: boolean;
-  tooltip?: string;
+  tooltipTitle?: string;
   tooltipProps?: Omit<TooltipProps, 'children'>;
 };
 
 const HuTableCell: FC<PropsWithChildren<TableCellProps & Props>> = ({
   children,
   sx,
-  tooltip,
+  tooltipTitle,
   tooltipProps = {},
   headerCell = false,
   actionable = false,
@@ -24,15 +25,15 @@ const HuTableCell: FC<PropsWithChildren<TableCellProps & Props>> = ({
     ? {
         cursor: 'pointer',
         '&:hover': {
-          backgroundColor: '#E9E9F4',
+          backgroundColor: colorPalette.base.grey[300],
         },
       }
     : {};
 
   return (
     <Tooltip
-      title={tooltip}
-      disableTooltip={!tooltip}
+      title={tooltipTitle}
+      disableTooltip={!tooltipTitle}
       direction="bottom"
       {...tooltipProps}
     >
@@ -56,7 +57,7 @@ const HuTableCell: FC<PropsWithChildren<TableCellProps & Props>> = ({
         {headerCell && (
           <Typography
             variant="globalS"
-            fontWeight="semibold"
+            fontWeight="fontWeightSemiBold"
             sx={{ color: theme => theme.palette.textColors?.neutralText }}
           >
             {children}
