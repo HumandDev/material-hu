@@ -5,15 +5,15 @@ import {
   IconChevronDown,
   IconCheck,
 } from '@tabler/icons-react';
-import { alpha, Stack, TextFieldProps, Typography } from '@mui/material';
+import { alpha, Stack, TextFieldProps } from '@mui/material';
 import { MuiTelInput } from 'mui-tel-input';
 import { CountryCode } from 'libphonenumber-js/types';
 import { colorPalette } from '../../theme/hugo/colors';
+import CustomLabel from './CustomLabel';
 
 export type InputPhoneProps = Pick<
   TextFieldProps,
   | 'sx'
-  | 'label'
   | 'value'
   | 'helperText'
   | 'placeholder'
@@ -27,6 +27,7 @@ export type InputPhoneProps = Pick<
   | 'onKeyDown'
   | 'autoFocus'
 > & {
+  label?: string;
   value: string;
   onChange: (value: string, countryCallingCode?: string) => void;
   defaultCountry?: CountryCode;
@@ -62,9 +63,6 @@ const InputPhone: FC<InputPhoneProps> = props => {
       },
       border: colorPalette.graphics?.errorText,
       focusedBorder: colorPalette.graphics?.errorText,
-      label: {
-        color: colorPalette.textColors?.errorText,
-      },
       helperText: {
         color: colorPalette.textColors?.errorText,
         icon: <IconAlertCircle size={16} />,
@@ -80,9 +78,6 @@ const InputPhone: FC<InputPhoneProps> = props => {
       },
       border: colorPalette.graphics?.successText,
       focusedBorder: colorPalette.graphics?.successText,
-      label: {
-        color: colorPalette.textColors?.successText,
-      },
       helperText: {
         color: colorPalette.textColors?.successText,
         icon: <IconCheck size={16} />,
@@ -103,9 +98,6 @@ const InputPhone: FC<InputPhoneProps> = props => {
       },
       border: colorPalette.border?.neutralBorder,
       focusedBorder: colorPalette.base?.blueBrand[400],
-      label: {
-        color: colorPalette.textColors?.neutralText,
-      },
       helperText: {
         color: colorPalette.textColors?.neutralTextLighter,
         icon: null,
@@ -174,15 +166,18 @@ const InputPhone: FC<InputPhoneProps> = props => {
   return (
     <Stack>
       {label && (
-        <Typography
+        <Stack
           sx={{
-            mb: 0.5,
-            color: uiValues.label.color,
-            fontWeight: 'fontWeightSemiBold',
+            '& .MuiTypography-root': {
+              color: uiValues.helperText.color,
+            },
           }}
         >
-          {label}
-        </Typography>
+          <CustomLabel
+            label={label}
+            success={success}
+          />
+        </Stack>
       )}
       <Stack sx={{ position: 'relative' }}>
         {countryCodeIcon}
