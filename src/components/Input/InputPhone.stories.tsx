@@ -58,6 +58,11 @@ const meta = {
         disable: true,
       },
     },
+    preferredCountries: {
+      table: {
+        disable: true,
+      },
+    },
   },
   render: args => {
     const [value, setValue] = useState(args.value || '');
@@ -81,7 +86,7 @@ export const Default: Story = {
 
 export const WithDefaultValue: Story = {
   args: {
-    value: '2111111111',
+    value: '1123456789',
     defaultCountry: 'MX',
   },
 };
@@ -133,7 +138,7 @@ export const WithFormControl: Story = {
             name="phoneNumber"
             codeName="countryCode"
             showErrors
-            rules={{ required: 'Phone number is required' }}
+            rules={{ required: 'Número requerido' }}
           />
           <Button type="submit">Submit empty to see required error</Button>
         </form>
