@@ -8,17 +8,21 @@ import { useTranslation } from './i18n';
 import { isPossiblePhoneNumber } from 'libphonenumber-js';
 import InputPhone, { InputPhoneProps } from './InputPhone';
 
-export type FormPhoneNumberProps = UseControllerProps & {
-  inputProps: InputPhoneProps & { showErrors?: boolean };
+export type FormPhoneNumberProps = Pick<
+  UseControllerProps,
+  'name' | 'rules' | 'disabled'
+> & {
+  inputProps: Omit<InputPhoneProps, 'value' | 'onChange'> & {
+    showErrors?: boolean;
+  };
 };
 
 const FormInputPhone: FC<FormPhoneNumberProps> = props => {
   const {
     name,
+    disabled,
     inputProps: { showErrors = false, ...inputPhoneProps },
     rules = {},
-    defaultValue,
-    disabled,
   } = props;
 
   const {
@@ -36,6 +40,7 @@ const FormInputPhone: FC<FormPhoneNumberProps> = props => {
         <InputPhone
           {...field}
           {...inputPhoneProps}
+          value={value}
           onChange={newValue => onChange(newValue)}
           error={!!error}
           disabled={disabled}
@@ -44,13 +49,11 @@ const FormInputPhone: FC<FormPhoneNumberProps> = props => {
               ? error?.message
               : undefined
           }
-          value={inputPhoneProps.value || value}
           success={isSubmitted ? !error : undefined}
         />
       )}
       name={name}
       control={control}
-      defaultValue={defaultValue}
       rules={{
         ...rules,
         validate: {

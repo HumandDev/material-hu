@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { UseControllerProps } from 'react-hook-form';
 import { InputPhoneProps } from './InputPhone';
-export type FormPhoneNumberProps = UseControllerProps & {
-    inputProps: InputPhoneProps & {
+export type FormPhoneNumberProps = Pick<UseControllerProps, 'name' | 'rules' | 'disabled'> & {
+    inputProps: Omit<InputPhoneProps, 'value' | 'onChange'> & {
         showErrors?: boolean;
     };
 };
