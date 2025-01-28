@@ -12,6 +12,7 @@ import { LoadingButton, LoadingButtonProps } from '@mui/lab';
 
 export type DrawerProps = MuiDrawerProps & {
   title?: string;
+  subtitle?: string;
   size?: 'medium' | 'large';
   onClose: () => void;
   hasBackButton?: boolean;
@@ -37,6 +38,7 @@ const sizeStyleMap = {
 const Drawer = (props: DrawerProps) => {
   const {
     title = '',
+    subtitle,
     size = 'medium',
     open = false,
     children,
@@ -84,28 +86,45 @@ const Drawer = (props: DrawerProps) => {
     >
       <Stack
         sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          py: 2,
-          px: 3,
           borderBottom: `1px solid ${colorPalette.border?.neutralDivider}`,
+          py: 2,
+          pr: 3,
+          pl: hasBackButton ? 1 : 3,
         }}
       >
-        {hasBackButton && (
-          <IconButton onClick={onClose}>
-            <IconArrowLeft />
-          </IconButton>
-        )}
-        <Typography
-          variant="globalS"
-          sx={{ fontWeight: 'semiBold', flex: 1 }}
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
         >
-          {title}
-        </Typography>
-        <IconButton onClick={onClose}>
-          <IconX />
-        </IconButton>
+          {hasBackButton && (
+            <IconButton
+              onClick={onClose}
+              sx={{ mr: 1 }}
+            >
+              <IconArrowLeft />
+            </IconButton>
+          )}
+          <Typography
+            variant="globalS"
+            sx={{ fontWeight: 'semiBold', flex: 1 }}
+          >
+            {title}
+          </Typography>
+          <IconButton onClick={onClose}>
+            <IconX />
+          </IconButton>
+        </Stack>
+        {subtitle && (
+          <Typography
+            variant="globalXS"
+            sx={{ fontWeight: 'regular', flex: 1, ml: hasBackButton ? 6 : 0 }}
+          >
+            {subtitle}
+          </Typography>
+        )}
       </Stack>
       {withDoubleLayout && (
         <Stack sx={{ flexDirection: 'row', flexGrow: 1, overflow: 'hidden' }}>

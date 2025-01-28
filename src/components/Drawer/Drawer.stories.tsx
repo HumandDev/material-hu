@@ -114,6 +114,63 @@ export const Default: Story = {
   },
 };
 
+export const DrawerWithSubtitleAndBack: Story = {
+  args: {
+    title: 'Soy un título del Drawer',
+    subtitle: 'Y yo un subtítulo del Drawer',
+    size: 'medium',
+    disableEscapeKeyDown: false,
+    primaryButtonProps: {
+      children: 'Primary Action',
+    },
+    secondaryButtonProps: {
+      children: 'Secondary Action',
+    },
+    hasBackButton: true,
+  },
+  render: props => {
+    const {
+      title,
+      subtitle,
+      size,
+      primaryButtonProps,
+      secondaryButtonProps,
+      disableEscapeKeyDown,
+      hasBackButton,
+    } = props;
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onClose = () => setIsOpen(false);
+
+    return (
+      <div>
+        <Button
+          size="small"
+          variant="primary"
+          onClick={() => setIsOpen(true)}
+        >
+          Open
+        </Button>
+        <Drawer
+          title={title}
+          subtitle={subtitle}
+          size={size}
+          open={isOpen}
+          onClose={onClose}
+          primaryButtonProps={primaryButtonProps}
+          secondaryButtonProps={secondaryButtonProps}
+          disableEscapeKeyDown={disableEscapeKeyDown}
+          hasBackButton={hasBackButton}
+        >
+          <Typography>
+            Lorem ipsum dolor sit amet consectetur. In sed ut elit nisi. Turpis
+          </Typography>
+        </Drawer>
+      </div>
+    );
+  },
+};
+
 export const DrawerWithExtraFooter: Story = {
   args: {
     title: 'Drawer Title',

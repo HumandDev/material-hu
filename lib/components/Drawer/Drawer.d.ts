@@ -3,6 +3,7 @@ import { DrawerProps as MuiDrawerProps } from '@mui/material';
 import { LoadingButtonProps } from '@mui/lab';
 export type DrawerProps = MuiDrawerProps & {
     title?: string;
+    subtitle?: string;
     size?: 'medium' | 'large';
     onClose: () => void;
     hasBackButton?: boolean;
