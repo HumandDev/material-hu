@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactElement } from 'react';
 import { IconDotsVertical } from '@tabler/icons-react';
 type Props = {
     Icon?: typeof IconDotsVertical;
@@ -9,7 +9,8 @@ type Props = {
         onClick: () => void;
         disabled?: boolean;
     }[];
-    customButton?: ReactNode;
+    customButton?: ReactElement;
+    disableMenu?: boolean;
 };
 export declare const MenuList: FC<Props>;
 export default MenuList;
