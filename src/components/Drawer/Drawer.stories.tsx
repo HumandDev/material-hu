@@ -133,7 +133,6 @@ export const Sidesheet: Story = {
         title: 'Agregar componente',
         whenClose: handleClose,
       },
-      {},
     );
 
     return (
