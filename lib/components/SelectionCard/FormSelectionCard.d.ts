@@ -6,6 +6,7 @@ type FormSelectionCardProps = PropsWithChildren<{
     rules?: ControllerProps['rules'];
     isOnlyOption?: boolean;
     sx?: SelectionCardProps['sx'];
+    disabled?: boolean;
 }>;
 declare const FormSelectionCard: FC<FormSelectionCardProps>;
 export default FormSelectionCard;
