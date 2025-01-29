@@ -3,7 +3,7 @@ import { StackProps, ListItemProps as MuiLisItemProps, IconButtonProps as MuiIco
 import { TitleProps } from '../Title/Title';
 import { AvatarProps } from '../Avatar/Avatar';
 import { TablerIcon } from '@tabler/icons-react';
-type ContainerProps = Pick<MuiLisItemProps, 'children' | 'divider' | 'sx'>;
+type ContainerProps = Pick<MuiLisItemProps, 'children' | 'divider' | 'sx' | 'component'>;
 export type ListItemProps = Omit<ContainerProps, 'children' | 'sx'> & Pick<StackProps, 'id' | 'sx'> & {
     loading?: boolean;
     onClick?: (event: MouseEvent<HTMLDivElement>) => void;

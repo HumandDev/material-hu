@@ -14,7 +14,10 @@ import { Title, TitleProps } from '../Title/Title';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';
 import { TablerIcon } from '@tabler/icons-react';
 
-type ContainerProps = Pick<MuiLisItemProps, 'children' | 'divider' | 'sx'>;
+type ContainerProps = Pick<
+  MuiLisItemProps,
+  'children' | 'divider' | 'sx' | 'component'
+>;
 
 export type ListItemProps = Omit<ContainerProps, 'children' | 'sx'> &
   Pick<StackProps, 'id' | 'sx'> & {
@@ -43,6 +46,7 @@ export const ListItem: FC<ListItemProps> = ({
   actionMenuList,
   divider,
   sideContent,
+  component,
 }) => {
   const Container = onClick
     ? (props: ContainerProps) => (
@@ -72,6 +76,7 @@ export const ListItem: FC<ListItemProps> = ({
       {loading && <ListItemSkeleton />}
       {!loading && (
         <Container
+          component={component}
           sx={{
             p: 2,
             gap: 0.5,

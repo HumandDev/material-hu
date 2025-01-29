@@ -12,6 +12,8 @@ const defaultOptions = [
     title: 'Eliminar',
   },
   { Icon: IconEye, title: 'Ver detalle', description: 'Descripción' },
+  { title: 'Sin ícono ni descripción' },
+  { title: 'Sin ícono', description: 'Descripción' },
 ].map(o => ({ ...o, onClick: () => alert(o.title) }));
 
 const meta: Meta<typeof MenuList> = {

@@ -33,7 +33,7 @@ export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
         anchorEl={anchorRef.current}
         onClose={handleMenuClose}
         open={openMenu}
-        sx={{ '.MuiListItem-root': { p: 0 } }}
+        sx={{ py: 0 }}
       >
         {options.map(option => (
           <MenuItem
@@ -44,12 +44,13 @@ export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
             }}
           >
             <ListItem
+              component="div"
               text={{
                 title: option.title,
                 description: option?.description,
               }}
-              sx={{ '.MuiListItem-root': { p: 0 } }}
-              avatar={{ Icon: option.Icon }}
+              sx={{ '.MuiListItem-root': { p: 0 }, justifyContent: 'center' }}
+              avatar={option.Icon && { Icon: option.Icon }}
             />
           </MenuItem>
         ))}
