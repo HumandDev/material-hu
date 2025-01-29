@@ -43,6 +43,11 @@ export const CreatePost: FC<CreatePostProps> = ({
     await handlePost(values);
     form.reset();
   });
+  const { formState } = form;
+
+  const isValidPost =
+    !!form.watch('body').trim() &&
+    (!existingPost || formState.dirtyFields.body);
 
   return (
     <FormProvider {...form}>
@@ -85,8 +90,8 @@ export const CreatePost: FC<CreatePostProps> = ({
             <LoadingButton
               variant="primary"
               onClick={submit}
-              disabled={!form.watch('body')}
-              loading={form.formState.isSubmitting}
+              disabled={!isValidPost}
+              loading={formState.isSubmitting}
               size="large"
             >
               {t(existingPost ? 'EDIT' : 'PUBLISH')}
