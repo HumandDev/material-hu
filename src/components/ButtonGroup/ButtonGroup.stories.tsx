@@ -22,6 +22,13 @@ export const Default: Story = {
   args: {},
 };
 
+export const hideCheckIcon: Story = {
+  args: {
+    labels: ['Button 1', 'Button 2'],
+    showCheckIcon: false,
+  },
+};
+
 export const Two: Story = {
   args: {
     labels: ['Button 1', 'Button 2'],

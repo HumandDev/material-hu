@@ -8,6 +8,7 @@ export type ButtonGroupProps = {
   fullWidth?: boolean;
   disableUnselect?: boolean;
   fixedCheck?: boolean;
+  showCheckIcon?: boolean;
 };
 
 const ButtonGroup = ({
@@ -16,6 +17,7 @@ const ButtonGroup = ({
   fullWidth = false,
   disableUnselect = false,
   fixedCheck = false,
+  showCheckIcon = true,
 }: ButtonGroupProps) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(0);
 
@@ -60,12 +62,17 @@ const ButtonGroup = ({
             borderWidth: 1,
             py: 1,
             px: 1.5,
+            fontSize: '14px',
             flexGrow: fullWidth ? 1 : 'initial',
             flexBasis: fullWidth ? 1 : 'auto',
             textTransform: 'none',
           }}
           startIcon={
-            selectedButton === index ? <IconCheck size={16} /> : noIcon
+            showCheckIcon && selectedButton === index ? (
+              <IconCheck size={16} />
+            ) : (
+              noIcon
+            )
           }
           endIcon={noIcon}
         >
