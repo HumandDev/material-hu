@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Drawer from './Drawer';
 import { Typography, Stack, Button } from '@mui/material';
+import { useSidesheet } from '../../hooks/useSidesheet';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
@@ -110,6 +111,46 @@ export const Default: Story = {
           </Typography>
         </Drawer>
       </div>
+    );
+  },
+};
+
+export const Sidesheet: Story = {
+  args: {
+    title: 'Soy un título del Drawer',
+  },
+  render: props => {
+    const { title } = props;
+    const [color, setColor] = useState('green');
+
+    const handleClose = () => {
+      setColor('green');
+    };
+
+    const { showDrawer, drawer, containerStyles } = useSidesheet(
+      () => <Typography>{title}</Typography>,
+      {
+        title: 'Agregar componente',
+        whenClose: handleClose,
+      },
+      {},
+    );
+
+    return (
+      <Stack sx={containerStyles}>
+        {drawer}
+        <Button
+          variant="primary"
+          size="large"
+          sx={{ width: 'fit-content', backgroundColor: color }}
+          onClick={() => {
+            setColor('blue');
+            showDrawer();
+          }}
+        >
+          Open dialog
+        </Button>
+      </Stack>
     );
   },
 };
