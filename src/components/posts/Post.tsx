@@ -10,6 +10,7 @@ import { getDistanceToNow } from '../../utils/time';
 import { useTranslation } from './i18n';
 import { IconDots, IconEdit, IconTrash } from '@tabler/icons-react';
 import { MenuList } from '../Menu/MenuList';
+import { insertIf } from '../../utils/array';
 
 export type PostProps = {
   profilePicture?: string;
@@ -18,8 +19,8 @@ export type PostProps = {
   publicationDatetime: string;
   sx?: CardContainerProps['sx'];
   actions?: {
-    onEdit: () => void;
-    onDelete: () => void;
+    onEdit?: () => void;
+    onDelete?: () => void;
   };
 };
 
@@ -33,17 +34,18 @@ export const Post: FC<PostProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const editAction = {
-    title: t('EDIT'),
-    Icon: IconEdit,
-    onClick: actions?.onEdit!,
-  };
-
-  const deleteAction = {
-    title: t('DELETE'),
-    Icon: IconTrash,
-    onClick: actions?.onDelete!,
-  };
+  const actionsList = [
+    ...insertIf(!!actions?.onEdit, {
+      title: t('EDIT'),
+      Icon: IconEdit,
+      onClick: actions!.onEdit!,
+    }),
+    ...insertIf(!!actions?.onDelete, {
+      title: t('DELETE'),
+      Icon: IconTrash,
+      onClick: actions!.onDelete!,
+    }),
+  ];
 
   return (
     <CardContainer
@@ -64,7 +66,7 @@ export const Post: FC<PostProps> = ({
             actions ? (
               <MenuList
                 Icon={IconDots}
-                options={[editAction, deleteAction]}
+                options={actionsList}
               />
             ) : undefined
           }
