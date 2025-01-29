@@ -77,7 +77,7 @@ export const CreatePost: FC<CreatePostProps> = ({
             loading={form.formState.isSubmitting}
             size="large"
           >
-            {t('PUBLISH')}
+            {t(existingPost ? 'EDIT' : 'PUBLISH')}
           </LoadingButton>
         </Stack>
       </CardContainer>
