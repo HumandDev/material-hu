@@ -20,6 +20,7 @@ export type CreatePostProps = {
   handlePost: SubmitHandler<FieldValues>;
   sx?: CardContainerProps['sx'];
   existingPost?: FieldValues;
+  onCancel?: () => void;
 };
 
 export const CreatePost: FC<CreatePostProps> = ({
@@ -28,6 +29,7 @@ export const CreatePost: FC<CreatePostProps> = ({
   handlePost,
   sx,
   existingPost,
+  onCancel,
 }) => {
   const { t } = useTranslation();
 
@@ -69,16 +71,27 @@ export const CreatePost: FC<CreatePostProps> = ({
               placeholder: t('WRITE_SOMETHING'),
             }}
           />
-          <LoadingButton
-            variant="primary"
-            sx={{ alignSelf: 'flex-end' }}
-            onClick={submit}
-            disabled={!form.watch('body')}
-            loading={form.formState.isSubmitting}
-            size="large"
+          <Stack
+            sx={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 2 }}
           >
-            {t(existingPost ? 'EDIT' : 'PUBLISH')}
-          </LoadingButton>
+            {!!onCancel && (
+              <LoadingButton
+                variant="secondary"
+                onClick={onCancel}
+              >
+                {t('CANCEL')}
+              </LoadingButton>
+            )}
+            <LoadingButton
+              variant="primary"
+              onClick={submit}
+              disabled={!form.watch('body')}
+              loading={form.formState.isSubmitting}
+              size="large"
+            >
+              {t(existingPost ? 'EDIT' : 'PUBLISH')}
+            </LoadingButton>
+          </Stack>
         </Stack>
       </CardContainer>
     </FormProvider>

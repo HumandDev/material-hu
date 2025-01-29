@@ -11,6 +11,7 @@ initializeCheck(() => {
     TIME_DISTANCE: 'Hace {{distance}}',
     EDIT: 'Editar',
     DELETE: 'Eliminar',
+    CANCEL: 'Cancelar',
   });
 
   i18next.addResources('en', NAMESPACE, {
@@ -19,6 +20,7 @@ initializeCheck(() => {
     TIME_DISTANCE: '{{distance}} ago',
     EDIT: 'Edit',
     DELETE: 'Delete',
+    CANCEL: 'Cancel',
   });
 
   i18next.addResources('pt', NAMESPACE, {
@@ -27,6 +29,7 @@ initializeCheck(() => {
     TIME_DISTANCE: 'Há {{distance}}',
     EDIT: 'Editar',
     DELETE: 'Excluir',
+    CANCEL: 'Cancelar',
   });
 
   i18next.addResources('de', NAMESPACE, {
@@ -35,6 +38,7 @@ initializeCheck(() => {
     TIME_DISTANCE: 'Vor {{distance}}',
     EDIT: 'Bearbeiten',
     DELETE: 'Löschen',
+    CANCEL: 'Stornieren',
   });
 });
 

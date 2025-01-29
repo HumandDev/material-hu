@@ -22,5 +22,6 @@ export const Default: Story = {
 export const EditPost: Story = {
   args: {
     existingPost: { body: 'This is the original post text' },
+    onCancel: () => alert('CancelButtonClicked'),
   },
 };
