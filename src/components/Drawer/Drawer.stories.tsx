@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Drawer from './Drawer';
 import { Typography, Stack, Button } from '@mui/material';
 import { useSidesheet } from '../../hooks/useSidesheet';
+import CardContainer from '../CardContainer/CardContainer';
 
 const meta: Meta<typeof Drawer> = {
   component: Drawer,
@@ -128,7 +129,15 @@ export const Sidesheet: Story = {
     };
 
     const { showDrawer, drawer, containerStyles } = useSidesheet(
-      () => <Typography>{title}</Typography>,
+      () => (
+        <Stack>
+          <Typography>{title}</Typography>
+          <CardContainer
+            title="lalallaa"
+            sx={{ width: 2 }}
+          />
+        </Stack>
+      ),
       {
         title: 'Agregar componente',
         whenClose: handleClose,
