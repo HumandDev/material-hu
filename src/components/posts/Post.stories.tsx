@@ -22,3 +22,12 @@ type Story = StoryObj<typeof Post>;
 export const Default: Story = {
   args: {},
 };
+
+export const ActionablePost: Story = {
+  args: {
+    actions: {
+      onEdit: () => alert('Edit'),
+      onDelete: () => alert('Delete'),
+    },
+  },
+};

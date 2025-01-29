@@ -134,7 +134,7 @@ const Drawer = (props: DrawerProps) => {
         <Stack
           sx={{
             p: 3,
-            overflowY: 'scroll',
+            overflowY: 'auto',
             flexGrow: 1,
           }}
         >

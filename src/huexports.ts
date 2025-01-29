@@ -33,6 +33,7 @@ export { default as HuFormCheckbox } from './components/Checkbox/FormCheckbox';
 export { default as HuTooltip } from './components/Tooltip/Tooltip';
 export { default as HuMenu } from './components/Menu/Menu';
 export { default as HuMenuItem } from './components/Menu/MenuItem';
+export { default as HuMenuList } from './components/Menu/MenuList';
 export { default as HuAccordion } from './components/Accordion/Accordion';
 export { default as HuRadioButton } from './components/RadioButton/RadioButton';
 export { default as HuFormRadioButton } from './components/RadioButton/FormRadioButton';

@@ -19,6 +19,8 @@ export type CreatePostProps = {
   fullName: string;
   handlePost: SubmitHandler<FieldValues>;
   sx?: CardContainerProps['sx'];
+  existingPost?: FieldValues;
+  onCancel?: () => void;
 };
 
 export const CreatePost: FC<CreatePostProps> = ({
@@ -26,12 +28,14 @@ export const CreatePost: FC<CreatePostProps> = ({
   fullName,
   handlePost,
   sx,
+  existingPost,
+  onCancel,
 }) => {
   const { t } = useTranslation();
 
   const form = useForm<FieldValues>({
     defaultValues: {
-      body: '',
+      body: existingPost?.body || '',
     },
   });
 
@@ -39,12 +43,18 @@ export const CreatePost: FC<CreatePostProps> = ({
     await handlePost(values);
     form.reset();
   });
+  const { formState } = form;
+
+  const isValidPost =
+    !!form.watch('body').trim() &&
+    (!existingPost || formState.dirtyFields.body);
 
   return (
     <FormProvider {...form}>
       <CardContainer
         fullWidth
         sx={sx}
+        padding={24}
       >
         <Stack>
           <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 1 }}>
@@ -66,16 +76,27 @@ export const CreatePost: FC<CreatePostProps> = ({
               placeholder: t('WRITE_SOMETHING'),
             }}
           />
-          <LoadingButton
-            variant="primary"
-            sx={{ alignSelf: 'flex-end' }}
-            onClick={submit}
-            disabled={!form.watch('body')}
-            loading={form.formState.isSubmitting}
-            size="large"
+          <Stack
+            sx={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 2 }}
           >
-            {t('PUBLISH')}
-          </LoadingButton>
+            {!!onCancel && (
+              <LoadingButton
+                variant="secondary"
+                onClick={onCancel}
+              >
+                {t('CANCEL')}
+              </LoadingButton>
+            )}
+            <LoadingButton
+              variant="primary"
+              onClick={submit}
+              disabled={!isValidPost}
+              loading={formState.isSubmitting}
+              size="large"
+            >
+              {t(existingPost ? 'EDIT' : 'PUBLISH')}
+            </LoadingButton>
+          </Stack>
         </Stack>
       </CardContainer>
     </FormProvider>
