@@ -3,7 +3,7 @@ import Drawer, { DrawerProps } from '../components/Drawer/Drawer';
 
 function useSidesheet<T>(
   DrawerContentComponent: FC<T>,
-  drawerProps?: Partial<DrawerProps> & { whenClose: () => void },
+  drawerProps?: Partial<DrawerProps> & { whenClose?: () => void },
   extraProps?: Partial<T>,
 ) {
   const [open, setOpen] = useState(false);

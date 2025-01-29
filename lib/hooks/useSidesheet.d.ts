@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { DrawerProps } from '../components/Drawer/Drawer';
 declare function useSidesheet<T>(DrawerContentComponent: FC<T>, drawerProps?: Partial<DrawerProps> & {
-    whenClose: () => void;
+    whenClose?: () => void;
 }, extraProps?: Partial<T>): {
     containerStyles: {
         display: string;
