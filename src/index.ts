@@ -71,6 +71,7 @@ export {
 export { useClientPagination } from './hooks/useClientPagination';
 export { useModal } from './hooks/useModal';
 export { useDrawer } from './hooks/useDrawer';
+export { useSidesheet } from './hooks/useSidesheet';
 export { createHuGoTheme } from './theme/hugo';
 export const PeopleExperience = {
   DisplayGroup,
