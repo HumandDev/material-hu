@@ -32,8 +32,8 @@ export const CreatePost: FC<CreatePostProps> = ({
   const { t } = useTranslation();
 
   const form = useForm<FieldValues>({
-    defaultValues: existingPost || {
-      body: '',
+    defaultValues: {
+      body: existingPost?.body || '',
     },
   });
 
