@@ -12,6 +12,7 @@ type Props = {
     title: string;
     description?: string;
     onClick: () => void;
+    disabled?: boolean;
   }[];
 };
 
@@ -42,6 +43,7 @@ export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
               option.onClick();
               handleMenuClose();
             }}
+            disabled={option.disabled}
           >
             <ListItem
               component="div"

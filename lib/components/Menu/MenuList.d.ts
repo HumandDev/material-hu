@@ -7,6 +7,7 @@ type Props = {
         title: string;
         description?: string;
         onClick: () => void;
+        disabled?: boolean;
     }[];
 };
 export declare const MenuList: FC<Props>;

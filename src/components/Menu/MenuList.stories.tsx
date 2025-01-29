@@ -19,6 +19,12 @@ const defaultOptions = [
     title: 'Sin icono pero muchísimo más largo',
     description: 'Descripción pero muchísimo más larga',
   },
+  {
+    Icon: IconEye,
+    title: 'Disabled',
+    description: 'Disabled',
+    disabled: true,
+  },
 ].map(o => ({ ...o, onClick: () => alert(o.title) }));
 
 const meta: Meta<typeof MenuList> = {
