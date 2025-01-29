@@ -1,5 +1,5 @@
-import { FC, useRef, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { FC, ReactNode, useRef, useState } from 'react';
+import { IconButton, Stack } from '@mui/material';
 import { IconDotsVertical } from '@tabler/icons-react';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
@@ -14,22 +14,37 @@ type Props = {
     onClick: () => void;
     disabled?: boolean;
   }[];
+  customButton?: ReactNode;
 };
 
-export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
+export const MenuList: FC<Props> = ({
+  Icon = IconDotsVertical,
+  options,
+  customButton,
+}) => {
   const [openMenu, setOpenMenu] = useState(false);
-  const anchorRef = useRef<HTMLButtonElement | null>(null);
+  const anchorRef = useRef(null);
   const handleMenuOpen = () => setOpenMenu(true);
   const handleMenuClose = () => setOpenMenu(false);
 
   return (
     <>
-      <IconButton
-        ref={anchorRef}
-        onClick={handleMenuOpen}
-      >
-        <Icon />
-      </IconButton>
+      {!!customButton && (
+        <Stack
+          ref={anchorRef}
+          onClick={handleMenuOpen}
+        >
+          {customButton}
+        </Stack>
+      )}
+      {!customButton && (
+        <IconButton
+          ref={anchorRef}
+          onClick={handleMenuOpen}
+        >
+          <Icon />
+        </IconButton>
+      )}
       <Menu
         anchorEl={anchorRef.current}
         onClose={handleMenuClose}
