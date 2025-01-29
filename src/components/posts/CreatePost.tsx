@@ -19,6 +19,7 @@ export type CreatePostProps = {
   fullName: string;
   handlePost: SubmitHandler<FieldValues>;
   sx?: CardContainerProps['sx'];
+  existingPost?: FieldValues;
 };
 
 export const CreatePost: FC<CreatePostProps> = ({
@@ -26,11 +27,12 @@ export const CreatePost: FC<CreatePostProps> = ({
   fullName,
   handlePost,
   sx,
+  existingPost,
 }) => {
   const { t } = useTranslation();
 
   const form = useForm<FieldValues>({
-    defaultValues: {
+    defaultValues: existingPost || {
       body: '',
     },
   });

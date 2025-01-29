@@ -18,3 +18,9 @@ type Story = StoryObj<typeof CreatePost>;
 export const Default: Story = {
   args: {},
 };
+
+export const EditPost: Story = {
+  args: {
+    existingPost: { body: 'This is the original post text' },
+  },
+};

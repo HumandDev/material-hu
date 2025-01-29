@@ -9,6 +9,7 @@ export type CreatePostProps = {
     fullName: string;
     handlePost: SubmitHandler<FieldValues>;
     sx?: CardContainerProps['sx'];
+    existingPost?: FieldValues;
 };
 export declare const CreatePost: FC<CreatePostProps>;
 export default CreatePost;
