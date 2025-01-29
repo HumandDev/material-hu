@@ -47,6 +47,7 @@ export const CreatePost: FC<CreatePostProps> = ({
       <CardContainer
         fullWidth
         sx={sx}
+        padding={24}
       >
         <Stack>
           <Stack sx={{ flexDirection: 'row', alignItems: 'center', gap: 1 }}>
