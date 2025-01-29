@@ -8,6 +8,9 @@ import SeeMoreText from '../SeeMoreText/SeeMoreText';
 import ListItem from '../List/ListItem';
 import { getDistanceToNow } from '../../utils/time';
 import { useTranslation } from './i18n';
+import { IconDots, IconEdit, IconTrash } from '@tabler/icons-react';
+import { MenuList } from '../Menu/MenuList';
+import { insertIf } from '../../utils/array';
 
 export type PostProps = {
   profilePicture?: string;
@@ -15,6 +18,10 @@ export type PostProps = {
   body: string;
   publicationDatetime: string;
   sx?: CardContainerProps['sx'];
+  actions?: {
+    onEdit?: () => void;
+    onDelete?: () => void;
+  };
 };
 
 export const Post: FC<PostProps> = ({
@@ -23,8 +30,23 @@ export const Post: FC<PostProps> = ({
   body,
   publicationDatetime,
   sx,
+  actions,
 }) => {
   const { t } = useTranslation();
+
+  const actionsList = [
+    ...insertIf(!!actions?.onEdit, {
+      title: t('EDIT'),
+      Icon: IconEdit,
+      onClick: actions!.onEdit!,
+    }),
+    ...insertIf(!!actions?.onDelete, {
+      title: t('DELETE'),
+      Icon: IconTrash,
+      onClick: actions!.onDelete!,
+    }),
+  ];
+
   return (
     <CardContainer
       fullWidth
@@ -40,6 +62,14 @@ export const Post: FC<PostProps> = ({
               distance: getDistanceToNow(publicationDatetime),
             }),
           }}
+          actionMenuList={
+            actionsList.length ? (
+              <MenuList
+                Icon={IconDots}
+                options={actionsList}
+              />
+            ) : undefined
+          }
           sx={{ '.MuiListItem-root': { p: 0 } }}
         />
         <SeeMoreText
