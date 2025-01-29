@@ -58,3 +58,5 @@ export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
     </>
   );
 };
+
+export default MenuList;

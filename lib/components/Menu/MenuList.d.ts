@@ -10,4 +10,4 @@ type Props = {
     }[];
 };
 export declare const MenuList: FC<Props>;
-export {};
+export default MenuList;
