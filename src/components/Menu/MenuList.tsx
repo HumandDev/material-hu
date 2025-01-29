@@ -34,7 +34,7 @@ export const MenuList: FC<Props> = ({ Icon = IconDotsVertical, options }) => {
         anchorEl={anchorRef.current}
         onClose={handleMenuClose}
         open={openMenu}
-        sx={{ py: 0, '*': { whiteSpace: 'normal' } }}
+        sx={{ ul: { py: 0 }, '*': { whiteSpace: 'normal' } }}
       >
         {options.map(option => (
           <MenuItem
