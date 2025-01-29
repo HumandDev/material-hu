@@ -63,7 +63,7 @@ export const Post: FC<PostProps> = ({
             }),
           }}
           actionMenuList={
-            actions ? (
+            actionsList.length ? (
               <MenuList
                 Icon={IconDots}
                 options={actionsList}
