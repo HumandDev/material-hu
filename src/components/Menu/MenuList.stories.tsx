@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { IconEdit, IconEye, IconTrash } from '@tabler/icons-react';
 import { MenuList } from './MenuList';
+import { Button } from '@mui/material';
 
 const defaultOptions = [
   {
@@ -42,4 +43,24 @@ type Story = StoryObj<typeof MenuList>;
 
 export const Default: Story = {
   args: {},
+};
+
+export const WithCustomButton: Story = {
+  args: {
+    customButton: <Button variant="secondary">Soy un boton custom!</Button>,
+  },
+};
+
+export const WithDisabledCustomButton: Story = {
+  args: {
+    customButton: (
+      <Button
+        disabled
+        variant="secondary"
+      >
+        Soy un boton custom deshabilitado :(
+      </Button>
+    ),
+    disableMenu: true,
+  },
 };
