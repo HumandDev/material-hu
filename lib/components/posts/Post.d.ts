@@ -7,8 +7,8 @@ export type PostProps = {
     publicationDatetime: string;
     sx?: CardContainerProps['sx'];
     actions?: {
-        onEdit: () => void;
-        onDelete: () => void;
+        onEdit?: () => void;
+        onDelete?: () => void;
     };
 };
 export declare const Post: FC<PostProps>;
