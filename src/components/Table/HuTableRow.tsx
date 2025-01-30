@@ -10,9 +10,9 @@ const getBackgroundColor = (
 ) => {
   if (headerRow) {
     return {
-      backgroundColor: colorPalette.hugoBackground?.neutralBgSecondary,
+      backgroundColor: colorPalette.hugoBackground.neutralBgSecondary,
       '&:hover': {
-        backgroundColor: colorPalette.hugoBackground?.neutralBgSecondary,
+        backgroundColor: colorPalette.hugoBackground.neutralBgSecondary,
       },
     };
   }
@@ -28,9 +28,9 @@ const getBackgroundColor = (
 
   if (selected) {
     return {
-      backgroundColor: colorPalette.buttons?.buttonSecondaryHover,
+      backgroundColor: colorPalette.buttons.buttonSecondaryHover,
       '&:hover': {
-        backgroundColor: colorPalette.buttons?.buttonSecondaryHover,
+        backgroundColor: colorPalette.buttons.buttonSecondaryHover,
       },
     };
   }
@@ -38,7 +38,7 @@ const getBackgroundColor = (
   return {
     backgroundColor: colorPalette.hugoBackground.neutralBgTerciary,
     '&:hover': {
-      backgroundColor: colorPalette.buttons?.buttonTertiaryHover,
+      backgroundColor: colorPalette.buttons.buttonTertiaryHover,
     },
   };
 };

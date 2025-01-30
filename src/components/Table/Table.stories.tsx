@@ -10,7 +10,7 @@ import { useState } from 'react';
 import Skeleton from '../Skeleton/Skeleton';
 import Checkbox from '../Checkbox/Checkbox';
 import IconsMenu from '../IconsMenu';
-import { DeleteOutline, EditOutlined } from '@mui/icons-material';
+import { IconEdit, IconTrash } from '@tabler/icons-react';
 import TableToolbarHu from './HuTableToolbar';
 
 const rows = [
@@ -157,16 +157,14 @@ export const SelectionTable: Story = {
                 selectionCell
               >
                 <Checkbox
+                  sx={{ zIndex: 100 }}
                   checked={selectedRows.length === rows.length}
-                  onClick={e => {
-                    e.stopPropagation();
-                    handleSelectAll();
-                  }}
+                  onClick={handleSelectAll}
                 />
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip="Desert column"
+                tooltipTitle="Desert column"
               >
                 Dessert
               </HuTableCell>
@@ -330,12 +328,12 @@ export const ActionsMenu: Story = {
                     options={[
                       {
                         label: 'Edit',
-                        icon: <EditOutlined />,
+                        icon: <IconEdit />,
                         onClick: () => {},
                       },
                       {
                         label: 'Delete',
-                        icon: <DeleteOutline />,
+                        icon: <IconTrash />,
                         onClick: () => {},
                       },
                     ]}
@@ -393,7 +391,7 @@ export const Toolbar: Story = {
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip="Desert column"
+                tooltipTitle="Desert column"
               >
                 Dessert
               </HuTableCell>
@@ -445,31 +443,31 @@ export const Tooltips: Story = {
             <TableRowHu headerRow>
               <HuTableCell
                 headerCell
-                tooltip="Dessert column"
+                tooltipTitle="Dessert column"
               >
                 Dessert
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip="Calories column"
+                tooltipTitle="Calories column"
               >
                 Calories
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip={'Fat column'}
+                tooltipTitle={'Fat column'}
               >
                 Fat&nbsp;(g)
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip={'Carbohydrates column'}
+                tooltipTitle={'Carbohydrates column'}
               >
                 Carbs&nbsp;(g)
               </HuTableCell>
               <HuTableCell
                 headerCell
-                tooltip={'Protein column'}
+                tooltipTitle={'Protein column'}
               >
                 Protein&nbsp;(g)
               </HuTableCell>
@@ -479,33 +477,33 @@ export const Tooltips: Story = {
             {rows.map(row => (
               <TableRowHu key={row.name}>
                 <HuTableCell
-                  tooltip="Content"
+                  tooltipTitle="Content"
                   component="th"
                   align="left"
                 >
                   <Content />
                 </HuTableCell>
                 <HuTableCell
-                  tooltip={'Amount of calories per serving'}
+                  tooltipTitle={'Amount of calories per serving'}
                   align="center"
                 >
                   {row.calories}
                 </HuTableCell>
                 <HuTableCell
                   align="center"
-                  tooltip={'Amount of fat per serving'}
+                  tooltipTitle={'Amount of fat per serving'}
                 >
                   {row.fat}
                 </HuTableCell>
                 <HuTableCell
                   align="center"
-                  tooltip={'Amount of carbohydrates per serving'}
+                  tooltipTitle={'Amount of carbohydrates per serving'}
                 >
                   {row.carbs}
                 </HuTableCell>
                 <HuTableCell
                   align="center"
-                  tooltip={'Amount of protein per serving'}
+                  tooltipTitle={'Amount of protein per serving'}
                 >
                   {row.protein}
                 </HuTableCell>
