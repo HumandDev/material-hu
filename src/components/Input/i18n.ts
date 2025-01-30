@@ -11,6 +11,7 @@ initializeCheck(() => {
     PREVIOUS: 'Anterior',
     NEXT: 'Siguiente',
     LIMIT_LABEL: '{{limit}}/página',
+    INVALID_PHONE_NUMBER: 'Número de teléfono inválido',
   });
 
   i18next.addResources('en', NAMESPACE, {
@@ -19,6 +20,7 @@ initializeCheck(() => {
     PREVIOUS: 'Previous',
     NEXT: 'Next',
     LIMIT_LABEL: '{{limit}}/page',
+    INVALID_PHONE_NUMBER: 'Invalid phone number',
   });
 
   i18next.addResources('pt', NAMESPACE, {
@@ -27,6 +29,7 @@ initializeCheck(() => {
     PREVIOUS: 'Anterior',
     NEXT: 'Próximo',
     LIMIT_LABEL: '{{limit}}/página',
+    INVALID_PHONE_NUMBER: 'Número de telefone inválido',
   });
 
   i18next.addResources('de', NAMESPACE, {
@@ -35,6 +38,7 @@ initializeCheck(() => {
     PREVIOUS: 'Vorherige',
     NEXT: 'Weiter',
     LIMIT_LABEL: '{{limit}}/Seite',
+    INVALID_PHONE_NUMBER: 'Ungültige Telefonnummer',
   });
 });
 

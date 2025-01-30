@@ -41,6 +41,7 @@
     "prettier": "^3.2.5",
     "prettier-config-humand": "github:HumandDev/prettier-config-humand",
     "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "storybook": "^8.1.4",
     "typescript": "^5.1.6"
   },
@@ -61,7 +62,9 @@
     "@tinymce/tinymce-react": "^4.3.0",
     "date-fns": "^2.30.0",
     "dompurify": "^3.1.6",
+    "libphonenumber-js": "^1.10.10",
     "lodash": "^4.17.21",
+    "mui-tel-input": "^2.1.0",
     "notistack": "^3.0.1",
     "react-avatar-editor": "^13.0.2",
     "react-dropzone": "^14.2.3"
