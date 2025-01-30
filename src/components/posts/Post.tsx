@@ -38,12 +38,12 @@ export const Post: FC<PostProps> = ({
     ...insertIf(!!actions?.onEdit, {
       title: t('EDIT'),
       Icon: IconEdit,
-      onClick: actions!.onEdit!,
+      onClick: actions?.onEdit!,
     }),
     ...insertIf(!!actions?.onDelete, {
       title: t('DELETE'),
       Icon: IconTrash,
-      onClick: actions!.onDelete!,
+      onClick: actions?.onDelete!,
     }),
   ];
 
