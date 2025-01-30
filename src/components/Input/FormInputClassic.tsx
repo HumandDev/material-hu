@@ -15,6 +15,7 @@ type Props = {
     | 'multiline'
     | 'minRows'
     | 'startAdornment'
+    | 'disabled'
   >;
   rules?: ControllerProps['rules'];
 };
