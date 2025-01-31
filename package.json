@@ -41,6 +41,7 @@
     "prettier": "^3.2.5",
     "prettier-config-humand": "github:HumandDev/prettier-config-humand",
     "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "storybook": "^8.1.4",
     "typescript": "^5.1.6"
   },
@@ -69,8 +70,7 @@
   "peerDependencies": {
     "i18next": "^21.3.1",
     "react-hook-form": "^7.31.3",
-    "react-router": "^6.26.2",
-    "react-router-dom": "^6.26.2",
+    "react-router-dom": "^6.3.0",
     "react-i18next": "^11.13.0"
   }
 }
