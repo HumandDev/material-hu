@@ -15,6 +15,8 @@ export { default as HuTabs } from './components/Tabs/Tabs';
 export { default as HuDrawer } from './components/Drawer/Drawer';
 export { default as HuInputClassic } from './components/Input/InputClassic';
 export { default as HuFormInputClassic } from './components/Input/FormInputClassic';
+export { default as HuInputMoney } from './components/Input/Money/InputMoney';
+export { default as HuFormInputMoney } from './components/Input/Money/FormInputMoney';
 export { default as HuDatePicker } from './components/Input/DatePicker';
 export { default as HuFormDatePicker } from './components/Input/FormDatePicker';
 export { default as HuInputSelect } from './components/Input/InputSelect';
